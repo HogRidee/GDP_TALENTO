@@ -1,0 +1,6 @@
+public enum NombreRol{
+    CREAR_MIEMBRO,
+	BORRAR_MIEMBRO,
+	CREAR_TAREA,
+	CREAR_ENTREVISTA;
+}
