@@ -1,10 +1,14 @@
+package pe.edu.pucp.gdptalento.eventos.model;
+
+import pe.edu.pucp.gdptalento.core.model.Usuario;
+import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
+
     private int id;
     private LocalDate fecha;
-    private ArrayList<EstadoAsistencia> asistencias;
     private ArrayList<Usuario> encargados;
     private ArrayList<Staff> participantes;
 
@@ -12,9 +16,13 @@ public class Evento {
     public Evento(int id, LocalDate fecha, ArrayList<EstadoAsistencia> asistencias, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
         this.id = id;
         this.fecha = fecha;
-        this.asistencias = asistencias != null ? asistencias : new ArrayList<>();
         this.encargados = encargados != null ? encargados : new ArrayList<>();
         this.participantes = participantes != null ? participantes : new ArrayList<>();
+    }
+
+    public Evento() {
+        this.encargados = new ArrayList<>();
+        this.participantes = new ArrayList<>();
     }
 
     // Getters y Setters
@@ -32,6 +40,22 @@ public class Evento {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public ArrayList<Usuario> getEncargados() {
+        return encargados;
+    }
+
+    public void setEncargados(ArrayList<Usuario> encargados) {
+        this.encargados = encargados;
+    }
+
+    public ArrayList<Staff> getParticipantes() {
+        return participantes;
+    }
+
+    public void setParticipantes(ArrayList<Staff> participantes) {
+        this.participantes = participantes;
     }
 
 }

@@ -1,6 +1,10 @@
-import java.time.LocalDate;
+package pe.edu.pucp.gdptalento.miembros.model;
 
-class Staff extends MiembroPUCP {
+import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+public class Staff extends MiembroPUCP {
 
     // Atributos
     private Area area;
@@ -8,9 +12,11 @@ class Staff extends MiembroPUCP {
     private EstadoMiembro estado;
     private LocalDate fechaSalida;
     private double desempenio;
+    private ArrayList<EvaluacionDesempeño> evaluaciones;
 
     // Constructor
     public Staff() {
+        evaluaciones = new ArrayList<>();
     }
 
     // Constructor con parámetros
@@ -62,4 +68,13 @@ class Staff extends MiembroPUCP {
     public double getDesempenio() {
         return desempenio;
     }
+
+    public ArrayList<EvaluacionDesempeño> getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public void setEvaluaciones(ArrayList<EvaluacionDesempeño> evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
+
 }

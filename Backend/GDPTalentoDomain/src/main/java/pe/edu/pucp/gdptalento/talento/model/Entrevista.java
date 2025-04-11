@@ -1,23 +1,25 @@
+package pe.edu.pucp.gdptalento.talento.model;
+
+import pe.edu.pucp.gdptalento.miembros.model.Postulante;
+import pe.edu.pucp.gdptalento.core.model.Usuario;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Entrevista {
+
     private int id;
     private LocalDate fecha;
+    private ArrayList<Usuario> entrevistadores;
     private Postulante postulante;
     private EstadoEntrevista estado;
     private String feedback;
     private List<Integer> puntuaciones;
     private double puntuacionFinal;
 
-    public Entrevista(int id, LocalDate fecha, Postulante postulante, EstadoEntrevista estado, String feedback, List<Integer> puntuaciones) {
-        this.id = id;
-        this.fecha = fecha;
-        this.postulante = postulante;
-        this.estado = estado;
-        this.feedback = feedback;
-        this.puntuaciones = puntuaciones;
-        this.puntuacionFinal = calcularPuntuacionFinal();
+    public Entrevista() {
+        entrevistadores = new ArrayList<>();
+        puntuaciones = new ArrayList<>();
     }
 
     public int getId() {
@@ -34,6 +36,14 @@ public class Entrevista {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public ArrayList<Usuario> getEntrevistadores() {
+        return entrevistadores;
+    }
+
+    public void setEntrevistadores(ArrayList<Usuario> entrevistadores) {
+        this.entrevistadores = entrevistadores;
     }
 
     public Postulante getPostulante() {
@@ -60,8 +70,20 @@ public class Entrevista {
         this.feedback = feedback;
     }
 
+    public List<Integer> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(List<Integer> puntuaciones) {
+        this.puntuaciones = puntuaciones;
+    }
+
     public double getPuntuacionFinal() {
         return puntuacionFinal;
+    }
+
+    public void setPuntuacionFinal(double puntuacionFinal) {
+        this.puntuacionFinal = puntuacionFinal;
     }
 
     // Método para calcular la puntuación final (promedio de las puntuaciones)

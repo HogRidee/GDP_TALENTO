@@ -1,4 +1,8 @@
-class Usuario extends Staff {
+package pe.edu.pucp.gdptalento.core.model;
+
+import pe.edu.pucp.gdptalento.miembros.model.Staff;
+
+public class Usuario extends Staff {
 
     // Atributos
     private String hashContrasena;

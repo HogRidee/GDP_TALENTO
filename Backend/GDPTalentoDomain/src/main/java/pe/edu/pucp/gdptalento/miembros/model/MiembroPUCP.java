@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+package pe.edu.pucp.gdptalento.miembros.model;
 
 public abstract class MiembroPUCP {
     private int id;
