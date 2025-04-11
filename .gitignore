@@ -1,1 +1,86 @@
 /Backend/GDPTalentoDomain/target/
+###########################
+# Java & Maven
+###########################
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# Maven build output
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files (NetBeans, IntelliJ, Eclipse)
+nbproject/private/
+nbproject/build-impl.xml
+nbproject/project.xml
+*.iml
+.idea/
+*.ipr
+*.iws
+*.sw?
+
+###########################
+# NetBeans Specific
+###########################
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+##########################
+# Test Reports / Results
+##########################
+test-output/
+TestResults/
+
+##########################
+# OS / Tool Generated
+##########################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.suo
+*.user
+*.cache
+
+######################
+# ReSharper / VS
+######################
+.vs/
+_ReSharper.*
+.ReSharper.*
+*.dotCover
+
+######################
+# Compressed Files
+######################
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar
+*.7z
+*.rar
+*.gz
+*.dmg
+*.iso
+
+##########################
+# Build system wrappers
+##########################
+mvnw
+mvnw.cmd
+
+##########################
+# Other folders to ignore
+##########################
+bin/
+out/
+*.sqlite
+.mtj.tmp/
+
