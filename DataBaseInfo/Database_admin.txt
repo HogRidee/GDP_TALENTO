@@ -1,0 +1,5 @@
+user: admin
+Contraseña maestra: pv30g2sp1cDmaeu5404
+esquema: gamedevspucpRecursosHumanos
+
+hostname: database-gamedevspucp-r.cl0s4cwya817.us-east-1.rds.amazonaws.com
