@@ -136,12 +136,15 @@ CREATE TABLE Tarea_Encargado (
 -- Dropear tablas
 DROP TABLE IF EXISTS Asistencia;
 DROP TABLE IF EXISTS Evento;
+DROP TABLE IF EXISTS Evento_Encargado;
+DROP TABLE IF EXISTS Evento_Participante;
 
 -- Tabla Evento
 CREATE TABLE Evento (
-    id_evento INT AUTO_INCREMENT PRIMARY KEY,
+    id_evento INT AUTO_INCREMENT,
     fecha DATE,
-    tipo ENUM('REUNION', 'INTEGRACION')
+    tipoEvento ENUM('REUNION', 'INTEGRACION'),
+    PRIMARY KEY(id_evento)
 )ENGINE=InnoDB;
 
 -- Encargados del evento (relación muchos a muchos)
