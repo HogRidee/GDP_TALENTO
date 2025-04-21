@@ -17,11 +17,13 @@ public class Evento {
     public Evento(int id, LocalDate fecha, ArrayList<EstadoAsistencia> asistencias, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
         this.id = id;
         this.fecha = fecha;
+        this.estadoEvento = EstadoEvento.APROBADO;
         this.encargados = encargados != null ? encargados : new ArrayList<>();
         this.participantes = participantes != null ? participantes : new ArrayList<>();
     }
 
     public Evento() {
+        this.estadoEvento = EstadoEvento.APROBADO;
         this.encargados = new ArrayList<>();
         this.participantes = new ArrayList<>();
     }
@@ -43,6 +45,14 @@ public class Evento {
         this.fecha = fecha;
     }
 
+     public EstadoEvento getEstadoEvento() {
+        return estadoEvento;
+    }
+
+    public void setEstadoEvento(EstadoEvento estadoEvento) {
+        this.estadoEvento = estadoEvento;
+    }
+    
     public ArrayList<Usuario> getEncargados() {
         return new ArrayList<>(encargados);
     }
