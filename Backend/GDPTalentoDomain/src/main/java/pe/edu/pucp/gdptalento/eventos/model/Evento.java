@@ -9,6 +9,7 @@ public class Evento {
 
     private int id;
     private LocalDate fecha;
+    private EstadoEvento estadoEvento;
     private ArrayList<Usuario> encargados;
     private ArrayList<Staff> participantes;
 
