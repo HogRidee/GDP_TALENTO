@@ -43,19 +43,19 @@ public class Evento {
     }
 
     public ArrayList<Usuario> getEncargados() {
-        return encargados;
+        return new ArrayList<>(encargados);
     }
 
     public void setEncargados(ArrayList<Usuario> encargados) {
-        this.encargados = encargados;
+        this.encargados = new ArrayList<>(encargados);
     }
 
     public ArrayList<Staff> getParticipantes() {
-        return participantes;
+        return new ArrayList<>(participantes);
     }
 
     public void setParticipantes(ArrayList<Staff> participantes) {
-        this.participantes = participantes;
+        this.participantes = new ArrayList<>(participantes);
     }
 
 }
