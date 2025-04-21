@@ -144,6 +144,7 @@ CREATE TABLE Evento (
     id_evento INT AUTO_INCREMENT,
     fecha DATE,
     tipoEvento ENUM('REUNION', 'INTEGRACION'),
+    estadoEvento ENUM('APROBADO', 'CANCELADO'),
     PRIMARY KEY(id_evento)
 )ENGINE=InnoDB;
 
