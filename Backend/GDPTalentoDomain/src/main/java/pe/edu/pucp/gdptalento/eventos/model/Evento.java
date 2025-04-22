@@ -10,13 +10,14 @@ public class Evento {
     private int id;
     private LocalDate fecha;
     private EstadoEvento estadoEvento;
+    private TipoEvento tipoEvento;
     private ArrayList<Usuario> encargados;
     private ArrayList<Staff> participantes;
 
     // Constructor
-    public Evento(int id, LocalDate fecha, ArrayList<EstadoAsistencia> asistencias, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
-        this.id = id;
+    public Evento(LocalDate fecha, TipoEvento tipoEvento, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
         this.fecha = fecha;
+        this.tipoEvento = tipoEvento;
         this.estadoEvento = EstadoEvento.APROBADO;
         this.encargados = encargados != null ? encargados : new ArrayList<>();
         this.participantes = participantes != null ? participantes : new ArrayList<>();
@@ -51,6 +52,13 @@ public class Evento {
 
     public void setEstadoEvento(EstadoEvento estadoEvento) {
         this.estadoEvento = estadoEvento;
+    }
+     public TipoEvento getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
     }
     
     public ArrayList<Usuario> getEncargados() {
