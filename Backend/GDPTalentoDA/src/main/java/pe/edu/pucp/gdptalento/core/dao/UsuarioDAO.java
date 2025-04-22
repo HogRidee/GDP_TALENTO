@@ -4,10 +4,17 @@
  */
 package pe.edu.pucp.gdptalento.core.dao;
 
+import java.util.ArrayList;
+import pe.edu.pucp.gdptalento.core.model.Usuario;
+
 /**
  *
  * @author USER
  */
 public interface UsuarioDAO {
-    
+    int insertar(Usuario usuario, int id);
+    int modificar(Usuario usuario);
+    int eliminar(Usuario usuario);
+    ArrayList<Usuario> listarTodas();
+    Usuario obtenerPorId(String nombreRol);
 }

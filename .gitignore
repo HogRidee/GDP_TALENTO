@@ -85,3 +85,4 @@ out/
 .mtj.tmp/
 
 /Backend/GDPTalentoDBManager/target/
+/Backend/GDPTalentoDA/target/

@@ -17,4 +17,5 @@ pe\edu\pucp\gdptalento\talento\model\Entrevista.class
 pe\edu\pucp\gdptalento\talento\model\EvaluacionDesempeño.class
 pe\edu\pucp\gdptalento\eventos\model\TipoEvento.class
 pe\edu\pucp\gdptalento\miembros\model\EstadoProceso.class
+pe\edu\pucp\gdptalento\eventos\model\EstadoEvento.class
 pe\edu\pucp\gdptalento\miembros\model\EstadoMiembro.class
