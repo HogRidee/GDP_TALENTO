@@ -74,19 +74,19 @@ public class PostulanteMySQL extends MiembroPUCPMySQL implements PostulanteDAO{
             //Ejecuciones SQL MiembroPUCP
             String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, postulante.getId());
-            pst.setString(2, postulante.getCorreo());
-            pst.setString(3, postulante.getFacultad());
-            pst.setString(4, postulante.getEspecialidad());
-            pst.setString(5, String.valueOf(postulante.getStatus()));
-            pst.setInt(6, postulante.getTelefono());
+            pst.setString(1, postulante.getCorreo());
+            pst.setString(2, postulante.getFacultad());
+            pst.setString(3, postulante.getEspecialidad());
+            pst.setString(4, String.valueOf(postulante.getStatus()));
+            pst.setInt(5, postulante.getTelefono());
+            pst.setInt(6, postulante.getId());
             resultado=pst.executeUpdate();
             System.out.println("Se modifico un miembroPUCP");
             //Ejecuciones SQL Staff
-            sql = "UPDATE Postulante SET estado_proceso = ? WHERE id_staff = ?";
+            sql = "UPDATE Postulante SET estado_proceso = ? WHERE id_postulante = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, postulante.getId());
-            pst.setString(2, String.valueOf(postulante.getEstadoProceso()));
+            pst.setString(1, String.valueOf(postulante.getEstadoProceso()));
+            pst.setInt(2, postulante.getId());
             resultado=pst.executeUpdate();
             System.out.println("Se modifico un postulante");
             
@@ -164,5 +164,4 @@ public class PostulanteMySQL extends MiembroPUCPMySQL implements PostulanteDAO{
     public Postulante obtenerPorId(int idPostulante) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
 }

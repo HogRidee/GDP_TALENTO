@@ -13,8 +13,8 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
  */
 public interface UsuarioDAO {
     int insertar(Usuario usuario, int id);
-    int modificar(Usuario usuario);
-    int eliminar(Usuario usuario);
+    int modificar(Usuario usuario, int id);
+    int eliminar(int id_usuario);
     ArrayList<Usuario> listarTodas();
     Usuario obtenerPorId(String nombreRol);
 }

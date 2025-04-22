@@ -77,24 +77,24 @@ public class StaffMySQL implements StaffDAO {
             //Ejecuciones SQL MiembroPUCP
             String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, staff.getId());
-            pst.setString(2, staff.getCorreo());
-            pst.setString(3, staff.getFacultad());
-            pst.setString(4, staff.getEspecialidad());
-            pst.setString(5, String.valueOf(staff.getStatus()));
-            pst.setInt(6, staff.getTelefono());
+            pst.setString(1, staff.getCorreo());
+            pst.setString(2, staff.getFacultad());
+            pst.setString(3, staff.getEspecialidad());
+            pst.setString(4, String.valueOf(staff.getStatus()));
+            pst.setInt(5, staff.getTelefono());
+            pst.setInt(6, staff.getId());
             resultado = pst.executeUpdate();
             System.out.println("Se modifico un miembroPUCP");
             //Ejecuciones SQL Staff
             sql = "UPDATE Staff SET area = ? estado = ? fecha_salida = ? desempenio = ? WHERE id_staff = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, staff.getId());
-            pst.setString(2, String.valueOf(staff.getArea()));
-            pst.setString(3, String.valueOf(staff.getEstado()));
+            pst.setString(1, String.valueOf(staff.getArea()));
+            pst.setString(2, String.valueOf(staff.getEstado()));
             String fecha_fin = String.valueOf(staff.getFechaSalida());
             Date fecha = java.sql.Date.valueOf(fecha_fin);
-            pst.setDate(4, new java.sql.Date(fecha.getTime()));
-            pst.setDouble(5, staff.getDesempenio());
+            pst.setDate(3, new java.sql.Date(fecha.getTime()));
+            pst.setDouble(4, staff.getDesempenio());
+            pst.setInt(5, staff.getId());
             resultado=pst.executeUpdate();
             System.out.println("Se modifico un staff");
             
