@@ -33,11 +33,17 @@ public class UsuarioMySQL implements UsuarioDAO{
             DBManager db = new DBManager();
             con = db.getConnection();
             //Ejecuciones SQL de staff
-            StaffDAO sdao = new StaffMySQL();
-            sdao.insertarStaff(usuario);
-            String sql = "@@last_insert_id AS id";
+            String sql = "INSERT INTO MiembroPUCP(nombre, correo, codigoPUCP, facultad, especialidad, status, telefono) VALUES(?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
+            //st = con.createStatement();
+            pst.setString(1, usuario.getNombre());
+            pst.setString(2, usuario.getCorreo());
+            pst.setInt(3, usuario.getCodigoPUCP());
+            pst.setString(4, usuario.getFacultad());
+            pst.setString(5, usuario.getEspecialidad());
+            pst.setString(6, String.valueOf(usuario.getStatus()));
+            pst.setString(7, String.valueOf(usuario.getTelefono()));
+            resultado=pst.executeUpdate();
             //Ejecuciones SQL de Usuario
             sql = "INSERT INTO Usuario(hash_contrasena, id_rol, id_usuario) VALUES(?,?,?) ";
             pst = con.prepareStatement(sql);
