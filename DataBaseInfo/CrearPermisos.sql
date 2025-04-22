@@ -1,0 +1,7 @@
+INSERT IGNORE INTO Permiso (nombre) VALUES 
+('CREAR_MIEMBRO'),
+('BORRAR_MIEMBRO'),
+('CREAR_TAREA'),
+('CREAR_ENTREVISTA'); 
+
+SELECT * FROM Permiso ORDER BY id_permiso;
