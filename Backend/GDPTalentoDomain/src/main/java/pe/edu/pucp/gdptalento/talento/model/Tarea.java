@@ -4,7 +4,7 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-class Tarea {
+public class Tarea {
 
     private int id;
     private LocalDateTime fechaCreacion;

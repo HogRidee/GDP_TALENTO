@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.talento.dao;
+import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
+import java.util.ArrayList;
 
-/**
- *
- * @author USER
- */
 public interface EvaluacionDesempeñoDAO {
-    
+    int insertarEvaluacion(EvaluacionDesempeño evaluacion);
+    int modificarEvaluacion(EvaluacionDesempeño evaluacion);
+    int eliminarEvaluacion(int id);
+    ArrayList<EvaluacionDesempeño> listarEvaluaciones();
+    EvaluacionDesempeño obtenerPorId(int id);
 }

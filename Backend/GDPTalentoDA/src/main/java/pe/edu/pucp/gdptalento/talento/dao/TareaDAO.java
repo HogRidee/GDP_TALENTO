@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.talento.dao;
+import pe.edu.pucp.gdptalento.talento.model.Tarea;
+import java.util.ArrayList;
 
-/**
- *
- * @author USER
- */
 public interface TareaDAO {
-    
+    int insertarTarea(Tarea tarea);
+    int modificarTarea(Tarea tarea);
+    int eliminarTarea(int id);
+    ArrayList<Tarea> listarTareas();
+    Tarea obtenerPorId(int id);
 }

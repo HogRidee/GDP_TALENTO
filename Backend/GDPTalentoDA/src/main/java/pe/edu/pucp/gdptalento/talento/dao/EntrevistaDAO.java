@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.talento.dao;
+import pe.edu.pucp.gdptalento.talento.model.Entrevista;
+import java.util.ArrayList;
 
-/**
- *
- * @author USER
- */
 public interface EntrevistaDAO {
-    
+    int insertarEntrevista(Entrevista entrevista);
+    int modificarEntrevista(Entrevista entrevista);
+    int eliminarEntrevista(int id);
+    ArrayList<Entrevista> listarEntrevistas();
+    Entrevista obtenerPorId(int id);
 }
