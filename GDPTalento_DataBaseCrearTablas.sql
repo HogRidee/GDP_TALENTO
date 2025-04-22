@@ -58,7 +58,7 @@ CREATE TABLE Staff (
 
 -- Tabla Usuario (Hereda de Staff)
 CREATE TABLE Usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT PRIMARY KEY,
     hash_contrasena VARCHAR(255),
     id_rol INT,
     FOREIGN KEY(id_usuario) REFERENCES Staff(id_staff),
