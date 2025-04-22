@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import pe.edu.pucp.gdptalento.core.dao.RolDAO;
 import pe.edu.pucp.gdptalento.core.model.NombreRol;
 import pe.edu.pucp.gdptalento.core.model.Permiso;
+import static pe.edu.pucp.gdptalento.core.model.Permiso.BORRAR_MIEMBRO;
+import static pe.edu.pucp.gdptalento.core.model.Permiso.CREAR_ENTREVISTA;
+import static pe.edu.pucp.gdptalento.core.model.Permiso.CREAR_MIEMBRO;
+import static pe.edu.pucp.gdptalento.core.model.Permiso.CREAR_TAREA;
 import pe.edu.pucp.gdptalento.core.model.Rol;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
@@ -42,13 +46,24 @@ public class RolMySQL implements RolDAO{
             pst=con.prepareStatement(sql);
             rs=pst.executeQuery();
             rs.next();
+            int id = rs.getInt("id");
             ArrayList<Permiso> list_permisos= new ArrayList<Permiso>(rol.getPermisos());
             for(Permiso p : list_permisos){
-                sql = "INSERT INTO Permiso (nombre) VALUES(?)";
+                sql="INSERT INTO Rol_Permiso(id_rol, id_permiso) VALUES(?,?)";
                 pst = con.prepareStatement(sql);
-                pst.setString(1, String.valueOf(p));
-                resultado=pst.executeUpdate();
-                System.out.println("Se ingreso un permiso de rol");
+                pst.setInt(1, id);
+                if(p == CREAR_MIEMBRO){
+                    pst.setInt(2, 1);
+                }
+                if(p == BORRAR_MIEMBRO){
+                    pst.setInt(2, 2);
+                }
+                if(p == CREAR_TAREA){
+                    pst.setInt(2, 3);
+                }
+                if(p == CREAR_ENTREVISTA){
+                    pst.setInt(2, 4);
+                }
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
