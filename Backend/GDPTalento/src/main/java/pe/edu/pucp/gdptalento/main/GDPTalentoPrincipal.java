@@ -12,11 +12,15 @@ import pe.edu.pucp.gdptalento.core.model.Permiso;
 import pe.edu.pucp.gdptalento.core.model.Rol;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
+import pe.edu.pucp.gdptalento.miembros.dao.StaffDAO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
+import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
+import pe.edu.pucp.gdptalento.talento.dao.EvaluacionDesempeñoDAO;
 import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
+import pe.edu.pucp.gdptalento.talento.mysql.EvaluacionDesempeñoMySQL;
 
 /**
  *
@@ -53,19 +57,20 @@ public class GDPTalentoPrincipal {
         user.setTelefono(951709112);
         //la vaina del id puede funcionar agregando un select con el id generado del insert del user
         //userdao.insertar(user);//agrega por primera vez el id del user
-        
+        /*
         user.setCorreo("correo@hotmail.com");
         user.setHashContrasena("contrasena");
-        user.setId(21);//debo forzar el id, debido a que al comentar el insertar y ejecutar el prncipal nunca se le coloca id
+        user.setId(1);//debo forzar el id, debido a que al comentar el insertar y ejecutar el prncipal nunca se le coloca id
         userdao.modificar(user);
         
         for(Usuario u : userdao.listarTodas()){
             System.out.println(u.getNombre());
         }
         //userdao.eliminar(20);//coloca el id del usuario, fijar en la tabla
-        /*
+        */
+        
         Staff staff = new Staff();
-        staff.setArea(Area.MARKETING);
+        staff.setArea(Area.GDP_ACADEMY);
         staff.setCodigoPUCP(20181102);
         staff.setCorreo("a20181102@pucp.edu.pe");
         staff.setDesempenio(12);
@@ -75,19 +80,49 @@ public class GDPTalentoPrincipal {
         staff.setFacultad("Hoteleria y Turismo");
         LocalDate fecha2 = LocalDate.of(2020, 3, 11);
         staff.setFechaIngreso(fecha2);
-        staff.setFechaSalida(null);
+        staff.setFechaSalida(fecha_fin);
         staff.setNombre("Jorgito");
         staff.setStatus(EstadoPUCP.NO_MATRICULADO);
         staff.setTelefono(72821921);
         
+        StaffDAO staffdao = new StaffMySQL();
+        //staffdao.insertarStaff(staff);
+        /*
+        staff.setEspecialidad("Publicidad AAII");
+        staff.setId(2);
+        staffdao.modificar(staff);
+        for(Staff s : staffdao.listarStaff()){
+            System.out.println(s.getArea());
+        }
+        */
         EvaluacionDesempeño ev = new EvaluacionDesempeño(); 
-        ev.setComentarios("lo intento");
+        ev.setComentarios("lo intento, falta mejorar la comunicacion");
+        user.setId(1);
         ev.setEvaluador(user);
-        ev.setFecha(fecha);
+        LocalDate fecha3 = LocalDate.of(2025, 4, 24);
+        ev.setFecha(fecha3);
+        staff.setId(2);
         ev.setMiembroEvaluado(staff);
         ev.setPuntaje(13);
+        
+        EvaluacionDesempeñoDAO evaluacion_inicial = new EvaluacionDesempeñoMySQL();
+        
+        //evaluacion_inicial.insertarEvaluacion(ev);
+        /*ev.setId(1);
+        ev.setComentarios("lo intento, Aunque con el tiempo se adaptara");
+        evaluacion_inicial.modificarEvaluacion(ev);
+        
+        */
+        /*
+        for(EvaluacionDesempeño eval : evaluacion_inicial.listarEvaluaciones()){
+            System.out.println(eval.getComentarios());
+        }
         */
         
         
+        /////////////////Deletes
+        //staffdao.eliminar(2);
+        //userdao.eliminar(1);
+        //evaluacion_inicial.eliminarEvaluacion(1);
     }
 }

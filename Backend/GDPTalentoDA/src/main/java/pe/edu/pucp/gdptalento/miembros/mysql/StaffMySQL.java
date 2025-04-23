@@ -47,7 +47,7 @@ public class StaffMySQL implements StaffDAO {
             rs=pst.executeQuery();
             rs.next();
             staff.setId(rs.getInt("id"));
-            sql="INSERT INTO Staff(id_staff, area, fecha_ingreso, estado, fecha_salida, desempenio) VALUES(?,?)";
+            sql="INSERT INTO Staff(id_staff, area, fecha_ingreso, estado, fecha_salida, desempenio) VALUES(?,?,?,?,?,?)";
             pst=con.prepareStatement(sql);
             pst.setInt(1, staff.getId());
             pst.setString(2, String.valueOf(staff.getArea()));
@@ -75,7 +75,7 @@ public class StaffMySQL implements StaffDAO {
             DBManager db = new DBManager();
             con = db.getConnection();
             //Ejecuciones SQL MiembroPUCP
-            String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
+            String sql = "UPDATE MiembroPUCP SET correo = ?, facultad = ?, especialidad = ?, status = ?, telefono = ? WHERE id_miembro_pucp = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, staff.getCorreo());
             pst.setString(2, staff.getFacultad());
@@ -86,7 +86,7 @@ public class StaffMySQL implements StaffDAO {
             resultado = pst.executeUpdate();
             System.out.println("Se modifico un miembroPUCP");
             //Ejecuciones SQL Staff
-            sql = "UPDATE Staff SET area = ? estado = ? fecha_salida = ? desempenio = ? WHERE id_staff = ?";
+            sql = "UPDATE Staff SET area = ?, estado = ?, fecha_salida = ?, desempenio = ? WHERE id_staff = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, String.valueOf(staff.getArea()));
             pst.setString(2, String.valueOf(staff.getEstado()));

@@ -5,6 +5,9 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import pe.edu.pucp.gdptalento.talento.dao.EvaluacionDesempeñoDAO;
 import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
@@ -18,23 +21,31 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
     private PreparedStatement pst;
 
     @Override
-    public int insertarEvaluacion(EvaluacionDesempeño evaluacion){
+    public int insertarEvaluacion(EvaluacionDesempeño evaluacion) {
         int resultado = 0;
-        try{
+        try {
             DBManager db = new DBManager();
             con = db.getConnection();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Staff staff = evaluacion.getMiembroEvaluado();
-            Usuario usuario = evaluacion.getEvaluador();
-            //Ejecuciones SQL
-            String sql = "INSERT INTO EvaluacionDesempeno(id_evaluador, id_miembro, puntaje, comentarios, fecha) VALUES(?,?,?,?,?)";
+            //Ejecuciones SQL de MiembroPUCP
+            String sql = "INSERT INTO EvaluacionDesempeno(id_evaluador, id_miembro_staff, puntaje, comentarios, fecha) VALUES(?,?,?,?,?)";
             pst = con.prepareStatement(sql);
-            pst.setInt(1,staff.getId());
-            pst.setInt(2,usuario.getId());
-            pst.setInt(3,evaluacion.getPuntaje());
-            pst.setString(4,evaluacion.getComentarios());
-            pst.setString(5,sdf.format(evaluacion.getFecha()));
-            resultado=pst.executeUpdate();
+            System.out.println(evaluacion.getEvaluador().getId());
+            System.out.println(evaluacion.getMiembroEvaluado().getId());
+            // Asignación de parámetros
+            pst.setInt(1, evaluacion.getEvaluador().getId());     // id_evaluador
+            pst.setInt(2, evaluacion.getMiembroEvaluado().getId()); // id_miembro
+            pst.setInt(3, evaluacion.getPuntaje());
+            pst.setString(4, evaluacion.getComentarios());
+
+            Date fecha_date=java.sql.Date.valueOf(evaluacion.getFecha());
+            pst.setDate(5, new java.sql.Date(fecha_date.getTime()));
+
+            resultado = pst.executeUpdate();
+            sql="SELECT @@last_insert_id AS id";
+            pst=con.prepareStatement(sql);
+            rs=pst.executeQuery();
+            rs.next();
+            evaluacion.setId(rs.getInt("id"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -53,15 +64,18 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Staff staff = evaluacion.getMiembroEvaluado();
             Usuario usuario = evaluacion.getEvaluador();
+//            System.out.println(usuario.getId());
+//            System.out.println(staff.getId());
             //Ejecuciones SQL
-            String sql = "UPDATE EvaluacionDesempeno SET id_evaluador = ? id_miembro = ? puntaje = ? comentarios = ? fecha = ? WHERE id_evaluacion_desempeno = ?";
+            String sql = "UPDATE EvaluacionDesempeno SET id_evaluador = ?, id_miembro_staff = ?, puntaje = ?, comentarios = ?, fecha = ? WHERE id_evaluacion_desempeno = ?";
             pst = con.prepareStatement(sql);
             //st = con.createStatement();
-            pst.setInt(1,staff.getId());
-            pst.setInt(2,usuario.getId());
+            pst.setInt(1,usuario.getId());
+            pst.setInt(2,staff.getId());
             pst.setInt(3,evaluacion.getPuntaje());
             pst.setString(4,evaluacion.getComentarios());
-            pst.setString(5,sdf.format(evaluacion.getFecha()));
+            Date fecha_date=java.sql.Date.valueOf(evaluacion.getFecha());
+            pst.setDate(5, new java.sql.Date(fecha_date.getTime()));
             pst.setInt(6,evaluacion.getId());
             resultado=pst.executeUpdate();
         }catch(Exception ex){
@@ -80,7 +94,7 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
             DBManager db = new DBManager();
             con = db.getConnection();
             //Ejecuciones SQL
-            String sql = "DELETE FROM EvalacionDesempeno WHERE id_evaluacion_desempeno = "+id;
+            String sql = "DELETE FROM EvaluacionDesempeno WHERE id_evaluacion_desempeno = "+id;
             st = con.createStatement();
             resultado=st.executeUpdate(sql);
         }catch(Exception ex){
@@ -99,7 +113,7 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
             DBManager db = new DBManager();
             con = db.getConnection();
             //Ejecuciones SQL
-            String sql = "SELECT e.id_evaluacion_desempeno, e.id_evaluador, e.id_miembro, e.puntaje, e.comentarios, e.fecha FROM EvaluacionDesempeno e";
+            String sql = "SELECT e.id_evaluacion_desempeno, e.id_evaluador, e.id_miembro_staff, e.puntaje, e.comentarios, e.fecha FROM EvaluacionDesempeno e";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()){
