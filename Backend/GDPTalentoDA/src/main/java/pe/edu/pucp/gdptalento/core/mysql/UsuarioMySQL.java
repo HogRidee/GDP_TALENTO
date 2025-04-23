@@ -88,13 +88,13 @@ public class UsuarioMySQL implements UsuarioDAO{
     }
 
     @Override
-    public int modificar(Usuario usuario, int id_rol) {
+    public int modificar(Usuario usuario) {
         int resultado=0;
         try{
             DBManager db = new DBManager();
             con = db.getConnection();
             //Ejecuciones SQL MiembroPUCP
-             String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
+             String sql = "UPDATE MiembroPUCP SET correo = ?, facultad = ?, especialidad = ?, status = ?, telefono = ? WHERE id_miembro_pucp = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, usuario.getCorreo());
             pst.setString(2, usuario.getFacultad());
@@ -103,6 +103,7 @@ public class UsuarioMySQL implements UsuarioDAO{
             pst.setInt(5, usuario.getTelefono());
             pst.setInt(6, usuario.getId());
             resultado = pst.executeUpdate();
+            System.out.println("Se modifico un miembroPUCP");
             //Ejecuciones SQL Staff
             sql = "UPDATE Staff SET area = ?, estado = ?, fecha_salida = ?, desempenio = ? WHERE id_staff = ?";
             pst = con.prepareStatement(sql);
@@ -114,16 +115,17 @@ public class UsuarioMySQL implements UsuarioDAO{
             pst.setDouble(4, usuario.getDesempenio());
             pst.setInt(5, usuario.getId());
             resultado=pst.executeUpdate();
+            System.out.println("Se modifico un staff");
             //Ejecuciones SQL Usuario
-            sql = "UPDATE Usuario SET hash_contrasena= ?, id_rol = ? WHERE id_usuario = ?";
+            sql = "UPDATE Usuario SET hash_contrasena= ? WHERE id_usuario = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, usuario.getHashContrasena());
             //select en la tabla Rol y de ahi se obtiene el id_rol;
-            pst.setInt(2, id_rol);
-            pst.setInt(3, usuario.getId());
+            pst.setInt(2, usuario.getId());
             resultado=pst.executeUpdate();
             System.out.println("Se modifico un usuario");
-            
+            System.out.println("ID: " + usuario.getId());
+            System.out.println("Correo: " + usuario.getCorreo());
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -169,10 +171,10 @@ public class UsuarioMySQL implements UsuarioDAO{
             DBManager db = new DBManager();
             con = db.getConnection();
             String sql = "SELECT m.id_miembro_pucp, m.codigoPUCP, m.nombre, m.correo, m.telefono, m.facultad,"
-                    + " m.especialidad, m.status, s.area, s.estado, s.desempenio, u.hash_contrasena, r.nombre AS nombre_rol FROM MiembroPUCP m "
+                    + " m.especialidad, m.status, s.area, s.estado, s.desempenio, u.hash_contrasena " + /*, r.nombre AS nombre_rol */"FROM MiembroPUCP m "
                     + "INNER JOIN Staff s ON m.id_miembro_pucp = s.id_staff "
-                    + "INNER JOIN Usuario u ON u.id_usuario = m.id_miembro_pucp "
-                    + "INNER JOIN Rol r ON u.id_rol = r.id_rol";
+                    + "INNER JOIN Usuario u ON u.id_usuario = s.id_staff";
+                    /*+ "INNER JOIN Rol r ON u.id_rol = r.id_rol";*/
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()){
@@ -182,10 +184,10 @@ public class UsuarioMySQL implements UsuarioDAO{
                 Area area = Area.valueOf(areaString);
                 String miembroString = rs.getString("estado");
                 EstadoMiembro miembro = EstadoMiembro.valueOf(miembroString);
-                String rolnombre = rs.getString("nombre_rol");
+               /* String rolnombre = rs.getString("nombre_rol");
                 NombreRol nomrol = NombreRol.valueOf(rolnombre);
                 Rol rol = new Rol();
-                rol.setNombre(nomrol);
+                rol.setNombre(nomrol);*/
                 Usuario usuario = new Usuario();
                 usuario.setId(rs.getInt("id_miembro_pucp"));
                 usuario.setNombre(rs.getString("nombre"));
@@ -198,10 +200,11 @@ public class UsuarioMySQL implements UsuarioDAO{
                 usuario.setStatus(estado);
                 usuario.setArea(area);
                 usuario.setEstado(miembro);
-                usuario.setHashContrasena("hash_contrasena");
-                usuario.setRol(rol);
+                usuario.setHashContrasena(rs.getString("hash_contrasena"));
+                /*usuario.setRol(rol);*/
                 listadoUsuario.add(usuario);
             }
+            System.out.println("Se hizo la lista aparentemente");
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }

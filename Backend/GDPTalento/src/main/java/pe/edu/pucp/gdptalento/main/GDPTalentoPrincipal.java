@@ -52,12 +52,17 @@ public class GDPTalentoPrincipal {
         user.setStatus(EstadoPUCP.EXTERNO);
         user.setTelefono(951709112);
         //la vaina del id puede funcionar agregando un select con el id generado del insert del user
-        //userdao.insertar(user);
+        //userdao.insertar(user);//agrega por primera vez el id del user
         
+        user.setCorreo("correo@hotmail.com");
+        user.setHashContrasena("contrasena");
+        user.setId(21);//debo forzar el id, debido a que al comentar el insertar y ejecutar el prncipal nunca se le coloca id
+        userdao.modificar(user);
         
-        user.setNombre("Gilberto");
-        userdao.modificar(user, 1);
-        //userdao.eliminar(20);
+        for(Usuario u : userdao.listarTodas()){
+            System.out.println(u.getNombre());
+        }
+        //userdao.eliminar(20);//coloca el id del usuario, fijar en la tabla
         /*
         Staff staff = new Staff();
         staff.setArea(Area.MARKETING);
