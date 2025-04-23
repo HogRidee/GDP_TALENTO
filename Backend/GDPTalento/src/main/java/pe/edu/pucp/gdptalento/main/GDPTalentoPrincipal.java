@@ -121,7 +121,7 @@ public class GDPTalentoPrincipal {
         LocalDateTime fecha_tarea_fin = LocalDateTime.of(2025, 4, 30, 0, 0);
         tarea.setFechaLimite(fecha_tarea_fin);
         ArrayList<Usuario> encargados = new ArrayList<Usuario>();
-        encargados.add(user2);
+        //encargados.add(user2); me sale un error gigante, tengo miedo
         tarea.setEncargados(encargados);
         
         //tdao.insertarTarea(tarea);
@@ -132,7 +132,7 @@ public class GDPTalentoPrincipal {
         for(Tarea t : tdao.listarTareas()){
             System.out.println(String.valueOf(t.getFechaCreacion()));
             System.out.println(String.valueOf(t.getEstado()));
-            System.out.println(t.getCreador().getCorreo());
+            //System.out.println(t.getCreador().getCorreo());
         }
     }
 }
