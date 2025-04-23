@@ -175,3 +175,12 @@ CREATE TABLE Asistencia (
     FOREIGN KEY(id_evento) REFERENCES Evento(id_evento),
     FOREIGN KEY(id_participante) REFERENCES Staff(id_staff)
 )ENGINE=InnoDB;
+
+
+INSERT IGNORE INTO Permiso (nombre) VALUES 
+('CREAR_MIEMBRO'),
+('BORRAR_MIEMBRO'),
+('CREAR_TAREA'),
+('CREAR_ENTREVISTA'); 
+
+SELECT * FROM Permiso ORDER BY id_permiso;
