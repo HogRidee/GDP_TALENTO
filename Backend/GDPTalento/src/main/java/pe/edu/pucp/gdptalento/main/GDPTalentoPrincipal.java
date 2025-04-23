@@ -54,8 +54,10 @@ public class GDPTalentoPrincipal {
         //la vaina del id puede funcionar agregando un select con el id generado del insert del user
         //userdao.insertar(user);
         
-        //userdao.modificar(user, 1);
-        userdao.eliminar(20);
+        
+        user.setNombre("Gilberto");
+        userdao.modificar(user, 1);
+        //userdao.eliminar(20);
         /*
         Staff staff = new Staff();
         staff.setArea(Area.MARKETING);
