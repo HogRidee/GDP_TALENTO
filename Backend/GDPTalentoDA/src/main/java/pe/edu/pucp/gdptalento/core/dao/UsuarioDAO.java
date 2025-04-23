@@ -12,7 +12,7 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
  * @author USER
  */
 public interface UsuarioDAO {
-    int insertar(Usuario usuario, int id);
+    int insertar(Usuario usuario);
     int modificar(Usuario usuario, int id);
     int eliminar(int id_usuario);
     ArrayList<Usuario> listarTodas();

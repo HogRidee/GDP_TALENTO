@@ -33,7 +33,7 @@ public class UsuarioMySQL implements UsuarioDAO{
     private PreparedStatement pst;
     
     @Override
-    public int insertar(Usuario usuario, int id) {
+    public int insertar(Usuario usuario) {
         int resultado = 0;
         try{
             DBManager db = new DBManager();
@@ -55,8 +55,9 @@ public class UsuarioMySQL implements UsuarioDAO{
             rs=pst.executeQuery();
             rs.next();
             usuario.setId(rs.getInt("id"));
+            System.out.println("Se ingreso un MiembroPUCP");
             //Ejecuciones SQL de Staff
-            sql="INSERT INTO Staff(id_staff, area, fecha_ingreso, estado, fecha_salida, desempenio) VALUES(?,?)";
+            sql="INSERT INTO Staff(id_staff, area, fecha_ingreso, estado, fecha_salida, desempenio) VALUES(?,?,?,?,?,?)";
             pst=con.prepareStatement(sql);
             pst.setInt(1, usuario.getId());
             pst.setString(2, String.valueOf(usuario.getArea()));
@@ -67,13 +68,13 @@ public class UsuarioMySQL implements UsuarioDAO{
             pst.setDate(5, new java.sql.Date(fecha_date.getTime()));
             pst.setDouble(6, usuario.getDesempenio());
             resultado=pst.executeUpdate();
+            System.out.println("Se ingreso un Staff");
             //Ejecuciones SQL de Usuario
-            sql = "INSERT INTO Usuario(hash_contrasena, id_rol, id_usuario) VALUES(?,?,?) ";
+            sql = "INSERT INTO Usuario(hash_contrasena, id_usuario) VALUES(?,?) ";
             pst = con.prepareStatement(sql);
             //st = con.createStatement();
             pst.setString(1, usuario.getHashContrasena());
-            pst.setInt(2, id);
-            pst.setInt(3, rs.getInt("id_staff"));
+            pst.setInt(2, rs.getInt("id"));
             resultado=pst.executeUpdate();
             System.out.println("Se ingreso un Usuario");
             
@@ -103,21 +104,23 @@ public class UsuarioMySQL implements UsuarioDAO{
             pst.setInt(6, usuario.getId());
             resultado = pst.executeUpdate();
             //Ejecuciones SQL Staff
-            sql = "UPDATE Staff SET area = ? estado = ? fecha_salida = ? desempenio = ? WHERE id_staff = ?";
+            sql = "UPDATE Staff SET area = ?, estado = ?, fecha_salida = ?, desempenio = ? WHERE id_staff = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, usuario.getId());
-            pst.setString(2, String.valueOf(usuario.getArea()));
-            pst.setString(3, String.valueOf(usuario.getEstado()));
+            pst.setString(1, String.valueOf(usuario.getArea()));
+            pst.setString(2, String.valueOf(usuario.getEstado()));
             String fecha_fin = String.valueOf(usuario.getFechaSalida());
             Date fecha = java.sql.Date.valueOf(fecha_fin);
-            pst.setDate(4, new java.sql.Date(fecha.getTime()));
-            pst.setDouble(5, usuario.getDesempenio());
+            pst.setDate(3, new java.sql.Date(fecha.getTime()));
+            pst.setDouble(4, usuario.getDesempenio());
+            pst.setInt(5, usuario.getId());
             resultado=pst.executeUpdate();
             //Ejecuciones SQL Usuario
-            sql = "UPDATE Usuario SET hash_contrasena= ? id_rol = ? WHERE id_usuario = ?";
+            sql = "UPDATE Usuario SET hash_contrasena= ?, id_rol = ? WHERE id_usuario = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, usuario.getHashContrasena());
+            //select en la tabla Rol y de ahi se obtiene el id_rol;
             pst.setInt(2, id_rol);
+            pst.setInt(3, usuario.getId());
             resultado=pst.executeUpdate();
             System.out.println("Se modifico un usuario");
             
@@ -139,7 +142,7 @@ public class UsuarioMySQL implements UsuarioDAO{
             st = con.createStatement();
             String sql = "DELETE FROM Usuario WHERE id_usuario = " + id_usuario;
             resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un miembroPUCP");
+            System.out.println("Se elimino un usuario");
             //Ejecuciones SQL Staff
             st = con.createStatement();
             sql = "DELETE FROM Staff WHERE id_staff = " + id_usuario;
