@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import pe.edu.pucp.gdptalento.core.business.RolBO;
 import pe.edu.pucp.gdptalento.core.business.UsuarioBO;
 import pe.edu.pucp.gdptalento.core.dao.RolDAO;
 import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
@@ -36,6 +37,17 @@ public class GDPTalentoPrincipal {
         ArrayList<Usuario> usuarios = boUsuario.listarTodas();
         for (Usuario u: usuarios){
             System.out.println(u.getNombre());
+        }
+        
+        RolBO boRol = new RolBO();
+        ArrayList<Rol> roles = boRol.listarTodas();
+        for (Rol rol : roles) {
+            System.out.println("Rol: " + rol.getNombre() + " (ID: " + rol.getId() + ")");
+            System.out.println("Permisos:");
+            for (Permiso permiso : rol.getPermisos()) {
+                System.out.println("  - " + permiso);
+            }
+            System.out.println("----------------------");
         }
     }
 }
