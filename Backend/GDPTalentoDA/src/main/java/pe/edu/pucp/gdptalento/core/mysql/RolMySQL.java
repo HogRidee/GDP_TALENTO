@@ -51,36 +51,20 @@ public class RolMySQL implements RolDAO{
         parametrosEntrada.put(1, String.valueOf(rol.getNombre()));
         parametrosEntrada.put(2, rol.getId());
         parametrosEntrada.put(3, permisosBuilder.toString());
-        DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ROL", parametrosEntrada, null);
+        DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ROL", 
+                parametrosEntrada, null);
         System.out.println("Se modificó un rol con ID: " + rol.getId());
         return rol.getId();
     }
     
     @Override
     public int eliminar(int id_rol){
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            String sql = "DELETE FROM Rol WHERE id_rol = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, id_rol);
-            resultado=pst.executeUpdate(sql);
-            System.out.println("Se elimino un rol");
-            con = db.getConnection();
-            //Ejecuciones SQL
-            sql = "DELETE FROM Rol_Permiso WHERE id_rol = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, id_rol);
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un miembroPUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_rol);
+        DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ROL", 
+                parametrosEntrada, null);
+        System.out.println("Se eliminó el rol con ID: " + id_rol);
+        return 1;
     }
     
     @Override
