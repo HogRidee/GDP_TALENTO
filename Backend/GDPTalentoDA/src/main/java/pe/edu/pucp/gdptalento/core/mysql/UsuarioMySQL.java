@@ -39,48 +39,11 @@ public class UsuarioMySQL implements UsuarioDAO{
 
     @Override
     public int modificar(Usuario usuario) {
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL MiembroPUCP
-             String sql = "UPDATE MiembroPUCP SET correo = ?, facultad = ?, especialidad = ?, status = ?, telefono = ? WHERE id_miembro_pucp = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, usuario.getCorreo());
-            pst.setString(2, usuario.getFacultad());
-            pst.setString(3, usuario.getEspecialidad());
-            pst.setString(4, String.valueOf(usuario.getStatus()));
-            pst.setInt(5, usuario.getTelefono());
-            pst.setInt(6, usuario.getId());
-            resultado = pst.executeUpdate();
-            System.out.println("Se modifico un miembroPUCP");
-            //Ejecuciones SQL Staff
-            sql = "UPDATE Staff SET area = ?, estado = ?, fecha_salida = ?, desempenio = ? WHERE id_staff = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, String.valueOf(usuario.getArea()));
-            pst.setString(2, String.valueOf(usuario.getEstado()));
-            String fecha_fin = String.valueOf(usuario.getFechaSalida());
-            Date fecha = java.sql.Date.valueOf(fecha_fin);
-            pst.setDate(3, new java.sql.Date(fecha.getTime()));
-            pst.setDouble(4, usuario.getDesempenio());
-            pst.setInt(5, usuario.getId());
-            resultado=pst.executeUpdate();
-            System.out.println("Se modifico un staff");
-            //Ejecuciones SQL Usuario
-            sql = "UPDATE Usuario SET hash_contrasena= ? WHERE id_usuario = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, usuario.getHashContrasena());
-            //select en la tabla Rol y de ahi se obtiene el id_rol;
-            pst.setInt(2, usuario.getId());
-            resultado=pst.executeUpdate();
-            System.out.println("Se modifico un usuario");
-            System.out.println("ID: " + usuario.getId());
-            System.out.println("Correo: " + usuario.getCorreo());
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        agregarParametrosModificar(parametrosEntrada, usuario);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_USUARIO", 
+                parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del usuario");
         return resultado;
     }
 
@@ -189,5 +152,22 @@ public class UsuarioMySQL implements UsuarioDAO{
         parametrosEntrada.put(14, usuario.getHashContrasena());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_USUARIO", 
         parametrosEntrada, parametrosSalida);
+    }
+    
+    private void agregarParametrosModificar(Map<Integer, Object> parametrosEntrada, 
+            Usuario usuario){
+        parametrosEntrada.put(1, usuario.getId());
+        parametrosEntrada.put(2, usuario.getCorreo());
+        parametrosEntrada.put(3, usuario.getFacultad());
+        parametrosEntrada.put(4, usuario.getEspecialidad());
+        parametrosEntrada.put(5, String.valueOf(usuario.getStatus()));
+        parametrosEntrada.put(6, usuario.getTelefono());
+        parametrosEntrada.put(7, String.valueOf(usuario.getArea()));
+        parametrosEntrada.put(8, String.valueOf(usuario.getEstado()));
+        String fecha_fin = String.valueOf(usuario.getFechaSalida());
+        Date fecha = java.sql.Date.valueOf(fecha_fin);
+        parametrosEntrada.put(9, new java.sql.Date(fecha.getTime()));
+        parametrosEntrada.put(10, usuario.getDesempenio());
+        parametrosEntrada.put(11, usuario.getHashContrasena());
     }
 }
