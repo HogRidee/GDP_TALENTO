@@ -1,14 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.core.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.gdptalento.core.dao.RolDAO;
 import pe.edu.pucp.gdptalento.core.model.NombreRol;
 import pe.edu.pucp.gdptalento.core.model.Permiso;
@@ -19,10 +19,6 @@ import static pe.edu.pucp.gdptalento.core.model.Permiso.CREAR_TAREA;
 import pe.edu.pucp.gdptalento.core.model.Rol;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
-/**
- *
- * @author raulm
- */
 public class RolMySQL implements RolDAO{
     
     private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
@@ -30,71 +26,37 @@ public class RolMySQL implements RolDAO{
     private ResultSet rs;
     private PreparedStatement pst;
     
+    @Override
     public int insertar(Rol rol){
-        int resultado = 0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            String sql = "INSERT INTO Rol(nombre) VALUES(?)";
-            pst = con.prepareStatement(sql);
-            //st = con.createStatement();
-            pst.setString(1, String.valueOf(rol.getNombre()));
-            resultado=pst.executeUpdate();
-            System.out.println("Se ingreso un Rol");
-            sql="@@last_insert_id AS id";
-            pst=con.prepareStatement(sql);
-            rs=pst.executeQuery();
-            rs.next();
-            int id = rs.getInt("id");
-            ArrayList<Permiso> list_permisos= new ArrayList<Permiso>(rol.getPermisos());
-            for(Permiso p : list_permisos){
-                sql="INSERT INTO Rol_Permiso(id_rol, id_permiso) VALUES(?,?)";
-                pst = con.prepareStatement(sql);
-                pst.setInt(1, id);
-                if(p == CREAR_MIEMBRO){
-                    pst.setInt(2, 1);
-                }
-                if(p == BORRAR_MIEMBRO){
-                    pst.setInt(2, 2);
-                }
-                if(p == CREAR_TAREA){
-                    pst.setInt(2, 3);
-                }
-                if(p == CREAR_ENTREVISTA){
-                    pst.setInt(2, 4);
-                }
-            }
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        parametrosEntrada.put(1, String.valueOf(rol.getNombre()));
+        StringBuilder permisos = new StringBuilder();
+        construirListaPermisosString(rol, permisos);
+        parametrosEntrada.put(2, permisos.toString());
+        parametrosSalida.put(3, Types.INTEGER);
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ROL", 
+                parametrosEntrada, parametrosSalida);
+        int idRol = (int) parametrosSalida.get(3);
+        rol.setId(idRol);
+        System.out.println("Rol insertado con ID: " + idRol);
+        return idRol;
+    }
+
+    @Override
+    public int modificar(Rol rol){
+        StringBuilder permisosBuilder = new StringBuilder();
+        construirListaPermisosString(rol, permisosBuilder);
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, String.valueOf(rol.getNombre()));
+        parametrosEntrada.put(2, rol.getId());
+        parametrosEntrada.put(3, permisosBuilder.toString());
+        DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ROL", parametrosEntrada, null);
+        System.out.println("Se modificó un rol con ID: " + rol.getId());
+        return rol.getId();
     }
     
-    public int modificar(Rol rol, int id){
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL Rol
-            String sql = "UPDATE Rol SET nombre = ? WHERE id_rol = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, String.valueOf(rol.getNombre()));
-            pst.setInt(2, id);
-            resultado=pst.executeUpdate();
-            System.out.println("Se modifico un rol");
-            
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
-    }
-    
+    @Override
     public int eliminar(int id_rol){
         int resultado=0;
         try{
@@ -121,6 +83,7 @@ public class RolMySQL implements RolDAO{
         return resultado;
     }
     
+    @Override
     public ArrayList<Rol> listarTodas(){
         ArrayList<Rol> listadoRoles = new ArrayList<Rol>();
         try{
@@ -160,7 +123,31 @@ public class RolMySQL implements RolDAO{
         return listadoRoles;
     }
     
+    @Override
     public Rol obtenerPorId(String nombreRol){
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    private void construirListaPermisosString(Rol rol, StringBuilder permisos){
+        for (Permiso p : rol.getPermisos()) {
+            int idPermiso = obtenerIdPermiso(p);
+            permisos.append(idPermiso).append(",");
+        }
+        // Eliminar la última coma
+        if (permisos.length() > 0) {
+            permisos.setLength(permisos.length() - 1);
+        }
+    }
+    
+    // MODIFICAR CADA VEZ QUE SE CREE UN PERMISO
+    private int obtenerIdPermiso(Permiso permiso) {
+        return switch (permiso) {
+            case CREAR_MIEMBRO -> 1;
+            case BORRAR_MIEMBRO -> 2;
+            case CREAR_TAREA -> 3;
+            case CREAR_ENTREVISTA -> 4;
+            default -> 0;
+        };
+    }
+    
 }
