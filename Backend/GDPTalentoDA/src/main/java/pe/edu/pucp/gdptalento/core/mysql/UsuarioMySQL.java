@@ -1,10 +1,7 @@
 package pe.edu.pucp.gdptalento.core.mysql;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,18 +11,12 @@ import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
 import pe.edu.pucp.gdptalento.core.model.NombreRol;
 import pe.edu.pucp.gdptalento.core.model.Rol;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
-import pe.edu.pucp.gdptalento.miembros.dao.StaffDAO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
-import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
 public class UsuarioMySQL implements UsuarioDAO{
-    private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
-    private PreparedStatement pst;
-    
-    private Connection con;
     private ResultSet rs;
     
     @Override
@@ -67,7 +58,7 @@ public class UsuarioMySQL implements UsuarioDAO{
                 Usuario usuario = new Usuario();
                 leerInformacionMiembroPUCP(usuario);
                 leerInformacionGeneral(usuario);
-                leerRol(usuario);
+                leerRol(usuario); // FALTA QUE EN EL INSERTAR/MODIFICAR/ELIMINAR SE INTERACTÚE CON LA TABLA ROL
                 usuarios.add(usuario);
             }
         } catch (SQLException ex) {
