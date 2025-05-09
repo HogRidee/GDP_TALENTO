@@ -3,6 +3,7 @@ package pe.edu.pucp.gdptalento.core.mysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -59,52 +60,22 @@ public class UsuarioMySQL implements UsuarioDAO{
 
     @Override
     public ArrayList<Usuario> listarTodas() {
-        ArrayList<Usuario> listadoUsuario = new ArrayList<Usuario>();
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            String sql = "SELECT m.id_miembro_pucp, m.codigoPUCP, m.nombre, m.correo, m.telefono, m.facultad,"
-                    + " m.especialidad, m.status, s.area, s.estado, s.desempenio, u.hash_contrasena " + /*, r.nombre AS nombre_rol */"FROM MiembroPUCP m "
-                    + "INNER JOIN Staff s ON m.id_miembro_pucp = s.id_staff "
-                    + "INNER JOIN Usuario u ON u.id_usuario = s.id_staff";
-                    /*+ "INNER JOIN Rol r ON u.id_rol = r.id_rol";*/
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while(rs.next()){
-                String estadoString = rs.getString("status");
-                EstadoPUCP estado = EstadoPUCP.valueOf(estadoString);
-                String areaString = rs.getString("area");
-                Area area = Area.valueOf(areaString);
-                String miembroString = rs.getString("estado");
-                EstadoMiembro miembro = EstadoMiembro.valueOf(miembroString);
-               /* String rolnombre = rs.getString("nombre_rol");
-                NombreRol nomrol = NombreRol.valueOf(rolnombre);
-                Rol rol = new Rol();
-                rol.setNombre(nomrol);*/
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_USUARIOS", null);
+        try {
+            while (rs.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setId(rs.getInt("id_miembro_pucp"));
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setCodigoPUCP(rs.getInt("codigoPUCP"));
-                usuario.setFacultad(rs.getString("facultad"));
-                usuario.setEspecialidad(rs.getString("especialidad"));
-                usuario.setTelefono(rs.getInt("telefono"));
-                usuario.setDesempenio(rs.getDouble("desempenio"));
-                usuario.setStatus(estado);
-                usuario.setArea(area);
-                usuario.setEstado(miembro);
-                usuario.setHashContrasena(rs.getString("hash_contrasena"));
-                /*usuario.setRol(rol);*/
-                listadoUsuario.add(usuario);
+                leerInformacionMiembroPUCP(usuario);
+                leerInformacionGeneral(usuario);
+                leerRol(usuario);
+                usuarios.add(usuario);
             }
-            System.out.println("Se hizo la lista aparentemente");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexionLector();
         }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return listadoUsuario;
+        return usuarios;
     }
 
     @Override
@@ -149,5 +120,36 @@ public class UsuarioMySQL implements UsuarioDAO{
         parametrosEntrada.put(9, new java.sql.Date(fecha.getTime()));
         parametrosEntrada.put(10, usuario.getDesempenio());
         parametrosEntrada.put(11, usuario.getHashContrasena());
+    }
+    
+    private void leerInformacionMiembroPUCP(Usuario usuario) throws SQLException {
+        usuario.setId(rs.getInt("id_miembro_pucp"));
+        usuario.setCodigoPUCP(rs.getInt("codigoPUCP"));
+        usuario.setNombre(rs.getString("nombre"));
+        usuario.setCorreo(rs.getString("correo"));
+        usuario.setTelefono(rs.getInt("telefono"));
+        usuario.setFacultad(rs.getString("facultad"));
+        usuario.setEspecialidad(rs.getString("especialidad"));
+    }
+    
+    private void leerInformacionGeneral(Usuario usuario) throws SQLException{
+        EstadoPUCP status = EstadoPUCP.valueOf(rs.getString("status"));
+        usuario.setStatus(status);
+        Area area = Area.valueOf(rs.getString("area"));
+        usuario.setArea(area);
+        EstadoMiembro estado = EstadoMiembro.valueOf(rs.getString("estado"));
+        usuario.setEstado(estado);
+        usuario.setDesempenio(rs.getDouble("desempenio"));
+        usuario.setHashContrasena(rs.getString("hash_contrasena"));
+    }
+    
+    private void leerRol(Usuario usuario) throws SQLException{
+        String nombreRol = rs.getString("nombre_rol");
+        if (nombreRol != null) {
+            NombreRol nomrol = NombreRol.valueOf(nombreRol);
+            Rol rol = new Rol();
+            rol.setNombre(nomrol);
+            usuario.setRol(rol);
+        }
     }
 }
