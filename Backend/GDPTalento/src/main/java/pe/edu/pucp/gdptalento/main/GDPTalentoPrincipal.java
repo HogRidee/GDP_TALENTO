@@ -36,7 +36,7 @@ public class GDPTalentoPrincipal {
         UsuarioDAO userdao = new UsuarioMySQL();
         Usuario user = new Usuario();
         user.setArea(Area.MARKETING);
-        user.setCodigoPUCP(20200001);
+        user.setCodigoPUCP(20200004);
         user.setCorreo("a20202290@pucp.edu.pe");
         user.setDesempenio(12.5);
         user.setEspecialidad("Industrial");
@@ -48,7 +48,7 @@ public class GDPTalentoPrincipal {
         user.setFechaSalida(fecha_fin);
         
         user.setHashContrasena("CarlosSport");
-        user.setNombre("Prueba2");
+        user.setNombre("Prueba5");
         Rol rol = new Rol();
         rol.setNombre(NombreRol.MIEMBRO_RRHH);
         ArrayList<Permiso> permisos = new ArrayList<Permiso>();

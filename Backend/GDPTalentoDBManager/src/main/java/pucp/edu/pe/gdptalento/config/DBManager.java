@@ -24,7 +24,7 @@ public class DBManager {
     private final String rutaArchivo = "db.properties";
     private ResultSet rs;
    
-    // Luego cambiar public por private (cuando todos los DAOS funcionen con el singleton
+    // Luego cambiar public por private (cuando todos los DAOS funcionen con el singleton)
     public DBManager() {
         leerArchivoProperties();
         asignarValoresDeProperties();

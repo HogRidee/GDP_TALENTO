@@ -1,15 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.core.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
 import pe.edu.pucp.gdptalento.core.model.NombreRol;
 import pe.edu.pucp.gdptalento.core.model.Rol;
@@ -21,70 +20,21 @@ import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
-/**
- *
- * @author raulm
- */
 public class UsuarioMySQL implements UsuarioDAO{
-    
     private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
+    private PreparedStatement pst;
+    
     private Connection con;
     private ResultSet rs;
-    private PreparedStatement pst;
     
     @Override
     public int insertar(Usuario usuario) {
-        int resultado = 0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL de MiembroPUCP
-            String sql = "INSERT INTO MiembroPUCP(nombre, correo, codigoPUCP, facultad, especialidad, status, telefono) VALUES(?,?,?,?,?,?,?)";
-            pst = con.prepareStatement(sql);
-            //st = con.createStatement();
-            pst.setString(1, usuario.getNombre());
-            pst.setString(2, usuario.getCorreo());
-            pst.setInt(3, usuario.getCodigoPUCP());
-            pst.setString(4, usuario.getFacultad());
-            pst.setString(5, usuario.getEspecialidad());
-            pst.setString(6, String.valueOf(usuario.getStatus()));
-            pst.setString(7, String.valueOf(usuario.getTelefono()));
-            resultado=pst.executeUpdate();
-            sql="SELECT @@last_insert_id AS id";
-            pst=con.prepareStatement(sql);
-            rs=pst.executeQuery();
-            rs.next();
-            usuario.setId(rs.getInt("id"));
-            System.out.println("Se ingreso un MiembroPUCP");
-            //Ejecuciones SQL de Staff
-            sql="INSERT INTO Staff(id_staff, area, fecha_ingreso, estado, fecha_salida, desempenio) VALUES(?,?,?,?,?,?)";
-            pst=con.prepareStatement(sql);
-            pst.setInt(1, usuario.getId());
-            pst.setString(2, String.valueOf(usuario.getArea()));
-            Date fecha_date=java.sql.Date.valueOf(usuario.getFechaIngreso());
-            pst.setDate(3, new java.sql.Date(fecha_date.getTime()));
-            pst.setString(4, String.valueOf(usuario.getEstado()));
-            fecha_date=java.sql.Date.valueOf(usuario.getFechaSalida());
-            pst.setDate(5, new java.sql.Date(fecha_date.getTime()));
-            pst.setDouble(6, usuario.getDesempenio());
-            resultado=pst.executeUpdate();
-            System.out.println("Se ingreso un Staff");
-            //Ejecuciones SQL de Usuario
-            sql = "INSERT INTO Usuario(hash_contrasena, id_usuario) VALUES(?,?) ";
-            pst = con.prepareStatement(sql);
-            //st = con.createStatement();
-            pst.setString(1, usuario.getHashContrasena());
-            pst.setInt(2, rs.getInt("id"));
-            resultado=pst.executeUpdate();
-            System.out.println("Se ingreso un Usuario");
-            
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
+        Map<Integer,Object> parametrosSalida = new HashMap<>();
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        agregarParametrosInsertar(parametrosSalida, parametrosEntrada, usuario);
+        usuario.setId((int) parametrosSalida.get(1));
+        System.out.println("Se ha realizado el registro del usuario");
+        return usuario.getId();
     }
 
     @Override
@@ -219,4 +169,25 @@ public class UsuarioMySQL implements UsuarioDAO{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    private void agregarParametrosInsertar(Map<Integer,Object> parametrosSalida, 
+            Map<Integer,Object> parametrosEntrada, Usuario usuario){
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, usuario.getNombre());
+        parametrosEntrada.put(3, usuario.getCorreo());
+        parametrosEntrada.put(4, usuario.getCodigoPUCP());
+        parametrosEntrada.put(5, usuario.getFacultad());
+        parametrosEntrada.put(6, usuario.getEspecialidad());
+        parametrosEntrada.put(7, String.valueOf(usuario.getStatus()));
+        parametrosEntrada.put(8, String.valueOf(usuario.getTelefono()));
+        parametrosEntrada.put(9, String.valueOf(usuario.getArea()));
+        Date fecha_date = java.sql.Date.valueOf(usuario.getFechaIngreso());
+        parametrosEntrada.put(10, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(11, String.valueOf(usuario.getEstado()));
+        fecha_date = java.sql.Date.valueOf(usuario.getFechaSalida());
+        parametrosEntrada.put(12, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(13, usuario.getDesempenio());
+        parametrosEntrada.put(14, usuario.getHashContrasena());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_USUARIO", 
+        parametrosEntrada, parametrosSalida);
+    }
 }
