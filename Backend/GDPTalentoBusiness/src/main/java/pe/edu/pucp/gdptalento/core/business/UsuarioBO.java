@@ -1,0 +1,30 @@
+package pe.edu.pucp.gdptalento.core.business;
+
+import java.util.ArrayList;
+import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
+import pe.edu.pucp.gdptalento.core.model.Usuario;
+import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
+
+public class UsuarioBO {
+    private final UsuarioDAO daoUsuario;
+    
+    public UsuarioBO(){
+        daoUsuario = new UsuarioMySQL();
+    }
+    
+    public int insertar(Usuario usuario){
+        return daoUsuario.insertar(usuario);
+    }
+    
+    public int modificar(Usuario usuario){
+        return daoUsuario.modificar(usuario);
+    }
+    
+    public int eliminar(int idUsuario){
+        return daoUsuario.eliminar(idUsuario);
+    }
+    
+    public ArrayList<Usuario> listarTodas(){
+        return daoUsuario.listarTodas();
+    }
+}

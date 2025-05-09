@@ -26,6 +26,11 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>pe.edu.pucp</groupId>
+            <artifactId>GDPTalentoBusiness</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

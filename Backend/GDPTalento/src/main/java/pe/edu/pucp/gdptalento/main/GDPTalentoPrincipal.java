@@ -7,11 +7,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import pe.edu.pucp.gdptalento.core.business.UsuarioBO;
+import pe.edu.pucp.gdptalento.core.dao.RolDAO;
 import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
 import pe.edu.pucp.gdptalento.core.model.NombreRol;
 import pe.edu.pucp.gdptalento.core.model.Permiso;
 import pe.edu.pucp.gdptalento.core.model.Rol;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
+import pe.edu.pucp.gdptalento.core.mysql.RolMySQL;
 import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
 import pe.edu.pucp.gdptalento.miembros.dao.StaffDAO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
@@ -27,147 +30,12 @@ import pe.edu.pucp.gdptalento.talento.model.Tarea;
 import pe.edu.pucp.gdptalento.talento.mysql.EvaluacionDesempeñoMySQL;
 import pe.edu.pucp.gdptalento.talento.mysql.TareaMySQL;
 
-/**
- *
- * @author USER
- */
 public class GDPTalentoPrincipal {
     public static void main(String[] args){
-        UsuarioDAO userdao = new UsuarioMySQL();
-        Usuario user = new Usuario();
-        user.setArea(Area.MARKETING);
-        user.setCodigoPUCP(20200004);
-        user.setCorreo("a20202290@pucp.edu.pe");
-        user.setDesempenio(12.5);
-        user.setEspecialidad("Industrial");
-        user.setEstado(EstadoMiembro.ACTIVO);
-        user.setFacultad("Ciencias e Ingenieria");
-        LocalDate fecha = LocalDate.of(2025, 4, 22);
-        LocalDate fecha_fin = LocalDate.of(2030, 4, 22);
-        user.setFechaIngreso(fecha);
-        user.setFechaSalida(fecha_fin);
-        
-        user.setHashContrasena("CarlosSport");
-        user.setNombre("Prueba5");
-        Rol rol = new Rol();
-        rol.setNombre(NombreRol.MIEMBRO_RRHH);
-        ArrayList<Permiso> permisos = new ArrayList<Permiso>();
-        permisos.add(Permiso.CREAR_TAREA);
-        permisos.add(Permiso.BORRAR_MIEMBRO);
-        permisos.add(Permiso.CREAR_ENTREVISTA);
-        permisos.add(Permiso.CREAR_MIEMBRO);
-        rol.setPermisos(permisos);
-        user.setRol(rol);
-        user.setStatus(EstadoPUCP.EXTERNO);
-        user.setTelefono(951709112);
-        userdao.insertar(user);
-//        user.setCorreo("correo@hotmail.com");
-//        user.setHashContrasena("contrasena");
-//        user.setId(1);//debo forzar el id, debido a que al comentar el insertar y ejecutar el prncipal nunca se le coloca id
-//        userdao.modificar(user);
-//        
-//        for(Usuario u : userdao.listarTodas()){
-//            System.out.println(u.getNombre());
-//        }
-//        //userdao.eliminar(20);//coloca el id del usuario, fijar en la tabla
-//        */
-//        
-//        Staff staff = new Staff();
-//        staff.setArea(Area.GDP_ACADEMY);
-//        staff.setCodigoPUCP(20181102);
-//        staff.setCorreo("a20181102@pucp.edu.pe");
-//        staff.setDesempenio(12);
-//        staff.setEspecialidad("Bartender");
-//        staff.setEstado(EstadoMiembro.ACTIVO);
-//        staff.setEvaluaciones(null);
-//        staff.setFacultad("Hoteleria y Turismo");
-//        LocalDate fecha2 = LocalDate.of(2020, 3, 11);
-//        staff.setFechaIngreso(fecha2);
-//        staff.setFechaSalida(fecha_fin);
-//        staff.setNombre("Jorgito");
-//        staff.setStatus(EstadoPUCP.NO_MATRICULADO);
-//        staff.setTelefono(72821921);
-//        
-//        StaffDAO staffdao = new StaffMySQL();
-//        //staffdao.insertarStaff(staff);
-//        /*
-//        staff.setEspecialidad("Publicidad AAII");
-//        staff.setId(2);
-//        staffdao.modificar(staff);
-//        for(Staff s : staffdao.listarStaff()){
-//            System.out.println(s.getArea());
-//        }
-//        */
-//        EvaluacionDesempeño ev = new EvaluacionDesempeño(); 
-//        ev.setComentarios("lo intento, falta mejorar la comunicacion");
-//        user.setId(1);
-//        ev.setEvaluador(user);
-//        LocalDate fecha3 = LocalDate.of(2025, 4, 24);
-//        ev.setFecha(fecha3);
-//        staff.setId(2);
-//        ev.setMiembroEvaluado(staff);
-//        ev.setPuntaje(13);
-//        
-//        EvaluacionDesempeñoDAO evaluacion_inicial = new EvaluacionDesempeñoMySQL();
-//        
-//        //evaluacion_inicial.insertarEvaluacion(ev);
-//        /*ev.setId(1);
-//        ev.setComentarios("lo intento, Aunque con el tiempo se adaptara");
-//        evaluacion_inicial.modificarEvaluacion(ev);
-//        
-//        */
-//        /*
-//        for(EvaluacionDesempeño eval : evaluacion_inicial.listarEvaluaciones()){
-//            System.out.println(eval.getComentarios());
-//        }
-//        */
-//        
-//        
-//        ////////////////////////////////////////////////////// Tarea
-//        Usuario user2 = new Usuario();
-//        user2.setArea(Area.MARKETING);
-//        user2.setCodigoPUCP(20112211);
-//        user2.setCorreo("a20112211@pucp.edu.pe");
-//        user2.setDesempenio(20);
-//        user2.setEspecialidad("Informatica");
-//        user2.setEstado(EstadoMiembro.ACTIVO);
-//        user2.setFacultad("Ciencias e Ingenieria");
-//        LocalDate fechax = LocalDate.of(2025, 4, 22);
-//        LocalDate fechay = LocalDate.of(2030, 4, 22);
-//        user2.setFechaIngreso(fechax);
-//        user2.setFechaSalida(fechay);
-//        
-//        user2.setHashContrasena("esternocleidomastoideo");
-//        user2.setNombre("Jose");
-//        /////////////////////////////////////////////////TAREA
-//        userdao.insertar(user2);
-//        /////////////////////////////////////////////////TAREA
-//        TareaDAO tdao = new TareaMySQL();
-//        Tarea tarea = new Tarea();
-//        tarea.setCreador(user);
-//        tarea.setEstado(EstadoTarea.REALIZADA);
-//        LocalDateTime fecha_tarea_creacion = LocalDateTime.of(2025, 4, 23, 0, 0);
-//        tarea.setFechaCreacion(fecha_tarea_creacion);
-//        LocalDateTime fecha_tarea_fin = LocalDateTime.of(2025, 4, 30, 0, 0);
-//        tarea.setFechaLimite(fecha_tarea_fin);
-//        ArrayList<Usuario> encargados = new ArrayList<Usuario>();
-//        //encargados.add(user2);
-//        tarea.setEncargados(encargados);
-//        
-//        tdao.insertarTarea(tarea);
-//        
-//        tarea.setEstado(EstadoTarea.EN_PROCESO);
-//        tarea.setId(3);
-//        tdao.modificarTarea(tarea);
-//        for(Tarea t : tdao.listarTareas()){
-//            System.out.println(String.valueOf(t.getFechaCreacion()));
-//            System.out.println(String.valueOf(t.getEstado()));
-//        }
-//		tdao.eliminarTarea(2);
-//        
-//        /////////////////Deletes
-//        //staffdao.eliminar(2);
-//        //userdao.eliminar(1);
-//        //evaluacion_inicial.eliminarEvaluacion(1);
+        UsuarioBO boUsuario = new UsuarioBO();
+        ArrayList<Usuario> usuarios = boUsuario.listarTodas();
+        for (Usuario u: usuarios){
+            System.out.println(u.getNombre());
+        }
     }
 }
