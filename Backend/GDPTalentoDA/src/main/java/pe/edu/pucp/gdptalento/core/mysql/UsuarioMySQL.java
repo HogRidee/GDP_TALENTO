@@ -49,31 +49,11 @@ public class UsuarioMySQL implements UsuarioDAO{
 
     @Override
     public int eliminar(int id_usuario) {
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL Usuario
-            st = con.createStatement();
-            String sql = "DELETE FROM Usuario WHERE id_usuario = " + id_usuario;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un usuario");
-            //Ejecuciones SQL Staff
-            st = con.createStatement();
-            sql = "DELETE FROM Staff WHERE id_staff = " + id_usuario;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un staff");
-            con = db.getConnection();
-            //Ejecuciones SQL MiembroPUCP
-            st = con.createStatement();
-            sql = "DELETE FROM MiembroPUCP WHERE id_miembro_pucp = " + id_usuario;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un miembroPUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_usuario);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_USUARIO", 
+                parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del usuario");
         return resultado;
     }
 
