@@ -1,10 +1,7 @@
 package pe.edu.pucp.gdptalento.core.mysql;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,10 +18,7 @@ import pucp.edu.pe.gdptalento.config.DBManager;
 
 public class RolMySQL implements RolDAO{
     
-    private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
-    private Connection con;
     private ResultSet rs;
-    private PreparedStatement pst;
     
     @Override
     public int insertar(Rol rol){
@@ -68,45 +62,36 @@ public class RolMySQL implements RolDAO{
     }
     
     @Override
-    public ArrayList<Rol> listarTodas(){
-        ArrayList<Rol> listadoRoles = new ArrayList<Rol>();
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            String sql = "SELECT r.nombre AS nombre_r, p.nombre AS nombre_p FROM Rol r "
-                    + "INNER JOIN Rol_Permiso rp ON r.id_rol = rp.id_rol "
-                    + "INNER JOIN Permiso p ON rp.id_permiso=p.id_permiso";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            Rol rol= new Rol();//creamos primer rol
-            ArrayList<Permiso> permisos = new ArrayList<Permiso>(); //creamos primer arreglo de permisos para el primer rol
-            String nombre = rs.getString("nombre_r");
-            permisos.add(Permiso.valueOf(rs.getString("nombre_p")));
-            rol.setNombre(NombreRol.valueOf(nombre));
-            while(rs.next()){
-                if(nombre.equals(rs.getString("nombre_r"))){
-                    Permiso permiso = Permiso.valueOf(rs.getString("nombre_p")); 
-                    permisos.add(permiso);
+    public ArrayList<Rol> listarTodas() {
+        ArrayList<Rol> listadoRoles = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES", null);
+        try {
+            Rol rol = null;
+            int rolActualId = -1;
+            ArrayList<Permiso> permisos = null;
+            while (rs.next()) {
+                int idRol = rs.getInt("id_rol");
+                String nombreRol = rs.getString("nombre_rol");
+                String nombrePermiso = rs.getString("nombre_permiso");
+                if (rol == null || idRol != rolActualId) { 
+                    agregarRol(listadoRoles, rol, permisos);
+                    rol = crearRolBasico(idRol, nombreRol);
+                    permisos = new ArrayList<>();
+                    rolActualId = idRol;
                 }
-                else{
-                    rol.setPermisos(permisos);
-                    listadoRoles.add(rol);
-                    rol = new Rol();//creo nuevo rol porque ya no estoy en el mismo rol
-                    permisos = new ArrayList<Permiso>();//creo nueva lista de permisos para el nuevo rol
-                    nombre = rs.getString("nombre_r");
-                    permisos.add(Permiso.valueOf(rs.getString("p.nombre")));//aniado el permiso de la tabla en el arreglo permisos
-                    rol.setNombre(NombreRol.valueOf(nombre));//seteo nombre de rol
+                if (nombrePermiso != null) {
+                    permisos.add(Permiso.valueOf(nombrePermiso));
                 }
             }
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
+            agregarRol(listadoRoles, rol, permisos); // Rol fuera del bucle
+        } catch (SQLException ex) {
+            System.out.println("ERROR al listar roles: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexionLector();
         }
         return listadoRoles;
     }
-    
+
     @Override
     public Rol obtenerPorId(String nombreRol){
         throw new UnsupportedOperationException("Not supported yet.");
@@ -132,6 +117,20 @@ public class RolMySQL implements RolDAO{
             case CREAR_ENTREVISTA -> 4;
             default -> 0;
         };
+    }
+    
+    private void agregarRol(ArrayList<Rol> listadoRoles, Rol rol, ArrayList<Permiso> permisos){
+        if (rol != null) {
+            rol.setPermisos(permisos);
+            listadoRoles.add(rol);
+        }
+    }
+    
+    private Rol crearRolBasico(int idRol, String nombreRol) {
+        Rol rol = new Rol();
+        rol.setId(idRol);
+        rol.setNombre(NombreRol.valueOf(nombreRol));
+        return rol;
     }
     
 }
