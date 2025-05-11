@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Rol {
 
-    // Atributos
+    private int id;
     private NombreRol nombre;
     private ArrayList<Permiso> permisos;
     private ArrayList<Usuario> usuarios;
@@ -16,6 +16,16 @@ public class Rol {
     }
 
     // Getters y Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     public NombreRol getNombre() {
         return nombre;
     }

@@ -1,0 +1,16 @@
+ESTA ES LA SERIE DE PASOS QUE DEBES DE SEGUIR CUANDO TRABAJES EN EL PROYECTO:
+
+1. Fetch (en la interfaz (fork))
+2. Abrir la terminal
+3. Asegurarnos de que estamos en nuestra rama
+4. Cambiarnos a la rama main: git checkout main
+5. Actualizar la rama main con los cambios de internet: git pull
+6. Regresar a tu rama: git checkout ivan (o el nombre de tu rama)
+7. Colocar esos cambios en tu rama (mergear ramas): git merge main
+8. Pushear (interfaz)
+9. Hacer mis cambios en el proyecto (pequeños)
+10. Commitear los cambios (interfaz -> ver video)
+11. Pushear estos cambios al internet (interfaz)
+12. Repetir cambios del 1 al 5
+13. Combinar la rama main con mi rama personal: git merge ivan
+14. Pushear (interfaz)

@@ -13,7 +13,7 @@ import pe.edu.pucp.gdptalento.core.model.Rol;
  */
 public interface RolDAO {
     int insertar(Rol rol);
-    int modificar(Rol rol, int id);
+    int modificar(Rol rol);
     int eliminar(int id_rol);
     ArrayList<Rol> listarTodas();
     Rol obtenerPorId(String nombreRol);
