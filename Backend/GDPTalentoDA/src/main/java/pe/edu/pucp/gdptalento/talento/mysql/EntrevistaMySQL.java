@@ -1,11 +1,15 @@
 package pe.edu.pucp.gdptalento.talento.mysql;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.talento.dao.EntrevistaDAO;
 import pe.edu.pucp.gdptalento.talento.model.Entrevista;
@@ -14,12 +18,92 @@ import pe.edu.pucp.gdptalento.miembros.model.Postulante;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
 public class EntrevistaMySQL implements EntrevistaDAO{
-    private Statement st;
-    private Connection con;
+    
     private ResultSet rs;
-    private PreparedStatement pst;
 
     @Override
+    public int insertarEntrevista(Entrevista entrevista){
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, entrevista.getPostulante());
+        Date fecha_date = java.sql.Date.valueOf(entrevista.getFecha());
+        parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(4, entrevista.getFeedback());
+        parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
+        parametrosEntrada.put(6, entrevista,getPuntuacionFinal());
+
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENTREVISTA", 
+                parametrosEntrada, parametrosSalida);
+        int idEntrevista = (int) parametrosSalida.get(1);
+        entrevista.setId(idEntrevista);
+        System.out.println("Entrevista insertada con ID: " + idEntrevista);
+        return idEntrevista;
+    }
+
+    @Override
+    public int modificarEntrevista(Entrevista entrevista){
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+
+        parametrosEntrada.put(1, entrevista.getId());
+        parametrosEntrada.put(2, entrevista.getPostulante());
+        Date fecha_date = java.sql.Date.valueOf(entrevista.getFecha());
+        parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(4, entrevista.getFeedback());
+        parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
+        parametrosEntrada.put(6, entrevista,getPuntuacionFinal());
+
+        DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ENTREVISTA", 
+                parametrosEntrada, null);
+        System.out.println("Se modificó una entrevista con ID: " + entrevista.getId());
+        return entrevista.getId();
+    }
+
+    @Override
+    public int eliminarEntrevista(int id_entrevista){
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_entrevista);
+        DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ENTREVISTA", 
+                parametrosEntrada, null);
+        System.out.println("Se eliminó el rol con ID: " + id_rol);
+        return 1;
+    }
+
+    /*Ver que onda con esta cosa*/
+    @Override
+    public ArrayList<Entrevista> listarEntrevistas() {
+        ArrayList<Entrevista> listadoEntrevistas = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ENTREVISTAS", null);
+        try {
+            while (rs.next()) {
+                Entrevista entrevista = new Entrevista();
+                entrevista.setId(rs.getInt("e.id_entrevista"));
+                entrevista.setFecha(rs.getDate("fecha_entrevista"));//???
+                EstadoEntrevista estado = EstadoEntrevista.valueOf(rs.getString("e.estado"));
+                entrevista.setEstado(estado);
+                entrevista.setPostulante(rs.getInt("e.id_postulante"));
+                entrevista.setPuntuacionFinal(rs.getDouble("e.puntuacion"));
+                entrevista.setFeedback(rs.getString("e.feedback"));
+
+                listadoEntrevistas.add(entrevista);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR al listar entrevistas: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexionLector();
+        }
+        return listadoEntrevistas;
+    }
+
+    @Override
+    public Entrevista obtenerPorId(int idEntrevista){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /*@Override
     public int insertarEntrevista(Entrevista entrevista){
         int resultado = 0;
         try{
@@ -174,6 +258,6 @@ public class EntrevistaMySQL implements EntrevistaDAO{
     @Override
     public Entrevista obtenerPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
+    }*/
 
 }
