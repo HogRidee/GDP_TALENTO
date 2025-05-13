@@ -8,7 +8,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.sql.Date;
+import java.time.LocalDate;
 import pe.edu.pucp.gdptalento.eventos.dao.EventoDAO;
 import pe.edu.pucp.gdptalento.eventos.model.EstadoEvento;
 import pe.edu.pucp.gdptalento.eventos.model.Evento;
@@ -27,86 +32,54 @@ public class EventoMySQL implements EventoDAO{
 
     @Override
     public int insertar(Evento evento) {
-        int resultado=0;
-        try{
-            con= DBManager.getInstance().getConnection();
-            String sql= "INSERT INTO Evento (id_evento, fecha, tipoEvento, estadoEvento)"
-                    + "VALUES ('" + evento.getId() +
-                    "','" + evento.getFecha()+"','"+ evento.getTipoEvento()+"','"+ evento.getEstadoEvento()+ "')";
-            System.out.println(sql);
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql); 
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, Date.valueOf(evento.getFecha()));
+        parametrosEntrada.put(2, evento.getTipoEvento());
+        parametrosEntrada.put(3, evento.getEstadoEvento());
+        int resultado=DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVENTO", parametrosEntrada, null);
+        System.out.println("Se ha realizado el registro del evento");
         return resultado;
     }
 
     @Override
     public int modificar(Evento evento) {
-       int resultado=0;
-        try{
-            con= DBManager.getInstance().getConnection();
-            String sql= "UPDATE Evento SET fecha = '"
-                    + evento.getFecha()+ "'  WHERE"+  " id_evento = "+ evento.getId();
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql); 
-            System.out.println("Se ha actualizado la fecha");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, evento.getId());
+        parametrosEntrada.put(2, Date.valueOf(evento.getFecha()));
+        parametrosEntrada.put(3, evento.getTipoEvento());
+        parametrosEntrada.put(4, evento.getEstadoEvento());
+        int resultado=DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_EVENTO", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del evento");
         return resultado;
     }
 
     @Override
     public int eliminar(Evento evento) {
-        int resultado=0;
-        try{
-            con= DBManager.getInstance().getConnection();
-            String sql= "UPDATE Evento SET estadoEvento = 'CANCELADO'"
-                    + "  WHERE id_evento = "+ evento.getId();
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql); 
-            System.out.println("Se ha eliminado el evento");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, evento.getId());
+        int resultado=DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_EVENTO", parametrosEntrada, null);
+        System.out.println("Se ha eliminado el evento");
         return resultado;
     }
 
     @Override
     public ArrayList<Evento> listarTodos() {
          ArrayList<Evento> eventos = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EVENTO", null);
+        System.out.println("Lectura de eventos...");
         try{
-            con= DBManager.getInstance().getConnection();
-            
-            String sql = "SELECT e.id_evento, e.fecha, e.tipoEvento, e.estadoEvento"
-                    + " FROM Evento e"
-                    + "WHERE e.estadoEvento = 'APROBADO'"
-                    + "AND e.tipoEvento = 'REUNION'";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
             while(rs.next()){
-                Evento evento = new Evento();
-                
-                evento.setId(rs.getInt("id_evento"));
-                evento.setFecha(rs.getDate("fecha").toLocalDate());
-                evento.setEstadoEvento(EstadoEvento.APROBADO);
-                evento.setTipoEvento(TipoEvento.REUNION);
-                
-                eventos.add(evento);
+                Evento e = new Evento();
+                e.setId(rs.getInt("id_Evento"));
+                e.setFecha(rs.getDate("fecha").toLocalDate());
+                e.setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
+                e.setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
+                eventos.add(e);
             }
         }catch(SQLException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("ERROR: " + ex.getMessage());
         }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            DBManager.getInstance().cerrarConexion();
         }
         return eventos;
     }

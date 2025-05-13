@@ -5,16 +5,20 @@
 package pe.edu.pucp.gdptalento.eventos.mysql;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.gdptalento.eventos.dao.AsistenciaDAO;
 import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
 import pe.edu.pucp.gdptalento.eventos.model.EstadoAsistencia;
 import pe.edu.pucp.gdptalento.eventos.model.EstadoEvento;
 import pe.edu.pucp.gdptalento.eventos.model.Evento;
 import pe.edu.pucp.gdptalento.eventos.model.TipoEvento;
+import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import pucp.edu.pe.gdptalento.config.DBManager;
@@ -31,87 +35,49 @@ public class AsistenciaMySQL implements AsistenciaDAO{
     
     @Override
     public int insertar(Asistencia asistencia) {
-        int resultado=0;
-        try{
-            con= DBManager.getInstance().getConnection();
-            
-            String sql= "INSERT INTO Asistencia (id_evento, id_participante, asistencia)"
-                    + "VALUES ('" + asistencia.getEvento().getId() +
-                    "','" + asistencia.getParticipante().getId()+"')";
-            System.out.println(sql);
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql); 
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, asistencia.getEvento().getId());
+        parametrosEntrada.put(2, asistencia.getParticipante().getId());
+        parametrosEntrada.put(3, asistencia.getAsistencia());
+        int resultado=DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ASISTENCIA", parametrosEntrada, null);
+        System.out.println("Se ha insertado una asistencia");
         return resultado;
     }
 
     @Override
-    public int modificar(Asistencia asistenciaD) {
-       int resultado=0;
-        try{
-            con= DBManager.getInstance().getConnection();
-            String sql= "UPDATE Asistencia SET asistencia = '"
-                    + asistenciaD.getAsistencia() + "' WHERE"+  " id_evento = "+ asistenciaD.getEvento().getId()
-                    + " and id_participante = " + asistenciaD.getParticipante().getId();
-            st = con.createStatement();
-            resultado = st.executeUpdate(sql); 
-            System.out.println("Se ha actualizado la asistencia");
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-        }
+    public int modificar(Asistencia asistencia) {
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, asistencia.getEvento().getId());
+        parametrosEntrada.put(2, asistencia.getParticipante().getId());
+        parametrosEntrada.put(3, asistencia.getAsistencia());
+        int resultado=DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ASISTENCIA", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion de la asistencia");
         return resultado;
     }
 
     @Override
     public ArrayList<Asistencia> listarTodas() {
         ArrayList<Asistencia> asistencias = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ASISTENCIA", null);
+        System.out.println("Lectura de asistencias...");
         try{
-            con= DBManager.getInstance().getConnection();
-            
-            String sql = "SELECT s.id_staff, m.nombre, m.telefono, s.area, a.asistencia, "
-                    + "a.id_evento, e.fecha, e.tipoEvento, e.estadoEvento"
-                    + "FROM Asistencia a, Staff s, MiembroPUCP m, Evento e"
-                    + "WHERE a.id_participante = s.id_staff"
-                    + "AND s.id_Staff = m.id_miembro_pucp"
-                    + "AND a.id_evento = e.id_evento"
-                    + "AND a.asistencia = 'ASISTIO'"
-                    + "AND e.estadoEvento = 'APROBADO'"
-                    + "AND e.tipoEvento = 'REUNION'"
-                    + "AND s.estado = 'ACTIVO'";
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
             while(rs.next()){
-                Asistencia asistenciaD = new Asistencia();
-                Evento eventoD = new Evento();
-                Staff participante = new Staff();
-                
-                eventoD.setId(rs.getInt("id_evento"));
-                eventoD.setFecha(rs.getDate("fecha").toLocalDate());
-                eventoD.setEstadoEvento(EstadoEvento.APROBADO);
-                eventoD.setTipoEvento(TipoEvento.REUNION);
-                
-                participante.setId(rs.getInt("id_staff"));
-                participante.setNombre(rs.getString("nombre"));
-                participante.setTelefono(rs.getInt("telefono"));
-                participante.setEstado(EstadoMiembro.ACTIVO);
-               
-                
-                asistenciaD.setAsistencia(EstadoAsistencia.ASISTIO);
-                asistenciaD.setEvento(eventoD);
-                asistenciaD.setParticipante(participante);
-                asistencias.add(asistenciaD);
+                Asistencia a = new Asistencia();
+                a.getParticipante().setId(rs.getInt("id_staff"));
+                a.getParticipante().setNombre("nombre");
+                a.getParticipante().setNombre("telefono");
+                a.getParticipante().setArea(Area.valueOf(rs.getString("area")));
+                a.setAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
+                a.getEvento().setId(rs.getInt("id_evento"));
+                a.getEvento().setFecha(rs.getDate("fecha").toLocalDate());
+                a.getEvento().setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
+                a.getEvento().setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
+                asistencias.add(a);
             }
         }catch(SQLException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("ERROR: " + ex.getMessage());
         }finally{
-            try{rs.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            DBManager.getInstance().cerrarConexion();
         }
         return asistencias;
     }
