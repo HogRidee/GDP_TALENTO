@@ -4,10 +4,16 @@
  */
 package pe.edu.pucp.gdptalento.miembros.dao;
 
+import java.util.ArrayList;
+import pe.edu.pucp.gdptalento.miembros.model.Postulante;
+
 /**
  *
  * @author USER
  */
 public interface PostulanteDAO {
-    
+    int insertar(Postulante postulante);
+    int modificar(Postulante postulante);
+    int eliminar(int idPostulante);
+    ArrayList<Postulante> listarTodos();
 }
