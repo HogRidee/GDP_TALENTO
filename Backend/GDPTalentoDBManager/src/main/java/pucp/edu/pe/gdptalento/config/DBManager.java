@@ -25,7 +25,7 @@ public class DBManager {
     private final String database;
     private final String puerto;
     private final String url;
-    private final String tipoBD;
+    private final String tipoBD ;
     private Connection con;
     private String rutaArchivo = "db.properties";
     private ResultSet rs;
