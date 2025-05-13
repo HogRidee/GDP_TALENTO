@@ -134,7 +134,7 @@ public class TareaMySQL implements TareaDAO{
             System.out.println("Error al listar tareas: " + ex.getMessage());
             ex.printStackTrace();
         } finally {
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return tareasCompletas;
     }
