@@ -1,0 +1,13 @@
+DROP PROCEDURE IF EXISTS ELIMINAR_EVENTO;
+
+DELIMITER $$
+
+CREATE PROCEDURE ELIMINAR_EVENTO()
+BEGIN
+	SELECT e.id_evento, e.fecha, e.tipoEvento, e.estadoEvento
+	FROM Evento e
+    WHERE e.estadoEvento = 'APROBADO';
+END$$
+
+DELIMITER ;
+
