@@ -1,10 +1,12 @@
 package pe.edu.pucp.gdptalento.talento.mysql;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -15,11 +17,92 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
 public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
-    private Statement st;
-    private Connection con;
+    
     private ResultSet rs;
-    private PreparedStatement pst;
 
+    @Override
+    public int insertarEvaluacion(EvaluacionDesempeno evaluacion){
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, evaluacion.getEvaluador());
+        parametrosEntrada.put(3, evaluacion.getMiembroEvaluado());
+        parametrosEntrada.put(4, evaluacion.getPuntaje());
+        parametrosEntrada.put(5, evaluacion.getComentarios());
+        Date fecha_date = java.sql.Date.valueOf(evaluacion.getFecha());
+        parametrosEntrada.put(6, new java.sql.Date(fecha_date.getTime()));
+
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVALUACION", 
+                parametrosEntrada, parametrosSalida);
+        int idEvaluacion = (int) parametrosSalida.get(1);
+        entrevista.setId(idEntrevista);
+        System.out.println("Evaluacion insertada con ID: " + idEvaluacion);
+        return idEvaluacion;
+    }
+
+    @Override
+    public int modificarEvaluacion(EvaluacionDesempeno evaluacion){
+
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+
+        parametrosEntrada.put(1, evaluacion.getId());
+        parametrosEntrada.put(2, evaluacion.getEvaluador());
+        parametrosEntrada.put(3, evaluacion.getMiembroEvaluado());
+        parametrosEntrada.put(4, evaluacion.getPuntaje());
+        parametrosEntrada.put(5, evaluacion.getComentarios());
+        Date fecha_date = java.sql.Date.valueOf(evaluacion.getFecha());
+        parametrosEntrada.put(6, new java.sql.Date(fecha_date.getTime()));
+
+        DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_EVALUACION", 
+                parametrosEntrada, null);
+        System.out.println("Se modificó una evaluacion con ID: " + evaluacion.getId());
+        return evaluacion.getId();
+    }
+
+    @Override
+    public int eliminarEvaluacion(int id_evaluacion_desempeno){
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, id_evaluacion_desempeno);
+        DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_EVALUACION", 
+                parametrosEntrada, null);
+        System.out.println("Se eliminó la evaluación con ID: " + id_evaluacion_desempeno);
+        return 1;
+    }
+
+    /*Ver que onda con esta cosa*/
+    @Override
+    public ArrayList<EvaluacionDesempeno> listarEvaluaciones() {
+        ArrayList<EvaluacionDesempeno> listadoEvaluaciones = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EVALUACIONES", null);
+        try {
+            while (rs.next()) {
+                EvaluacionDesempeno evaluacion = new EvaluacionDesempeno();
+
+                evaluacion.setId(rs.getInt("ed.id_evaluacion_desempeno"));
+                evaluacion.setEvaluador(rs.getString("evaluador"));
+                evaluacion.setMiembroEvaluado(rs.getString("miembro_staff"));
+                evaluacion.setPuntaje(rs.getDouble("ed.puntaje"));
+                evaluacion.setComentarios(rs.getString("ed.comentarios"));
+                evaluacion.setFecha(rs.getDate("fecha_evaluacion"));//???
+
+                listadoEvaluaciones.add(evaluacion);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR al listar evaluaciones: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexionLector();
+        }
+        return listadoEvaluaciones;
+    }
+
+    @Override
+    public EvaluacionDesempeno obtenerPorId(int idEvaluacion){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /*
     @Override
     public int insertarEvaluacion(EvaluacionDesempeño evaluacion) {
         int resultado = 0;
@@ -147,6 +230,6 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
     @Override
     public EvaluacionDesempeño obtenerPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
+    }*/
 
 }
