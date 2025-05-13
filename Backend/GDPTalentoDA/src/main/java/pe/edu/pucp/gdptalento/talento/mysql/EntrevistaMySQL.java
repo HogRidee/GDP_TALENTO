@@ -33,7 +33,7 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
         parametrosEntrada.put(4, entrevista.getFeedback());
         parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
-        parametrosEntrada.put(6, entrevista,getPuntuacionFinal());
+        parametrosEntrada.put(6, entrevista.getPuntuacionFinal());
 
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENTREVISTA", 
                 parametrosEntrada, parametrosSalida);
@@ -54,7 +54,7 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
         parametrosEntrada.put(4, entrevista.getFeedback());
         parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
-        parametrosEntrada.put(6, entrevista,getPuntuacionFinal());
+        parametrosEntrada.put(6, entrevista.getPuntuacionFinal());
 
         DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ENTREVISTA", 
                 parametrosEntrada, null);
@@ -68,11 +68,10 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         parametrosEntrada.put(1, id_entrevista);
         DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ENTREVISTA", 
                 parametrosEntrada, null);
-        System.out.println("Se eliminó el rol con ID: " + id_rol);
+        System.out.println("Se eliminó el rol con ID: " + id_entrevista);
         return 1;
     }
 
-    /*Ver que onda con esta cosa*/
     @Override
     public ArrayList<Entrevista> listarEntrevistas() {
         ArrayList<Entrevista> listadoEntrevistas = new ArrayList<>();
@@ -80,23 +79,29 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         try {
             while (rs.next()) {
                 Entrevista entrevista = new Entrevista();
-                entrevista.setId(rs.getInt("e.id_entrevista"));
-                entrevista.setFecha(rs.getDate("fecha_entrevista"));//???
-                EstadoEntrevista estado = EstadoEntrevista.valueOf(rs.getString("e.estado"));
+                entrevista.setId(rs.getInt("id_entrevista"));
+                java.sql.Date sqlDate = rs.getDate("fecha_entrevista");
+                if (sqlDate != null) {
+                    entrevista.setFecha(sqlDate.toLocalDate());
+                }
+                EstadoEntrevista estado = EstadoEntrevista.valueOf(rs.getString("estado"));
                 entrevista.setEstado(estado);
-                entrevista.setPostulante(rs.getInt("e.id_postulante"));
-                entrevista.setPuntuacionFinal(rs.getDouble("e.puntuacion"));
-                entrevista.setFeedback(rs.getString("e.feedback"));
+                Postulante postulante = new Postulante();
+                postulante.setId(rs.getInt("id_postulante"));
+                entrevista.setPostulante(postulante);
+                entrevista.setPuntuacionFinal(rs.getDouble("puntuacion_final"));
+                entrevista.setFeedback(rs.getString("feedback"));
 
                 listadoEntrevistas.add(entrevista);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR al listar entrevistas: " + ex.getMessage());
         } finally {
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return listadoEntrevistas;
     }
+
 
     @Override
     public Entrevista obtenerPorId(int idEntrevista){

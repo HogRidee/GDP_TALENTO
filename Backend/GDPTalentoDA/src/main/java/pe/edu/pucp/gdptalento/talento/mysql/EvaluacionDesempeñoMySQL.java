@@ -21,7 +21,7 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
     private ResultSet rs;
 
     @Override
-    public int insertarEvaluacion(EvaluacionDesempeno evaluacion){
+    public int insertarEvaluacion(EvaluacionDesempeño evaluacion){
 
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         Map<Integer, Object> parametrosSalida = new HashMap<>();
@@ -37,13 +37,13 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVALUACION", 
                 parametrosEntrada, parametrosSalida);
         int idEvaluacion = (int) parametrosSalida.get(1);
-        entrevista.setId(idEntrevista);
+        evaluacion.setId(idEvaluacion);
         System.out.println("Evaluacion insertada con ID: " + idEvaluacion);
         return idEvaluacion;
     }
 
     @Override
-    public int modificarEvaluacion(EvaluacionDesempeno evaluacion){
+    public int modificarEvaluacion(EvaluacionDesempeño evaluacion){
 
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
 
@@ -73,32 +73,38 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
 
     /*Ver que onda con esta cosa*/
     @Override
-    public ArrayList<EvaluacionDesempeno> listarEvaluaciones() {
-        ArrayList<EvaluacionDesempeno> listadoEvaluaciones = new ArrayList<>();
+    public ArrayList<EvaluacionDesempeño> listarEvaluaciones() {
+        ArrayList<EvaluacionDesempeño> listadoEvaluaciones = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EVALUACIONES", null);
         try {
             while (rs.next()) {
-                EvaluacionDesempeno evaluacion = new EvaluacionDesempeno();
+                EvaluacionDesempeño evaluacion = new EvaluacionDesempeño();
 
                 evaluacion.setId(rs.getInt("ed.id_evaluacion_desempeno"));
-                evaluacion.setEvaluador(rs.getString("evaluador"));
-                evaluacion.setMiembroEvaluado(rs.getString("miembro_staff"));
-                evaluacion.setPuntaje(rs.getDouble("ed.puntaje"));
+                Usuario usuario = new Usuario();
+                usuario.setNombre(rs.getString("evaluador"));
+                evaluacion.setEvaluador(usuario);
+                Staff miembroEvaluado = new Staff();
+                miembroEvaluado.setNombre(rs.getString("miembro_Staff"));
+                evaluacion.setMiembroEvaluado(miembroEvaluado);
+                evaluacion.setPuntaje(rs.getInt("ed.puntaje"));
                 evaluacion.setComentarios(rs.getString("ed.comentarios"));
-                evaluacion.setFecha(rs.getDate("fecha_evaluacion"));//???
-
+                java.sql.Date sqlDate = rs.getDate("fecha_evaluacion");
+                if (sqlDate != null) {
+                    evaluacion.setFecha(sqlDate.toLocalDate());
+                }
                 listadoEvaluaciones.add(evaluacion);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR al listar evaluaciones: " + ex.getMessage());
         } finally {
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return listadoEvaluaciones;
     }
 
     @Override
-    public EvaluacionDesempeno obtenerPorId(int idEvaluacion){
+    public EvaluacionDesempeño obtenerPorId(int idEvaluacion){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

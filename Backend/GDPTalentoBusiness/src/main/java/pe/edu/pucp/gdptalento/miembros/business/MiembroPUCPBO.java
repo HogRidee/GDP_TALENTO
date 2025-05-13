@@ -13,19 +13,19 @@ public class MiembroPUCPBO {
     }
 
     public int insertar(MiembroPUCP miembro) {
-        return daoMiembro.insertarMiembroPUCP(miembro);
+        return daoMiembro.insertar(miembro);
     }
 
     public int modificar(MiembroPUCP miembro) {
-        return daoMiembro.modificarMiembroPUCP(miembro);
+        return daoMiembro.modificar(miembro);
     }
 
     public int eliminar(int idMiembro) {
-        return daoMiembro.eliminarMiembroPUCP(idMiembro);
+        return daoMiembro.eliminar(idMiembro);
     }
 
     public ArrayList<MiembroPUCP> listarTodas() {
-        return daoMiembro.listarMiembrosPUCP();
+        return daoMiembro.listarTodos();
     }
 }
 

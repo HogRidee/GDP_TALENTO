@@ -13,19 +13,19 @@ public class PostulanteBO {
     }
 
     public int insertar(Postulante postulante) {
-        return daoPostulante.insertarPostulante(postulante);
+        return daoPostulante.insertar(postulante);
     }
 
     public int modificar(Postulante postulante) {
-        return daoPostulante.modificarPostulante(postulante);
+        return daoPostulante.modificar(postulante);
     }
 
     public int eliminar(int idPostulante) {
-        return daoPostulante.eliminarPostulante(idPostulante);
+        return daoPostulante.eliminar(idPostulante);
     }
 
     public ArrayList<Postulante> listarTodas() {
-        return daoPostulante.listarPostulantes();
+        return daoPostulante.listarTodos();
     }
 }
 

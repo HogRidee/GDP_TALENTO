@@ -87,7 +87,7 @@ public class RolMySQL implements RolDAO{
         } catch (SQLException ex) {
             System.out.println("ERROR al listar roles: " + ex.getMessage());
         } finally {
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return listadoRoles;
     }

@@ -15,7 +15,7 @@ BEGIN
         EvaluacionDesempeno ed
     LEFT JOIN Usuario u ON ed.id_evaluador = u.id_usuario
     LEFT JOIN Staff s ON ed.id_miembro_staff = s.id_staff
-    ORDER BY e.id_evaluacion_desempeno;
+    ORDER BY ed.id_evaluacion_desempeno; 
 END$$
 
 DELIMITER ;

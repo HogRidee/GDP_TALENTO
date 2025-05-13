@@ -64,7 +64,7 @@ public class UsuarioMySQL implements UsuarioDAO{
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
         } finally {
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return usuarios;
     }
@@ -118,7 +118,7 @@ public class UsuarioMySQL implements UsuarioDAO{
         usuario.setCodigoPUCP(rs.getInt("codigoPUCP"));
         usuario.setNombre(rs.getString("nombre"));
         usuario.setCorreo(rs.getString("correo"));
-        usuario.setTelefono(rs.getInt("telefono"));
+        usuario.setTelefono(rs.getString("telefono"));
         usuario.setFacultad(rs.getString("facultad"));
         usuario.setEspecialidad(rs.getString("especialidad"));
     }
