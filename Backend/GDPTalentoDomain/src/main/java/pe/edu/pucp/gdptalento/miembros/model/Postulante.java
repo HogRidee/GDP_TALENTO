@@ -11,9 +11,9 @@ public class Postulante extends MiembroPUCP {
     }
 
     // Constructor con parámetros
-    public Postulante(int id, String nombre, String correo, int codigoPUCP, String facultad, String especialidad, EstadoPUCP status, int telefono,
+    public Postulante(int id, String nombre, String correo, int codigoPUCP, String facultad, String especialidad, EstadoPUCP status, String telefono,
             EstadoProceso estadoProceso) {
-        super(id, nombre, correo, codigoPUCP, facultad, especialidad, status, telefono);
+        super(nombre, correo, codigoPUCP, facultad, especialidad, status, telefono);
         this.estadoProceso = estadoProceso;
     }
 
