@@ -12,9 +12,8 @@ import pe.edu.pucp.gdptalento.miembros.model.MiembroPUCP;
  * @author USER
  */
 public interface MiembroPUCPDAO {
-    int insertarMiembroPUCP(MiembroPUCP staff);
-    int modificarMiembroPUCP(MiembroPUCP staff);
-    int eliminarMiembroPUCP(int id);  
-    ArrayList<MiembroPUCP> listarMiembrosPUCP();
-    MiembroPUCP obtenerPorIdMiembroPUCP(int idMiembroPUCP);
+    int insertar(MiembroPUCP miembro);
+    int modificar(MiembroPUCP miembro);
+    int eliminar(int idMiembro);
+    ArrayList<MiembroPUCP> listarTodos();
 }

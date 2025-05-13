@@ -33,8 +33,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
     public int insertar(Asistencia asistencia) {
         int resultado=0;
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             
             String sql= "INSERT INTO Asistencia (id_evento, id_participante, asistencia)"
                     + "VALUES ('" + asistencia.getEvento().getId() +
@@ -54,8 +53,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
     public int modificar(Asistencia asistenciaD) {
        int resultado=0;
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             String sql= "UPDATE Asistencia SET asistencia = '"
                     + asistenciaD.getAsistencia() + "' WHERE"+  " id_evento = "+ asistenciaD.getEvento().getId()
                     + " and id_participante = " + asistenciaD.getParticipante().getId();
@@ -74,8 +72,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
     public ArrayList<Asistencia> listarTodas() {
         ArrayList<Asistencia> asistencias = new ArrayList<>();
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             
             String sql = "SELECT s.id_staff, m.nombre, m.telefono, s.area, a.asistencia, "
                     + "a.id_evento, e.fecha, e.tipoEvento, e.estadoEvento"
