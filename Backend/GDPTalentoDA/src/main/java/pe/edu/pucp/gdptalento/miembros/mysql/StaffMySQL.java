@@ -113,7 +113,7 @@ public class StaffMySQL implements StaffDAO {
                 staff.setCodigoPUCP(rs.getInt("codigoPUCP"));
                 staff.setFacultad(rs.getString("facultad"));
                 staff.setEspecialidad(rs.getString("especialidad"));
-                staff.setTelefono(rs.getInt("telefono"));
+                staff.setTelefono(rs.getString("telefono"));
                 staff.setDesempenio(rs.getDouble("desempenio"));
                 staff.setStatus(estado);
                 staff.setArea(area);
@@ -124,7 +124,7 @@ public class StaffMySQL implements StaffDAO {
             System.out.println(ex.getMessage());
         }
         finally{
-            DBManager.getInstance().cerrarConexionLector();
+            DBManager.getInstance().cerrarConexion();
         }
         return listadoStaff;
     }
