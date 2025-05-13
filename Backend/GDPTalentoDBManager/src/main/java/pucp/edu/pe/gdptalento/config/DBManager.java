@@ -10,25 +10,50 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Map;
 import java.util.Properties;
-
+/**
+ *
+ * @author USER
+ */
 public class DBManager {
-    private static DBManager dbManager;  //Patrón Singleton
+    //Patrón Singleton
+    private static DBManager dbManager;
+    
     private Properties datos;
-    private String hostname;
-    private String usuario;
-    private String password;
-    private String database;
-    private String puerto;
+    private final String hostname;
+    private final String usuario;
+    private final String password;
+    private final String database;
+    private final String puerto;
     private final String url;
+    private final String tipoBD;
     private Connection con;
-    private final String rutaArchivo = "db.properties";
+    private String rutaArchivo = "db.properties";
     private ResultSet rs;
-   
-    // Luego cambiar public por private (cuando todos los DAOS funcionen con el singleton)
-    public DBManager() {
-        leerArchivoProperties();
-        asignarValoresDeProperties();
-        this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database;
+    
+    private DBManager(){
+        //Lectura del archivo properties
+        datos = new Properties();
+        try{
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(rutaArchivo);
+            datos.load(inputStream);
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        //Asignamos valores del archivo leido
+        hostname = datos.getProperty("hostname");
+        usuario = datos.getProperty("usuario");
+        password = datos.getProperty("password");
+        puerto = datos.getProperty("puerto");
+        database = datos.getProperty("database");
+        tipoBD = datos.getProperty("tipoBD");
+        
+        if(tipoBD.equals("mysql"))
+            //Formamos la URL de conexión        
+            this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database;
+        else 
+            this.url = "jdbc:sqlserver://" + hostname + 
+                    ";encrypt=false;trustServerCertificate=true;databaseName=" + database + 
+                    ";integratedSecurity=false;";
     }
     
     public static synchronized DBManager getInstance(){
@@ -37,11 +62,16 @@ public class DBManager {
         return dbManager;
     }
     
+    //Nos permite obtener una conexión con la BD
     public Connection getConnection(){
         try{
             if(con == null || con.isClosed()){
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                if(tipoBD.equals("mysql"))
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                else if (tipoBD.equals("mssql"))
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 con = DriverManager.getConnection(url, usuario, password);
+                System.out.println("Se ha establecido la conexion con la BD...");
             }
         }catch(ClassNotFoundException | SQLException ex){
             System.out.println(ex.getMessage());
@@ -49,8 +79,14 @@ public class DBManager {
         return con;
     }
     
-    public void cerrarConexionLector() {
-        cerrarLector();
+    public void cerrarConexion() {
+        if(rs != null){
+            try{
+                rs.close();
+            }catch(SQLException ex){
+                System.out.println("Error al cerrar el lector:" + ex.getMessage());
+            }
+        }
         if (con != null) {
             try {
                 con.close();  
@@ -60,48 +96,24 @@ public class DBManager {
         }
     }
     
-    private void leerArchivoProperties(){
-        datos = new Properties();
-        try{
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(rutaArchivo);
-            datos.load(inputStream);
-        }catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    private void asignarValoresDeProperties(){
-        hostname = datos.getProperty("hostname");
-        usuario = datos.getProperty("usuario");
-        password = datos.getProperty("password");
-        puerto = datos.getProperty("puerto");
-        database = datos.getProperty("database");
-    }
-    
-    private void cerrarLector(){
-        if(rs != null){
-            try{
-                rs.close();
-            }catch(SQLException ex){
-                System.out.println("Error al cerrar el lector:" + ex.getMessage());
-            }
-        }
-    }
-    
-    //MÉTODOS PARA LLAMAR PROCEDIMIENTOS ALMACENADOS
-    public int ejecutarProcedimiento(String nombreProcedimiento, 
-            Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) {
+    //Métodos para llamadas a Procedimientos Almacenados
+    public int ejecutarProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) {
         int resultado = 0;
         try{
-            CallableStatement cst = formarLlamadaProcedimiento(nombreProcedimiento, 
-                    parametrosEntrada, parametrosSalida);
-            registrarParametros(cst, parametrosEntrada, parametrosSalida);
+            CallableStatement cst = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, parametrosSalida);
+            if(parametrosEntrada != null)
+                registrarParametrosEntrada(cst, parametrosEntrada);
+            if(parametrosSalida != null)
+                registrarParametrosSalida(cst, parametrosSalida);
+        
             resultado = cst.executeUpdate();
-            obtenerValoresSalida(cst, parametrosSalida);
+        
+            if(parametrosSalida != null)
+                obtenerValoresSalida(cst, parametrosSalida);
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            cerrarConexionLector();
+            cerrarConexion();
         }
         return resultado;
     }
@@ -109,9 +121,8 @@ public class DBManager {
     public ResultSet ejecutarProcedimientoLectura(String nombreProcedimiento, Map<Integer,Object> parametrosEntrada){
         try{
             CallableStatement cs = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, null);
-            if (parametrosEntrada != null) {
-                registrarParametrosEntrada(cs, parametrosEntrada);
-            }
+            if(parametrosEntrada!=null)
+                registrarParametrosEntrada(cs,parametrosEntrada);
             rs = cs.executeQuery();
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
@@ -119,104 +130,67 @@ public class DBManager {
         return rs;
     }
     
-    private CallableStatement formarLlamadaProcedimiento(String nombreProcedimiento, 
-            Map<Integer, Object> parametrosEntrada, Map<Integer, 
-                    Object> parametrosSalida) throws SQLException{
+    public CallableStatement formarLlamadaProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
         con = getConnection();
         StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
-        int cantParametrosEntrada = devolverCantidadParametros(parametrosEntrada);
-        int cantParametrosSalida = devolverCantidadParametros(parametrosSalida);
-        int numParametros =  cantParametrosEntrada + cantParametrosSalida;
-        construirCadenaTextoSQL(call, numParametros);
+        int cantParametrosEntrada = 0;
+        int cantParametrosSalida = 0;
+        if(parametrosEntrada!=null) cantParametrosEntrada = parametrosEntrada.size();
+        if(parametrosSalida!=null) cantParametrosSalida = parametrosSalida.size();
+        int numParams =  cantParametrosEntrada + cantParametrosSalida;
+        for (int i = 0; i < numParams; i++) {
+            call.append("?");
+            if (i < numParams - 1) {
+                call.append(",");
+            }
+        }
         call.append(")}");
         return con.prepareCall(call.toString());
     }
     
-    private int devolverCantidadParametros(Map<Integer, Object> parametros){
-        if (parametros != null){
-            return parametros.size();
-        }
-        else{
-            return 0;
-        }
-    }
-    
-    private void construirCadenaTextoSQL(StringBuilder call, int numParametros){
-        for (int i = 0; i < numParametros; i++) {
-            call.append("?");
-            if (i < numParametros - 1) {
-                call.append(",");
-            }
-        }
-    }
-    
-    private void registrarParametros(CallableStatement cst, 
-            Map<Integer, Object> parametrosEntrada, 
-            Map<Integer, Object> parametrosSalida) throws SQLException{
-        if(parametrosEntrada != null) {
-            registrarParametrosEntrada(cst, parametrosEntrada);
-        }
-        if(parametrosSalida != null){
-            registrarParametrosSalida(cst, parametrosSalida);
-        }
-    }
-    
-    private void registrarParametrosEntrada(CallableStatement cs, 
-            Map<Integer, Object> parametros) throws SQLException {
+    private void registrarParametrosEntrada(CallableStatement cs, Map<Integer, Object> parametros) throws SQLException {
         for (Map.Entry<Integer, Object> entry : parametros.entrySet()) {
             Integer key = entry.getKey();
             Object value = entry.getValue();
-            registrarParametro(cs, key, value);
-        }
-    }
-    
-    private void registrarParametro(CallableStatement cs, Integer key, 
-            Object value) throws SQLException{
-        switch (value) {
-            case Integer entero -> cs.setInt(key, entero);
-            case String cadena -> cs.setString(key, cadena);
-            case Double decimal -> cs.setDouble(key, decimal);
-            case Boolean booleano -> cs.setBoolean(key, booleano);
-            case java.util.Date fecha -> cs.setDate(key, new java.sql.Date(fecha.getTime()));
-            case byte[] archivo -> cs.setBytes(key, archivo);
-            default -> {
+            switch (value) {
+                case Integer entero -> cs.setInt(key, entero);
+                case String cadena -> cs.setString(key, cadena);
+                case Double decimal -> cs.setDouble(key, decimal);
+                case Boolean booleano -> cs.setBoolean(key, booleano);
+                case java.util.Date fecha -> cs.setDate(key, new java.sql.Date(fecha.getTime()));
+                case byte[] archivo -> cs.setBytes(key, archivo);
+                default -> {
+                }
                 // Agregar más tipos según sea necesario
             }
         }
     }
     
-    private void registrarParametrosSalida(CallableStatement cst, 
-            Map<Integer, Object> params) throws SQLException {
+    private void registrarParametrosSalida(CallableStatement cst, Map<Integer, Object> params) throws SQLException {
         for (Map.Entry<Integer, Object> entry : params.entrySet()) {
             Integer posicion = entry.getKey();
             int sqlType = (int) entry.getValue();
             cst.registerOutParameter(posicion, sqlType);
         }
     }
-    
-    private void obtenerValoresSalida(CallableStatement cst, 
-            Map<Integer, Object> parametrosSalida) throws SQLException {
-        if (parametrosSalida == null) return;
+
+    private void obtenerValoresSalida(CallableStatement cst, Map<Integer, Object> parametrosSalida) throws SQLException {
         for (Map.Entry<Integer, Object> entry : parametrosSalida.entrySet()) {
             Integer posicion = entry.getKey();
             int sqlType = (int) entry.getValue();
-            Object value = obtenerValorSalida(cst, posicion, sqlType);
+            Object value = null;
+            switch (sqlType) {
+                case Types.INTEGER -> value = cst.getInt(posicion);
+                case Types.VARCHAR -> value = cst.getString(posicion);
+                case Types.DOUBLE -> value = cst.getDouble(posicion);
+                case Types.BOOLEAN -> value = cst.getBoolean(posicion);
+                case Types.DATE -> value = cst.getDate(posicion);
+                case Types.BLOB -> value = cst.getBytes(posicion);
+                // Agregar más tipos según sea necesario
+            }
             parametrosSalida.put(posicion, value);
         }
     }
     
-    private Object obtenerValorSalida(CallableStatement cst, int posicion, 
-            int sqlType) throws SQLException {
-        return switch (sqlType) {
-            case Types.INTEGER -> cst.getInt(posicion);
-            case Types.VARCHAR -> cst.getString(posicion);
-            case Types.DOUBLE -> cst.getDouble(posicion);
-            case Types.BOOLEAN -> cst.getBoolean(posicion);
-            case Types.DATE -> cst.getDate(posicion);
-            case Types.BLOB -> cst.getBytes(posicion);
-            // Agregar más tipos según sea necesario
-            default -> throw new SQLException("Tipo SQL no soportado: " + sqlType);
-        };
-    }
-
+    
 }

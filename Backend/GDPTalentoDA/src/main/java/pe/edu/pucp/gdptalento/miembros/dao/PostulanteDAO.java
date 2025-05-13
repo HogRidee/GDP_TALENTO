@@ -12,9 +12,8 @@ import pe.edu.pucp.gdptalento.miembros.model.Postulante;
  * @author USER
  */
 public interface PostulanteDAO {
-    int insertarPostulante(Postulante postulante);
-    int modificarPostulante(Postulante postulante);
-    int eliminarPostulante(int id);  
-    ArrayList<Postulante> listarPostulantes();
-    Postulante obtenerPorId(int idPostulante);
+    int insertar(Postulante postulante);
+    int modificar(Postulante postulante);
+    int eliminar(int idPostulante);
+    ArrayList<Postulante> listarTodos();
 }

@@ -5,10 +5,12 @@
 package pe.edu.pucp.gdptalento.miembros.mysql;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.gdptalento.miembros.dao.PostulanteDAO;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoProceso;
@@ -17,128 +19,56 @@ import pucp.edu.pe.gdptalento.config.DBManager;
 
 /**
  *
- * @author raulm
+ * @author Dayana
  */
-public class PostulanteMySQL extends MiembroPUCPMySQL implements PostulanteDAO{
-    
-    private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
+public class PostulanteMySQL implements PostulanteDAO{
     private Connection con;
     private ResultSet rs;
-    private PreparedStatement pst;
     
     @Override
-    public int insertarPostulante(Postulante postulante) {
-        int resultado = 0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            String sql = "INSERT INTO MiembroPUCP(nombre, correo, codigoPUCP, facultad, especialidad, status, telefono) VALUES(?,?,?,?,?,?,?)";
-            pst = con.prepareStatement(sql);
-            //st = con.createStatement();
-            pst.setString(1, postulante.getNombre());
-            pst.setString(2, postulante.getCorreo());
-            pst.setInt(3, postulante.getCodigoPUCP());
-            pst.setString(4, postulante.getFacultad());
-            pst.setString(5, postulante.getEspecialidad());
-            pst.setString(6, String.valueOf(postulante.getStatus()));
-            pst.setString(7, String.valueOf(postulante.getTelefono()));
-            resultado=pst.executeUpdate();
-            //sql=con.createStatement();
-            sql="SELECT @@last_insert_id AS id";
-            pst=con.prepareStatement(sql);
-            rs=pst.executeQuery();
-            rs.next();
-            postulante.setId(rs.getInt("id"));
-            sql="INSERT INTO Postulante(id_postulante, estado_proceso) VALUES(?,?)";
-            pst=con.prepareStatement(sql);
-            pst.setInt(1, postulante.getId());
-            pst.setString(2, String.valueOf(postulante.getStatus()));
-            resultado=pst.executeUpdate();
-            System.out.println("Se ingreso un PostulantePUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+    public int insertar(Postulante postulante) {
+        Map<Integer,Object> parametrosSalida = new HashMap<>();
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, postulante.getNombre());
+        parametrosEntrada.put(3, postulante.getCorreo());
+        parametrosEntrada.put(4, postulante.getCodigoPUCP());
+        parametrosEntrada.put(5, postulante.getFacultad());
+        parametrosEntrada.put(6, postulante.getEspecialidad());
+        parametrosEntrada.put(7, postulante.getStatus());
+        parametrosEntrada.put(8, postulante.getTelefono());
+        parametrosEntrada.put(9, postulante.getEstadoProceso());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_POSTULANTE", parametrosEntrada, parametrosSalida);
+        System.out.println("Se ha realizado el registro del postulante");
+        return postulante.getId();
+    }
+
+    @Override
+    public int modificar(Postulante postulante) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, postulante.getId());
+        parametrosEntrada.put(2, postulante.getEstadoProceso());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_POSTULANTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del postulante");
         return resultado;
     }
 
     @Override
-    public int modificarPostulante(Postulante postulante) {
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL MiembroPUCP
-            String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, postulante.getCorreo());
-            pst.setString(2, postulante.getFacultad());
-            pst.setString(3, postulante.getEspecialidad());
-            pst.setString(4, String.valueOf(postulante.getStatus()));
-            pst.setInt(5, postulante.getTelefono());
-            pst.setInt(6, postulante.getId());
-            resultado=pst.executeUpdate();
-            System.out.println("Se modifico un miembroPUCP");
-            //Ejecuciones SQL Staff
-            sql = "UPDATE Postulante SET estado_proceso = ? WHERE id_postulante = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, String.valueOf(postulante.getEstadoProceso()));
-            pst.setInt(2, postulante.getId());
-            resultado=pst.executeUpdate();
-            System.out.println("Se modifico un postulante");
-            
-            //Ejecuciones SQL
-            
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+    public int eliminar(int idPostulante) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idPostulante);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_POSTULANTE", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del postulante");
         return resultado;
     }
 
     @Override
-    public int eliminarPostulante(int id) {
-        int resultado=0;
+    public ArrayList<Postulante> listarTodos() {
+        ArrayList<Postulante> postulantes = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_POSTULANTES", null);
+        System.out.println("Lectura de postulantes...");
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            st = con.createStatement();
-            String sql = "DELETE FROM Postulante WHERE id_postulante = " + id;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un postulante");
-            con = db.getConnection();
-            //Ejecuciones SQL
-            st = con.createStatement();
-            sql = "DELETE FROM MiembroPUCP WHERE id_miembro_pucp = " + id;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un miembroPUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
-    }
-
-    @Override
-    public ArrayList<Postulante> listarPostulantes() {
-        ArrayList<Postulante> listadoPostulantes = new ArrayList<Postulante>();
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            String sql = "SELECT m.id_miembro_pucp, m.codigoPUCP, m.nombre, m.correo, m.telefono, m.facultad, m.especialidad, m.status, p.estado_proceso FROM MiembroPUCP m INNER JOIN Postulantes p ON m.id_miembro_pucp = p.id_postulante";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
             while(rs.next()){
-                String estadoString = rs.getString("status");
-                EstadoPUCP estado = EstadoPUCP.valueOf(estadoString);
-                String procesoString = rs.getString("estado_proceso");
-                EstadoProceso proceso = EstadoProceso.valueOf(procesoString);
                 Postulante postulante = new Postulante();
                 postulante.setId(rs.getInt("id_miembro_pucp"));
                 postulante.setNombre(rs.getString("nombre"));
@@ -146,22 +76,36 @@ public class PostulanteMySQL extends MiembroPUCPMySQL implements PostulanteDAO{
                 postulante.setCodigoPUCP(rs.getInt("codigoPUCP"));
                 postulante.setFacultad(rs.getString("facultad"));
                 postulante.setEspecialidad(rs.getString("especialidad"));
-                postulante.setStatus(estado);
-                postulante.setTelefono(rs.getInt("telefono"));
-                postulante.setEstadoProceso(proceso);
-                listadoPostulantes.add(postulante);
+                
+                String nombre_status= rs.getString("status");
+                if(nombre_status.equals("MATRICULADO")){
+                    postulante.setStatus(EstadoPUCP.MATRICULADO);
+                }else if(nombre_status.equals("NO_MATRICULADO")){
+                     postulante.setStatus(EstadoPUCP.NO_MATRICULADO);
+                }else if(nombre_status.equals("EGRESADO")){
+                    postulante.setStatus(EstadoPUCP.EGRESADO);
+                }else if(nombre_status.equals("EXTERNO")){
+                    postulante.setStatus(EstadoPUCP.EXTERNO);
+                }
+                postulante.setTelefono(rs.getString("telefono"));
+                
+                String nombre_estado_proceso= rs.getString("estado_proceso");
+                if(nombre_estado_proceso.equals("PENDIENTE")){
+                    postulante.setEstadoProceso(EstadoProceso.PENDIENTE);
+                }else if(nombre_estado_proceso.equals("APROBADO")){
+                    postulante.setEstadoProceso(EstadoProceso.APROBADO);
+                }else if(nombre_estado_proceso.equals("RECHAZADO")){
+                    postulante.setEstadoProceso(EstadoProceso.RECHAZADO);
+                }
+                
+                postulantes.add(postulante);
             }
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
         }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return listadoPostulantes;
+        return postulantes;
     }
-
-    @Override
-    public Postulante obtenerPorId(int idPostulante) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 }

@@ -5,10 +5,12 @@
 package pe.edu.pucp.gdptalento.miembros.mysql;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import pe.edu.pucp.gdptalento.miembros.dao.MiembroPUCPDAO;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.model.MiembroPUCP;
@@ -16,121 +18,88 @@ import pucp.edu.pe.gdptalento.config.DBManager;
 
 /**
  *
- * @author raulm
+ * @author Dayana
  */
 public class MiembroPUCPMySQL implements MiembroPUCPDAO{
-    
-    private Statement st;
     private Connection con;
     private ResultSet rs;
-    private PreparedStatement pst;
     
     @Override
-    public int insertarMiembroPUCP(MiembroPUCP miembroPUCP) {
-        int resultado = 0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            String sql = "INSERT INTO MiembroPUCP(nombre, correo, codigoPUCP, facultad, especialidad, status, telefono) VALUES(?,?,?,?,?,?,?)";
-            pst = con.prepareStatement(sql);
-            //st = con.createStatement();
-            pst.setString(1, miembroPUCP.getNombre());
-            pst.setString(2, miembroPUCP.getCorreo());
-            pst.setInt(3, miembroPUCP.getCodigoPUCP());
-            pst.setString(4, miembroPUCP.getFacultad());
-            pst.setString(5, miembroPUCP.getEspecialidad());
-            pst.setString(6, String.valueOf(miembroPUCP.getStatus()));
-            pst.setString(7, String.valueOf(miembroPUCP.getTelefono()));
-            resultado=pst.executeUpdate();
-            System.out.println("Se ingreso un miembroPUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+    public int insertar(MiembroPUCP miembro) {
+        Map<Integer,Object> parametrosSalida = new HashMap<>();
+        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        parametrosSalida.put(1, Types.INTEGER);
+        parametrosEntrada.put(2, miembro.getNombre());
+        parametrosEntrada.put(3, miembro.getCorreo());
+        parametrosEntrada.put(4, miembro.getCodigoPUCP());
+        parametrosEntrada.put(5, miembro.getFacultad());
+        parametrosEntrada.put(6, miembro.getEspecialidad());
+        parametrosEntrada.put(7, miembro.getStatus());
+        parametrosEntrada.put(8, miembro.getTelefono());
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_MIEMBROPUCP", parametrosEntrada, parametrosSalida);
+        System.out.println("Se ha realizado el registro del miembro PUCP");
+        return miembro.getId();
+    }
+
+    @Override
+    public int modificar(MiembroPUCP miembro) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, miembro.getId());
+        parametrosEntrada.put(2, miembro.getNombre());
+        parametrosEntrada.put(3, miembro.getCorreo());
+        parametrosEntrada.put(4, miembro.getCodigoPUCP());
+        parametrosEntrada.put(5, miembro.getFacultad());
+        parametrosEntrada.put(6, miembro.getEspecialidad());
+        parametrosEntrada.put(7, miembro.getStatus());
+        parametrosEntrada.put(8, miembro.getTelefono());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_MIEMBROPUCP", parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del miembro PUCP");
         return resultado;
     }
 
     @Override
-    public int modificarMiembroPUCP(MiembroPUCP miembroPUCP) {
-        int resultado=0;
-        try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL MiembroPUCP
-            String sql = "UPDATE MiembroPUCP SET correo = ? facultad = ? especialidad = ? status = ? telefono = ? WHERE id_miembro_pucp = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, miembroPUCP.getId());
-            pst.setString(2, miembroPUCP.getCorreo());
-            pst.setString(3, miembroPUCP.getFacultad());
-            pst.setString(4, miembroPUCP.getEspecialidad());
-            pst.setString(5, String.valueOf(miembroPUCP.getStatus()));
-            pst.setInt(6, miembroPUCP.getTelefono());
-            resultado = pst.executeUpdate();
-            System.out.println("Se modifico un miembroPUCP");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
+    public int eliminar(int idMiembro) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idMiembro);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_MIEMBROPUCP", parametrosEntrada, null);
+        System.out.println("Se ha realizado la eliminacion del miembro PUCP");
         return resultado;
     }
 
     @Override
-    public int eliminarMiembroPUCP(int id) {
-        int resultado=0;
+    public ArrayList<MiembroPUCP> listarTodos() {
+        ArrayList<MiembroPUCP> miembros = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_MIEMBROPUCP", null);
+        System.out.println("Lectura de miembros PUCP...");
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
-            //Ejecuciones SQL
-            st = con.createStatement();
-            String sql = "DELETE FROM Staff WHERE id_staff = " + id;
-            resultado=st.executeUpdate(sql);
-            System.out.println("Se elimino un staff");
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return resultado;
-    }
-
-    @Override
-    public ArrayList<MiembroPUCP> listarMiembrosPUCP() {
-        ArrayList<MiembroPUCP> listadoMiembro = new ArrayList<MiembroPUCP>();
-        try{
-            /*DBManager db = new DBManager();
-            con = db.getConnection();
-            String sql = "SELECT * FROM MiembroPUCP";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
             while(rs.next()){
-                String estadoString = rs.getString("status");
-                EstadoPUCP estado = EstadoPUCP.valueOf(estadoString);
-                MiembroPUCP miembro = new MiembroPUCP();//es abstracto, no se puede utilizar p
+                MiembroPUCP miembro = new MiembroPUCP();
                 miembro.setId(rs.getInt("id_miembro_pucp"));
                 miembro.setNombre(rs.getString("nombre"));
                 miembro.setCorreo(rs.getString("correo"));
                 miembro.setCodigoPUCP(rs.getInt("codigoPUCP"));
                 miembro.setFacultad(rs.getString("facultad"));
                 miembro.setEspecialidad(rs.getString("especialidad"));
-                miembro.setStatus(estado);
-                miembro.setTelefono(rs.getInt("telefono"));
-                listadoMiembro.add(miembro);
-            }*/
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
+                
+                String nombre_status= rs.getString("status");
+                if(nombre_status.equals("MATRICULADO")){
+                    miembro.setStatus(EstadoPUCP.MATRICULADO);
+                }else if(nombre_status.equals("NO_MATRICULADO")){
+                     miembro.setStatus(EstadoPUCP.NO_MATRICULADO);
+                }else if(nombre_status.equals("EGRESADO")){
+                    miembro.setStatus(EstadoPUCP.EGRESADO);
+                }else if(nombre_status.equals("EXTERNO")){
+                    miembro.setStatus(EstadoPUCP.EXTERNO);
+                }
+                miembro.setTelefono(rs.getString("telefono"));
+                miembros.add(miembro);
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR: " + ex.getMessage());
+        }finally{
+            DBManager.getInstance().cerrarConexion();
         }
-        finally{
-            try{con.close();} catch(Exception ex){System.out.println(ex.getMessage());}
-        }
-        return listadoMiembro;
+        return miembros;
     }
-
-    @Override
-    public MiembroPUCP obtenerPorIdMiembroPUCP(int idMiembroPUCP) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }

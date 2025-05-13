@@ -1,6 +1,6 @@
 package pe.edu.pucp.gdptalento.miembros.model;
 
-public abstract class MiembroPUCP {
+public class MiembroPUCP {
     private int id;
     private String nombre;
     private String correo;
@@ -8,7 +8,7 @@ public abstract class MiembroPUCP {
     private String facultad;
     private String especialidad;
     private EstadoPUCP status;
-    private int telefono; 
+    private String telefono; 
 
     // Constructor por defecto
     public MiembroPUCP() {
@@ -19,12 +19,11 @@ public abstract class MiembroPUCP {
         this.facultad = "";
         this.especialidad = "";
         this.status = EstadoPUCP.NO_MATRICULADO;
-        this.telefono = 0;
+        this.telefono = "";
     }
 
     // Constructor con parámetros
-    public MiembroPUCP(int id, String nombre, String correo, int codigoPUCP, String facultad, String especialidad, EstadoPUCP status, int telefono) {
-        this.id = id;
+    public MiembroPUCP(String nombre, String correo, int codigoPUCP, String facultad, String especialidad, EstadoPUCP status, String telefono) {
         this.nombre = nombre;
         this.correo = correo;
         this.codigoPUCP = codigoPUCP;
@@ -103,11 +102,11 @@ public abstract class MiembroPUCP {
         this.status = status;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

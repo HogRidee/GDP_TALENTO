@@ -29,8 +29,7 @@ public class EventoMySQL implements EventoDAO{
     public int insertar(Evento evento) {
         int resultado=0;
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             String sql= "INSERT INTO Evento (id_evento, fecha, tipoEvento, estadoEvento)"
                     + "VALUES ('" + evento.getId() +
                     "','" + evento.getFecha()+"','"+ evento.getTipoEvento()+"','"+ evento.getEstadoEvento()+ "')";
@@ -49,8 +48,7 @@ public class EventoMySQL implements EventoDAO{
     public int modificar(Evento evento) {
        int resultado=0;
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             String sql= "UPDATE Evento SET fecha = '"
                     + evento.getFecha()+ "'  WHERE"+  " id_evento = "+ evento.getId();
             st = con.createStatement();
@@ -68,8 +66,7 @@ public class EventoMySQL implements EventoDAO{
     public int eliminar(Evento evento) {
         int resultado=0;
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             String sql= "UPDATE Evento SET estadoEvento = 'CANCELADO'"
                     + "  WHERE id_evento = "+ evento.getId();
             st = con.createStatement();
@@ -87,8 +84,7 @@ public class EventoMySQL implements EventoDAO{
     public ArrayList<Evento> listarTodos() {
          ArrayList<Evento> eventos = new ArrayList<>();
         try{
-            DBManager db = new DBManager();
-            con = db.getConnection();
+            con= DBManager.getInstance().getConnection();
             
             String sql = "SELECT e.id_evento, e.fecha, e.tipoEvento, e.estadoEvento"
                     + " FROM Evento e"

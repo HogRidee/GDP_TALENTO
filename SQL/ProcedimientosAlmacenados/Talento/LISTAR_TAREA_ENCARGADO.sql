@@ -1,0 +1,14 @@
+DROP PROCEDURE IF EXISTS LISTAR_TAREA_ENCARGADO;
+
+DELIMITER $$
+
+CREATE PROCEDURE LISTAR_TAREA_ENCARGADO(
+    IN p_id_tarea INT
+)
+BEGIN
+    SELECT id_usuario
+    FROM Tarea_Encargado
+    WHERE id_tarea = p_id_tarea;
+END$$
+
+DELIMITER ;

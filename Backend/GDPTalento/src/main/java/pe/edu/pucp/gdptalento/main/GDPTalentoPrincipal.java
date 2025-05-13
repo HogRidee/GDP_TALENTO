@@ -17,6 +17,7 @@ import pe.edu.pucp.gdptalento.core.model.Rol;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.core.mysql.RolMySQL;
 import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
+import pe.edu.pucp.gdptalento.miembros.business.StaffBO;
 import pe.edu.pucp.gdptalento.miembros.dao.StaffDAO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
@@ -48,6 +49,14 @@ public class GDPTalentoPrincipal {
                 System.out.println("  - " + permiso);
             }
             System.out.println("----------------------");
+        }
+        
+        StaffBO boStaff = new StaffBO();
+        ArrayList<Staff> staff_listado = boStaff.listarTodas();
+        for (Staff s: staff_listado){
+            System.out.println("Nombre    -   Area");
+            System.out.print(s.getNombre() + "    ");
+            System.out.println(s.getArea());
         }
     }
 }
