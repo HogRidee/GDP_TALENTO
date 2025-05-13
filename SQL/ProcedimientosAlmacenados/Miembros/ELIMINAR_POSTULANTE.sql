@@ -1,0 +1,14 @@
+DROP PROCEDURE IF EXISTS ELIMINAR_POSTULANTE;
+
+DELIMITER $$
+
+CREATE PROCEDURE ELIMINAR_POSTULANTE(
+    IN _id_postulante INT
+)
+BEGIN
+    UPDATE Postulante
+    SET estado_proceso = 'RECHAZADO'
+    WHERE id_postulante = _id_postulante;
+END$$
+
+DELIMITER ;

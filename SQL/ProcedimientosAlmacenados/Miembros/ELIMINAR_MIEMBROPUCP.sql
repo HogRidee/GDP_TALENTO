@@ -1,0 +1,14 @@
+DROP PROCEDURE IF EXISTS ELIMINAR_MIEMBROPUCP;
+
+DELIMITER $$
+
+CREATE PROCEDURE ELIMINAR_MIEMBROPUCP (
+    IN _id_miembro_pucp INT
+)
+BEGIN
+    UPDATE MiembroPUCP 
+    SET status = 'NO_MATRICULADO'
+    WHERE id_miembro_pucp = _id_miembro_pucp;
+END$$
+
+DELIMITER ;
