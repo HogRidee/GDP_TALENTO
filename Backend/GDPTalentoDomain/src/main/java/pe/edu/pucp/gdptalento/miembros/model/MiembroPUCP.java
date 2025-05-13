@@ -1,6 +1,6 @@
 package pe.edu.pucp.gdptalento.miembros.model;
 
-public abstract class MiembroPUCP {
+public class MiembroPUCP {
     private int id;
     private String nombre;
     private String correo;
