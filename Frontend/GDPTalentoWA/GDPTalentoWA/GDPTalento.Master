@@ -8,7 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    
+    <link href="Content/Fonts/css/all.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet"/>
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <title></title>
