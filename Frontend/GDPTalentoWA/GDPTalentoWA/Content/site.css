@@ -86,3 +86,65 @@ html, body {
     background-color: #eee;
     border-color: #ddd;
 }
+
+.bg-sidebar-gdp {
+    background-color: #f9fafc;
+    color: #000;
+}
+
+.flex-fill {
+    flex: 1;
+    min-width: 0;
+}
+
+.bg-sidebar-gdp .mynav li a {
+    color: #000 !important;
+}
+
+.fa-bars {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.container-fluid {
+    height: 100vh;
+}
+
+.mynav li a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.rounded-circle.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.sidebar-title {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar-separator {
+    border-top: 1px solid #dee2e6;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.logout-link {
+    color: #dc3545 !important; /* rojo Bootstrap */
+    cursor: pointer;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.sidebar-wide {
+    width: 160px; /* Puedes ajustar a 280px si quieres aún más espacio */
+}

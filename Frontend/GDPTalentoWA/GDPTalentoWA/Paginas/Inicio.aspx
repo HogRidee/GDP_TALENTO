@@ -1,19 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="GDPTalentoWA.Inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GDPTalento.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="GDPTalentoWA.Paginas.Inicio" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cph_titulo" runat="server">
+    Inicio
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cph_contenido" runat="server">
+    <h2>
+        Bienvenido al Panel de Recursos Humanos
+    </h2>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cph_scripts" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Inicio</title>
-</head>
-<body>
-    <h1>Página de Inicio</h1>
-    <form id="formularioInicio" runat="server">
-        <div>
-            <asp:Label ID="labelNombre" runat="server" Text="Ingrese el nombre:"></asp:Label>
-            <asp:TextBox ID="textoNombre" runat="server"></asp:TextBox>
-        </div>
-    </form>
-</body>
-</html>
+</asp:Content>
