@@ -1,0 +1,150 @@
+html, body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.gfg {
+    height: 50px;
+    width: 50px;
+}
+
+.mynav {
+    color: #fff;
+}
+
+    .mynav li a {
+        color: #fff;
+        text-decoration: none;
+        width: 100%;
+        display: block;
+        border-radius: 5px;
+        padding: 8px 5px;
+    }
+
+        .mynav li a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mynav li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mynav li a i {
+            width: 25px;
+            text-align: center;
+        }
+
+.notification-badge {
+    background-color: rgba(255, 255, 255, 0.7);
+    float: right;
+    color: #222;
+    font-size: 14px;
+    padding: 0px 8px;
+    border-radius: 2px;
+}
+
+.table table tbody tr td a,
+.table table tbody tr td span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.table table > tbody > tr > td > span {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.table table > tbody > tr > td:first-child > a,
+.table table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.table table > tbody > tr > td:last-child > a,
+.table table > tbody > tr > td:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.table table > tbody > tr > td > a:hover,
+.table table > tbody > tr > td > span:hover,
+.table table > tbody > tr > td > a:focus,
+.table table > tbody > tr > td > span:focus {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.bg-sidebar-gdp {
+    background-color: #f9fafc;
+    color: #000;
+}
+
+.flex-fill {
+    flex: 1;
+    min-width: 0;
+}
+
+.bg-sidebar-gdp .mynav li a {
+    color: #000 !important;
+}
+
+.fa-bars {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.container-fluid {
+    height: 100vh;
+}
+
+.mynav li a.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.rounded-circle.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.sidebar-title {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.sidebar-separator {
+    border-top: 1px solid #dee2e6;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.logout-link {
+    color: #dc3545 !important; /* rojo Bootstrap */
+    cursor: pointer;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.sidebar-wide {
+    width: 160px; /* Puedes ajustar a 280px si quieres aún más espacio */
+}

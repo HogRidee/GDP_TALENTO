@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GDPTalento.master.cs" Inherits="GDPTalentoWA.GDPTalento" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Fonts/css/all.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet"/>
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-3.7.1.js"></script>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+
+    <title>
+        <asp:ContentPlaceHolder ID="cph_titulo" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="cph_scripts" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container-fluid d-flex p-0 h-100">
+        <!-- DIVISIÓN IZQUIERDA -->
+        <div id="bdSidebar" class="sidebar-wide d-flex flex-column flex-shrink-0 pt-4 bg-sidebar-gdp offcanvas-md offcanvas-start">
+            <div class="mb-3">
+                <h5 class="fw-bold text-primary mb-0 ps-3">GDP Talento</h5>
+                <small class="text-secondary ps-3">Director de RRHH</small>
+                <hr class="my-2 ms-3" />
+            </div>
+            <ul class="mynav nav nav-pills flex-column mb-auto">
+                <li class="nav-item mb-1">
+                    <a href="#Inicio.aspx" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-house pe-2"></i>Inicio
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-user pe-2"></i>Miembros
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-user-plus pe-2"></i>Postulantes
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-user-check pe-2"></i>Entrevistas
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-medal pe-2"></i>Evaluaciones
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-square-check pe-2"></i>Tareas
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-calendar pe-2"></i>Eventos
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-chart-simple pe-2"></i>Reportes
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                        <i class="fa-regular fa-gear pe-2"></i>Configuración
+                    </a>
+                </li>
+            </ul>
+            <hr class="my-2 ms-3" />
+            <div class="mt-auto d-flex align-items-center text-danger ps-3 mb-3">
+                <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
+                <span class="fw-semibold">Cerrar sesión</span>
+            </div>
+        </div>
+
+        <!-- DIVISIÓN DERECHA -->
+        <div class="bg-light flex-fill overflow-auto">
+            <!-- BARRA SUPERIOR PARA DISPOSITIVOS PEQUEÑOS -->
+            <div class="p-2 d-md-none d-flex text-white bg-primary">
+                <a data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" class="text-white" href="#">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+            </div>
+
+            <!-- BARRA USUARIO -->
+            <nav class="navbar navbar-light bg-white border-bottom px-3 py-2">
+                <div class="ms-auto d-flex align-items-center gap-3">
+                    <i class="fas fa-bell text-dark position-relative">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </i>
+                    <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                        <small>D</small>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- CONTENIDO DE LA PÁGINA WEB -->
+            <div class="p-4">
+                <form runat="server">
+                    <asp:ContentPlaceHolder ID="cph_contenido" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
