@@ -14,22 +14,35 @@
                         <i class="fa-regular fa-user fa-3x text-muted"></i>
                     </div>
                 </div>
-                <h4 class="fw-bold text-center text-md-start">Ana García</h4>
-                <p class="text-muted mb-2 text-center text-md-start">Programador Senior - Desarrollo</p>
-                <span class="badge bg-success mb-3">Activo</span>
+
+                <h4 class="fw-bold text-center text-md-start">
+                    <asp:Label ID="lblNombre" runat="server" Text="Ana García" CssClass="fw-bold text-center text-md-start"></asp:Label>
+                </h4>
+
+                <p class="text-muted mb-2 text-center text-md-start">
+                    <asp:Label ID="lblCargo" runat="server" Text="Programador Senior - Desarrollo" CssClass="text-muted"></asp:Label>
+                </p>
+
+                <asp:Label ID="lblEstado" runat="server" Text="Activo" CssClass="badge bg-success mb-3"></asp:Label>
 
                 <ul class="list-unstyled mb-3">
-                    <li><i class="fa-regular fa-envelope pe-2"></i>ana.garcia@pucp.edu.pe</li>
-                    <li><i class="fa-regular fa-phone pe-2"></i>987654321</li>
-                    <li><i class="fa-regular fa-location-dot pe-2"></i>Av. Universitaria 1801, San Miguel</li>
-                    <li><i class="fa-regular fa-id-card pe-2"></i>Código: 20180123</li>
-                    <li><i class="fa-regular fa-calendar pe-2"></i>Ingreso: 10/01/2023</li>
-                    <li><i class="fa-regular fa-graduation-cap pe-2"></i>Ingeniería Informática - 9no ciclo</li>
+                    <li><i class="fa-regular fa-envelope pe-2"></i>
+                        <asp:Label ID="lblCorreo" runat="server" Text="ana.garcia@pucp.edu.pe"></asp:Label></li>
+                    <li><i class="fa-regular fa-phone pe-2"></i>
+                        <asp:Label ID="lblTelefono" runat="server" Text="987654321"></asp:Label></li>
+                    <li><i class="fa-regular fa-location-dot pe-2"></i>
+                        <asp:Label ID="lblDireccion" runat="server" Text="Av. Universitaria 1801, San Miguel"></asp:Label></li>
+                    <li><i class="fa-regular fa-id-card pe-2"></i>Código:
+                        <asp:Label ID="lblCodigo" runat="server" Text="20180123"></asp:Label></li>
+                    <li><i class="fa-regular fa-calendar pe-2"></i>Ingreso:
+                        <asp:Label ID="lblFechaIngreso" runat="server" Text="10/01/2023"></asp:Label></li>
+                    <li><i class="fa-regular fa-graduation-cap pe-2"></i>
+                        <asp:Label ID="lblCarrera" runat="server" Text="Ingeniería Informática - 9no ciclo"></asp:Label></li>
                 </ul>
 
-                <a href="EditarMiembro.aspx" class="btn btn-outline-primary mt-2">
+                <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-outline-primary mt-2" OnClick="btnEditar_Click" CausesValidation="false" UseSubmitBehavior="false">
                     <i class="fa-regular fa-pen-to-square me-1"></i> Editar información
-                </a>
+                </asp:LinkButton>
             </div>
 
             <!-- LÍNEA SEPARADORA -->
@@ -53,23 +66,29 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>4.5
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <asp:Label ID="lblEvaluacion" runat="server" CssClass="ms-1" Text="4.5"></asp:Label>
                     </span>
                 </div>
 
                 <div class="mb-3 d-flex align-items-center">
                     <i class="fa-regular fa-calendar text-primary me-2"></i>
-                    <strong>Asistencia:</strong> <span class="ms-2">90%</span>
+                    <strong>Asistencia:</strong>
+                    <asp:Label ID="lblAsistencia" runat="server" CssClass="ms-2" Text="90%"></asp:Label>
                 </div>
 
                 <div class="mb-3 d-flex align-items-center">
                     <i class="fa-regular fa-clock text-secondary me-2"></i>
-                    <strong>Tareas pendientes:</strong> <span class="ms-2">2</span>
+                    <strong>Tareas pendientes:</strong>
+                    <asp:Label ID="lblPendientes" runat="server" CssClass="ms-2" Text="2"></asp:Label>
                 </div>
 
                 <div class="mb-3 d-flex align-items-center">
                     <i class="fa-regular fa-circle-check text-success me-2"></i>
-                    <strong>Tareas completadas:</strong> <span class="ms-2">15</span>
+                    <strong>Tareas completadas:</strong>
+                    <asp:Label ID="lblCompletadas" runat="server" CssClass="ms-2" Text="15"></asp:Label>
                 </div>
             </div>
+        </div>
+    </div>
 </asp:Content>

@@ -13,5 +13,10 @@ namespace GDPTalentoWA.Paginas
         {
 
         }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("modificarUsuario.aspx");
+        }
     }
 }

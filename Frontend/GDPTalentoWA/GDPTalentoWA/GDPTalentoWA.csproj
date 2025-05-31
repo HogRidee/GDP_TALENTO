@@ -119,6 +119,7 @@
     <Content Include="Imagenes\LOGO_GDP.png" />
     <Content Include="index.html" />
     <Content Include="Paginas\Inicio.aspx" />
+    <Content Include="Paginas\modificarUsuario.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Prueba.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="Paginas\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\modificarUsuario.aspx.cs">
+      <DependentUpon>modificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\modificarUsuario.aspx.designer.cs">
+      <DependentUpon>modificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
