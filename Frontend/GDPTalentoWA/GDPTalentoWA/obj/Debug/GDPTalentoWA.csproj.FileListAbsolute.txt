@@ -5,3 +5,10 @@ C:\Users\iarao\Documents\Ivan\Universidad\2025-1\PROG3\TA\GDP_TALENTO\Frontend\G
 C:\Users\iarao\Documents\Ivan\Universidad\2025-1\PROG3\TA\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.csproj.CoreCompileInputs.cache
 C:\Users\iarao\Documents\Ivan\Universidad\2025-1\PROG3\TA\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.dll
 C:\Users\iarao\Documents\Ivan\Universidad\2025-1\PROG3\TA\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.pdb
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\bin\GDPTalentoWA.dll.config
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\bin\GDPTalentoWA.dll
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\bin\GDPTalentoWA.pdb
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.dll
+C:\Users\USER\Documents\GitHub\GDP_TALENTO\Frontend\GDPTalentoWA\GDPTalentoWA\obj\Debug\GDPTalentoWA.pdb
