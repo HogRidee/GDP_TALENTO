@@ -88,6 +88,7 @@ out/
 /Backend/GDPTalentoDA/target/
 /Backend/GDPTalentoBusiness/target/
 /Backend/GDPTalentoWA/target/
+/Backend/GDPTalentoWS/target/
 
 # Ignorar carpetas de compilación y binarios en .NET y otros
 **/obj/

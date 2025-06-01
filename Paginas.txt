@@ -1,0 +1,7 @@
+//Despliegue desde Maquina Aarón: "D:\glassfish-7.0.24\glassfish7\bin\asadmin.bat" deploy --force=true "C:\Users\USER\Documents\GitHub\GDP_TALENTO\Backend\GDPTalentoWA\target\GDPTalentoWA-1.0.war"
+
+
+//
+http://localhost:8080/GDPTalentoWA/RolWS?Tester
+http://localhost:8080/GDPTalentoWA/StaffWS?Tester
+//

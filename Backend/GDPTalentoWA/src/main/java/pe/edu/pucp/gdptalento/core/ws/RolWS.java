@@ -15,6 +15,7 @@ import pe.edu.pucp.gdptalento.core.model.Rol;
  *
  * @author USER
  */
+
 @WebService(serviceName = "RolWS")
 public class RolWS {
     private RolBO boRol;

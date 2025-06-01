@@ -15,6 +15,7 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
  *
  * @author USER
  */
+
 @WebService(serviceName = "UsuarioWS")
 public class UsuarioWS {
     private UsuarioBO boUsuario;
@@ -35,7 +36,7 @@ public class UsuarioWS {
         boUsuario=new UsuarioBO();
         return boUsuario.eliminar(idUsuario);
     }
-    @WebMethod(operationName = "eliminarUsuario")
+    @WebMethod(operationName = "listarUsuarios")
     public ArrayList<Usuario> listarUsuarios() {
         boUsuario=new UsuarioBO();
         return boUsuario.listarTodas();
