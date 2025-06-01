@@ -89,3 +89,11 @@ out/
 /Backend/GDPTalentoBusiness/target/
 /Backend/GDPTalentoWA/target/
 /Backend/GDPTalentoWS/target/
+
+# Ignorar carpetas de compilación y binarios en .NET y otros
+**/obj/
+**/bin/
+
+# Ignorar archivos binarios generados por compilación
+*.dll
+*.pdb

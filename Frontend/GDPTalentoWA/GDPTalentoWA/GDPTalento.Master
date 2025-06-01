@@ -25,14 +25,14 @@
     <div class="container-fluid d-flex p-0 h-100">
         <!-- DIVISIÓN IZQUIERDA -->
         <div id="bdSidebar" class="sidebar-wide d-flex flex-column flex-shrink-0 pt-4 bg-sidebar-gdp offcanvas-md offcanvas-start">
-            <div class="mb-3">
-                <h5 class="fw-bold text-primary mb-0 ps-3">GDP Talento</h5>
-                <small class="text-secondary ps-3">Director de RRHH</small>
-                <hr class="my-2 ms-3" />
+            <div class="sidebar-header mb-2">
+                <h5 class="fw-bold mb-0 ps-3" style="color: #2562ea;">GDP Talento</h5>
+                <small class="ps-3" style="color: #6a7281; font-weight: normal;">Director de RRHH</small>
+                <hr style="margin-top: 1rem; margin-bottom: 0.5rem;" />
             </div>
             <ul class="mynav nav nav-pills flex-column mb-auto">
                 <li class="nav-item mb-1">
-                    <a href="#Inicio.aspx" class="nav-link text-dark d-flex align-items-center">
+                    <a href="#Inicio.aspx" class="nav-link text-dark d-flex align-items-center ">
                         <i class="fa-regular fa-house pe-2"></i>Inicio
                     </a>
                 </li>
@@ -77,8 +77,8 @@
                     </a>
                 </li>
             </ul>
-            <hr class="my-2 ms-3" />
-            <div class="mt-auto d-flex align-items-center text-danger ps-3 mb-3">
+            <hr class="my-2" />
+            <div class="d-flex align-items-center logout-link text-danger mt-2 mb-2" style="padding-left: 2.2rem; cursor: pointer;">
                 <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
                 <span class="fw-semibold">Cerrar sesión</span>
             </div>
