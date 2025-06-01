@@ -1,18 +1,16 @@
-package pe.edu.pucp.gdptalento.services;
+package pe.edu.pucp.gdptalento.core.ws;
 
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 
-/**
- *
- * @author iarao
- */
 @WebService(serviceName = "ServicioWeb")
 public class ServicioWeb {
 
     /**
      * This is a sample web service operation
+     * @param txt
+     * @return 
      */
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
