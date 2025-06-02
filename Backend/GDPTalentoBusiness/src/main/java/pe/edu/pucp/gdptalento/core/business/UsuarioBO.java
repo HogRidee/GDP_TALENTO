@@ -1,6 +1,8 @@
 package pe.edu.pucp.gdptalento.core.business;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
@@ -26,5 +28,17 @@ public class UsuarioBO {
     
     public ArrayList<Usuario> listarTodas(){
         return daoUsuario.listarTodas();
+    }
+    
+    public int verificarUsuario(int id, String contrasenha){
+        ArrayList<Usuario> arr=new ArrayList<>(daoUsuario.listarTodas());
+        for( Usuario u: arr){
+            if(u.getId()== id){
+                if(u.getHashContrasena().equals(contrasenha)){
+                    return 1;
+                }
+            }
+        }
+        return 0;
     }
 }
