@@ -216,3 +216,15 @@ html, body {
     padding-top: 7px;
     padding-bottom: 7px;
 }
+
+.divider-line {
+    border-color: #e5e6ea !important;
+    border-width: 1px !important;
+}
+
+.navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 70px;
+}
+
