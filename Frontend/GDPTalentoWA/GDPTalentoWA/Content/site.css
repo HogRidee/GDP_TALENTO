@@ -204,3 +204,15 @@ html, body {
     padding: 4px 6px;
 }
 
+.mynav li a.active {
+    background-color: #dbeafe !important;
+    color: #1d4ed8 !important;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.sidebar-wide .nav-link {
+    font-size: 0.90rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
