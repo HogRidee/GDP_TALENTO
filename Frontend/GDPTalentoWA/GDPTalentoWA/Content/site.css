@@ -190,4 +190,17 @@ html, body {
     font-size: 0.925rem;
 }
 
+.navbar {
+    min-height: 56px;
+}
+
+.navbar .btn-light {
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+.navbar .badge {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+}
 

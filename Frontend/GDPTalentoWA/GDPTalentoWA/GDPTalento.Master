@@ -94,15 +94,21 @@
             </div>
 
             <!-- BARRA USUARIO -->
-            <nav class="navbar navbar-light bg-white border-bottom px-3 py-2">
+            <nav class="navbar navbar-light bg-white border-bottom px-4 py-2 shadow-sm">
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <i class="fas fa-bell text-dark position-relative">
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            3
-                        </span>
-                    </i>
-                    <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                        <small>D</small>
+                    <!-- Notificación -->
+                    <div class="position-relative">
+                        <button class="btn btn-light rounded-circle p-2 shadow-sm position-relative" style="width: 36px; height: 36px;">
+                            <i class="fa-regular fa-bell text-dark"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Avatar -->
+                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px;">
+                        <span class="text-muted fw-semibold small">D</span>
                     </div>
                 </div>
             </nav>
