@@ -97,3 +97,4 @@ out/
 # Ignorar archivos binarios generados por compilación
 *.dll
 *.pdb
+/Backend/GDPTalento/target/

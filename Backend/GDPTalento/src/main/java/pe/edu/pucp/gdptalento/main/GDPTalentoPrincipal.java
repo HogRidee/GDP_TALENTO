@@ -37,6 +37,8 @@ public class GDPTalentoPrincipal {
             System.out.print(s.getNombre() + "    ");
             System.out.println(s.getArea());
         }
+        UsuarioBO u = new UsuarioBO();
+        System.out.println(u.verificarUsuario(1, "hash12345"));
         
     }
 }

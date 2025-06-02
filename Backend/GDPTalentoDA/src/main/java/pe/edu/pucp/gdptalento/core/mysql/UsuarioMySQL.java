@@ -54,6 +54,10 @@ public class UsuarioMySQL implements UsuarioDAO{
         ArrayList<Usuario> usuarios = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_USUARIOS", null);
         try {
+            if (rs == null) {
+                System.out.println("ERROR: ResultSet es null, no se puede listar usuarios.");
+                return usuarios; // Retorna lista vacía
+            }
             while (rs.next()) {
                 Usuario usuario = new Usuario();
                 leerInformacionMiembroPUCP(usuario);
@@ -64,6 +68,14 @@ public class UsuarioMySQL implements UsuarioDAO{
         } catch (SQLException ex) {
             System.out.println("ERROR: " + ex.getMessage());
         } finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
             DBManager.getInstance().cerrarConexion();
         }
         return usuarios;

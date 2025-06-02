@@ -12,61 +12,23 @@ namespace GDPTalentoWA.ServicioWeb {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.gdptalento.pucp.edu.pe/", ConfigurationName="ServicioWeb.ServicioWeb")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ws.core.gdptalento.pucp.edu.pe/", ConfigurationName="ServicioWeb.ServicioWeb")]
     public interface ServicioWeb {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el espacio de nombres de partes de mensaje () no coincide con el valor predeterminado (http://services.gdptalento.pucp.edu.pe/).
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://services.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento name del espacio de nombres  no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
+        GDPTalentoWA.ServicioWeb.helloResponse hello(GDPTalentoWA.ServicioWeb.helloRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.helloResponse> helloAsync(GDPTalentoWA.ServicioWeb.helloRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el espacio de nombres de partes de mensaje () no coincide con el valor predeterminado (http://ws.core.gdptalento.pucp.edu.pe/).
+        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         GDPTalentoWA.ServicioWeb.multiplicarResponse multiplicar(GDPTalentoWA.ServicioWeb.multiplicarRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://services.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
         System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> multiplicarAsync(GDPTalentoWA.ServicioWeb.multiplicarRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento name del espacio de nombres  no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://services.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
-        GDPTalentoWA.ServicioWeb.helloResponse hello(GDPTalentoWA.ServicioWeb.helloRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://services.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.helloResponse> helloAsync(GDPTalentoWA.ServicioWeb.helloRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicar", WrapperNamespace="http://services.gdptalento.pucp.edu.pe/", IsWrapped=true)]
-    public partial class multiplicarRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
-        public int a;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
-        public int b;
-        
-        public multiplicarRequest() {
-        }
-        
-        public multiplicarRequest(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicarResponse", WrapperNamespace="http://services.gdptalento.pucp.edu.pe/", IsWrapped=true)]
-    public partial class multiplicarResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
-        public int @return;
-        
-        public multiplicarResponse() {
-        }
-        
-        public multiplicarResponse(int @return) {
-            this.@return = @return;
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -75,7 +37,7 @@ namespace GDPTalentoWA.ServicioWeb {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class helloRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="hello", Namespace="http://services.gdptalento.pucp.edu.pe/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="hello", Namespace="http://ws.core.gdptalento.pucp.edu.pe/", Order=0)]
         public GDPTalentoWA.ServicioWeb.helloRequestBody Body;
         
         public helloRequest() {
@@ -109,7 +71,7 @@ namespace GDPTalentoWA.ServicioWeb {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class helloResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="helloResponse", Namespace="http://services.gdptalento.pucp.edu.pe/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="helloResponse", Namespace="http://ws.core.gdptalento.pucp.edu.pe/", Order=0)]
         public GDPTalentoWA.ServicioWeb.helloResponseBody Body;
         
         public helloResponse() {
@@ -133,6 +95,44 @@ namespace GDPTalentoWA.ServicioWeb {
         }
         
         public helloResponseBody(string @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicar", WrapperNamespace="http://ws.core.gdptalento.pucp.edu.pe/", IsWrapped=true)]
+    public partial class multiplicarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int a;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
+        public int b;
+        
+        public multiplicarRequest() {
+        }
+        
+        public multiplicarRequest(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicarResponse", WrapperNamespace="http://ws.core.gdptalento.pucp.edu.pe/", IsWrapped=true)]
+    public partial class multiplicarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public int @return;
+        
+        public multiplicarResponse() {
+        }
+        
+        public multiplicarResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -165,31 +165,6 @@ namespace GDPTalentoWA.ServicioWeb {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        GDPTalentoWA.ServicioWeb.multiplicarResponse GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicar(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
-            return base.Channel.multiplicar(request);
-        }
-        
-        public int multiplicar(int a, int b) {
-            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
-            inValue.a = a;
-            inValue.b = b;
-            GDPTalentoWA.ServicioWeb.multiplicarResponse retVal = ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicar(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicarAsync(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
-            return base.Channel.multiplicarAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> multiplicarAsync(int a, int b) {
-            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
-            inValue.a = a;
-            inValue.b = b;
-            return ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicarAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         GDPTalentoWA.ServicioWeb.helloResponse GDPTalentoWA.ServicioWeb.ServicioWeb.hello(GDPTalentoWA.ServicioWeb.helloRequest request) {
             return base.Channel.hello(request);
         }
@@ -212,6 +187,31 @@ namespace GDPTalentoWA.ServicioWeb {
             inValue.Body = new GDPTalentoWA.ServicioWeb.helloRequestBody();
             inValue.Body.name = name;
             return ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).helloAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.multiplicarResponse GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicar(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
+            return base.Channel.multiplicar(request);
+        }
+        
+        public int multiplicar(int a, int b) {
+            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
+            inValue.a = a;
+            inValue.b = b;
+            GDPTalentoWA.ServicioWeb.multiplicarResponse retVal = ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicar(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicarAsync(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
+            return base.Channel.multiplicarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> multiplicarAsync(int a, int b) {
+            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
+            inValue.a = a;
+            inValue.b = b;
+            return ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicarAsync(inValue);
         }
     }
 }
