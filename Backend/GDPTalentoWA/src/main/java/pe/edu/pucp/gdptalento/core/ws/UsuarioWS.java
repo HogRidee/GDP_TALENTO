@@ -42,4 +42,10 @@ public class UsuarioWS {
         return boUsuario.listarTodas();
     }
     
+    @WebMethod(operationName = "verificar")
+    public int verificar(@WebParam(name = "codigo") int codigo, @WebParam(name = "contrasenha") String contrasenha) {
+        boUsuario=new UsuarioBO();
+        return boUsuario.verificarUsuario(codigo, contrasenha);
+    }
+    
 }
