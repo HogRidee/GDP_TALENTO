@@ -65,6 +65,10 @@ public class RolMySQL implements RolDAO{
     public ArrayList<Rol> listarTodas() {
         ArrayList<Rol> listadoRoles = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ROLES", null);
+        if (rs == null) {
+            System.out.println("ERROR: ResultSet es null. Revisa el procedimiento almacenado LISTAR_ROLES.");
+            return listadoRoles;
+        }
         try {
             Rol rol = null;
             int rolActualId = -1;
