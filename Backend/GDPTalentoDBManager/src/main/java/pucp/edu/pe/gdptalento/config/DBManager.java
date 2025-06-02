@@ -74,7 +74,7 @@ public class DBManager {
                 System.out.println("Se ha establecido la conexion con la BD...");
             }
         }catch(ClassNotFoundException | SQLException ex){
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         return con;
     }
@@ -101,6 +101,10 @@ public class DBManager {
         int resultado = 0;
         try{
             CallableStatement cst = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, parametrosSalida);
+            if (cst == null) {
+                System.out.println("Error: no se pudo formar la llamada al procedimiento.");
+                return 0;  // O el valor que indique fallo
+            }
             if(parametrosEntrada != null)
                 registrarParametrosEntrada(cst, parametrosEntrada);
             if(parametrosSalida != null)
@@ -121,9 +125,16 @@ public class DBManager {
     public ResultSet ejecutarProcedimientoLectura(String nombreProcedimiento, Map<Integer,Object> parametrosEntrada){
         try{
             CallableStatement cs = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, null);
+            if (cs == null) {
+                System.out.println("Error: CallableStatement es null, no se puede ejecutar la consulta.");
+                return null;
+            }
             if(parametrosEntrada!=null)
                 registrarParametrosEntrada(cs,parametrosEntrada);
             rs = cs.executeQuery();
+            if(rs==null) System.out.println("No se pudo obtener resultados, ResultSet es null.");
+            
+            
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
         }
@@ -131,21 +142,35 @@ public class DBManager {
     }
     
     public CallableStatement formarLlamadaProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
-        con = getConnection();
-        StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
-        int cantParametrosEntrada = 0;
-        int cantParametrosSalida = 0;
-        if(parametrosEntrada!=null) cantParametrosEntrada = parametrosEntrada.size();
-        if(parametrosSalida!=null) cantParametrosSalida = parametrosSalida.size();
-        int numParams =  cantParametrosEntrada + cantParametrosSalida;
-        for (int i = 0; i < numParams; i++) {
-            call.append("?");
-            if (i < numParams - 1) {
-                call.append(",");
+        try{
+            con = getConnection();
+            StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
+            int cantParametrosEntrada = 0;
+            int cantParametrosSalida = 0;
+            if(con==null){
+                System.out.println("Error: conexión es null, no se puede preparar la llamada.");
+                return null;
             }
+            if (parametrosEntrada != null) {
+                cantParametrosEntrada = parametrosEntrada.size();
+            }
+            if (parametrosSalida != null) {
+                cantParametrosSalida = parametrosSalida.size();
+            }
+            int numParams = cantParametrosEntrada + cantParametrosSalida;
+            for (int i = 0; i < numParams; i++) {
+                call.append("?");
+                if (i < numParams - 1) {
+                    call.append(",");
+                }
+            }
+            call.append(")}");
+            return con.prepareCall(call.toString());
         }
-        call.append(")}");
-        return con.prepareCall(call.toString());
+        catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
     
     private void registrarParametrosEntrada(CallableStatement cs, Map<Integer, Object> parametros) throws SQLException {
