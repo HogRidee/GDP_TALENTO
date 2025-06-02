@@ -49,7 +49,7 @@ public class DBManager {
         
         if(tipoBD.equals("mysql"))
             //Formamos la URL de conexión        
-            this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database;
+            this.url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + database + "?useSSL=false&allowPublicKeyRetrieval=true";
         else 
             this.url = "jdbc:sqlserver://" + hostname + 
                     ";encrypt=false;trustServerCertificate=true;databaseName=" + database + 
@@ -63,21 +63,36 @@ public class DBManager {
     }
     
     //Nos permite obtener una conexión con la BD
-    public Connection getConnection(){
-        try{
-            if(con == null || con.isClosed()){
-                if(tipoBD.equals("mysql"))
+    public Connection getConnection() {
+        try {
+            System.out.println("Intentando obtener conexión a: " + url);
+            System.out.println("Usuario: " + usuario);
+
+            if (con == null || con.isClosed()) {
+                if (tipoBD.equals("mysql")) {
                     Class.forName("com.mysql.cj.jdbc.Driver");
-                else if (tipoBD.equals("mssql"))
+                } else if (tipoBD.equals("mssql")) {
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                }
+
                 con = DriverManager.getConnection(url, usuario, password);
-                System.out.println("Se ha establecido la conexion con la BD...");
+                System.out.println("✅ Se ha establecido la conexión con la BD...");
             }
-        }catch(ClassNotFoundException | SQLException ex){
+
+        } catch (ClassNotFoundException ex) {
+            System.err.println("❌ No se encontró el driver de base de datos: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            System.err.println("❌ Error al conectarse a la base de datos:");
+            System.err.println("URL: " + url);
+            System.err.println("Usuario: " + usuario);
+            System.err.println("Mensaje: " + ex.getMessage());
             ex.printStackTrace();
         }
+
         return con;
     }
+
     
     public void cerrarConexion() {
         if(rs != null){
