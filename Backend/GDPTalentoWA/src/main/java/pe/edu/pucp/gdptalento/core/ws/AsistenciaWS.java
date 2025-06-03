@@ -17,7 +17,7 @@ import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
  */
 import jakarta.ejb.Stateless;
 @Stateless
-@WebService(serviceName = "AsistenciaWS")
+@WebService(serviceName = "AsistenciaWS", targetNamespace = "http://services.pucp.edu.pe")
 public class AsistenciaWS {
 
     private AsistenciaBO boAsistencia;

@@ -5,18 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/UsuarioWS?xsd=1" namespace="http://ws.core.gdptalento.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="insertarUsuario">
-    <part name="parameters" element="tns:insertarUsuario" />
-  </message>
-  <message name="insertarUsuarioResponse">
-    <part name="parameters" element="tns:insertarUsuarioResponse" />
-  </message>
-  <message name="modificarUsuario">
-    <part name="parameters" element="tns:modificarUsuario" />
-  </message>
-  <message name="modificarUsuarioResponse">
-    <part name="parameters" element="tns:modificarUsuarioResponse" />
-  </message>
   <message name="eliminarUsuario">
     <part name="parameters" element="tns:eliminarUsuario" />
   </message>
@@ -29,6 +17,18 @@
   <message name="listarUsuariosResponse">
     <part name="parameters" element="tns:listarUsuariosResponse" />
   </message>
+  <message name="insertarUsuario">
+    <part name="parameters" element="tns:insertarUsuario" />
+  </message>
+  <message name="insertarUsuarioResponse">
+    <part name="parameters" element="tns:insertarUsuarioResponse" />
+  </message>
+  <message name="modificarUsuario">
+    <part name="parameters" element="tns:modificarUsuario" />
+  </message>
+  <message name="modificarUsuarioResponse">
+    <part name="parameters" element="tns:modificarUsuarioResponse" />
+  </message>
   <message name="verificar">
     <part name="parameters" element="tns:verificar" />
   </message>
@@ -36,14 +36,6 @@
     <part name="parameters" element="tns:verificarResponse" />
   </message>
   <portType name="UsuarioWS">
-    <operation name="insertarUsuario">
-      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
-      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
-    </operation>
-    <operation name="modificarUsuario">
-      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
-      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
-    </operation>
     <operation name="eliminarUsuario">
       <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
       <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
@@ -52,6 +44,14 @@
       <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
       <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
     </operation>
+    <operation name="insertarUsuario">
+      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
+      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
+    </operation>
+    <operation name="modificarUsuario">
+      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
+      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
+    </operation>
     <operation name="verificar">
       <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/verificarRequest" message="tns:verificar" />
       <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/UsuarioWS/verificarResponse" message="tns:verificarResponse" />
@@ -59,24 +59,6 @@
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="eliminarUsuario">
       <soap:operation soapAction="" />
       <input>
@@ -87,6 +69,24 @@
       </output>
     </operation>
     <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

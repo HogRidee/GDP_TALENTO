@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
  * @author USER
  */
 
-@WebService(serviceName = "EvaluacionDesempenioWS")
+@WebService(serviceName = "EvaluacionDesempenioWS", targetNamespace = "http://services.pucp.edu.pe")
 public class EvaluacionDesempenioWS {
     private EvaluacionDesempeñoBO boEvaluacionDesempenio;
     /**
