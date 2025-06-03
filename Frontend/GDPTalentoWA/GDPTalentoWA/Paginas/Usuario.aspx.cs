@@ -48,29 +48,49 @@ namespace GDPTalentoWA.Paginas
         private void AsignarValores()
         {
             lblNombre.Text = usuario.nombre;
-            lblCargo.Text = $"{usuario.rol?.nombre} - {usuario.area}";
+            lblCargo.Text = $"Rol: {usuario.rol?.nombre} - Area: {usuario.area}";
             lblEstado.Text = usuario.estado.ToString().ToUpper() == "ACTIVO"
-                ? "<span class='badge bg-success mb-3'>Activo</span>"
-                : "<span class='badge bg-secondary mb-3'>Inactivo</span>";
+                ? "Activo"
+    :           "Inactivo";
+            if (usuario.estado.ToString().ToUpper() == "ACTIVO")
+                lblEstado.CssClass = "estado estado-activo";
+            else
+                lblEstado.CssClass = "estado estado-inactivo";
 
             lblCorreo.Text = usuario.correo;
-            lblTelefono.Text = usuario.telefono;
-            lblDireccion.Text = "Dirección no registrada"; // Aún no forma parte del modelo
+            lblTelefono.Text = usuario.telefono; 
             lblCodigo.Text = usuario.codigoPUCP.ToString();
             if (usuario.fechaIngreso != null)
                 lblFechaIngreso.Text = usuario.fechaIngreso.GetType().ToString();
             else
                 lblFechaIngreso.Text = "No disponible";
 
-            lblCarrera.Text = $"{usuario.especialidad} - {usuario.facultad}";
+            lblCarrera.Text = $"{usuario.facultad} {usuario.especialidad} ";
             lblEvaluacion.Text = usuario.desempenio.ToString("0.0");
-
+            ltlEstrellas.Text = GenerarEstrellasHTML(usuario.desempenio);
             // Datos ficticios mientras no se implemente
-            lblAsistencia.Text = "90%";
+            lblAsistencia.Text = 50 + "%";
             lblPendientes.Text = "2";
             lblCompletadas.Text = "15";
         }
+        private string GenerarEstrellasHTML(double puntuacion)
+        {
+            int estrellasLlenas = (int)Math.Floor(puntuacion);
+            bool mediaEstrella = (puntuacion - estrellasLlenas) >= 0.5;
+            int estrellasVacias = 5 - estrellasLlenas - (mediaEstrella ? 1 : 0);
 
+            string html = "";
+            for (int i = 0; i < estrellasLlenas; i++)
+                html += "<i class='fa-solid fa-star'></i>";
+
+            if (mediaEstrella)
+                html += "<i class='fa-solid fa-star-half-stroke'></i>";
+
+            for (int i = 0; i < estrellasVacias; i++)
+                html += "<i class='fa-regular fa-star'></i>";
+
+            return html;
+        }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             Response.Redirect("modificarUsuario.aspx");
