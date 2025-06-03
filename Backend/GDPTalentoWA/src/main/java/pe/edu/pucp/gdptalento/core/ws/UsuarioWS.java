@@ -38,6 +38,7 @@ public class UsuarioWS {
         return boUsuario.listarTodas();
     }
     
+    
     @WebMethod(operationName = "obtenerPorId")
     public Usuario obtenerPorId(@WebParam(name = "id") int id) {
         boUsuario=new UsuarioBO();

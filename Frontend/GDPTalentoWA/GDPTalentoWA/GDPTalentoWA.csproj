@@ -215,6 +215,9 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.verificarResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.obtenerPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.xsd">
       <SubType>Designer</SubType>
@@ -300,6 +303,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\GDPTalento\miembroGDP.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />

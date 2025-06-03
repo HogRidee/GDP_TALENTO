@@ -87,13 +87,14 @@
                         <asp:BoundField DataField="codigoPUCP" HeaderText="Código" />
                         <asp:BoundField DataField="area" HeaderText="Área" />
                         <asp:BoundField DataField="estado" HeaderText="Estado" />
-                        <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha Ingreso" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+                        <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha Ingreso" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlAcciones" runat="server">
                                     <asp:ListItem Value="">Seleccione...</asp:ListItem>
-                                    <asp:ListItem Value="Editar">Editar</asp:ListItem>
-                                    <asp:ListItem Value="Eliminar">Eliminar</asp:ListItem>
+                                    <asp:ListItem Value="Ver">Ver Detalles </asp:ListItem>
+                                    <asp:ListItem Value="Editar">Editar Información</asp:ListItem>
+                                    <asp:ListItem Value="Eliminar">Desactivar Miembro</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:Button ID="btnEjecutar" runat="server" Text="Ir" CommandName="Accion" CommandArgument='<%# Eval("id") %>' OnClick="btnEjecutar_Click" />
                             </ItemTemplate>

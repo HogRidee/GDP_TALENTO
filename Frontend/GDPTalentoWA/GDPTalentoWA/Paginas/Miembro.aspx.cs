@@ -80,22 +80,16 @@ namespace GDPTalentoWA.Paginas
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre").ToString();
-                e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP").ToString();
-                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "area").ToString();
-                e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado").ToString();
+                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString() ?? "";
+                e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP")?.ToString() ?? "";
+                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "area")?.ToString() ?? "";
+                e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado")?.ToString() ?? "";
 
-                var fechaIngresoObj = DataBinder.Eval(e.Row.DataItem, "fechaIngreso");
-                if (fechaIngresoObj != null)
-                {
-                    e.Row.Cells[4].Text = fechaIngresoObj.ToString();  // Muestra el contenido literal
-                }
-                else
-                {
-                    e.Row.Cells[4].Text = "fechaIngreso es NULL";
-                }
+                e.Row.Cells[4].Text = (string)DataBinder.Eval(e.Row.DataItem, "fechaIngreso");
+
             }
         }
+
 
 
         protected void dgvMiembros_PageIndexChanging(object sender, GridViewPageEventArgs e)
