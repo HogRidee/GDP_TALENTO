@@ -11,9 +11,11 @@ namespace GDPTalentoWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var client = new ServicioWeb.ServicioWebClient();
+            /*
+            var client = new ServicioWebClient();
             string resultado = client.hello("GDP");
             Response.Write("Respuesta del servicio: " + resultado);
+            */
         }
 
     }

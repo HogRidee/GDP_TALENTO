@@ -11,12 +11,8 @@ import java.util.ArrayList;
 import pe.edu.pucp.gdptalento.miembros.business.PostulanteBO;
 import pe.edu.pucp.gdptalento.miembros.model.Postulante;
 
-/**
- *
- * @author USER
- */
 
-@WebService(serviceName = "PostulanteWS")
+@WebService(serviceName = "PostulanteWS", targetNamespace = "http://services.pucp.edu.pe")
 public class PostulanteWS {
     private PostulanteBO boPostulante;
     /**

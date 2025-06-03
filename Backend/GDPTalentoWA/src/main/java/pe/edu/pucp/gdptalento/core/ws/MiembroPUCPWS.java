@@ -16,12 +16,10 @@ import pe.edu.pucp.gdptalento.miembros.model.MiembroPUCP;
  * @author USER
  */
 
-@WebService(serviceName = "MiembroPUCPWS")
+@WebService(serviceName = "MiembroPUCPWS", targetNamespace = "http://services.pucp.edu.pe")
 public class MiembroPUCPWS {
     private MiembroPUCPBO boMiembroPUCP;
-    /**
-     * This is a sample web service operation
-     */
+   
     @WebMethod(operationName = "insertarMiembroPUCP")
     public int insertarMiembroPUCP(@WebParam(name = "miembroPUCP") MiembroPUCP miembroPUCP) {
         boMiembroPUCP = new MiembroPUCPBO();

@@ -16,12 +16,10 @@ import pe.edu.pucp.gdptalento.miembros.model.Staff;
  * @author USER
  */
 
-@WebService(serviceName = "StaffWS")
+@WebService(serviceName = "StaffWS", targetNamespace = "http://services.pucp.edu.pe")
 public class StaffWS {
     private StaffBO boStaff;
-    /**
-     * This is a sample web service operation
-     */
+    
     @WebMethod(operationName = "insertarStaff")
     public int insertarStaff(@WebParam(name = "staff") Staff staff) {
         boStaff = new StaffBO();

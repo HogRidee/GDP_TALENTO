@@ -1,7 +1,17 @@
-//Despliegue desde Maquina Aarón: "D:\glassfish-7.0.24\glassfish7\bin\asadmin.bat" deploy --force=true "C:\Users\USER\Documents\GitHub\GDP_TALENTO\Backend\GDPTalentoWA\target\GDPTalentoWA-1.0.war"
+//Despliegue desde Maquina Aarón: "D:\glassfish-7.0.24\glassfish7\bin\asadmin.bat" deploy --force=true "D:\PROG3\GDP_TALENTO\GDP_TALENTO\Backend\GDPTalentoWA\target\GDPTalentoWA-1.0.war"
 
 
 //
-http://localhost:8080/GDPTalentoWA/RolWS?Tester
-http://localhost:8080/GDPTalentoWA/StaffWS?Tester
+http://localhost:8080/GDPTalentoWA/AsistenciaWS?Tester		| Listar()
+http://localhost:8080/GDPTalentoWA/EntrevistaWS?Tester 		| Listar(mal)
+http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?Tester| Listar(mal)
+http://localhost:8080/GDPTalentoWA/EventoWS?Tester		| Listar(mal)
+http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?Tester		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/PostulanteWS?Tester		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/RolWS?Tester			| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/StaffWS?Tester		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/TareaWS?Tester		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/UsuarioWS?Tester		| Listar(Bien)
 //
+
+http://localhost:8080/GDPTalentoWA/servicios.disco

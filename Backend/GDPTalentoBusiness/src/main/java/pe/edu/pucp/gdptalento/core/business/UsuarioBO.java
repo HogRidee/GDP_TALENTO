@@ -1,8 +1,6 @@
 package pe.edu.pucp.gdptalento.core.business;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import pe.edu.pucp.gdptalento.core.dao.UsuarioDAO;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.core.mysql.UsuarioMySQL;
@@ -24,6 +22,10 @@ public class UsuarioBO {
     
     public int eliminar(int idUsuario){
         return daoUsuario.eliminar(idUsuario);
+    }
+    
+    public Usuario obtenerPorId(int idUsuario){
+        return daoUsuario.obtenerPorId(idUsuario);
     }
     
     public ArrayList<Usuario> listarTodas(){
