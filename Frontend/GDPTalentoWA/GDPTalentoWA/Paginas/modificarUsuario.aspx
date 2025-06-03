@@ -44,12 +44,6 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <asp:Label ID="lblDireccion" CssClass="col-sm-4 col-form-label" runat="server" Text="Dirección:" />
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" />
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Segunda mitad: Derecha -->
@@ -58,30 +52,29 @@
                             <asp:Label ID="lblArea" CssClass="col-sm-4 col-form-label" runat="server" Text="Área:" />
                             <div class="col-sm-8">
                                 <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-select">
-                                    <asp:ListItem Text="Desarrollo" />
-                                    <asp:ListItem Text="Diseño" />
-                                    <asp:ListItem Text="Marketing" />
-                                    <asp:ListItem Text="Recursos Humanos" />
                                 </asp:DropDownList>
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <asp:Label ID="lblCargo" CssClass="col-sm-4 col-form-label" runat="server" Text="Cargo:" />
+                            <asp:Label ID="lblStatus" CssClass="col-sm-4 col-form-label" runat="server" Text="Status:" />
                             <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlCargo" runat="server" CssClass="form-select">
-                                    <asp:ListItem Text="Programador Junior" />
-                                    <asp:ListItem Text="Programador Senior" />
-                                    <asp:ListItem Text="Analista" />
-                                    <asp:ListItem Text="Líder de Proyecto" />
+                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-select">
                                 </asp:DropDownList>
                             </div>
                         </div>
-
+                        <!---
                         <div class="mb-3 row">
                             <asp:Label ID="lblFechaIngreso" CssClass="col-sm-4 col-form-label" runat="server" Text="Fecha de ingreso:" />
                             <div class="col-sm-8">
                                 <input id="dtpFechaIngreso" class="form-control" type="date" runat="server" />
+                            </div>
+                        </div>
+                        ---->
+                        <div class="mb-3 row">
+                            <asp:Label ID="lblFacultad" CssClass="col-sm-4 col-form-label" runat="server" Text="Facultad:" />
+                            <div class="col-sm-8">
+                                <asp:TextBox ID="txtFacultad" runat="server" CssClass="form-control" />
                             </div>
                         </div>
 
@@ -89,24 +82,6 @@
                             <asp:Label ID="lblCarrera" CssClass="col-sm-4 col-form-label" runat="server" Text="Carrera:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtCarrera" runat="server" CssClass="form-control" />
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <asp:Label ID="lblCiclo" CssClass="col-sm-4 col-form-label" runat="server" Text="Ciclo:" />
-                            <div class="col-sm-8">
-                                <asp:DropDownList ID="ddlCiclo" runat="server" CssClass="form-select">
-                                    <asp:ListItem Text="1° ciclo" Value="1" />
-                                    <asp:ListItem Text="2° ciclo" Value="2" />
-                                    <asp:ListItem Text="3° ciclo" Value="3" />
-                                    <asp:ListItem Text="4° ciclo" Value="4" />
-                                    <asp:ListItem Text="5° ciclo" Value="5" />
-                                    <asp:ListItem Text="6° ciclo" Value="6" />
-                                    <asp:ListItem Text="7° ciclo" Value="7" />
-                                    <asp:ListItem Text="8° ciclo" Value="8" />
-                                    <asp:ListItem Text="9° ciclo" Value="9" />
-                                    <asp:ListItem Text="10° ciclo" Value="10" />
-                                </asp:DropDownList>
                             </div>
                         </div>
 
