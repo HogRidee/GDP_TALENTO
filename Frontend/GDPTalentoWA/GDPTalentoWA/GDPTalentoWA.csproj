@@ -63,8 +63,33 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.eliminarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.insertarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.listarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.miembroPUCP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.modificarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MiembroPUCPWS\MiembroPUCPWS.wsdl" />
+    <None Include="Connected Services\MiembroPUCPWS\MiembroPUCPWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicioWeb\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioWeb\configuration.svcinfo" />
+    <None Include="Connected Services\MiembroPUCPWS\configuration91.svcinfo" />
+    <None Include="Connected Services\MiembroPUCPWS\configuration.svcinfo" />
+    <None Include="Connected Services\MiembroPUCPWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.helloResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -75,8 +100,33 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.eliminarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.insertarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.listarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.modificarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.staff.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\StaffWS\StaffWS.wsdl" />
+    <None Include="Connected Services\StaffWS\StaffWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UsuarioWS\configuration91.svcinfo" />
     <None Include="Connected Services\UsuarioWS\configuration.svcinfo" />
+    <None Include="Connected Services\StaffWS\configuration91.svcinfo" />
+    <None Include="Connected Services\StaffWS\configuration.svcinfo" />
+    <None Include="Connected Services\StaffWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.eliminarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -144,6 +194,7 @@
     <Content Include="index.html" />
     <Content Include="Paginas\Inicio.aspx" />
     <Content Include="Paginas\InicioSesion.aspx" />
+    <Content Include="Paginas\Miembro.aspx" />
     <Content Include="Paginas\modificarUsuario.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Prueba.aspx" />
@@ -165,7 +216,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\MiembroPUCPWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServicioWeb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\StaffWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -195,6 +256,13 @@
     </Compile>
     <Compile Include="Paginas\InicioSesion.aspx.designer.cs">
       <DependentUpon>InicioSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Miembro.aspx.cs">
+      <DependentUpon>Miembro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Miembro.aspx.designer.cs">
+      <DependentUpon>Miembro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\modificarUsuario.aspx.cs">
       <DependentUpon>modificarUsuario.aspx</DependentUpon>
@@ -281,7 +349,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MiembroPUCPWS\" />
     <WCFMetadataStorage Include="Connected Services\ServicioWeb\" />
+    <WCFMetadataStorage Include="Connected Services\StaffWS\" />
     <WCFMetadataStorage Include="Connected Services\UsuarioWS\" />
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.core.gdptalento.pucp.edu.pe/" targetNamespace="http://ws.core.gdptalento.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eliminarMiembroPUCP" type="tns:eliminarMiembroPUCP" />
+  <xs:element name="eliminarMiembroPUCPResponse" type="tns:eliminarMiembroPUCPResponse" />
+  <xs:element name="insertarMiembroPUCP" type="tns:insertarMiembroPUCP" />
+  <xs:element name="insertarMiembroPUCPResponse" type="tns:insertarMiembroPUCPResponse" />
+  <xs:element name="listarMiembroPUCP" type="tns:listarMiembroPUCP" />
+  <xs:element name="listarMiembroPUCPResponse" type="tns:listarMiembroPUCPResponse" />
+  <xs:element name="modificarMiembroPUCP" type="tns:modificarMiembroPUCP" />
+  <xs:element name="modificarMiembroPUCPResponse" type="tns:modificarMiembroPUCPResponse" />
+  <xs:complexType name="eliminarMiembroPUCP">
+    <xs:sequence>
+      <xs:element name="idmiembroPUCP" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarMiembroPUCPResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarMiembroPUCP">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="miembroPUCP" type="tns:miembroPUCP" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="miembroPUCP">
+    <xs:sequence>
+      <xs:element name="codigoPUCP" type="xs:int" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="especialidad" type="xs:string" />
+      <xs:element minOccurs="0" name="facultad" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="status" type="tns:estadoPUCP" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarMiembroPUCPResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarMiembroPUCP">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarMiembroPUCPResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:miembroPUCP" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarMiembroPUCP">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="miembroPUCP" type="tns:miembroPUCP" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarMiembroPUCPResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="estadoPUCP">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATRICULADO" />
+      <xs:enumeration value="NO_MATRICULADO" />
+      <xs:enumeration value="EGRESADO" />
+      <xs:enumeration value="EXTERNO" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
