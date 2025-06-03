@@ -8,9 +8,12 @@
   <xs:element name="listarEventosResponse" type="tns:listarEventosResponse" />
   <xs:element name="modificarEvento" type="tns:modificarEvento" />
   <xs:element name="modificarEventoResponse" type="tns:modificarEventoResponse" />
-  <xs:complexType name="insertarEvento">
+  <xs:complexType name="listarEventos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEventosResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="evento">
@@ -80,17 +83,14 @@
   <xs:complexType name="localDate" final="extension restriction">
     <xs:sequence />
   </xs:complexType>
+  <xs:complexType name="insertarEvento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarEventoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarEventos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEventosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarEvento">

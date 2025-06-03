@@ -52,7 +52,6 @@ namespace GDPTalentoWA.Paginas
             txtCarrera.Text = $"{usuario.especialidad} - {usuario.facultad}";
             txtCorreo.Text = usuario.correo;
             txtTelefono.Text = usuario.telefono;
-            txtDireccion.Text = "Dirección no registrada"; // Aún no forma parte del modelo
             txtCodigo.Text = usuario.codigoPUCP.ToString();
             //if (usuario.fechaIngreso != null)
             //    lblFechaIngreso.Text = usuario.fechaIngreso.GetType().ToString();
