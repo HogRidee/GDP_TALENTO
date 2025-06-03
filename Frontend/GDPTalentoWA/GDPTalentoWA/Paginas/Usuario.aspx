@@ -3,6 +3,60 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_titulo" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
+    <style>
+        .estado-activo {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 128, 0, 0.3);
+            transition: transform 0.2s ease-in-out;
+            text-align: center;
+        }
+
+            .estado-activo:hover {
+                transform: scale(1.05);
+            }
+    </style>
+
+    <style>
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animar-entrada {
+            opacity: 0;
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+
+        /* Retrasos escalonados */
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.7s;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
     <div class="container bg-white rounded shadow-sm p-4">
@@ -23,7 +77,8 @@
                     <asp:Label ID="lblCargo" runat="server" Text="Programador Senior - Desarrollo" CssClass="text-muted"></asp:Label>
                 </p>
 
-                <asp:Label ID="lblEstado" runat="server" Text="Activo" CssClass="badge bg-success mb-3"></asp:Label>
+                <asp:Label ID="lblEstado" runat="server" Text="Activo" CssClass="estado-activo mb-3"></asp:Label>
+
 
                 <ul class="list-unstyled mb-3">
                     <li><i class="fa-regular fa-envelope pe-2"></i>
@@ -58,7 +113,7 @@
             <div class="col-md-6 d-flex flex-column justify-content-start" style="margin-top: 120px;">
                 <h5 class="fw-semibold mb-4">Resumen</h5>
 
-                <div class="mb-3 d-flex align-items-center">
+                <div class="mb-3 d-flex align-items-center animar-entrada delay-1">
                     <i class="fa-regular fa-star text-warning me-2"></i>
                     <strong>Evaluación:</strong>
                     <span class="text-warning ms-2">
@@ -71,19 +126,19 @@
                     </span>
                 </div>
 
-                <div class="mb-3 d-flex align-items-center">
+                <div class="mb-3 d-flex align-items-center animar-entrada delay-2">
                     <i class="fa-regular fa-calendar text-primary me-2"></i>
                     <strong>Asistencia:</strong>
                     <asp:Label ID="lblAsistencia" runat="server" CssClass="ms-2" Text="90%"></asp:Label>
                 </div>
 
-                <div class="mb-3 d-flex align-items-center">
+                <div class="mb-3 d-flex align-items-center animar-entrada delay-3">
                     <i class="fa-regular fa-clock text-secondary me-2"></i>
                     <strong>Tareas pendientes:</strong>
                     <asp:Label ID="lblPendientes" runat="server" CssClass="ms-2" Text="2"></asp:Label>
                 </div>
 
-                <div class="mb-3 d-flex align-items-center">
+                <div class="mb-3 d-flex align-items-center animar-entrada delay-4">
                     <i class="fa-regular fa-circle-check text-success me-2"></i>
                     <strong>Tareas completadas:</strong>
                     <asp:Label ID="lblCompletadas" runat="server" CssClass="ms-2" Text="15"></asp:Label>

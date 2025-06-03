@@ -5,31 +5,31 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/ServicioWeb?xsd=1" namespace="http://ws.core.gdptalento.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="multiplicar">
-    <part name="parameters" element="tns:multiplicar" />
-  </message>
-  <message name="multiplicarResponse">
-    <part name="parameters" element="tns:multiplicarResponse" />
-  </message>
   <message name="hello">
     <part name="parameters" element="tns:hello" />
   </message>
   <message name="helloResponse">
     <part name="parameters" element="tns:helloResponse" />
   </message>
+  <message name="multiplicar">
+    <part name="parameters" element="tns:multiplicar" />
+  </message>
+  <message name="multiplicarResponse">
+    <part name="parameters" element="tns:multiplicarResponse" />
+  </message>
   <portType name="ServicioWeb">
-    <operation name="multiplicar">
-      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest" message="tns:multiplicar" />
-      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse" message="tns:multiplicarResponse" />
-    </operation>
     <operation name="hello">
       <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest" message="tns:hello" />
       <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse" message="tns:helloResponse" />
     </operation>
+    <operation name="multiplicar">
+      <input wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest" message="tns:multiplicar" />
+      <output wsam:Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse" message="tns:multiplicarResponse" />
+    </operation>
   </portType>
   <binding name="ServicioWebPortBinding" type="tns:ServicioWeb">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="multiplicar">
+    <operation name="hello">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -38,7 +38,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="hello">
+    <operation name="multiplicar">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

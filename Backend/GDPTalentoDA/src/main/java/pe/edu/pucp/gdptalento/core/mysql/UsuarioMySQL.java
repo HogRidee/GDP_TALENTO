@@ -82,8 +82,34 @@ public class UsuarioMySQL implements UsuarioDAO{
     }
 
     @Override
-    public Usuario obtenerPorId(String nombreRol) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Usuario obtenerPorId(int idUsuario) {
+        Usuario usuario = null;
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        parametrosEntrada.put(1, idUsuario);
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("BUSCAR_USUARIO_POR_ID", parametrosEntrada);
+
+        try {
+            if (rs.next()) {
+                usuario = new Usuario();
+                leerInformacionMiembroPUCP(usuario);
+                leerInformacionGeneral(usuario);
+                usuario.setFechaIngreso(rs.getDate("fecha_ingreso").toLocalDate());
+                leerRolPorId(usuario); // Método modificado para usar el ID del rol
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERROR al obtener usuario por ID: " + ex.getMessage());
+        } finally {
+            if(rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            DBManager.getInstance().cerrarConexion();
+        }
+
+        return usuario;
     }
     
     private void agregarParametrosInsertar(Map<Integer,Object> parametrosSalida, 
@@ -152,6 +178,17 @@ public class UsuarioMySQL implements UsuarioDAO{
             NombreRol nomrol = NombreRol.valueOf(nombreRol);
             Rol rol = new Rol();
             rol.setNombre(nomrol);
+            usuario.setRol(rol);
+        }
+    }
+    
+    private void leerRolPorId(Usuario usuario) throws SQLException {
+        int idRol = rs.getInt("id_rol");
+
+        // Validamos si hay un valor válido
+        if (!rs.wasNull()) {
+            Rol rol = new Rol();
+            rol.setId(idRol); // Asegúrate de que Rol tenga un campo y método setId(int)
             usuario.setRol(rol);
         }
     }

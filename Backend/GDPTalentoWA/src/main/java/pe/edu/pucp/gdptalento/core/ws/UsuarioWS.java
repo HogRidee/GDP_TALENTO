@@ -41,6 +41,11 @@ public class UsuarioWS {
         boUsuario=new UsuarioBO();
         return boUsuario.listarTodas();
     }
+    @WebMethod(operationName = "obtenerPorId")
+    public Usuario obtenerPorId(@WebParam(name = "id") int id) {
+        boUsuario=new UsuarioBO();
+        return boUsuario.obtenerPorId(id);
+    }
     
     @WebMethod(operationName = "verificar")
     public int verificar(@WebParam(name = "codigo") int codigo, @WebParam(name = "contrasenha") String contrasenha) {
