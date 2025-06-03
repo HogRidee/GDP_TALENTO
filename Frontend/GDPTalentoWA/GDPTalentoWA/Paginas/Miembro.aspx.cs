@@ -1,0 +1,175 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using GDPTalentoWA.MiembroPUCPWS;
+using GDPTalentoWA.StaffWS;
+using GDPTalentoWA.UsuarioWS;
+
+namespace GDPTalentoWA.Paginas
+{
+    public partial class Miembro : System.Web.UI.Page
+    {
+        private MiembroPUCPWSClient boMiembro;
+        private StaffWSClient boStaff;
+        private BindingList<MiembroPUCPWS.miembroPUCP> miembros;
+        private BindingList<StaffWS.staff> staffs;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                CargarStaff();
+            }
+        }
+
+        private void CargarStaff()
+        {
+            boStaff = new StaffWSClient();
+            var listaStaff = boStaff.listarStaff();
+            if (listaStaff == null)
+                staffs = new BindingList<StaffWS.staff>();
+            else
+                staffs = new BindingList<StaffWS.staff>(listaStaff);
+
+            dgvMiembros.DataSource = staffs;
+            dgvMiembros.DataBind();
+
+            ViewState["Staffs"] = staffs;
+        }
+
+
+        protected void btnRegistrarMiembro_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void lbBuscarMiembro_Click(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtBuscarMiembro.Text.Trim().ToLower();
+
+            // Asegúrate de tener la lista actual cargada
+            boStaff = new StaffWSClient();
+            var listaStaff = boStaff.listarStaff();
+
+            if (listaStaff == null)
+            {
+                staffs = new BindingList<StaffWS.staff>();
+            }
+            else
+            {
+                // Filtro por nombre, código PUCP o área
+                var filtrados = listaStaff.Where(s =>
+                    (s.nombre != null && s.nombre.ToLower().Contains(textoBusqueda)) ||
+                    s.codigoPUCP.ToString().Contains(textoBusqueda) ||
+                    s.area.ToString().ToLower().Contains(textoBusqueda)
+                ).ToList();
+
+                staffs = new BindingList<StaffWS.staff>(filtrados);
+            }
+
+            dgvMiembros.DataSource = staffs;
+            dgvMiembros.DataBind();
+        }
+
+
+        protected void dgvMiembros_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre").ToString();
+                e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP").ToString();
+                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "area").ToString();
+                e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado").ToString();
+
+                var fechaIngresoObj = DataBinder.Eval(e.Row.DataItem, "fechaIngreso");
+                if (fechaIngresoObj != null)
+                {
+                    e.Row.Cells[4].Text = fechaIngresoObj.ToString();  // Muestra el contenido literal
+                }
+                else
+                {
+                    e.Row.Cells[4].Text = "fechaIngreso es NULL";
+                }
+            }
+        }
+
+
+        protected void dgvMiembros_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvMiembros.PageIndex = e.NewPageIndex;
+            dgvMiembros.DataBind();
+        }
+
+        protected void btnFiltrarMiembro_Click(object sender, EventArgs e)
+        {
+            boStaff = new StaffWSClient();
+            var listaOriginal = boStaff.listarStaff();
+
+            if (listaOriginal == null) return;
+
+            string textoBusqueda = txtBuscarMiembro.Text.Trim().ToLower();
+            string estadoSeleccionado = ddlEstados.SelectedValue; // "1" = ACTIVO, "2" = INACTIVO
+            string areaSeleccionada = ddlAreas.SelectedValue;      // Ej: "Marketing"
+
+            var listaFiltrada = listaOriginal.Where(s =>
+                (string.IsNullOrEmpty(textoBusqueda) ||
+                 s.nombre.ToLower().Contains(textoBusqueda) ||
+                 s.codigoPUCP.ToString().Contains(textoBusqueda) ||
+                 s.area.ToString().ToLower().Contains(textoBusqueda)) &&
+
+                (string.IsNullOrEmpty(estadoSeleccionado) ||
+                 (estadoSeleccionado == "1" && s.estado == StaffWS.estadoMiembro.ACTIVO) ||
+                 (estadoSeleccionado == "2" && s.estado == StaffWS.estadoMiembro.INACTIVO)) &&
+
+                (string.IsNullOrEmpty(areaSeleccionada) ||
+                 s.area.ToString().Equals(areaSeleccionada, StringComparison.OrdinalIgnoreCase))
+            ).ToList();
+
+            dgvMiembros.DataSource = listaFiltrada;
+            dgvMiembros.DataBind();
+        }
+
+
+        protected void btnEjecutar_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+
+            // Obtener la DropDownList en la misma fila
+            DropDownList ddlAcciones = (DropDownList)row.FindControl("ddlAcciones");
+
+            // Obtener la acción seleccionada y el id del miembro
+            string accion = ddlAcciones.SelectedValue;
+            int idMiembro = Convert.ToInt32(btn.CommandArgument);
+
+            // Ejecutar según la acción
+            switch (accion)
+            {
+                case "Editar":
+                    // Redirigir a página de edición o cargar datos en formulario
+                    //Response.Redirect($"EditarMiembro.aspx?id={idMiembro}");
+                    break;
+
+                case "Eliminar":
+                    // Llamar a servicio o lógica para eliminar
+                    boStaff.eliminarStaff(idMiembro);
+                    // Recargar la lista
+                    staffs = new BindingList<StaffWS.staff>(boStaff.listarStaff());
+                    dgvMiembros.DataSource = staffs;
+                    dgvMiembros.DataBind();
+                    break;
+
+                default:
+                    // Mostrar mensaje si no se seleccionó una acción
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Seleccione una acción.');", true);
+                    break;
+            }
+        }
+
+    }
+}
