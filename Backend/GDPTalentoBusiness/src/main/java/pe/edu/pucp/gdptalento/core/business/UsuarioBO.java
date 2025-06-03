@@ -26,6 +26,10 @@ public class UsuarioBO {
         return daoUsuario.eliminar(idUsuario);
     }
     
+    public Usuario obtenerPorId(int idUsuario){
+        return daoUsuario.obtenerPorId(idUsuario);
+    }
+    
     public ArrayList<Usuario> listarTodas(){
         return daoUsuario.listarTodas();
     }
