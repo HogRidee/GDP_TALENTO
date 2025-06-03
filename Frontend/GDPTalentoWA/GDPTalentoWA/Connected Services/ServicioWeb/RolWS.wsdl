@@ -11,17 +11,17 @@
   <message name="insertarRolResponse">
     <part name="parameters" element="tns:insertarRolResponse" />
   </message>
-  <message name="modificarRol">
-    <part name="parameters" element="tns:modificarRol" />
-  </message>
-  <message name="modificarRolResponse">
-    <part name="parameters" element="tns:modificarRolResponse" />
-  </message>
   <message name="eliminarRol">
     <part name="parameters" element="tns:eliminarRol" />
   </message>
   <message name="eliminarRolResponse">
     <part name="parameters" element="tns:eliminarRolResponse" />
+  </message>
+  <message name="modificarRol">
+    <part name="parameters" element="tns:modificarRol" />
+  </message>
+  <message name="modificarRolResponse">
+    <part name="parameters" element="tns:modificarRolResponse" />
   </message>
   <message name="listarRoles">
     <part name="parameters" element="tns:listarRoles" />
@@ -34,13 +34,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/insertarRolRequest" message="tns:insertarRol" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/insertarRolResponse" message="tns:insertarRolResponse" />
     </operation>
-    <operation name="modificarRol">
-      <input wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest" message="tns:modificarRol" />
-      <output wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
-    </operation>
     <operation name="eliminarRol">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest" message="tns:eliminarRol" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
+    </operation>
+    <operation name="modificarRol">
+      <input wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest" message="tns:modificarRol" />
+      <output wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
     </operation>
     <operation name="listarRoles">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest" message="tns:listarRoles" />
@@ -58,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarRol">
+    <operation name="eliminarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarRol">
+    <operation name="modificarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
