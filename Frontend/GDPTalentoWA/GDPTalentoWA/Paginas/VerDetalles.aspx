@@ -40,29 +40,30 @@
                         <h3>Resumen</h3>
 
                         <p>
-                          <span style="display: inline-block; width: 150px; vertical-align: middle;">
+                          <span style="display: inline-block; width: 180px; vertical-align: middle;">
                             Evaluación: <asp:Label ID="lblEvaluacion" runat="server" />
                           </span>
-                          <span style="display: inline-block; width: 150px; vertical-align: middle;">
+                          <span style="display: inline-block; width: 180px; vertical-align: middle;">
                             Asistencia: <asp:Label ID="lblAsistencia" runat="server" />
                           </span>
                         </p>
 
                         <p>
-                          <span style="display: inline-block; width: 150px; vertical-align: middle;">
+                          <span style="display: inline-block; width: 180px; vertical-align: middle;">
                             Tareas pendientes: <asp:Label ID="lblPendientes" runat="server" />
                           </span>
-                          <span style="display: inline-block; width: 150px; vertical-align: middle;">
+                          <span style="display: inline-block; width: 180px; vertical-align: middle;">
                             Tareas completadas: <asp:Label ID="lblCompletadas" runat="server" />
                           </span>
                         </p>
 
                         <hr />
-                        <h6>Habilidades</h6>
-                        <div>
+                        <h3 class="section-title">Habilidades</h3>
+                        <div class="skills-container">
                             <asp:Repeater ID="rptHabilidades" runat="server">
                                 <ItemTemplate>
-                                    <span class="badge badge-skill"><%# Eval("nombre") %></span>
+                                    <%-- IMPORTANTE: Usar Container.DataItem porque el C# está pasando una List<string> --%>
+                                    <span class="badge-skill"><%# Container.DataItem %></span>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
