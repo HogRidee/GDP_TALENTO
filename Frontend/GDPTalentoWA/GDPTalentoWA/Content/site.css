@@ -237,3 +237,45 @@ html, body {
     color: red !important;
     font-weight: bold;
 }
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las habilidades salten de línea */
+    gap: 12px; /* Espacio entre los círculos de habilidades */
+    margin-bottom: 20px;
+}
+
+/* Estilo para cada "círculo" o "píldora" de habilidad */
+.badge-skill {
+    background-color: #e0f2fe;
+    color: #1976d2;
+    padding: 6px 14px; /* Reducido de 10px 20px */
+    border-radius: 20px; /* También puedes reducirlo si deseas menos redondeo */
+    font-size: 0.9em; /* Reducido de 1.05em */
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid #90caf9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+}
+
+
+.badge-skill:hover {
+    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
+}
+
+.info-label {
+    font-weight: 600;
+    color: #555;
+    margin-right: 5px;
+}
+
+.info-value {
+    color: #333;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+}
