@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.miembros.model.Staff;
  * @author USER
  */
 
-@WebService(serviceName = "StaffWS")
+@WebService(serviceName = "StaffWS", targetNamespace = "http://services.pucp.edu.pe")
 public class StaffWS {
     private StaffBO boStaff;
     /**

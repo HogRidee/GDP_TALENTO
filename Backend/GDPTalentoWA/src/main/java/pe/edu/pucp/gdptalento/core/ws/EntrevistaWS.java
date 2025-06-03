@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.talento.model.Entrevista;
  * @author USER
  */
 
-@WebService(serviceName = "EntrevistaWS")
+@WebService(serviceName = "EntrevistaWS", targetNamespace = "http://services.pucp.edu.pe")
 public class EntrevistaWS {
     private EntrevistaBO boEntrevista;
 

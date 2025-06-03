@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.talento.model.Tarea;
  * @author USER
  */
 
-@WebService(serviceName = "TareaWS")
+@WebService(serviceName = "TareaWS", targetNamespace = "http://services.pucp.edu.pe")
 public class TareaWS {
     private TareaBO boTarea;
     /**

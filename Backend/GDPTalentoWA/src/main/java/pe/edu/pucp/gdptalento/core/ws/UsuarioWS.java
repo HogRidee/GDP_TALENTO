@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
  * @author USER
  */
 
-@WebService(serviceName = "UsuarioWS")
+@WebService(serviceName = "UsuarioWS", targetNamespace = "http://services.pucp.edu.pe")
 public class UsuarioWS {
     private UsuarioBO boUsuario;
     

@@ -16,7 +16,7 @@ import pe.edu.pucp.gdptalento.eventos.model.Evento;
  * @author USER
  */
 
-@WebService(serviceName = "EventoWS")
+@WebService(serviceName = "EventoWS", targetNamespace = "http://services.pucp.edu.pe")
 public class EventoWS {
     private EventoBO boEvento;
     /**

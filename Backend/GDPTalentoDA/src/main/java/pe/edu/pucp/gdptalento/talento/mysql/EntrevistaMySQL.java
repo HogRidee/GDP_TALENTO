@@ -76,6 +76,10 @@ public class EntrevistaMySQL implements EntrevistaDAO{
     public ArrayList<Entrevista> listarEntrevistas() {
         ArrayList<Entrevista> listadoEntrevistas = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ENTREVISTAS", null);
+        if (rs == null) {
+            System.out.println("ERROR: ResultSet es null. Revisa el procedimiento almacenado LISTAR_ENTREVISTAS.");
+            return listadoEntrevistas;
+        }
         try {
             while (rs.next()) {
                 Entrevista entrevista = new Entrevista();

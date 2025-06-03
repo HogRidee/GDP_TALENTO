@@ -1,0 +1,29 @@
+<discovery xmlns="http://schemas.xmlsoap.org/disco/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/EntrevistaWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/EventoWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/PostulanteWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/RolWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/StaffWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/TareaWS?WSDL"/>
+    
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/UsuarioWS?WSDL"/>
+</discovery>
