@@ -12,206 +12,3888 @@ namespace GDPTalentoWA.ServicioWeb {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ws.core.gdptalento.pucp.edu.pe/", ConfigurationName="ServicioWeb.ServicioWeb")]
-    public interface ServicioWeb {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.UsuarioWS")]
+    public interface UsuarioWS {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento name del espacio de nombres  no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
-        GDPTalentoWA.ServicioWeb.helloResponse hello(GDPTalentoWA.ServicioWeb.helloRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/helloResponse")]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.helloResponse> helloAsync(GDPTalentoWA.ServicioWeb.helloRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el espacio de nombres de partes de mensaje () no coincide con el valor predeterminado (http://ws.core.gdptalento.pucp.edu.pe/).
-        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        GDPTalentoWA.ServicioWeb.multiplicarResponse multiplicar(GDPTalentoWA.ServicioWeb.multiplicarRequest request);
+        GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse eliminarUsuario(GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarRequest", ReplyAction="http://ws.core.gdptalento.pucp.edu.pe/ServicioWeb/multiplicarResponse")]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> multiplicarAsync(GDPTalentoWA.ServicioWeb.multiplicarRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse> eliminarUsuarioAsync(GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarUsuarioResponse modificarUsuario(GDPTalentoWA.ServicioWeb.modificarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarUsuarioResponse> modificarUsuarioAsync(GDPTalentoWA.ServicioWeb.modificarUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarUsuarioResponse insertarUsuario(GDPTalentoWA.ServicioWeb.insertarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarUsuarioResponse> insertarUsuarioAsync(GDPTalentoWA.ServicioWeb.insertarUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarUsuariosResponse listarUsuarios(GDPTalentoWA.ServicioWeb.listarUsuariosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarUsuariosResponse> listarUsuariosAsync(GDPTalentoWA.ServicioWeb.listarUsuariosRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/verificarRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/verificarResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.verificarResponse verificar(GDPTalentoWA.ServicioWeb.verificarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/UsuarioWS/verificarRequest", ReplyAction="http://services.pucp.edu.pe/UsuarioWS/verificarResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.verificarResponse> verificarAsync(GDPTalentoWA.ServicioWeb.verificarRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class helloRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarUsuario", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarUsuarioRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="hello", Namespace="http://ws.core.gdptalento.pucp.edu.pe/", Order=0)]
-        public GDPTalentoWA.ServicioWeb.helloRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idUsuario;
         
-        public helloRequest() {
+        public eliminarUsuarioRequest() {
         }
         
-        public helloRequest(GDPTalentoWA.ServicioWeb.helloRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
-    public partial class helloRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string name;
-        
-        public helloRequestBody() {
-        }
-        
-        public helloRequestBody(string name) {
-            this.name = name;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class helloResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="helloResponse", Namespace="http://ws.core.gdptalento.pucp.edu.pe/", Order=0)]
-        public GDPTalentoWA.ServicioWeb.helloResponseBody Body;
-        
-        public helloResponse() {
-        }
-        
-        public helloResponse(GDPTalentoWA.ServicioWeb.helloResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
-    public partial class helloResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string @return;
-        
-        public helloResponseBody() {
-        }
-        
-        public helloResponseBody(string @return) {
-            this.@return = @return;
+        public eliminarUsuarioRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicar", WrapperNamespace="http://ws.core.gdptalento.pucp.edu.pe/", IsWrapped=true)]
-    public partial class multiplicarRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarUsuarioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarUsuarioResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
-        public int a;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=1)]
-        public int b;
-        
-        public multiplicarRequest() {
-        }
-        
-        public multiplicarRequest(int a, int b) {
-            this.a = a;
-            this.b = b;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="multiplicarResponse", WrapperNamespace="http://ws.core.gdptalento.pucp.edu.pe/", IsWrapped=true)]
-    public partial class multiplicarResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public multiplicarResponse() {
+        public eliminarUsuarioResponse() {
         }
         
-        public multiplicarResponse(int @return) {
+        public eliminarUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class usuario : staff {
+        
+        private string hashContrasenaField;
+        
+        private rol rolField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string hashContrasena {
+            get {
+                return this.hashContrasenaField;
+            }
+            set {
+                this.hashContrasenaField = value;
+                this.RaisePropertyChanged("hashContrasena");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public rol rol {
+            get {
+                return this.rolField;
+            }
+            set {
+                this.rolField = value;
+                this.RaisePropertyChanged("rol");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class rol : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idField;
+        
+        private nombreRol nombreField;
+        
+        private bool nombreFieldSpecified;
+        
+        private System.Nullable<permiso>[] permisosField;
+        
+        private usuario[] usuariosField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public nombreRol nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool nombreSpecified {
+            get {
+                return this.nombreFieldSpecified;
+            }
+            set {
+                this.nombreFieldSpecified = value;
+                this.RaisePropertyChanged("nombreSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("permisos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=2)]
+        public System.Nullable<permiso>[] permisos {
+            get {
+                return this.permisosField;
+            }
+            set {
+                this.permisosField = value;
+                this.RaisePropertyChanged("permisos");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("usuarios", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=3)]
+        public usuario[] usuarios {
+            get {
+                return this.usuariosField;
+            }
+            set {
+                this.usuariosField = value;
+                this.RaisePropertyChanged("usuarios");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum nombreRol {
+        
+        /// <remarks/>
+        ADMIN,
+        
+        /// <remarks/>
+        RECLUTADOR,
+        
+        /// <remarks/>
+        COORDINADOR,
+        
+        /// <remarks/>
+        DIRECTOR_RRHH,
+        
+        /// <remarks/>
+        MIEMBRO_RRHH,
+        
+        /// <remarks/>
+        PRESIDENTE,
+        
+        /// <remarks/>
+        DIRECTOR_MARKETING,
+        
+        /// <remarks/>
+        DIRECTOR_EVENTOS,
+        
+        /// <remarks/>
+        DIRECTOR_GDP_ACADEMY,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum permiso {
+        
+        /// <remarks/>
+        CREAR_MIEMBRO,
+        
+        /// <remarks/>
+        BORRAR_MIEMBRO,
+        
+        /// <remarks/>
+        CREAR_TAREA,
+        
+        /// <remarks/>
+        CREAR_ENTREVISTA,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class evento : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private usuario[] encargadosField;
+        
+        private estadoEvento estadoEventoField;
+        
+        private bool estadoEventoFieldSpecified;
+        
+        private localDate fechaField;
+        
+        private int idField;
+        
+        private staff[] participantesField;
+        
+        private tipoEvento tipoEventoField;
+        
+        private bool tipoEventoFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("encargados", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=0)]
+        public usuario[] encargados {
+            get {
+                return this.encargadosField;
+            }
+            set {
+                this.encargadosField = value;
+                this.RaisePropertyChanged("encargados");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public estadoEvento estadoEvento {
+            get {
+                return this.estadoEventoField;
+            }
+            set {
+                this.estadoEventoField = value;
+                this.RaisePropertyChanged("estadoEvento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool estadoEventoSpecified {
+            get {
+                return this.estadoEventoFieldSpecified;
+            }
+            set {
+                this.estadoEventoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoEventoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public localDate fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("participantes", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=4)]
+        public staff[] participantes {
+            get {
+                return this.participantesField;
+            }
+            set {
+                this.participantesField = value;
+                this.RaisePropertyChanged("participantes");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public tipoEvento tipoEvento {
+            get {
+                return this.tipoEventoField;
+            }
+            set {
+                this.tipoEventoField = value;
+                this.RaisePropertyChanged("tipoEvento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool tipoEventoSpecified {
+            get {
+                return this.tipoEventoFieldSpecified;
+            }
+            set {
+                this.tipoEventoFieldSpecified = value;
+                this.RaisePropertyChanged("tipoEventoSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoEvento {
+        
+        /// <remarks/>
+        APROBADO,
+        
+        /// <remarks/>
+        CANCELADO,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class localDate : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(usuario))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class staff : miembroPUCP {
+        
+        private area areaField;
+        
+        private bool areaFieldSpecified;
+        
+        private double desempenioField;
+        
+        private estadoMiembro estadoField;
+        
+        private bool estadoFieldSpecified;
+        
+        private evaluacionDesempeño[] evaluacionesField;
+        
+        private localDate fechaIngresoField;
+        
+        private localDate fechaSalidaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public area area {
+            get {
+                return this.areaField;
+            }
+            set {
+                this.areaField = value;
+                this.RaisePropertyChanged("area");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool areaSpecified {
+            get {
+                return this.areaFieldSpecified;
+            }
+            set {
+                this.areaFieldSpecified = value;
+                this.RaisePropertyChanged("areaSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public double desempenio {
+            get {
+                return this.desempenioField;
+            }
+            set {
+                this.desempenioField = value;
+                this.RaisePropertyChanged("desempenio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public estadoMiembro estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("estado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool estadoSpecified {
+            get {
+                return this.estadoFieldSpecified;
+            }
+            set {
+                this.estadoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("evaluaciones", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=3)]
+        public evaluacionDesempeño[] evaluaciones {
+            get {
+                return this.evaluacionesField;
+            }
+            set {
+                this.evaluacionesField = value;
+                this.RaisePropertyChanged("evaluaciones");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public localDate fechaIngreso {
+            get {
+                return this.fechaIngresoField;
+            }
+            set {
+                this.fechaIngresoField = value;
+                this.RaisePropertyChanged("fechaIngreso");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public localDate fechaSalida {
+            get {
+                return this.fechaSalidaField;
+            }
+            set {
+                this.fechaSalidaField = value;
+                this.RaisePropertyChanged("fechaSalida");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum area {
+        
+        /// <remarks/>
+        RECURSOS_HUMANOS,
+        
+        /// <remarks/>
+        PRESIDENCIA,
+        
+        /// <remarks/>
+        MARKETING,
+        
+        /// <remarks/>
+        GDP_ACADEMY,
+        
+        /// <remarks/>
+        EVENTOS,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoMiembro {
+        
+        /// <remarks/>
+        ACTIVO,
+        
+        /// <remarks/>
+        INACTIVO,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class evaluacionDesempeño : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string comentariosField;
+        
+        private usuario evaluadorField;
+        
+        private localDate fechaField;
+        
+        private int idField;
+        
+        private staff miembroEvaluadoField;
+        
+        private int puntajeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string comentarios {
+            get {
+                return this.comentariosField;
+            }
+            set {
+                this.comentariosField = value;
+                this.RaisePropertyChanged("comentarios");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public usuario evaluador {
+            get {
+                return this.evaluadorField;
+            }
+            set {
+                this.evaluadorField = value;
+                this.RaisePropertyChanged("evaluador");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public localDate fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public staff miembroEvaluado {
+            get {
+                return this.miembroEvaluadoField;
+            }
+            set {
+                this.miembroEvaluadoField = value;
+                this.RaisePropertyChanged("miembroEvaluado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public int puntaje {
+            get {
+                return this.puntajeField;
+            }
+            set {
+                this.puntajeField = value;
+                this.RaisePropertyChanged("puntaje");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(staff))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(usuario))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(postulante))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class miembroPUCP : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int codigoPUCPField;
+        
+        private string correoField;
+        
+        private string especialidadField;
+        
+        private string facultadField;
+        
+        private int idField;
+        
+        private string nombreField;
+        
+        private estadoPUCP statusField;
+        
+        private bool statusFieldSpecified;
+        
+        private string telefonoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int codigoPUCP {
+            get {
+                return this.codigoPUCPField;
+            }
+            set {
+                this.codigoPUCPField = value;
+                this.RaisePropertyChanged("codigoPUCP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                this.correoField = value;
+                this.RaisePropertyChanged("correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string especialidad {
+            get {
+                return this.especialidadField;
+            }
+            set {
+                this.especialidadField = value;
+                this.RaisePropertyChanged("especialidad");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string facultad {
+            get {
+                return this.facultadField;
+            }
+            set {
+                this.facultadField = value;
+                this.RaisePropertyChanged("facultad");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public estadoPUCP status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool statusSpecified {
+            get {
+                return this.statusFieldSpecified;
+            }
+            set {
+                this.statusFieldSpecified = value;
+                this.RaisePropertyChanged("statusSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("telefono");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoPUCP {
+        
+        /// <remarks/>
+        MATRICULADO,
+        
+        /// <remarks/>
+        NO_MATRICULADO,
+        
+        /// <remarks/>
+        EGRESADO,
+        
+        /// <remarks/>
+        EXTERNO,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class postulante : miembroPUCP {
+        
+        private estadoProceso estadoProcesoField;
+        
+        private bool estadoProcesoFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public estadoProceso estadoProceso {
+            get {
+                return this.estadoProcesoField;
+            }
+            set {
+                this.estadoProcesoField = value;
+                this.RaisePropertyChanged("estadoProceso");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool estadoProcesoSpecified {
+            get {
+                return this.estadoProcesoFieldSpecified;
+            }
+            set {
+                this.estadoProcesoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoProcesoSpecified");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoProceso {
+        
+        /// <remarks/>
+        PENDIENTE,
+        
+        /// <remarks/>
+        APROBADO,
+        
+        /// <remarks/>
+        RECHAZADO,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum tipoEvento {
+        
+        /// <remarks/>
+        REUNION,
+        
+        /// <remarks/>
+        INTEGRACION,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class localDateTime : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class tarea : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private usuario creadorField;
+        
+        private usuario[] encargadosField;
+        
+        private estadoTarea estadoField;
+        
+        private bool estadoFieldSpecified;
+        
+        private localDateTime fechaCreacionField;
+        
+        private localDateTime fechaLimiteField;
+        
+        private int idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public usuario creador {
+            get {
+                return this.creadorField;
+            }
+            set {
+                this.creadorField = value;
+                this.RaisePropertyChanged("creador");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("encargados", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=1)]
+        public usuario[] encargados {
+            get {
+                return this.encargadosField;
+            }
+            set {
+                this.encargadosField = value;
+                this.RaisePropertyChanged("encargados");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public estadoTarea estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("estado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool estadoSpecified {
+            get {
+                return this.estadoFieldSpecified;
+            }
+            set {
+                this.estadoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public localDateTime fechaCreacion {
+            get {
+                return this.fechaCreacionField;
+            }
+            set {
+                this.fechaCreacionField = value;
+                this.RaisePropertyChanged("fechaCreacion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public localDateTime fechaLimite {
+            get {
+                return this.fechaLimiteField;
+            }
+            set {
+                this.fechaLimiteField = value;
+                this.RaisePropertyChanged("fechaLimite");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoTarea {
+        
+        /// <remarks/>
+        EN_PROCESO,
+        
+        /// <remarks/>
+        PENDIENTE,
+        
+        /// <remarks/>
+        REALIZADA,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public partial class entrevista : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private usuario[] entrevistadoresField;
+        
+        private estadoEntrevista estadoField;
+        
+        private bool estadoFieldSpecified;
+        
+        private localDate fechaField;
+        
+        private string feedbackField;
+        
+        private int idField;
+        
+        private postulante postulanteField;
+        
+        private double puntuacionFinalField;
+        
+        private System.Nullable<int>[] puntuacionesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("entrevistadores", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=0)]
+        public usuario[] entrevistadores {
+            get {
+                return this.entrevistadoresField;
+            }
+            set {
+                this.entrevistadoresField = value;
+                this.RaisePropertyChanged("entrevistadores");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public estadoEntrevista estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("estado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool estadoSpecified {
+            get {
+                return this.estadoFieldSpecified;
+            }
+            set {
+                this.estadoFieldSpecified = value;
+                this.RaisePropertyChanged("estadoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public localDate fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string feedback {
+            get {
+                return this.feedbackField;
+            }
+            set {
+                this.feedbackField = value;
+                this.RaisePropertyChanged("feedback");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public postulante postulante {
+            get {
+                return this.postulanteField;
+            }
+            set {
+                this.postulanteField = value;
+                this.RaisePropertyChanged("postulante");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public double puntuacionFinal {
+            get {
+                return this.puntuacionFinalField;
+            }
+            set {
+                this.puntuacionFinalField = value;
+                this.RaisePropertyChanged("puntuacionFinal");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("puntuaciones", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=7)]
+        public System.Nullable<int>[] puntuaciones {
+            get {
+                return this.puntuacionesField;
+            }
+            set {
+                this.puntuacionesField = value;
+                this.RaisePropertyChanged("puntuaciones");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.pucp.edu.pe")]
+    public enum estadoEntrevista {
+        
+        /// <remarks/>
+        PROGRAMADA,
+        
+        /// <remarks/>
+        REALIZADA,
+        
+        /// <remarks/>
+        CANCELADA,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuario", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.usuario usuario;
+        
+        public modificarUsuarioRequest() {
+        }
+        
+        public modificarUsuarioRequest(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarUsuarioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarUsuarioResponse() {
+        }
+        
+        public modificarUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuario", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.usuario usuario;
+        
+        public insertarUsuarioRequest() {
+        }
+        
+        public insertarUsuarioRequest(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarUsuarioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarUsuarioResponse() {
+        }
+        
+        public insertarUsuarioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuarios", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarUsuariosRequest {
+        
+        public listarUsuariosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarUsuariosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.usuario[] @return;
+        
+        public listarUsuariosResponse() {
+        }
+        
+        public listarUsuariosResponse(GDPTalentoWA.ServicioWeb.usuario[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="verificar", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class verificarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int codigo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string contrasenha;
+        
+        public verificarRequest() {
+        }
+        
+        public verificarRequest(int codigo, string contrasenha) {
+            this.codigo = codigo;
+            this.contrasenha = contrasenha;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="verificarResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class verificarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public verificarResponse() {
+        }
+        
+        public verificarResponse(int @return) {
             this.@return = @return;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ServicioWebChannel : GDPTalentoWA.ServicioWeb.ServicioWeb, System.ServiceModel.IClientChannel {
+    public interface UsuarioWSChannel : GDPTalentoWA.ServicioWeb.UsuarioWS, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServicioWebClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.ServicioWeb>, GDPTalentoWA.ServicioWeb.ServicioWeb {
+    public partial class UsuarioWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.UsuarioWS>, GDPTalentoWA.ServicioWeb.UsuarioWS {
         
-        public ServicioWebClient() {
+        public UsuarioWSClient() {
         }
         
-        public ServicioWebClient(string endpointConfigurationName) : 
+        public UsuarioWSClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServicioWebClient(string endpointConfigurationName, string remoteAddress) : 
+        public UsuarioWSClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServicioWebClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UsuarioWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServicioWebClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UsuarioWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        GDPTalentoWA.ServicioWeb.helloResponse GDPTalentoWA.ServicioWeb.ServicioWeb.hello(GDPTalentoWA.ServicioWeb.helloRequest request) {
-            return base.Channel.hello(request);
+        GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse GDPTalentoWA.ServicioWeb.UsuarioWS.eliminarUsuario(GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest request) {
+            return base.Channel.eliminarUsuario(request);
         }
         
-        public string hello(string name) {
-            GDPTalentoWA.ServicioWeb.helloRequest inValue = new GDPTalentoWA.ServicioWeb.helloRequest();
-            inValue.Body = new GDPTalentoWA.ServicioWeb.helloRequestBody();
-            inValue.Body.name = name;
-            GDPTalentoWA.ServicioWeb.helloResponse retVal = ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).hello(inValue);
-            return retVal.Body.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.helloResponse> GDPTalentoWA.ServicioWeb.ServicioWeb.helloAsync(GDPTalentoWA.ServicioWeb.helloRequest request) {
-            return base.Channel.helloAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.helloResponse> helloAsync(string name) {
-            GDPTalentoWA.ServicioWeb.helloRequest inValue = new GDPTalentoWA.ServicioWeb.helloRequest();
-            inValue.Body = new GDPTalentoWA.ServicioWeb.helloRequestBody();
-            inValue.Body.name = name;
-            return ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).helloAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        GDPTalentoWA.ServicioWeb.multiplicarResponse GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicar(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
-            return base.Channel.multiplicar(request);
-        }
-        
-        public int multiplicar(int a, int b) {
-            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
-            inValue.a = a;
-            inValue.b = b;
-            GDPTalentoWA.ServicioWeb.multiplicarResponse retVal = ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicar(inValue);
+        public int eliminarUsuario(int idUsuario) {
+            GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse retVal = ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).eliminarUsuario(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> GDPTalentoWA.ServicioWeb.ServicioWeb.multiplicarAsync(GDPTalentoWA.ServicioWeb.multiplicarRequest request) {
-            return base.Channel.multiplicarAsync(request);
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse> GDPTalentoWA.ServicioWeb.UsuarioWS.eliminarUsuarioAsync(GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest request) {
+            return base.Channel.eliminarUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.multiplicarResponse> multiplicarAsync(int a, int b) {
-            GDPTalentoWA.ServicioWeb.multiplicarRequest inValue = new GDPTalentoWA.ServicioWeb.multiplicarRequest();
-            inValue.a = a;
-            inValue.b = b;
-            return ((GDPTalentoWA.ServicioWeb.ServicioWeb)(this)).multiplicarAsync(inValue);
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse> eliminarUsuarioAsync(int idUsuario) {
+            GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarUsuarioRequest();
+            inValue.idUsuario = idUsuario;
+            return ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).eliminarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarUsuarioResponse GDPTalentoWA.ServicioWeb.UsuarioWS.modificarUsuario(GDPTalentoWA.ServicioWeb.modificarUsuarioRequest request) {
+            return base.Channel.modificarUsuario(request);
+        }
+        
+        public int modificarUsuario(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            GDPTalentoWA.ServicioWeb.modificarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.modificarUsuarioRequest();
+            inValue.usuario = usuario;
+            GDPTalentoWA.ServicioWeb.modificarUsuarioResponse retVal = ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).modificarUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarUsuarioResponse> GDPTalentoWA.ServicioWeb.UsuarioWS.modificarUsuarioAsync(GDPTalentoWA.ServicioWeb.modificarUsuarioRequest request) {
+            return base.Channel.modificarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarUsuarioResponse> modificarUsuarioAsync(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            GDPTalentoWA.ServicioWeb.modificarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.modificarUsuarioRequest();
+            inValue.usuario = usuario;
+            return ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).modificarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarUsuarioResponse GDPTalentoWA.ServicioWeb.UsuarioWS.insertarUsuario(GDPTalentoWA.ServicioWeb.insertarUsuarioRequest request) {
+            return base.Channel.insertarUsuario(request);
+        }
+        
+        public int insertarUsuario(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            GDPTalentoWA.ServicioWeb.insertarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.insertarUsuarioRequest();
+            inValue.usuario = usuario;
+            GDPTalentoWA.ServicioWeb.insertarUsuarioResponse retVal = ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).insertarUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarUsuarioResponse> GDPTalentoWA.ServicioWeb.UsuarioWS.insertarUsuarioAsync(GDPTalentoWA.ServicioWeb.insertarUsuarioRequest request) {
+            return base.Channel.insertarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarUsuarioResponse> insertarUsuarioAsync(GDPTalentoWA.ServicioWeb.usuario usuario) {
+            GDPTalentoWA.ServicioWeb.insertarUsuarioRequest inValue = new GDPTalentoWA.ServicioWeb.insertarUsuarioRequest();
+            inValue.usuario = usuario;
+            return ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).insertarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarUsuariosResponse GDPTalentoWA.ServicioWeb.UsuarioWS.listarUsuarios(GDPTalentoWA.ServicioWeb.listarUsuariosRequest request) {
+            return base.Channel.listarUsuarios(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.usuario[] listarUsuarios() {
+            GDPTalentoWA.ServicioWeb.listarUsuariosRequest inValue = new GDPTalentoWA.ServicioWeb.listarUsuariosRequest();
+            GDPTalentoWA.ServicioWeb.listarUsuariosResponse retVal = ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).listarUsuarios(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarUsuariosResponse> GDPTalentoWA.ServicioWeb.UsuarioWS.listarUsuariosAsync(GDPTalentoWA.ServicioWeb.listarUsuariosRequest request) {
+            return base.Channel.listarUsuariosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarUsuariosResponse> listarUsuariosAsync() {
+            GDPTalentoWA.ServicioWeb.listarUsuariosRequest inValue = new GDPTalentoWA.ServicioWeb.listarUsuariosRequest();
+            return ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).listarUsuariosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.verificarResponse GDPTalentoWA.ServicioWeb.UsuarioWS.verificar(GDPTalentoWA.ServicioWeb.verificarRequest request) {
+            return base.Channel.verificar(request);
+        }
+        
+        public int verificar(int codigo, string contrasenha) {
+            GDPTalentoWA.ServicioWeb.verificarRequest inValue = new GDPTalentoWA.ServicioWeb.verificarRequest();
+            inValue.codigo = codigo;
+            inValue.contrasenha = contrasenha;
+            GDPTalentoWA.ServicioWeb.verificarResponse retVal = ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).verificar(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.verificarResponse> GDPTalentoWA.ServicioWeb.UsuarioWS.verificarAsync(GDPTalentoWA.ServicioWeb.verificarRequest request) {
+            return base.Channel.verificarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.verificarResponse> verificarAsync(int codigo, string contrasenha) {
+            GDPTalentoWA.ServicioWeb.verificarRequest inValue = new GDPTalentoWA.ServicioWeb.verificarRequest();
+            inValue.codigo = codigo;
+            inValue.contrasenha = contrasenha;
+            return ((GDPTalentoWA.ServicioWeb.UsuarioWS)(this)).verificarAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.EntrevistaWS")]
+    public interface EntrevistaWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse modificarEntrevista(GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse> modificarEntrevistaAsync(GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarEntrevistasResponse listarEntrevistas(GDPTalentoWA.ServicioWeb.listarEntrevistasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEntrevistasResponse> listarEntrevistasAsync(GDPTalentoWA.ServicioWeb.listarEntrevistasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse eliminarEntrevista(GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse> eliminarEntrevistaAsync(GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse insertarEntrevista(GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaRequest", ReplyAction="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse> insertarEntrevistaAsync(GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEntrevista", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEntrevistaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.entrevista entrevista;
+        
+        public modificarEntrevistaRequest() {
+        }
+        
+        public modificarEntrevistaRequest(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            this.entrevista = entrevista;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEntrevistaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEntrevistaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarEntrevistaResponse() {
+        }
+        
+        public modificarEntrevistaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEntrevistas", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEntrevistasRequest {
+        
+        public listarEntrevistasRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEntrevistasResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEntrevistasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.entrevista[] @return;
+        
+        public listarEntrevistasResponse() {
+        }
+        
+        public listarEntrevistasResponse(GDPTalentoWA.ServicioWeb.entrevista[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEntrevista", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEntrevistaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEntrevista;
+        
+        public eliminarEntrevistaRequest() {
+        }
+        
+        public eliminarEntrevistaRequest(int idEntrevista) {
+            this.idEntrevista = idEntrevista;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEntrevistaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEntrevistaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarEntrevistaResponse() {
+        }
+        
+        public eliminarEntrevistaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntrevista", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEntrevistaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.entrevista entrevista;
+        
+        public insertarEntrevistaRequest() {
+        }
+        
+        public insertarEntrevistaRequest(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            this.entrevista = entrevista;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntrevistaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEntrevistaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEntrevistaResponse() {
+        }
+        
+        public insertarEntrevistaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface EntrevistaWSChannel : GDPTalentoWA.ServicioWeb.EntrevistaWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EntrevistaWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.EntrevistaWS>, GDPTalentoWA.ServicioWeb.EntrevistaWS {
+        
+        public EntrevistaWSClient() {
+        }
+        
+        public EntrevistaWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EntrevistaWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EntrevistaWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EntrevistaWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse GDPTalentoWA.ServicioWeb.EntrevistaWS.modificarEntrevista(GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest request) {
+            return base.Channel.modificarEntrevista(request);
+        }
+        
+        public int modificarEntrevista(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest();
+            inValue.entrevista = entrevista;
+            GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse retVal = ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).modificarEntrevista(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse> GDPTalentoWA.ServicioWeb.EntrevistaWS.modificarEntrevistaAsync(GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest request) {
+            return base.Channel.modificarEntrevistaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse> modificarEntrevistaAsync(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEntrevistaRequest();
+            inValue.entrevista = entrevista;
+            return ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).modificarEntrevistaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarEntrevistasResponse GDPTalentoWA.ServicioWeb.EntrevistaWS.listarEntrevistas(GDPTalentoWA.ServicioWeb.listarEntrevistasRequest request) {
+            return base.Channel.listarEntrevistas(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.entrevista[] listarEntrevistas() {
+            GDPTalentoWA.ServicioWeb.listarEntrevistasRequest inValue = new GDPTalentoWA.ServicioWeb.listarEntrevistasRequest();
+            GDPTalentoWA.ServicioWeb.listarEntrevistasResponse retVal = ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).listarEntrevistas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEntrevistasResponse> GDPTalentoWA.ServicioWeb.EntrevistaWS.listarEntrevistasAsync(GDPTalentoWA.ServicioWeb.listarEntrevistasRequest request) {
+            return base.Channel.listarEntrevistasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEntrevistasResponse> listarEntrevistasAsync() {
+            GDPTalentoWA.ServicioWeb.listarEntrevistasRequest inValue = new GDPTalentoWA.ServicioWeb.listarEntrevistasRequest();
+            return ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).listarEntrevistasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse GDPTalentoWA.ServicioWeb.EntrevistaWS.eliminarEntrevista(GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest request) {
+            return base.Channel.eliminarEntrevista(request);
+        }
+        
+        public int eliminarEntrevista(int idEntrevista) {
+            GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest();
+            inValue.idEntrevista = idEntrevista;
+            GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse retVal = ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).eliminarEntrevista(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse> GDPTalentoWA.ServicioWeb.EntrevistaWS.eliminarEntrevistaAsync(GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest request) {
+            return base.Channel.eliminarEntrevistaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse> eliminarEntrevistaAsync(int idEntrevista) {
+            GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEntrevistaRequest();
+            inValue.idEntrevista = idEntrevista;
+            return ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).eliminarEntrevistaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse GDPTalentoWA.ServicioWeb.EntrevistaWS.insertarEntrevista(GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest request) {
+            return base.Channel.insertarEntrevista(request);
+        }
+        
+        public int insertarEntrevista(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest();
+            inValue.entrevista = entrevista;
+            GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse retVal = ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).insertarEntrevista(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse> GDPTalentoWA.ServicioWeb.EntrevistaWS.insertarEntrevistaAsync(GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest request) {
+            return base.Channel.insertarEntrevistaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse> insertarEntrevistaAsync(GDPTalentoWA.ServicioWeb.entrevista entrevista) {
+            GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEntrevistaRequest();
+            inValue.entrevista = entrevista;
+            return ((GDPTalentoWA.ServicioWeb.EntrevistaWS)(this)).insertarEntrevistaAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.RolWS")]
+    public interface RolWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/insertarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/insertarRolResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarRolResponse insertarRol(GDPTalentoWA.ServicioWeb.insertarRolRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/insertarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/insertarRolResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarRolResponse> insertarRolAsync(GDPTalentoWA.ServicioWeb.insertarRolRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/modificarRolResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarRolResponse modificarRol(GDPTalentoWA.ServicioWeb.modificarRolRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/modificarRolResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarRolResponse> modificarRolAsync(GDPTalentoWA.ServicioWeb.modificarRolRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/eliminarRolResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarRolResponse eliminarRol(GDPTalentoWA.ServicioWeb.eliminarRolRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/eliminarRolResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarRolResponse> eliminarRolAsync(GDPTalentoWA.ServicioWeb.eliminarRolRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/listarRolesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarRolesResponse listarRoles(GDPTalentoWA.ServicioWeb.listarRolesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest", ReplyAction="http://services.pucp.edu.pe/RolWS/listarRolesResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarRolesResponse> listarRolesAsync(GDPTalentoWA.ServicioWeb.listarRolesRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRol", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarRolRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.rol rol;
+        
+        public insertarRolRequest() {
+        }
+        
+        public insertarRolRequest(GDPTalentoWA.ServicioWeb.rol rol) {
+            this.rol = rol;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRolResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarRolResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarRolResponse() {
+        }
+        
+        public insertarRolResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarRol", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarRolRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.rol rol;
+        
+        public modificarRolRequest() {
+        }
+        
+        public modificarRolRequest(GDPTalentoWA.ServicioWeb.rol rol) {
+            this.rol = rol;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarRolResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarRolResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarRolResponse() {
+        }
+        
+        public modificarRolResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRol", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarRolRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idRol;
+        
+        public eliminarRolRequest() {
+        }
+        
+        public eliminarRolRequest(int idRol) {
+            this.idRol = idRol;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRolResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarRolResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarRolResponse() {
+        }
+        
+        public eliminarRolResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRoles", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarRolesRequest {
+        
+        public listarRolesRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRolesResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarRolesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.rol[] @return;
+        
+        public listarRolesResponse() {
+        }
+        
+        public listarRolesResponse(GDPTalentoWA.ServicioWeb.rol[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface RolWSChannel : GDPTalentoWA.ServicioWeb.RolWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RolWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.RolWS>, GDPTalentoWA.ServicioWeb.RolWS {
+        
+        public RolWSClient() {
+        }
+        
+        public RolWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RolWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RolWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RolWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarRolResponse GDPTalentoWA.ServicioWeb.RolWS.insertarRol(GDPTalentoWA.ServicioWeb.insertarRolRequest request) {
+            return base.Channel.insertarRol(request);
+        }
+        
+        public int insertarRol(GDPTalentoWA.ServicioWeb.rol rol) {
+            GDPTalentoWA.ServicioWeb.insertarRolRequest inValue = new GDPTalentoWA.ServicioWeb.insertarRolRequest();
+            inValue.rol = rol;
+            GDPTalentoWA.ServicioWeb.insertarRolResponse retVal = ((GDPTalentoWA.ServicioWeb.RolWS)(this)).insertarRol(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarRolResponse> GDPTalentoWA.ServicioWeb.RolWS.insertarRolAsync(GDPTalentoWA.ServicioWeb.insertarRolRequest request) {
+            return base.Channel.insertarRolAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarRolResponse> insertarRolAsync(GDPTalentoWA.ServicioWeb.rol rol) {
+            GDPTalentoWA.ServicioWeb.insertarRolRequest inValue = new GDPTalentoWA.ServicioWeb.insertarRolRequest();
+            inValue.rol = rol;
+            return ((GDPTalentoWA.ServicioWeb.RolWS)(this)).insertarRolAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarRolResponse GDPTalentoWA.ServicioWeb.RolWS.modificarRol(GDPTalentoWA.ServicioWeb.modificarRolRequest request) {
+            return base.Channel.modificarRol(request);
+        }
+        
+        public int modificarRol(GDPTalentoWA.ServicioWeb.rol rol) {
+            GDPTalentoWA.ServicioWeb.modificarRolRequest inValue = new GDPTalentoWA.ServicioWeb.modificarRolRequest();
+            inValue.rol = rol;
+            GDPTalentoWA.ServicioWeb.modificarRolResponse retVal = ((GDPTalentoWA.ServicioWeb.RolWS)(this)).modificarRol(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarRolResponse> GDPTalentoWA.ServicioWeb.RolWS.modificarRolAsync(GDPTalentoWA.ServicioWeb.modificarRolRequest request) {
+            return base.Channel.modificarRolAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarRolResponse> modificarRolAsync(GDPTalentoWA.ServicioWeb.rol rol) {
+            GDPTalentoWA.ServicioWeb.modificarRolRequest inValue = new GDPTalentoWA.ServicioWeb.modificarRolRequest();
+            inValue.rol = rol;
+            return ((GDPTalentoWA.ServicioWeb.RolWS)(this)).modificarRolAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarRolResponse GDPTalentoWA.ServicioWeb.RolWS.eliminarRol(GDPTalentoWA.ServicioWeb.eliminarRolRequest request) {
+            return base.Channel.eliminarRol(request);
+        }
+        
+        public int eliminarRol(int idRol) {
+            GDPTalentoWA.ServicioWeb.eliminarRolRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarRolRequest();
+            inValue.idRol = idRol;
+            GDPTalentoWA.ServicioWeb.eliminarRolResponse retVal = ((GDPTalentoWA.ServicioWeb.RolWS)(this)).eliminarRol(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarRolResponse> GDPTalentoWA.ServicioWeb.RolWS.eliminarRolAsync(GDPTalentoWA.ServicioWeb.eliminarRolRequest request) {
+            return base.Channel.eliminarRolAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarRolResponse> eliminarRolAsync(int idRol) {
+            GDPTalentoWA.ServicioWeb.eliminarRolRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarRolRequest();
+            inValue.idRol = idRol;
+            return ((GDPTalentoWA.ServicioWeb.RolWS)(this)).eliminarRolAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarRolesResponse GDPTalentoWA.ServicioWeb.RolWS.listarRoles(GDPTalentoWA.ServicioWeb.listarRolesRequest request) {
+            return base.Channel.listarRoles(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.rol[] listarRoles() {
+            GDPTalentoWA.ServicioWeb.listarRolesRequest inValue = new GDPTalentoWA.ServicioWeb.listarRolesRequest();
+            GDPTalentoWA.ServicioWeb.listarRolesResponse retVal = ((GDPTalentoWA.ServicioWeb.RolWS)(this)).listarRoles(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarRolesResponse> GDPTalentoWA.ServicioWeb.RolWS.listarRolesAsync(GDPTalentoWA.ServicioWeb.listarRolesRequest request) {
+            return base.Channel.listarRolesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarRolesResponse> listarRolesAsync() {
+            GDPTalentoWA.ServicioWeb.listarRolesRequest inValue = new GDPTalentoWA.ServicioWeb.listarRolesRequest();
+            return ((GDPTalentoWA.ServicioWeb.RolWS)(this)).listarRolesAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.TareaWS")]
+    public interface TareaWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/eliminarTareaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarTareaResponse eliminarTarea(GDPTalentoWA.ServicioWeb.eliminarTareaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/eliminarTareaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarTareaResponse> eliminarTareaAsync(GDPTalentoWA.ServicioWeb.eliminarTareaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarTareaResponse modificarTarea(GDPTalentoWA.ServicioWeb.modificarTareaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarTareaResponse> modificarTareaAsync(GDPTalentoWA.ServicioWeb.modificarTareaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/listarTareasResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarTareasResponse listarTareas(GDPTalentoWA.ServicioWeb.listarTareasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/listarTareasResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarTareasResponse> listarTareasAsync(GDPTalentoWA.ServicioWeb.listarTareasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarTareaResponse insertarTarea(GDPTalentoWA.ServicioWeb.insertarTareaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest", ReplyAction="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarTareaResponse> insertarTareaAsync(GDPTalentoWA.ServicioWeb.insertarTareaRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarTarea", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarTareaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idTarea;
+        
+        public eliminarTareaRequest() {
+        }
+        
+        public eliminarTareaRequest(int idTarea) {
+            this.idTarea = idTarea;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarTareaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarTareaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarTareaResponse() {
+        }
+        
+        public eliminarTareaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarTarea", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarTareaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.tarea tarea;
+        
+        public modificarTareaRequest() {
+        }
+        
+        public modificarTareaRequest(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            this.tarea = tarea;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarTareaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarTareaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarTareaResponse() {
+        }
+        
+        public modificarTareaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTareas", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTareasRequest {
+        
+        public listarTareasRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTareasResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarTareasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.tarea[] @return;
+        
+        public listarTareasResponse() {
+        }
+        
+        public listarTareasResponse(GDPTalentoWA.ServicioWeb.tarea[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTarea", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarTareaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.tarea tarea;
+        
+        public insertarTareaRequest() {
+        }
+        
+        public insertarTareaRequest(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            this.tarea = tarea;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarTareaResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarTareaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarTareaResponse() {
+        }
+        
+        public insertarTareaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface TareaWSChannel : GDPTalentoWA.ServicioWeb.TareaWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class TareaWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.TareaWS>, GDPTalentoWA.ServicioWeb.TareaWS {
+        
+        public TareaWSClient() {
+        }
+        
+        public TareaWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public TareaWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TareaWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TareaWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarTareaResponse GDPTalentoWA.ServicioWeb.TareaWS.eliminarTarea(GDPTalentoWA.ServicioWeb.eliminarTareaRequest request) {
+            return base.Channel.eliminarTarea(request);
+        }
+        
+        public int eliminarTarea(int idTarea) {
+            GDPTalentoWA.ServicioWeb.eliminarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarTareaRequest();
+            inValue.idTarea = idTarea;
+            GDPTalentoWA.ServicioWeb.eliminarTareaResponse retVal = ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).eliminarTarea(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarTareaResponse> GDPTalentoWA.ServicioWeb.TareaWS.eliminarTareaAsync(GDPTalentoWA.ServicioWeb.eliminarTareaRequest request) {
+            return base.Channel.eliminarTareaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarTareaResponse> eliminarTareaAsync(int idTarea) {
+            GDPTalentoWA.ServicioWeb.eliminarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarTareaRequest();
+            inValue.idTarea = idTarea;
+            return ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).eliminarTareaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarTareaResponse GDPTalentoWA.ServicioWeb.TareaWS.modificarTarea(GDPTalentoWA.ServicioWeb.modificarTareaRequest request) {
+            return base.Channel.modificarTarea(request);
+        }
+        
+        public int modificarTarea(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            GDPTalentoWA.ServicioWeb.modificarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.modificarTareaRequest();
+            inValue.tarea = tarea;
+            GDPTalentoWA.ServicioWeb.modificarTareaResponse retVal = ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).modificarTarea(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarTareaResponse> GDPTalentoWA.ServicioWeb.TareaWS.modificarTareaAsync(GDPTalentoWA.ServicioWeb.modificarTareaRequest request) {
+            return base.Channel.modificarTareaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarTareaResponse> modificarTareaAsync(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            GDPTalentoWA.ServicioWeb.modificarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.modificarTareaRequest();
+            inValue.tarea = tarea;
+            return ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).modificarTareaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarTareasResponse GDPTalentoWA.ServicioWeb.TareaWS.listarTareas(GDPTalentoWA.ServicioWeb.listarTareasRequest request) {
+            return base.Channel.listarTareas(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.tarea[] listarTareas() {
+            GDPTalentoWA.ServicioWeb.listarTareasRequest inValue = new GDPTalentoWA.ServicioWeb.listarTareasRequest();
+            GDPTalentoWA.ServicioWeb.listarTareasResponse retVal = ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).listarTareas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarTareasResponse> GDPTalentoWA.ServicioWeb.TareaWS.listarTareasAsync(GDPTalentoWA.ServicioWeb.listarTareasRequest request) {
+            return base.Channel.listarTareasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarTareasResponse> listarTareasAsync() {
+            GDPTalentoWA.ServicioWeb.listarTareasRequest inValue = new GDPTalentoWA.ServicioWeb.listarTareasRequest();
+            return ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).listarTareasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarTareaResponse GDPTalentoWA.ServicioWeb.TareaWS.insertarTarea(GDPTalentoWA.ServicioWeb.insertarTareaRequest request) {
+            return base.Channel.insertarTarea(request);
+        }
+        
+        public int insertarTarea(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            GDPTalentoWA.ServicioWeb.insertarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.insertarTareaRequest();
+            inValue.tarea = tarea;
+            GDPTalentoWA.ServicioWeb.insertarTareaResponse retVal = ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).insertarTarea(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarTareaResponse> GDPTalentoWA.ServicioWeb.TareaWS.insertarTareaAsync(GDPTalentoWA.ServicioWeb.insertarTareaRequest request) {
+            return base.Channel.insertarTareaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarTareaResponse> insertarTareaAsync(GDPTalentoWA.ServicioWeb.tarea tarea) {
+            GDPTalentoWA.ServicioWeb.insertarTareaRequest inValue = new GDPTalentoWA.ServicioWeb.insertarTareaRequest();
+            inValue.tarea = tarea;
+            return ((GDPTalentoWA.ServicioWeb.TareaWS)(this)).insertarTareaAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.MiembroPUCPWS")]
+    public interface MiembroPUCPWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse eliminarMiembroPUCP(GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse> eliminarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse insertarMiembroPUCP(GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse> insertarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse modificarMiembroPUCP(GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse> modificarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse listarMiembroPUCP(GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPRequest", ReplyAction="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse> listarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarMiembroPUCP", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarMiembroPUCPRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idmiembroPUCP;
+        
+        public eliminarMiembroPUCPRequest() {
+        }
+        
+        public eliminarMiembroPUCPRequest(int idmiembroPUCP) {
+            this.idmiembroPUCP = idmiembroPUCP;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarMiembroPUCPResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarMiembroPUCPResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarMiembroPUCPResponse() {
+        }
+        
+        public eliminarMiembroPUCPResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarMiembroPUCP", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarMiembroPUCPRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP;
+        
+        public insertarMiembroPUCPRequest() {
+        }
+        
+        public insertarMiembroPUCPRequest(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            this.miembroPUCP = miembroPUCP;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarMiembroPUCPResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarMiembroPUCPResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarMiembroPUCPResponse() {
+        }
+        
+        public insertarMiembroPUCPResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarMiembroPUCP", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarMiembroPUCPRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP;
+        
+        public modificarMiembroPUCPRequest() {
+        }
+        
+        public modificarMiembroPUCPRequest(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            this.miembroPUCP = miembroPUCP;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarMiembroPUCPResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarMiembroPUCPResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarMiembroPUCPResponse() {
+        }
+        
+        public modificarMiembroPUCPResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMiembroPUCP", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarMiembroPUCPRequest {
+        
+        public listarMiembroPUCPRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarMiembroPUCPResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarMiembroPUCPResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.miembroPUCP[] @return;
+        
+        public listarMiembroPUCPResponse() {
+        }
+        
+        public listarMiembroPUCPResponse(GDPTalentoWA.ServicioWeb.miembroPUCP[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface MiembroPUCPWSChannel : GDPTalentoWA.ServicioWeb.MiembroPUCPWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MiembroPUCPWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.MiembroPUCPWS>, GDPTalentoWA.ServicioWeb.MiembroPUCPWS {
+        
+        public MiembroPUCPWSClient() {
+        }
+        
+        public MiembroPUCPWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MiembroPUCPWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MiembroPUCPWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MiembroPUCPWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse GDPTalentoWA.ServicioWeb.MiembroPUCPWS.eliminarMiembroPUCP(GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest request) {
+            return base.Channel.eliminarMiembroPUCP(request);
+        }
+        
+        public int eliminarMiembroPUCP(int idmiembroPUCP) {
+            GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest();
+            inValue.idmiembroPUCP = idmiembroPUCP;
+            GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse retVal = ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).eliminarMiembroPUCP(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse> GDPTalentoWA.ServicioWeb.MiembroPUCPWS.eliminarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest request) {
+            return base.Channel.eliminarMiembroPUCPAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse> eliminarMiembroPUCPAsync(int idmiembroPUCP) {
+            GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPRequest();
+            inValue.idmiembroPUCP = idmiembroPUCP;
+            return ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).eliminarMiembroPUCPAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse GDPTalentoWA.ServicioWeb.MiembroPUCPWS.insertarMiembroPUCP(GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest request) {
+            return base.Channel.insertarMiembroPUCP(request);
+        }
+        
+        public int insertarMiembroPUCP(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest();
+            inValue.miembroPUCP = miembroPUCP;
+            GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse retVal = ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).insertarMiembroPUCP(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse> GDPTalentoWA.ServicioWeb.MiembroPUCPWS.insertarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest request) {
+            return base.Channel.insertarMiembroPUCPAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse> insertarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.insertarMiembroPUCPRequest();
+            inValue.miembroPUCP = miembroPUCP;
+            return ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).insertarMiembroPUCPAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse GDPTalentoWA.ServicioWeb.MiembroPUCPWS.modificarMiembroPUCP(GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest request) {
+            return base.Channel.modificarMiembroPUCP(request);
+        }
+        
+        public int modificarMiembroPUCP(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest();
+            inValue.miembroPUCP = miembroPUCP;
+            GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse retVal = ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).modificarMiembroPUCP(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse> GDPTalentoWA.ServicioWeb.MiembroPUCPWS.modificarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest request) {
+            return base.Channel.modificarMiembroPUCPAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse> modificarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.miembroPUCP miembroPUCP) {
+            GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.modificarMiembroPUCPRequest();
+            inValue.miembroPUCP = miembroPUCP;
+            return ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).modificarMiembroPUCPAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse GDPTalentoWA.ServicioWeb.MiembroPUCPWS.listarMiembroPUCP(GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest request) {
+            return base.Channel.listarMiembroPUCP(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.miembroPUCP[] listarMiembroPUCP() {
+            GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest();
+            GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse retVal = ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).listarMiembroPUCP(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse> GDPTalentoWA.ServicioWeb.MiembroPUCPWS.listarMiembroPUCPAsync(GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest request) {
+            return base.Channel.listarMiembroPUCPAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse> listarMiembroPUCPAsync() {
+            GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest inValue = new GDPTalentoWA.ServicioWeb.listarMiembroPUCPRequest();
+            return ((GDPTalentoWA.ServicioWeb.MiembroPUCPWS)(this)).listarMiembroPUCPAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.PostulanteWS")]
+    public interface PostulanteWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarPostulanteResponse modificarPostulante(GDPTalentoWA.ServicioWeb.modificarPostulanteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarPostulanteResponse> modificarPostulanteAsync(GDPTalentoWA.ServicioWeb.modificarPostulanteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse eliminarPostulante(GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse> eliminarPostulanteAsync(GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarPostulanteResponse insertarPostulante(GDPTalentoWA.ServicioWeb.insertarPostulanteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarPostulanteResponse> insertarPostulanteAsync(GDPTalentoWA.ServicioWeb.insertarPostulanteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarPostulantesResponse listarPostulantes(GDPTalentoWA.ServicioWeb.listarPostulantesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest", ReplyAction="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarPostulantesResponse> listarPostulantesAsync(GDPTalentoWA.ServicioWeb.listarPostulantesRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarPostulante", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarPostulanteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.postulante postulante;
+        
+        public modificarPostulanteRequest() {
+        }
+        
+        public modificarPostulanteRequest(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            this.postulante = postulante;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarPostulanteResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarPostulanteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarPostulanteResponse() {
+        }
+        
+        public modificarPostulanteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarPostulante", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarPostulanteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idpostulante;
+        
+        public eliminarPostulanteRequest() {
+        }
+        
+        public eliminarPostulanteRequest(int idpostulante) {
+            this.idpostulante = idpostulante;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarPostulanteResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarPostulanteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarPostulanteResponse() {
+        }
+        
+        public eliminarPostulanteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPostulante", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarPostulanteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.postulante postulante;
+        
+        public insertarPostulanteRequest() {
+        }
+        
+        public insertarPostulanteRequest(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            this.postulante = postulante;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPostulanteResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarPostulanteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarPostulanteResponse() {
+        }
+        
+        public insertarPostulanteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPostulantes", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarPostulantesRequest {
+        
+        public listarPostulantesRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPostulantesResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarPostulantesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.postulante[] @return;
+        
+        public listarPostulantesResponse() {
+        }
+        
+        public listarPostulantesResponse(GDPTalentoWA.ServicioWeb.postulante[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface PostulanteWSChannel : GDPTalentoWA.ServicioWeb.PostulanteWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class PostulanteWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.PostulanteWS>, GDPTalentoWA.ServicioWeb.PostulanteWS {
+        
+        public PostulanteWSClient() {
+        }
+        
+        public PostulanteWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public PostulanteWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PostulanteWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PostulanteWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarPostulanteResponse GDPTalentoWA.ServicioWeb.PostulanteWS.modificarPostulante(GDPTalentoWA.ServicioWeb.modificarPostulanteRequest request) {
+            return base.Channel.modificarPostulante(request);
+        }
+        
+        public int modificarPostulante(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            GDPTalentoWA.ServicioWeb.modificarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.modificarPostulanteRequest();
+            inValue.postulante = postulante;
+            GDPTalentoWA.ServicioWeb.modificarPostulanteResponse retVal = ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).modificarPostulante(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarPostulanteResponse> GDPTalentoWA.ServicioWeb.PostulanteWS.modificarPostulanteAsync(GDPTalentoWA.ServicioWeb.modificarPostulanteRequest request) {
+            return base.Channel.modificarPostulanteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarPostulanteResponse> modificarPostulanteAsync(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            GDPTalentoWA.ServicioWeb.modificarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.modificarPostulanteRequest();
+            inValue.postulante = postulante;
+            return ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).modificarPostulanteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse GDPTalentoWA.ServicioWeb.PostulanteWS.eliminarPostulante(GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest request) {
+            return base.Channel.eliminarPostulante(request);
+        }
+        
+        public int eliminarPostulante(int idpostulante) {
+            GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest();
+            inValue.idpostulante = idpostulante;
+            GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse retVal = ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).eliminarPostulante(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse> GDPTalentoWA.ServicioWeb.PostulanteWS.eliminarPostulanteAsync(GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest request) {
+            return base.Channel.eliminarPostulanteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse> eliminarPostulanteAsync(int idpostulante) {
+            GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarPostulanteRequest();
+            inValue.idpostulante = idpostulante;
+            return ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).eliminarPostulanteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarPostulanteResponse GDPTalentoWA.ServicioWeb.PostulanteWS.insertarPostulante(GDPTalentoWA.ServicioWeb.insertarPostulanteRequest request) {
+            return base.Channel.insertarPostulante(request);
+        }
+        
+        public int insertarPostulante(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            GDPTalentoWA.ServicioWeb.insertarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.insertarPostulanteRequest();
+            inValue.postulante = postulante;
+            GDPTalentoWA.ServicioWeb.insertarPostulanteResponse retVal = ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).insertarPostulante(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarPostulanteResponse> GDPTalentoWA.ServicioWeb.PostulanteWS.insertarPostulanteAsync(GDPTalentoWA.ServicioWeb.insertarPostulanteRequest request) {
+            return base.Channel.insertarPostulanteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarPostulanteResponse> insertarPostulanteAsync(GDPTalentoWA.ServicioWeb.postulante postulante) {
+            GDPTalentoWA.ServicioWeb.insertarPostulanteRequest inValue = new GDPTalentoWA.ServicioWeb.insertarPostulanteRequest();
+            inValue.postulante = postulante;
+            return ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).insertarPostulanteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarPostulantesResponse GDPTalentoWA.ServicioWeb.PostulanteWS.listarPostulantes(GDPTalentoWA.ServicioWeb.listarPostulantesRequest request) {
+            return base.Channel.listarPostulantes(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.postulante[] listarPostulantes() {
+            GDPTalentoWA.ServicioWeb.listarPostulantesRequest inValue = new GDPTalentoWA.ServicioWeb.listarPostulantesRequest();
+            GDPTalentoWA.ServicioWeb.listarPostulantesResponse retVal = ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).listarPostulantes(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarPostulantesResponse> GDPTalentoWA.ServicioWeb.PostulanteWS.listarPostulantesAsync(GDPTalentoWA.ServicioWeb.listarPostulantesRequest request) {
+            return base.Channel.listarPostulantesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarPostulantesResponse> listarPostulantesAsync() {
+            GDPTalentoWA.ServicioWeb.listarPostulantesRequest inValue = new GDPTalentoWA.ServicioWeb.listarPostulantesRequest();
+            return ((GDPTalentoWA.ServicioWeb.PostulanteWS)(this)).listarPostulantesAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.StaffWS")]
+    public interface StaffWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/eliminarStaffResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarStaffResponse eliminarStaff(GDPTalentoWA.ServicioWeb.eliminarStaffRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/eliminarStaffResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarStaffResponse> eliminarStaffAsync(GDPTalentoWA.ServicioWeb.eliminarStaffRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/insertarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/insertarStaffResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarStaffResponse insertarStaff(GDPTalentoWA.ServicioWeb.insertarStaffRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/insertarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/insertarStaffResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarStaffResponse> insertarStaffAsync(GDPTalentoWA.ServicioWeb.insertarStaffRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarStaffResponse modificarStaff(GDPTalentoWA.ServicioWeb.modificarStaffRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarStaffResponse> modificarStaffAsync(GDPTalentoWA.ServicioWeb.modificarStaffRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/listarStaffResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarStaffResponse listarStaff(GDPTalentoWA.ServicioWeb.listarStaffRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest", ReplyAction="http://services.pucp.edu.pe/StaffWS/listarStaffResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarStaffResponse> listarStaffAsync(GDPTalentoWA.ServicioWeb.listarStaffRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarStaff", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarStaffRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idstaff;
+        
+        public eliminarStaffRequest() {
+        }
+        
+        public eliminarStaffRequest(int idstaff) {
+            this.idstaff = idstaff;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarStaffResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarStaffResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarStaffResponse() {
+        }
+        
+        public eliminarStaffResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarStaff", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarStaffRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.staff staff;
+        
+        public insertarStaffRequest() {
+        }
+        
+        public insertarStaffRequest(GDPTalentoWA.ServicioWeb.staff staff) {
+            this.staff = staff;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarStaffResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarStaffResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarStaffResponse() {
+        }
+        
+        public insertarStaffResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarStaff", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarStaffRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.staff staff;
+        
+        public modificarStaffRequest() {
+        }
+        
+        public modificarStaffRequest(GDPTalentoWA.ServicioWeb.staff staff) {
+            this.staff = staff;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarStaffResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarStaffResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarStaffResponse() {
+        }
+        
+        public modificarStaffResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarStaff", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarStaffRequest {
+        
+        public listarStaffRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarStaffResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarStaffResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.staff[] @return;
+        
+        public listarStaffResponse() {
+        }
+        
+        public listarStaffResponse(GDPTalentoWA.ServicioWeb.staff[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface StaffWSChannel : GDPTalentoWA.ServicioWeb.StaffWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class StaffWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.StaffWS>, GDPTalentoWA.ServicioWeb.StaffWS {
+        
+        public StaffWSClient() {
+        }
+        
+        public StaffWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public StaffWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StaffWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StaffWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarStaffResponse GDPTalentoWA.ServicioWeb.StaffWS.eliminarStaff(GDPTalentoWA.ServicioWeb.eliminarStaffRequest request) {
+            return base.Channel.eliminarStaff(request);
+        }
+        
+        public int eliminarStaff(int idstaff) {
+            GDPTalentoWA.ServicioWeb.eliminarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarStaffRequest();
+            inValue.idstaff = idstaff;
+            GDPTalentoWA.ServicioWeb.eliminarStaffResponse retVal = ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).eliminarStaff(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarStaffResponse> GDPTalentoWA.ServicioWeb.StaffWS.eliminarStaffAsync(GDPTalentoWA.ServicioWeb.eliminarStaffRequest request) {
+            return base.Channel.eliminarStaffAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarStaffResponse> eliminarStaffAsync(int idstaff) {
+            GDPTalentoWA.ServicioWeb.eliminarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarStaffRequest();
+            inValue.idstaff = idstaff;
+            return ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).eliminarStaffAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarStaffResponse GDPTalentoWA.ServicioWeb.StaffWS.insertarStaff(GDPTalentoWA.ServicioWeb.insertarStaffRequest request) {
+            return base.Channel.insertarStaff(request);
+        }
+        
+        public int insertarStaff(GDPTalentoWA.ServicioWeb.staff staff) {
+            GDPTalentoWA.ServicioWeb.insertarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.insertarStaffRequest();
+            inValue.staff = staff;
+            GDPTalentoWA.ServicioWeb.insertarStaffResponse retVal = ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).insertarStaff(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarStaffResponse> GDPTalentoWA.ServicioWeb.StaffWS.insertarStaffAsync(GDPTalentoWA.ServicioWeb.insertarStaffRequest request) {
+            return base.Channel.insertarStaffAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarStaffResponse> insertarStaffAsync(GDPTalentoWA.ServicioWeb.staff staff) {
+            GDPTalentoWA.ServicioWeb.insertarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.insertarStaffRequest();
+            inValue.staff = staff;
+            return ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).insertarStaffAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarStaffResponse GDPTalentoWA.ServicioWeb.StaffWS.modificarStaff(GDPTalentoWA.ServicioWeb.modificarStaffRequest request) {
+            return base.Channel.modificarStaff(request);
+        }
+        
+        public int modificarStaff(GDPTalentoWA.ServicioWeb.staff staff) {
+            GDPTalentoWA.ServicioWeb.modificarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.modificarStaffRequest();
+            inValue.staff = staff;
+            GDPTalentoWA.ServicioWeb.modificarStaffResponse retVal = ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).modificarStaff(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarStaffResponse> GDPTalentoWA.ServicioWeb.StaffWS.modificarStaffAsync(GDPTalentoWA.ServicioWeb.modificarStaffRequest request) {
+            return base.Channel.modificarStaffAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarStaffResponse> modificarStaffAsync(GDPTalentoWA.ServicioWeb.staff staff) {
+            GDPTalentoWA.ServicioWeb.modificarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.modificarStaffRequest();
+            inValue.staff = staff;
+            return ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).modificarStaffAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarStaffResponse GDPTalentoWA.ServicioWeb.StaffWS.listarStaff(GDPTalentoWA.ServicioWeb.listarStaffRequest request) {
+            return base.Channel.listarStaff(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.staff[] listarStaff() {
+            GDPTalentoWA.ServicioWeb.listarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.listarStaffRequest();
+            GDPTalentoWA.ServicioWeb.listarStaffResponse retVal = ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).listarStaff(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarStaffResponse> GDPTalentoWA.ServicioWeb.StaffWS.listarStaffAsync(GDPTalentoWA.ServicioWeb.listarStaffRequest request) {
+            return base.Channel.listarStaffAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarStaffResponse> listarStaffAsync() {
+            GDPTalentoWA.ServicioWeb.listarStaffRequest inValue = new GDPTalentoWA.ServicioWeb.listarStaffRequest();
+            return ((GDPTalentoWA.ServicioWeb.StaffWS)(this)).listarStaffAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.EventoWS")]
+    public interface EventoWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarEventoResponse insertarEvento(GDPTalentoWA.ServicioWeb.insertarEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEventoResponse> insertarEventoAsync(GDPTalentoWA.ServicioWeb.insertarEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/modificarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/modificarEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarEventoResponse modificarEvento(GDPTalentoWA.ServicioWeb.modificarEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/modificarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/modificarEventoResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEventoResponse> modificarEventoAsync(GDPTalentoWA.ServicioWeb.modificarEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/eliminarEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarEventoResponse eliminarEvento(GDPTalentoWA.ServicioWeb.eliminarEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/eliminarEventoResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEventoResponse> eliminarEventoAsync(GDPTalentoWA.ServicioWeb.eliminarEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/listarEventosRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/listarEventosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarEventosResponse listarEventos(GDPTalentoWA.ServicioWeb.listarEventosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EventoWS/listarEventosRequest", ReplyAction="http://services.pucp.edu.pe/EventoWS/listarEventosResponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEventosResponse> listarEventosAsync(GDPTalentoWA.ServicioWeb.listarEventosRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEvento", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evento evento;
+        
+        public insertarEventoRequest() {
+        }
+        
+        public insertarEventoRequest(GDPTalentoWA.ServicioWeb.evento evento) {
+            this.evento = evento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEventoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEventoResponse() {
+        }
+        
+        public insertarEventoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEvento", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evento evento;
+        
+        public modificarEventoRequest() {
+        }
+        
+        public modificarEventoRequest(GDPTalentoWA.ServicioWeb.evento evento) {
+            this.evento = evento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEventoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarEventoResponse() {
+        }
+        
+        public modificarEventoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEvento", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evento evento;
+        
+        public eliminarEventoRequest() {
+        }
+        
+        public eliminarEventoRequest(GDPTalentoWA.ServicioWeb.evento evento) {
+            this.evento = evento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEventoResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarEventoResponse() {
+        }
+        
+        public eliminarEventoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventos", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEventosRequest {
+        
+        public listarEventosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventosResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEventosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evento[] @return;
+        
+        public listarEventosResponse() {
+        }
+        
+        public listarEventosResponse(GDPTalentoWA.ServicioWeb.evento[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface EventoWSChannel : GDPTalentoWA.ServicioWeb.EventoWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EventoWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.EventoWS>, GDPTalentoWA.ServicioWeb.EventoWS {
+        
+        public EventoWSClient() {
+        }
+        
+        public EventoWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EventoWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EventoWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EventoWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarEventoResponse GDPTalentoWA.ServicioWeb.EventoWS.insertarEvento(GDPTalentoWA.ServicioWeb.insertarEventoRequest request) {
+            return base.Channel.insertarEvento(request);
+        }
+        
+        public int insertarEvento(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.insertarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEventoRequest();
+            inValue.evento = evento;
+            GDPTalentoWA.ServicioWeb.insertarEventoResponse retVal = ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).insertarEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEventoResponse> GDPTalentoWA.ServicioWeb.EventoWS.insertarEventoAsync(GDPTalentoWA.ServicioWeb.insertarEventoRequest request) {
+            return base.Channel.insertarEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEventoResponse> insertarEventoAsync(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.insertarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEventoRequest();
+            inValue.evento = evento;
+            return ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).insertarEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarEventoResponse GDPTalentoWA.ServicioWeb.EventoWS.modificarEvento(GDPTalentoWA.ServicioWeb.modificarEventoRequest request) {
+            return base.Channel.modificarEvento(request);
+        }
+        
+        public int modificarEvento(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.modificarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEventoRequest();
+            inValue.evento = evento;
+            GDPTalentoWA.ServicioWeb.modificarEventoResponse retVal = ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).modificarEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEventoResponse> GDPTalentoWA.ServicioWeb.EventoWS.modificarEventoAsync(GDPTalentoWA.ServicioWeb.modificarEventoRequest request) {
+            return base.Channel.modificarEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEventoResponse> modificarEventoAsync(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.modificarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEventoRequest();
+            inValue.evento = evento;
+            return ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).modificarEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarEventoResponse GDPTalentoWA.ServicioWeb.EventoWS.eliminarEvento(GDPTalentoWA.ServicioWeb.eliminarEventoRequest request) {
+            return base.Channel.eliminarEvento(request);
+        }
+        
+        public int eliminarEvento(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.eliminarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEventoRequest();
+            inValue.evento = evento;
+            GDPTalentoWA.ServicioWeb.eliminarEventoResponse retVal = ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).eliminarEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEventoResponse> GDPTalentoWA.ServicioWeb.EventoWS.eliminarEventoAsync(GDPTalentoWA.ServicioWeb.eliminarEventoRequest request) {
+            return base.Channel.eliminarEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEventoResponse> eliminarEventoAsync(GDPTalentoWA.ServicioWeb.evento evento) {
+            GDPTalentoWA.ServicioWeb.eliminarEventoRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEventoRequest();
+            inValue.evento = evento;
+            return ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).eliminarEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarEventosResponse GDPTalentoWA.ServicioWeb.EventoWS.listarEventos(GDPTalentoWA.ServicioWeb.listarEventosRequest request) {
+            return base.Channel.listarEventos(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.evento[] listarEventos() {
+            GDPTalentoWA.ServicioWeb.listarEventosRequest inValue = new GDPTalentoWA.ServicioWeb.listarEventosRequest();
+            GDPTalentoWA.ServicioWeb.listarEventosResponse retVal = ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).listarEventos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEventosResponse> GDPTalentoWA.ServicioWeb.EventoWS.listarEventosAsync(GDPTalentoWA.ServicioWeb.listarEventosRequest request) {
+            return base.Channel.listarEventosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEventosResponse> listarEventosAsync() {
+            GDPTalentoWA.ServicioWeb.listarEventosRequest inValue = new GDPTalentoWA.ServicioWeb.listarEventosRequest();
+            return ((GDPTalentoWA.ServicioWeb.EventoWS)(this)).listarEventosAsync(inValue);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.pucp.edu.pe", ConfigurationName="ServicioWeb.EvaluacionDesempenioWS")]
+    public interface EvaluacionDesempenioWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioRequ" +
+            "est", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioResp" +
+            "onse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse listarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioRequ" +
+            "est", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioResp" +
+            "onse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse> listarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRe" +
+            "quest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRe" +
+            "sponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse insertarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRe" +
+            "quest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse> insertarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/modificarEvaluacionDesempenioR" +
+            "equest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/modificarEvaluacionDesempenioR" +
+            "esponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse modificarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/modificarEvaluacionDesempenioR" +
+            "equest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/modificarEvaluacionDesempenioR" +
+            "esponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse> modificarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioRe" +
+            "quest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioRe" +
+            "sponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse eliminarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioRe" +
+            "quest", ReplyAction="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse> eliminarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEvaluacionDesempenio", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEvaluacionDesempenioRequest {
+        
+        public listarEvaluacionDesempenioRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEvaluacionDesempenioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class listarEvaluacionDesempenioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evaluacionDesempeño[] @return;
+        
+        public listarEvaluacionDesempenioResponse() {
+        }
+        
+        public listarEvaluacionDesempenioResponse(GDPTalentoWA.ServicioWeb.evaluacionDesempeño[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEvaluacionDesempenio", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEvaluacionDesempenioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio;
+        
+        public insertarEvaluacionDesempenioRequest() {
+        }
+        
+        public insertarEvaluacionDesempenioRequest(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            this.evaluacionDesempenio = evaluacionDesempenio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEvaluacionDesempenioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class insertarEvaluacionDesempenioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEvaluacionDesempenioResponse() {
+        }
+        
+        public insertarEvaluacionDesempenioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEvaluacionDesempenio", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEvaluacionDesempenioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio;
+        
+        public modificarEvaluacionDesempenioRequest() {
+        }
+        
+        public modificarEvaluacionDesempenioRequest(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            this.evaluacionDesempenio = evaluacionDesempenio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEvaluacionDesempenioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class modificarEvaluacionDesempenioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarEvaluacionDesempenioResponse() {
+        }
+        
+        public modificarEvaluacionDesempenioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEvaluacionDesempenio", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEvaluacionDesempenioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEvaluacion;
+        
+        public eliminarEvaluacionDesempenioRequest() {
+        }
+        
+        public eliminarEvaluacionDesempenioRequest(int idEvaluacion) {
+            this.idEvaluacion = idEvaluacion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEvaluacionDesempenioResponse", WrapperNamespace="http://services.pucp.edu.pe", IsWrapped=true)]
+    public partial class eliminarEvaluacionDesempenioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.pucp.edu.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarEvaluacionDesempenioResponse() {
+        }
+        
+        public eliminarEvaluacionDesempenioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface EvaluacionDesempenioWSChannel : GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EvaluacionDesempenioWSClient : System.ServiceModel.ClientBase<GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS>, GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS {
+        
+        public EvaluacionDesempenioWSClient() {
+        }
+        
+        public EvaluacionDesempenioWSClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EvaluacionDesempenioWSClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EvaluacionDesempenioWSClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EvaluacionDesempenioWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.listarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest request) {
+            return base.Channel.listarEvaluacionDesempenio(request);
+        }
+        
+        public GDPTalentoWA.ServicioWeb.evaluacionDesempeño[] listarEvaluacionDesempenio() {
+            GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest();
+            GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse retVal = ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).listarEvaluacionDesempenio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse> GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.listarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest request) {
+            return base.Channel.listarEvaluacionDesempenioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse> listarEvaluacionDesempenioAsync() {
+            GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioRequest();
+            return ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).listarEvaluacionDesempenioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.insertarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest request) {
+            return base.Channel.insertarEvaluacionDesempenio(request);
+        }
+        
+        public int insertarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest();
+            inValue.evaluacionDesempenio = evaluacionDesempenio;
+            GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse retVal = ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).insertarEvaluacionDesempenio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse> GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.insertarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest request) {
+            return base.Channel.insertarEvaluacionDesempenioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse> insertarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioRequest();
+            inValue.evaluacionDesempenio = evaluacionDesempenio;
+            return ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).insertarEvaluacionDesempenioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.modificarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest request) {
+            return base.Channel.modificarEvaluacionDesempenio(request);
+        }
+        
+        public int modificarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest();
+            inValue.evaluacionDesempenio = evaluacionDesempenio;
+            GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse retVal = ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).modificarEvaluacionDesempenio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse> GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.modificarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest request) {
+            return base.Channel.modificarEvaluacionDesempenioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse> modificarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.evaluacionDesempeño evaluacionDesempenio) {
+            GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioRequest();
+            inValue.evaluacionDesempenio = evaluacionDesempenio;
+            return ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).modificarEvaluacionDesempenioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.eliminarEvaluacionDesempenio(GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest request) {
+            return base.Channel.eliminarEvaluacionDesempenio(request);
+        }
+        
+        public int eliminarEvaluacionDesempenio(int idEvaluacion) {
+            GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest();
+            inValue.idEvaluacion = idEvaluacion;
+            GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse retVal = ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).eliminarEvaluacionDesempenio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse> GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS.eliminarEvaluacionDesempenioAsync(GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest request) {
+            return base.Channel.eliminarEvaluacionDesempenioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse> eliminarEvaluacionDesempenioAsync(int idEvaluacion) {
+            GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest inValue = new GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioRequest();
+            inValue.idEvaluacion = idEvaluacion;
+            return ((GDPTalentoWA.ServicioWeb.EvaluacionDesempenioWS)(this)).eliminarEvaluacionDesempenioAsync(inValue);
         }
     }
 }

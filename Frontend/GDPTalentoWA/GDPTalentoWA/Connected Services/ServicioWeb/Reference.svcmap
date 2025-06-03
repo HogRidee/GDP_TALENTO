@@ -19,11 +19,28 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/GDPTalentoWA/ServicioWeb?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/GDPTalentoWA/servicios.disco" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServicioWeb.wsdl" MetadataType="Wsdl" ID="3c52e712-c88c-4487-b34a-4a304361767b" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/ServicioWeb?WSDL" />
-    <MetadataFile FileName="ServicioWeb.xsd" MetadataType="Schema" ID="443d9ee2-0b33-42d7-9d0f-613b2555b0fa" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/ServicioWeb?xsd=1" />
+    <MetadataFile FileName="UsuarioWS.wsdl" MetadataType="Wsdl" ID="93906604-d7b3-4e5f-97f6-72bd1a5646d5" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/UsuarioWS?WSDL" />
+    <MetadataFile FileName="EntrevistaWS.wsdl" MetadataType="Wsdl" ID="842589fd-6875-46ab-a35e-b199a4ab7c76" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EntrevistaWS?WSDL" />
+    <MetadataFile FileName="RolWS.wsdl" MetadataType="Wsdl" ID="e7f8457f-e0fb-4aea-8dc7-f9f99c35bea3" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/RolWS?WSDL" />
+    <MetadataFile FileName="EvaluacionDesempenioWS.xsd" MetadataType="Schema" ID="2e01d324-a15c-476e-823b-290e1412eaf9" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?xsd=1" />
+    <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="2c9a1b46-9773-444d-ae62-7fe4392856a8" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/servicios.disco" />
+    <MetadataFile FileName="UsuarioWS.xsd" MetadataType="Schema" ID="2c777c8d-0b88-483d-8491-6ccc106600fd" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/UsuarioWS?xsd=1" />
+    <MetadataFile FileName="TareaWS.wsdl" MetadataType="Wsdl" ID="ca847c3e-14d6-4835-9c64-e3a54118f1d6" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/TareaWS?WSDL" />
+    <MetadataFile FileName="MiembroPUCPWS.wsdl" MetadataType="Wsdl" ID="446c1e95-a336-4597-a256-cf3a26de1e90" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?WSDL" />
+    <MetadataFile FileName="TareaWS.xsd" MetadataType="Schema" ID="7ff4ad4a-c7d9-4e41-83a1-3b45dd314de0" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/TareaWS?xsd=1" />
+    <MetadataFile FileName="EntrevistaWS.xsd" MetadataType="Schema" ID="162861e8-7bc3-4b1b-bf1f-53fb486b77b6" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EntrevistaWS?xsd=1" />
+    <MetadataFile FileName="EventoWS.xsd" MetadataType="Schema" ID="13cabf9a-6a9e-49b6-8fa4-68e5fb899be4" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EventoWS?xsd=1" />
+    <MetadataFile FileName="PostulanteWS.wsdl" MetadataType="Wsdl" ID="4666888e-360b-48a1-8ad3-2203d3ca0e50" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/PostulanteWS?WSDL" />
+    <MetadataFile FileName="StaffWS.wsdl" MetadataType="Wsdl" ID="92b06994-645a-4c84-bde2-22985bca249c" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/StaffWS?WSDL" />
+    <MetadataFile FileName="EventoWS.wsdl" MetadataType="Wsdl" ID="173bd28d-dc74-4654-bf81-6e90410f72d1" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EventoWS?WSDL" />
+    <MetadataFile FileName="MiembroPUCPWS.xsd" MetadataType="Schema" ID="f1f7c78f-8141-477a-b9bd-af55143a4329" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?xsd=1" />
+    <MetadataFile FileName="EvaluacionDesempenioWS.wsdl" MetadataType="Wsdl" ID="819c737f-ffc5-421f-a013-5b0aaff645b9" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?WSDL" />
+    <MetadataFile FileName="StaffWS.xsd" MetadataType="Schema" ID="64e8f5ba-8551-4848-a463-beaf05559516" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/StaffWS?xsd=1" />
+    <MetadataFile FileName="RolWS.xsd" MetadataType="Schema" ID="05e43872-be35-4315-9e23-5945f6992794" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/RolWS?xsd=1" />
+    <MetadataFile FileName="PostulanteWS.xsd" MetadataType="Schema" ID="958c6e17-31da-40ab-858a-6d38b3f6a586" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/PostulanteWS?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

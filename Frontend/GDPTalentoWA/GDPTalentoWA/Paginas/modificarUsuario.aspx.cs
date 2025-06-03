@@ -1,4 +1,4 @@
-﻿using GDPTalentoWA.UsuarioWS;
+﻿using GDPTalentoWA.ServicioWeb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,7 @@ namespace GDPTalentoWA.Paginas
         private usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             if (!IsPostBack)
             {
                 boUsuario = new UsuarioWSClient();
@@ -40,6 +41,7 @@ namespace GDPTalentoWA.Paginas
                     // Idealmente, registra este error en un sistema de logs
                 }
             }
+            */
         }
         private void AsignarValores()
         {

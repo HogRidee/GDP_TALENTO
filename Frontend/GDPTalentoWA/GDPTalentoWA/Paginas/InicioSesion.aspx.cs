@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using GDPTalentoWA.UsuarioWS;
+using GDPTalentoWA.ServicioWeb;
+
 
 namespace GDPTalentoWA.Paginas
 {
@@ -22,7 +23,7 @@ namespace GDPTalentoWA.Paginas
             lblMensaje.Text = "";
             int codigo = Convert.ToInt32(txtCodigo.Text);
             String contrasenha = Convert.ToString(txtPassword.Text);
-            UsuarioWS.UsuarioWSClient objservicio = new UsuarioWS.UsuarioWSClient();
+            UsuarioWSClient objservicio = new UsuarioWSClient();
             int tipo = objservicio.verificar(codigo, contrasenha);
             if (tipo!=0)
             {

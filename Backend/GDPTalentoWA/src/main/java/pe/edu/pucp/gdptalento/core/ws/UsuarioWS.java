@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import pe.edu.pucp.gdptalento.core.business.UsuarioBO;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 
-/**
- *
- * @author USER
- */
 
 @WebService(serviceName = "UsuarioWS", targetNamespace = "http://services.pucp.edu.pe")
 public class UsuarioWS {
@@ -41,6 +37,7 @@ public class UsuarioWS {
         boUsuario=new UsuarioBO();
         return boUsuario.listarTodas();
     }
+    
     @WebMethod(operationName = "obtenerPorId")
     public Usuario obtenerPorId(@WebParam(name = "id") int id) {
         boUsuario=new UsuarioBO();

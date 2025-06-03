@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.pucp.edu.pe" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="StaffWS" targetNamespace="http://services.pucp.edu.pe" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/StaffWS?xsd=1" namespace="http://services.pucp.edu.pe" />
+    </xsd:schema>
+  </types>
+  <message name="eliminarStaff">
+    <part name="parameters" element="tns:eliminarStaff" />
+  </message>
+  <message name="eliminarStaffResponse">
+    <part name="parameters" element="tns:eliminarStaffResponse" />
+  </message>
+  <message name="insertarStaff">
+    <part name="parameters" element="tns:insertarStaff" />
+  </message>
+  <message name="insertarStaffResponse">
+    <part name="parameters" element="tns:insertarStaffResponse" />
+  </message>
+  <message name="modificarStaff">
+    <part name="parameters" element="tns:modificarStaff" />
+  </message>
+  <message name="modificarStaffResponse">
+    <part name="parameters" element="tns:modificarStaffResponse" />
+  </message>
+  <message name="listarStaff">
+    <part name="parameters" element="tns:listarStaff" />
+  </message>
+  <message name="listarStaffResponse">
+    <part name="parameters" element="tns:listarStaffResponse" />
+  </message>
+  <portType name="StaffWS">
+    <operation name="eliminarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffRequest" message="tns:eliminarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffResponse" message="tns:eliminarStaffResponse" />
+    </operation>
+    <operation name="insertarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffRequest" message="tns:insertarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffResponse" message="tns:insertarStaffResponse" />
+    </operation>
+    <operation name="modificarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest" message="tns:modificarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse" message="tns:modificarStaffResponse" />
+    </operation>
+    <operation name="listarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest" message="tns:listarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffResponse" message="tns:listarStaffResponse" />
+    </operation>
+  </portType>
+  <binding name="StaffWSPortBinding" type="tns:StaffWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="eliminarStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StaffWS">
+    <port name="StaffWSPort" binding="tns:StaffWSPortBinding">
+      <soap:address location="http://localhost:8080/GDPTalentoWA/StaffWS" />
+    </port>
+  </service>
+</definitions>

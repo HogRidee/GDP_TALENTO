@@ -6,9 +6,8 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using GDPTalentoWA.MiembroPUCPWS;
-using GDPTalentoWA.StaffWS;
-using GDPTalentoWA.UsuarioWS;
+using GDPTalentoWA.ServicioWeb;
+
 
 namespace GDPTalentoWA.Paginas
 {
@@ -16,8 +15,8 @@ namespace GDPTalentoWA.Paginas
     {
         private MiembroPUCPWSClient boMiembro;
         private StaffWSClient boStaff;
-        private BindingList<MiembroPUCPWS.miembroPUCP> miembros;
-        private BindingList<StaffWS.staff> staffs;
+        private BindingList<miembroPUCP> miembros;
+        private BindingList<staff> staffs;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,9 +30,9 @@ namespace GDPTalentoWA.Paginas
             boStaff = new StaffWSClient();
             var listaStaff = boStaff.listarStaff();
             if (listaStaff == null)
-                staffs = new BindingList<StaffWS.staff>();
+                staffs = new BindingList<staff>();
             else
-                staffs = new BindingList<StaffWS.staff>(listaStaff);
+                staffs = new BindingList<staff>(listaStaff);
 
             dgvMiembros.DataSource = staffs;
             dgvMiembros.DataBind();
@@ -58,7 +57,7 @@ namespace GDPTalentoWA.Paginas
 
             if (listaStaff == null)
             {
-                staffs = new BindingList<StaffWS.staff>();
+                staffs = new BindingList<staff>();
             }
             else
             {
@@ -69,7 +68,7 @@ namespace GDPTalentoWA.Paginas
                     s.area.ToString().ToLower().Contains(textoBusqueda)
                 ).ToList();
 
-                staffs = new BindingList<StaffWS.staff>(filtrados);
+                staffs = new BindingList<staff>(filtrados);
             }
 
             dgvMiembros.DataSource = staffs;
@@ -123,8 +122,8 @@ namespace GDPTalentoWA.Paginas
                  s.area.ToString().ToLower().Contains(textoBusqueda)) &&
 
                 (string.IsNullOrEmpty(estadoSeleccionado) ||
-                 (estadoSeleccionado == "1" && s.estado == StaffWS.estadoMiembro.ACTIVO) ||
-                 (estadoSeleccionado == "2" && s.estado == StaffWS.estadoMiembro.INACTIVO)) &&
+                 (estadoSeleccionado == "1" && s.estado == estadoMiembro.ACTIVO) ||
+                 (estadoSeleccionado == "2" && s.estado == estadoMiembro.INACTIVO)) &&
 
                 (string.IsNullOrEmpty(areaSeleccionada) ||
                  s.area.ToString().Equals(areaSeleccionada, StringComparison.OrdinalIgnoreCase))
@@ -159,7 +158,7 @@ namespace GDPTalentoWA.Paginas
                     // Llamar a servicio o lógica para eliminar
                     boStaff.eliminarStaff(idMiembro);
                     // Recargar la lista
-                    staffs = new BindingList<StaffWS.staff>(boStaff.listarStaff());
+                    staffs = new BindingList<staff>(boStaff.listarStaff());
                     dgvMiembros.DataSource = staffs;
                     dgvMiembros.DataBind();
                     break;

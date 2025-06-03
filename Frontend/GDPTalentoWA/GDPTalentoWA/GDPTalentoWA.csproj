@@ -63,95 +63,187 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.eliminarMiembroPUCPResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.insertarMiembroPUCPResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.listarMiembroPUCPResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.miembroPUCP.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MiembroPUCPWS\GDPTalentoWA.MiembroPUCPWS.modificarMiembroPUCPResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\MiembroPUCPWS\MiembroPUCPWS.wsdl" />
-    <None Include="Connected Services\MiembroPUCPWS\MiembroPUCPWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServicioWeb\configuration91.svcinfo" />
     <None Include="Connected Services\ServicioWeb\configuration.svcinfo" />
-    <None Include="Connected Services\MiembroPUCPWS\configuration91.svcinfo" />
-    <None Include="Connected Services\MiembroPUCPWS\configuration.svcinfo" />
-    <None Include="Connected Services\MiembroPUCPWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Connected Services\ServicioWeb\EntrevistaWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\EntrevistaWS.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.helloResponse.datasource">
+    <None Include="Connected Services\ServicioWeb\EvaluacionDesempenioWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\EvaluacionDesempenioWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWeb\EventoWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\EventoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarEntrevistaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.multiplicarResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarEvaluacionDesempenioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarPostulanteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarTareaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.entrevista.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.evaluacionDesempeño.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.evento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarEntrevistaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarEvaluacionDesempenioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarPostulanteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarTareaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarEntrevistasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarEvaluacionDesempenioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarEventosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarPostulantesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarRolesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarTareasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.miembroPUCP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarEntrevistaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarEvaluacionDesempenioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarMiembroPUCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarPostulanteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarRolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarStaffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarTareaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.postulante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.rol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.staff.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.tarea.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.verificarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWeb\PostulanteWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\PostulanteWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicioWeb\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.eliminarStaffResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.insertarStaffResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.listarStaffResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.modificarStaffResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\StaffWS\GDPTalentoWA.StaffWS.staff.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\StaffWS\StaffWS.wsdl" />
-    <None Include="Connected Services\StaffWS\StaffWS.xsd">
+    <None Include="Connected Services\ServicioWeb\RolWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\RolWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UsuarioWS\configuration91.svcinfo" />
-    <None Include="Connected Services\UsuarioWS\configuration.svcinfo" />
-    <None Include="Connected Services\StaffWS\configuration91.svcinfo" />
-    <None Include="Connected Services\StaffWS\configuration.svcinfo" />
-    <None Include="Connected Services\StaffWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Connected Services\ServicioWeb\StaffWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\StaffWS.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.eliminarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.insertarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.listarUsuariosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.modificarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.usuario.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.verificarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\UsuarioWS\GDPTalentoWA.UsuarioWS.obtenerPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\UsuarioWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Connected Services\ServicioWeb\TareaWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\TareaWS.xsd">
+      <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServicioWeb\UsuarioWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\UsuarioWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicioWeb\servicios.disco" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -207,10 +299,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Connected Services\UsuarioWS\UsuarioWS.wsdl" />
-    <None Include="Connected Services\UsuarioWS\UsuarioWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -219,22 +307,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\MiembroPUCPWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ServicioWeb\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\StaffWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\UsuarioWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -291,10 +364,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServicioWeb\ServicioWeb.wsdl" />
-    <None Include="Connected Services\ServicioWeb\ServicioWeb.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.esm.min.js.map" />
@@ -352,10 +421,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MiembroPUCPWS\" />
     <WCFMetadataStorage Include="Connected Services\ServicioWeb\" />
-    <WCFMetadataStorage Include="Connected Services\StaffWS\" />
-    <WCFMetadataStorage Include="Connected Services\UsuarioWS\" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

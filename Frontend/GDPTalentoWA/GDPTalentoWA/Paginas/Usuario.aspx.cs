@@ -1,4 +1,4 @@
-﻿using GDPTalentoWA.UsuarioWS;
+﻿using GDPTalentoWA.ServicioWeb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,8 @@ namespace GDPTalentoWA.Paginas
 {
     public partial class Usuario : System.Web.UI.Page
     {
-        //private UsuarioWSClient boUsuario;
         private UsuarioWSClient boUsuario;
+        //private UsuarioWSClient boUsuario;
         //private EmpleadoWSClient boEmpleado;
         private usuario usuario;
 
@@ -19,6 +19,7 @@ namespace GDPTalentoWA.Paginas
         {
             if (!IsPostBack)
             {
+                
                 boUsuario = new UsuarioWSClient();
 
                 try
@@ -40,6 +41,7 @@ namespace GDPTalentoWA.Paginas
                     lblNombre.Text = "Error al cargar datos";
                     // Idealmente, registra este error en un sistema de logs
                 }
+                
             }
         }
 
