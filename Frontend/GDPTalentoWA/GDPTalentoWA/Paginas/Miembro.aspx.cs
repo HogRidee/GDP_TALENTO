@@ -133,36 +133,37 @@ namespace GDPTalentoWA.Paginas
             Button btn = (Button)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
 
-            // Obtener la DropDownList en la misma fila
             DropDownList ddlAcciones = (DropDownList)row.FindControl("ddlAcciones");
 
-            // Obtener la acción seleccionada y el id del miembro
             string accion = ddlAcciones.SelectedValue;
             int idMiembro = Convert.ToInt32(btn.CommandArgument);
 
-            // Ejecutar según la acción
             switch (accion)
             {
-                case "Editar":
-                    // Redirigir a página de edición o cargar datos en formulario
-                    //Response.Redirect($"EditarMiembro.aspx?id={idMiembro}");
+                case "VerDetalles":
+                    // Redirigir a página de detalles
+                    Response.Redirect($"VerDetalles.aspx?id={idMiembro}");
                     break;
 
-                case "Eliminar":
-                    // Llamar a servicio o lógica para eliminar
+                case "EditarInformacion":
+                    // Redirigir a edición
+                    Response.Redirect($"EditarMiembro.aspx?id={idMiembro}");
+                    break;
+
+                case "EliminarMiembro":
+                    // Lógica de eliminación
                     boStaff.eliminarStaff(idMiembro);
-                    // Recargar la lista
                     staffs = new BindingList<staff>(boStaff.listarStaff());
                     dgvMiembros.DataSource = staffs;
                     dgvMiembros.DataBind();
                     break;
 
                 default:
-                    // Mostrar mensaje si no se seleccionó una acción
                     ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Seleccione una acción.');", true);
                     break;
             }
         }
+
 
     }
 }

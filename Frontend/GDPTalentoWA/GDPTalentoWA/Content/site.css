@@ -228,3 +228,12 @@ html, body {
     min-height: 70px;
 }
 
+.estado-activo {
+    color: green !important;
+    font-weight: bold;
+}
+
+.estado-inactivo {
+    color: red !important;
+    font-weight: bold;
+}

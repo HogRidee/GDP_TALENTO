@@ -91,15 +91,17 @@
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlAcciones" runat="server">
-                                    <asp:ListItem Value="">Seleccione...</asp:ListItem>
-                                    <asp:ListItem Value="Ver">Ver Detalles </asp:ListItem>
-                                    <asp:ListItem Value="Editar">Editar Información</asp:ListItem>
-                                    <asp:ListItem Value="Eliminar">Desactivar Miembro</asp:ListItem>
+                                    <asp:ListItem Text="Seleccionar acción" Value="" />
+                                    <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
+                                    <asp:ListItem Text="Editar Información" Value="EditarInformacion" />
+                                    <asp:ListItem Text="Eliminar Miembro" Value="EliminarMiembro" />
                                 </asp:DropDownList>
-                                <asp:Button ID="btnEjecutar" runat="server" Text="Ir" CommandName="Accion" CommandArgument='<%# Eval("id") %>' OnClick="btnEjecutar_Click" />
+                                <asp:Button ID="btnEjecutar" runat="server" Text="Ir"
+                                    CommandName="Accion"
+                                    CommandArgument='<%# Eval("id") %>'
+                                    OnClick="btnEjecutar_Click" />
                             </ItemTemplate>
                         </asp:TemplateField>
-
                     </Columns>
                 </asp:GridView>
 
