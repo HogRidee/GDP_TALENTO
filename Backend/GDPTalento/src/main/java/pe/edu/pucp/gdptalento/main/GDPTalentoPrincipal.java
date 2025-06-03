@@ -9,15 +9,25 @@ import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.eventos.business.AsistenciaBO;
 import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
 import pe.edu.pucp.gdptalento.miembros.business.StaffBO;
+import pe.edu.pucp.gdptalento.miembros.model.Area;
+import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 
 public class GDPTalentoPrincipal {
     public static void main(String[] args){
         UsuarioBO boUsuario = new UsuarioBO();
         ArrayList<Usuario> usuarios = boUsuario.listarTodas();
+        Usuario user = new Usuario();
         for (Usuario u: usuarios){
+            if (u.getId()==1) user = u;
             System.out.println(u.getNombre());
         }
+        System.out.println(user.getNombre());
+        user.setEstado(EstadoMiembro.ACTIVO);
+        user.setArea(Area.EVENTOS);
+        int correcto = boUsuario.modificarBasico(user);
+        
+        System.out.println("Correcta modificacion: " + correcto);
         
         RolBO boRol = new RolBO();
         ArrayList<Rol> roles = boRol.listarTodas();

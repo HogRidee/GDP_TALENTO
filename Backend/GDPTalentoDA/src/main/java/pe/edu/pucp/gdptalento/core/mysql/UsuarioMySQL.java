@@ -38,7 +38,15 @@ public class UsuarioMySQL implements UsuarioDAO{
         System.out.println("Se ha realizado la modificacion del usuario");
         return resultado;
     }
-
+    @Override
+    public int modificarDatosBasicos(Usuario usuario) {
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+        agregarParametrosModificarBasico(parametrosEntrada, usuario);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_DATOS_BASICOS_USUARIO", 
+                parametrosEntrada, null);
+        System.out.println("Se ha realizado la modificacion del usuario");
+        return resultado;
+    }
     @Override
     public int eliminar(int id_usuario) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
@@ -150,6 +158,25 @@ public class UsuarioMySQL implements UsuarioDAO{
         parametrosEntrada.put(10, usuario.getDesempenio());
         parametrosEntrada.put(11, usuario.getHashContrasena());
     }
+    
+    private void agregarParametrosModificarBasico(Map<Integer, Object> parametrosEntrada, 
+            Usuario usuario){
+        parametrosEntrada.put(1, usuario.getId());
+        parametrosEntrada.put(2, usuario.getNombre());
+        parametrosEntrada.put(3, usuario.getCodigoPUCP());
+        parametrosEntrada.put(4, usuario.getFacultad());
+        parametrosEntrada.put(5, usuario.getEspecialidad());
+        parametrosEntrada.put(6, usuario.getCorreo());
+        parametrosEntrada.put(7, usuario.getTelefono());
+        parametrosEntrada.put(8, String.valueOf(usuario.getArea()));
+        parametrosEntrada.put(9, String.valueOf(usuario.getStatus()));
+        parametrosEntrada.put(10, String.valueOf(usuario.getEstado()));
+        //parametrosEntrada.put(8, String.valueOf(usuario.getEstado()));
+        //String fecha_fin = String.valueOf(usuario.getFechaSalida());
+        //Date fecha = java.sql.Date.valueOf(fecha_fin);
+        //parametrosEntrada.put(9, new java.sql.Date(fecha.getTime()));
+    }
+    
     
     private void leerInformacionMiembroPUCP(Usuario usuario) throws SQLException {
         usuario.setId(rs.getInt("id_miembro_pucp"));
