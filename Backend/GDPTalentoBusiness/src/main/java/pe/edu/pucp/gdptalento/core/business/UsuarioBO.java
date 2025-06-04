@@ -40,7 +40,7 @@ public class UsuarioBO {
         for( Usuario u: arr){
             if(u.getId()== id){
                 if(u.getHashContrasena().equals(contrasenha)){
-                    return 1;
+                    return id;
                 }
             }
         }
