@@ -41,7 +41,7 @@ namespace GDPTalentoWA.Paginas
                 string strRedirect;
                 strRedirect = Request["ReturnUrl"];
                 if (strRedirect == null)
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("Inicio.aspx");
                 Response.Redirect(strRedirect, true);
             }
             else

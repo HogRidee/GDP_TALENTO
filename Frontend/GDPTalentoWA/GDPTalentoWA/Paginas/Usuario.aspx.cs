@@ -25,7 +25,8 @@ namespace GDPTalentoWA.Paginas
                 try
                 {
                     //Reemplazar luego
-                    usuario = boUsuario.obtenerPorId(1);
+                    int codigo = (int)Session["id"];
+                    usuario = boUsuario.obtenerPorId(codigo);
 
                     if (usuario != null)
                     {
@@ -61,15 +62,24 @@ namespace GDPTalentoWA.Paginas
             lblTelefono.Text = usuario.telefono; 
             lblCodigo.Text = usuario.codigoPUCP.ToString();
             if (usuario.fechaIngreso != null)
-                lblFechaIngreso.Text = usuario.fechaIngreso.GetType().ToString();
+            {
+                dynamic fechaLocalDate = usuario.fechaIngreso;
+                int year = 2025;
+                int month = 6;
+                int day = 3;
+                DateTime fecha = new DateTime(year, month, day);
+                lblFechaIngreso.Text = fecha.ToString("yyyy-MM-dd");
+            }
             else
+            {
                 lblFechaIngreso.Text = "No disponible";
+            }
 
             lblCarrera.Text = $"{usuario.facultad} {usuario.especialidad} ";
             lblEvaluacion.Text = usuario.desempenio.ToString("0.0");
             ltlEstrellas.Text = GenerarEstrellasHTML(usuario.desempenio);
             // Datos ficticios mientras no se implemente
-            lblAsistencia.Text = 50 + "%";
+            lblAsistencia.Text = 75 + "%";
             lblPendientes.Text = "2";
             lblCompletadas.Text = "15";
         }
