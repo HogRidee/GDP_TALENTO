@@ -26,7 +26,8 @@ namespace GDPTalentoWA.Paginas
                 try
                 {
                     //Reemplazar luego
-                    usuario = boUsuario.obtenerPorId(1);
+                    int codigo = (int)Session["id"];
+                    usuario = boUsuario.obtenerPorId(codigo);
 
                     if (usuario != null)
                     {
@@ -85,7 +86,7 @@ namespace GDPTalentoWA.Paginas
         {
             boUsuario = new UsuarioWSClient();  
             usuario = new usuario();
-            usuario.id = 1;
+            usuario.id = (int)Session["id"];
             usuario.nombre = txtNombreCompleto.Text;
             usuario.codigoPUCP = Int32.Parse(txtCodigo.Text);
             usuario.correo = txtCorreo.Text;
