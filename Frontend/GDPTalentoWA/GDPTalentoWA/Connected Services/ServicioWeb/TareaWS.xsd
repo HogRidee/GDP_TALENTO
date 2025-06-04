@@ -8,9 +8,22 @@
   <xs:element name="listarTareasResponse" type="tns:listarTareasResponse" />
   <xs:element name="modificarTarea" type="tns:modificarTarea" />
   <xs:element name="modificarTareaResponse" type="tns:modificarTareaResponse" />
-  <xs:complexType name="insertarTarea">
+  <xs:complexType name="eliminarTarea">
     <xs:sequence>
-      <xs:element minOccurs="0" name="tarea" type="tns:tarea" />
+      <xs:element name="idTarea" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarTareaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTareas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTareasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tarea" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="tarea">
@@ -83,27 +96,14 @@
   <xs:complexType name="localDateTime" final="extension restriction">
     <xs:sequence />
   </xs:complexType>
+  <xs:complexType name="insertarTarea">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tarea" type="tns:tarea" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarTareaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarTarea">
-    <xs:sequence>
-      <xs:element name="idTarea" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarTareaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarTareas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarTareasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tarea" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarTarea">
