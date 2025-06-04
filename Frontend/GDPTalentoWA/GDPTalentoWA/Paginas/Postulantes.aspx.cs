@@ -96,7 +96,46 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnEjecutar_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
 
+            DropDownList ddlAcciones = (DropDownList)row.FindControl("ddlAcciones");
+
+            string accion = ddlAcciones.SelectedValue;
+            int idPostulante = Convert.ToInt32(btn.CommandArgument);
+
+            // Recargar la lista para asegurarnos que no sea nula
+            boPostulante = new PostulanteWSClient();
+            var listaPostulantes = boPostulante.listarPostulantes();
+            postulantes = new BindingList<postulante>(listaPostulantes);
+
+            switch (accion)
+            {
+                case "VerDetalles":
+                    Response.Redirect($"VerDetalles.aspx?id={idPostulante}");
+                    break;
+
+                case "EditarInformacion":
+                    postulante postulanteSeleccionado = postulantes.SingleOrDefault(x => x.id == idPostulante);
+                    if (postulanteSeleccionado != null)
+                    {
+                        Session["postulanteSeleccionado"] = postulanteSeleccionado;
+                        Response.Redirect($"RegistrarNuevoPostulante.aspx?accion=modificar&id={idPostulante}");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Miembro no encontrado.');", true);
+                    }
+                    break;
+
+                case "EliminarPostulante":
+                    boPostulante.eliminarPostulante(idPostulante);
+                    postulantes = new BindingList<postulante>(boPostulante.listarPostulantes());
+                    dgvPostulantes.DataSource = postulantes;
+                    dgvPostulantes.DataBind();
+                    break;
+
+            }
         }
     }
 }

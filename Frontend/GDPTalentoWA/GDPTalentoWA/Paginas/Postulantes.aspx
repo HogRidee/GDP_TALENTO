@@ -179,7 +179,7 @@
                                         <asp:ListItem Text="Seleccionar acción" Value="" />
                                         <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
                                         <asp:ListItem Text="Editar Información" Value="EditarInformacion" />
-                                        <asp:ListItem Text="Eliminar Miembro" Value="EliminarMiembro" />
+                                        <asp:ListItem Text="Eliminar Postulante" Value="EliminarPostulante" />
                                     </asp:DropDownList>
                                     <asp:Button ID="btnEjecutar" runat="server" Text="Ir"
                                         CommandName="Accion"
