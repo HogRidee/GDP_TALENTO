@@ -43,8 +43,7 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnRegistrarMiembro_Click(object sender, EventArgs e)
         {
-
-
+            Response.Redirect("RegistrarNuevoMiembro.aspx");
         }
 
         protected void lbBuscarMiembro_Click(object sender, EventArgs e)
@@ -127,7 +126,6 @@ namespace GDPTalentoWA.Paginas
             dgvMiembros.DataBind();
         }
 
-
         protected void btnEjecutar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -138,31 +136,40 @@ namespace GDPTalentoWA.Paginas
             string accion = ddlAcciones.SelectedValue;
             int idMiembro = Convert.ToInt32(btn.CommandArgument);
 
+            // Recargar la lista para asegurarnos que no sea nula
+            boStaff = new StaffWSClient();
+            var listaStaff = boStaff.listarStaff();
+            staffs = new BindingList<staff>(listaStaff);
+
             switch (accion)
             {
                 case "VerDetalles":
-                    // Redirigir a página de detalles
                     Response.Redirect($"VerDetalles.aspx?id={idMiembro}");
                     break;
 
                 case "EditarInformacion":
-                    // Redirigir a edición
-                    Response.Redirect($"EditarMiembro.aspx?id={idMiembro}");
+                    staff miembroSeleccionado = staffs.SingleOrDefault(x => x.id == idMiembro);
+                    if (miembroSeleccionado != null)
+                    {
+                        Session["miembroSeleccionado"] = miembroSeleccionado;
+                        Response.Redirect($"RegistrarNuevoMiembro.aspx?accion=modificar&id={idMiembro}");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Miembro no encontrado.');", true);
+                    }
                     break;
 
                 case "EliminarMiembro":
-                    // Lógica de eliminación
                     boStaff.eliminarStaff(idMiembro);
                     staffs = new BindingList<staff>(boStaff.listarStaff());
                     dgvMiembros.DataSource = staffs;
                     dgvMiembros.DataBind();
                     break;
 
-                default:
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Seleccione una acción.');", true);
-                    break;
             }
         }
+
 
 
     }

@@ -43,6 +43,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NodaTime, Version=3.2.2.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NodaTime.3.2.2\lib\netstandard2.0\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -218,6 +224,9 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.obtenerPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarUsuarioBasicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.xsd">
       <SubType>Designer</SubType>
@@ -325,6 +334,7 @@
     <Compile Include="GDPTalento.Master.designer.cs">
       <DependentUpon>GDPTalento.Master</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\Estado.cs" />
     <Compile Include="Paginas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

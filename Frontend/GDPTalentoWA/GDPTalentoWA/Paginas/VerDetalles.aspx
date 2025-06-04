@@ -31,6 +31,7 @@
                             <i class="fa-solid fa-calendar-days pe-2"></i>Ingreso: 
                             <asp:Label ID="lblIngreso" runat="server"></asp:Label>
                         </p>
+
                         <p>
                             <i class="fa-solid fa-building-columns pe-2"></i>Carrera: 
                             <asp:Label ID="lblCarrera" runat="server"></asp:Label>
@@ -72,26 +73,55 @@
 
                 <!-- Detalle derecho -->
                 <div class="col-md-8">
-                    <div class="card p-3">
-                        <h5>Historial de Asistencia</h5>
-                        <p class="text-muted">Registro de asistencia a reuniones y eventos</p>
-                        <asp:GridView ID="gvAsistencia" runat="server" AutoGenerateColumns="false" CssClass="table">
-                            <Columns>
-                                <asp:BoundField HeaderText="Evento" DataField="Evento" />
-                                <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                                <asp:TemplateField HeaderText="Asistencia">
-                                    <ItemTemplate>
-                                        <%# (bool)Eval("Asistio") ?
-                                            "<span class='label-badge badge-success'>Asistió</span>" :
-                                            "<span class='label-badge badge-danger'>No asistió</span>" %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
-                        <p>Porcentaje de asistencia:
-                            <asp:Label ID="lblPorcentaje" runat="server" />
-                        </p>
-                    </div>
+                    <div class="col-md-20">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title">Historial de Asistencia</h4>
+                <p class="text-muted">Registro de asistencia a reuniones y eventos</p>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Evento</th>
+                                <th>Fecha</th>
+                                <th>Asistencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reunión General</td>
+                                <td>05/05/2025</td>
+                                <td><span class="badge-asistio">Asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td>Workshop de React</td>
+                                <td>28/04/2025</td>
+                                <td><span class="badge-asistio">Asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td>Reunión de Área</td>
+                                <td>20/04/2025</td>
+                                <td><span class="badge-noasistio">No asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hackathon Interno</td>
+                                <td>15/04/2025</td>
+                                <td><span class="badge-asistio">Asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td>Reunión de Planificación</td>
+                                <td>10/04/2025</td>
+                                <td><span class="badge-asistio">Asistió</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="mt-3">Porcentaje de asistencia: <strong>90%</strong></p>
+            </div>
+        </div>
+    </div>
                 </div>
             </div>
         </div>

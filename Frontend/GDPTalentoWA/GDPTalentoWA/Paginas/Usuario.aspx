@@ -70,7 +70,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
     <div class="container bg-white rounded shadow-sm p-4">
-        <div class="row d-flex flex-column flex-md-row align-items-start">
+        <div class="row d-flex flex-column flex-md-row align-items-center">
 
             <!-- SECCIÓN IZQUIERDA - PERFIL -->
             <div class="col-md-5 d-flex flex-column align-items-center text-center">
@@ -118,9 +118,9 @@
             </div>
 
             <!-- SECCIÓN DERECHA - RESUMEN -->
-            <div class="col-md-6 d-flex flex-column justify-content-start">
+            <div class="col-md-6 d-flex flex-column align-items-center text-center">
                 <h5 class="fw-semibold mb-4">Resumen</h5>
-                    <div class="mb-3 d-flex align-items-center animar-entrada delay-1">
+                <div class="mb-3 d-flex align-items-center animar-entrada delay-1">
                     <i class="fa-regular fa-star text-warning me-2"></i>
                     <strong>Evaluación:</strong>
                     <span class="text-warning ms-2">

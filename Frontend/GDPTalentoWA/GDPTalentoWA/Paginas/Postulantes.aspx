@@ -21,6 +21,7 @@
         </div>
         <!--Contenido-->
         <div class="p-4 rounded bg-body border shadow-sm" id="postulantContent">
+
             <!--Titulito y descripción-->
             <div>
                 <h4 class="fw-bold mb-0">Postulantes</h4>
@@ -191,6 +192,7 @@
                 </div>
                 <!--Información y control de páginas-->
                 <!--
+
                 <div class="row items-center justify-between mt-4">
                     <div class="text-sm text-muted col">
                         Mostrando 5 de 5 postulantes
@@ -201,6 +203,7 @@
                     </div>
                 </div>
                 -->
+
             </div>
         </div>
     </div>

@@ -13,7 +13,6 @@ namespace GDPTalentoWA.Paginas
 
     public partial class Postulantes
     {
-
         /// <summary>
         /// Control btnRegistrarPostulante.
         /// </summary>

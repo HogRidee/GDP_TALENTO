@@ -8,7 +8,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using GDPTalentoWA.ServicioWeb;
 
-
 namespace GDPTalentoWA.Paginas
 {
     public partial class Postulantes : System.Web.UI.Page
