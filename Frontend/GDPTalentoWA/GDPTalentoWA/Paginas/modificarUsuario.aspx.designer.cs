@@ -87,24 +87,6 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
-        /// Control lblDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDireccion;
-
-        /// <summary>
-        /// Control txtDireccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
-
-        /// <summary>
         /// Control lblArea.
         /// </summary>
         /// <remarks>
@@ -123,22 +105,22 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.DropDownList ddlArea;
 
         /// <summary>
-        /// Control lblCargo.
+        /// Control lblStatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCargo;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
-        /// Control ddlCargo.
+        /// Control ddlStatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCargo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
 
         /// <summary>
         /// Control lblFechaIngreso.
@@ -159,6 +141,24 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpFechaIngreso;
 
         /// <summary>
+        /// Control lblFacultad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFacultad;
+
+        /// <summary>
+        /// Control txtFacultad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFacultad;
+
+        /// <summary>
         /// Control lblCarrera.
         /// </summary>
         /// <remarks>
@@ -175,24 +175,6 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCarrera;
-
-        /// <summary>
-        /// Control lblCiclo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCiclo;
-
-        /// <summary>
-        /// Control ddlCiclo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCiclo;
 
         /// <summary>
         /// Control lblActivo.

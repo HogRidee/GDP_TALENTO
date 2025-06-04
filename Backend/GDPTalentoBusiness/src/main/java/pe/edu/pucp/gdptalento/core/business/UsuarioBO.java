@@ -19,6 +19,9 @@ public class UsuarioBO {
     public int modificar(Usuario usuario){
         return daoUsuario.modificar(usuario);
     }
+    public int modificarBasico(Usuario usuario){
+        return daoUsuario.modificarDatosBasicos(usuario);
+    }
     
     public int eliminar(int idUsuario){
         return daoUsuario.eliminar(idUsuario);
@@ -37,7 +40,7 @@ public class UsuarioBO {
         for( Usuario u: arr){
             if(u.getId()== id){
                 if(u.getHashContrasena().equals(contrasenha)){
-                    return 1;
+                    return id;
                 }
             }
         }

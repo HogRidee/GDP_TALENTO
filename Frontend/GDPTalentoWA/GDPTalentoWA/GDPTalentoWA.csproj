@@ -224,6 +224,9 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.obtenerPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarUsuarioBasicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.xsd">
       <SubType>Designer</SubType>

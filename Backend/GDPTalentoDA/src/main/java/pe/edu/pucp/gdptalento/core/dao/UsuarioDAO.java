@@ -17,4 +17,6 @@ public interface UsuarioDAO {
     int eliminar(int id_usuario);
     ArrayList<Usuario> listarTodas();
     Usuario obtenerPorId(int idUsuario);
+    int modificarDatosBasicos(Usuario usuario);
+    
 }
