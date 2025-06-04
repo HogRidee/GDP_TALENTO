@@ -23,21 +23,26 @@ namespace GDPTalentoWA.Paginas
             lblMensaje.Text = "";
             int codigo = Convert.ToInt32(txtCodigo.Text);
             String contrasenha = Convert.ToString(txtPassword.Text);
-            UsuarioWSClient objservicio = new UsuarioWSClient();
+            ServicioWeb.UsuarioWSClient objservicio = new ServicioWeb.UsuarioWSClient();
+            
             int tipo = objservicio.verificar(codigo, contrasenha);
             if (tipo!=0)
             {
                 FormsAuthenticationTicket tkt;
                 String cookiestr;
                 HttpCookie ck;
-
-                tkt = new FormsAuthenticationTicket(1, Convert.ToString(codigo), DateTime.Now, DateTime.Now.AddHours(2), true, "datos adicionales");
+                Session["id"]=codigo;
+                tkt = new FormsAuthenticationTicket(1, Convert.ToString(codigo), DateTime.Now, DateTime.Now.AddMinutes(45), true, "datos adicionales");
                 cookiestr = FormsAuthentication.Encrypt(tkt);
                 ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
                 ck.Expires = tkt.Expiration;
                 ck.Path = FormsAuthentication.FormsCookiePath;
                 Response.Cookies.Add(ck);
-                Response.Redirect("Inicio.aspx");
+                string strRedirect;
+                strRedirect = Request["ReturnUrl"];
+                if (strRedirect == null)
+                    Response.Redirect("Home.aspx");
+                Response.Redirect(strRedirect, true);
             }
             else
             {
