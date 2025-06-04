@@ -70,9 +70,8 @@ namespace GDPTalentoWA.Paginas
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString() ?? "";
-                e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "area")?.ToString() ?? "";
-                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "cargo")?.ToString() ?? "";
-                e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado_proceso")?.ToString() ?? "";
+                e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "especialidad")?.ToString() ?? "";
+                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "estadoProceso")?.ToString() ?? "";
 
             }
         }
