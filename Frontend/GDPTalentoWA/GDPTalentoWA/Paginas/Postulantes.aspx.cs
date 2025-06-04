@@ -40,7 +40,28 @@ namespace GDPTalentoWA.Paginas
 
         protected void lbBuscarPostulante_Click(object sender, EventArgs e)
         {
+            string textoBusqueda = txtBuscarPostulante.Text.Trim().ToLower();
 
+            boPostulante = new PostulanteWSClient();
+            var listaPostulantes= boPostulante.listarPostulantes();
+
+            if (listaPostulantes == null)
+            {
+                postulantes = new BindingList<postulante>();
+            }
+            else
+            {
+                // Filtro por nombre, código PUCP o área
+                var filtrados = listaPostulantes.Where(s =>
+                    (s.nombre != null && s.nombre.ToLower().Contains(textoBusqueda)) ||
+                    s.especialidad.ToString().Contains(textoBusqueda)
+                ).ToList();
+
+                postulantes = new BindingList<postulante>(postulantes);
+            }
+
+            dgvPostulantes.DataSource = postulantes;
+            dgvPostulantes.DataBind();
         }
 
         /*Temas del dgv*/

@@ -170,9 +170,8 @@
                         PageSize="5" CssClass="table table-hover table-striped">
                         <Columns>
                             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                            <asp:BoundField DataField="area" HeaderText="Área" />
-                            <asp:BoundField DataField="cargo" HeaderText="Cargo" />
-                            <asp:BoundField DataField="estado_proceso" HeaderText="Estado" />
+                            <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
+                            <asp:BoundField DataField="estadoProceso" HeaderText="Estado" />
                             <asp:TemplateField HeaderText="Acciones">
                                 <ItemTemplate>
                                     <asp:DropDownList ID="ddlAcciones" runat="server">
