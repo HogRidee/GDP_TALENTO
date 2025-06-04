@@ -26,6 +26,15 @@ public class UsuarioWS {
         boUsuario=new UsuarioBO();
         return boUsuario.modificar(usuario);
     }
+    @WebMethod(operationName = "modificarUsuarioBasico")
+    public int modificarUsuarioBasico(@WebParam(name = "usuario") Usuario usuario) {
+        boUsuario=new UsuarioBO();
+        System.out.println("Nombre: " + usuario.getNombre());
+        System.out.println("Area" + usuario.getArea());
+        System.out.println("Estado:" + usuario.getEstado());
+        System.out.println("Estado PUCP:" + usuario.getStatus());
+        return boUsuario.modificarBasico(usuario);
+    }
     
     @WebMethod(operationName = "eliminarUsuario")
     public int eliminarUsuario(@WebParam(name = "idUsuario") int idUsuario) {
