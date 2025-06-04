@@ -32,17 +32,17 @@
             </div>
             <ul class="mynav nav nav-pills flex-column mb-auto">
                 <li class="nav-item mb-1">
-                    <a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center active">
+                    <a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-house pe-2"></i>Inicio
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                    <a href="~/Paginas/Miembro.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-user pe-2"></i>Miembros
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                    <a href="~/Paginas/Postulantes.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-user-plus pe-2"></i>Postulantes
                     </a>
                 </li>
