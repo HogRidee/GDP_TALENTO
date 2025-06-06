@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/RolWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="modificarRol">
-    <part name="parameters" element="tns:modificarRol" />
+  <message name="eliminarRol">
+    <part name="parameters" element="tns:eliminarRol" />
   </message>
-  <message name="modificarRolResponse">
-    <part name="parameters" element="tns:modificarRolResponse" />
+  <message name="eliminarRolResponse">
+    <part name="parameters" element="tns:eliminarRolResponse" />
   </message>
   <message name="listarRoles">
     <part name="parameters" element="tns:listarRoles" />
@@ -17,39 +17,39 @@
   <message name="listarRolesResponse">
     <part name="parameters" element="tns:listarRolesResponse" />
   </message>
+  <message name="modificarRol">
+    <part name="parameters" element="tns:modificarRol" />
+  </message>
+  <message name="modificarRolResponse">
+    <part name="parameters" element="tns:modificarRolResponse" />
+  </message>
   <message name="insertarRol">
     <part name="parameters" element="tns:insertarRol" />
   </message>
   <message name="insertarRolResponse">
     <part name="parameters" element="tns:insertarRolResponse" />
   </message>
-  <message name="eliminarRol">
-    <part name="parameters" element="tns:eliminarRol" />
-  </message>
-  <message name="eliminarRolResponse">
-    <part name="parameters" element="tns:eliminarRolResponse" />
-  </message>
   <portType name="RolWS">
-    <operation name="modificarRol">
-      <input wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest" message="tns:modificarRol" />
-      <output wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
+    <operation name="eliminarRol">
+      <input wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest" message="tns:eliminarRol" />
+      <output wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
     </operation>
     <operation name="listarRoles">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest" message="tns:listarRoles" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesResponse" message="tns:listarRolesResponse" />
     </operation>
+    <operation name="modificarRol">
+      <input wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest" message="tns:modificarRol" />
+      <output wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
+    </operation>
     <operation name="insertarRol">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/insertarRolRequest" message="tns:insertarRol" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/insertarRolResponse" message="tns:insertarRolResponse" />
     </operation>
-    <operation name="eliminarRol">
-      <input wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest" message="tns:eliminarRol" />
-      <output wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
-    </operation>
   </portType>
   <binding name="RolWSPortBinding" type="tns:RolWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarRol">
+    <operation name="eliminarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarRol">
+    <operation name="modificarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarRol">
+    <operation name="insertarRol">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
