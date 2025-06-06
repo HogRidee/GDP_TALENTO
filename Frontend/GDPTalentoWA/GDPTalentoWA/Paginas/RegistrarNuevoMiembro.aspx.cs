@@ -61,7 +61,8 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            boStaff = new StaffWSClient();
+            boStaff = new StaffWSClient(); 
+            miembro = new staff();
             miembro.nombre = txtNombreCompleto.Text;
             miembro.correo = txtCorreoElectronico.Text;
             miembro.codigoPUCP = int.Parse(txtCodigoPUCP.Text);
