@@ -86,12 +86,29 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnRegistrarPostulante_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("RegistrarNuevoPostulante.aspx");
         }
 
         protected void btnFiltrarPostulante_Click(object sender, EventArgs e)
         {
+            /*AQUI FALTA IO*/
+            boPostulante = new PostulanteWSClient();
+            var listaOriginal = boPostulante.listarPostulantes();
 
+            if (listaOriginal == null) return;
+
+            string textoBusqueda = txtBuscarPostulante.Text.Trim().ToLower();
+            //string estadoSeleccionado = ddlEstados.SelectedValue; // "1" = ACTIVO, "2" = INACTIVO
+            //string areaSeleccionada = ddlAreas.SelectedValue;      // Ej: "Marketing"
+
+            var listaFiltrada = listaOriginal.Where(s =>
+                (string.IsNullOrEmpty(textoBusqueda) ||
+                 s.nombre.ToLower().Contains(textoBusqueda) ||
+                 s.codigoPUCP.ToString().Contains(textoBusqueda))
+            ).ToList();
+
+            dgvPostulantes.DataSource = listaFiltrada;
+            dgvPostulantes.DataBind();
         }
 
         protected void btnEjecutar_Click(object sender, EventArgs e)
@@ -124,7 +141,7 @@ namespace GDPTalentoWA.Paginas
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Miembro no encontrado.');", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msg", "alert('Postulante no encontrado.');", true);
                     }
                     break;
 
