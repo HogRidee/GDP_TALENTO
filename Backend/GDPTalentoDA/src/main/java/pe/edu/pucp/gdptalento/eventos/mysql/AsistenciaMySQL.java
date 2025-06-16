@@ -69,7 +69,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
                 a.getParticipante().setArea(Area.valueOf(rs.getString("area")));
                 a.setAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
                 a.getEvento().setId(rs.getInt("id_evento"));
-                a.getEvento().setFecha(rs.getDate("fecha").toLocalDate());
+                a.getEvento().setFecha(rs.getDate("fecha"));
                 a.getEvento().setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
                 a.getEvento().setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
                 asistencias.add(a);

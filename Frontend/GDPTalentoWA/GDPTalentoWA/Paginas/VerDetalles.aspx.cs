@@ -45,7 +45,7 @@ namespace GDPTalentoWA.Paginas
                         lblCorreo.Text = miembro.correo;
                         lblTelefono.Text = miembro.telefono;
                         lblCodigo.Text = miembro.codigoPUCP.ToString();
-                        lblIngreso.Text = "15/02/2005"; // Hardcoded, consider getting from miembro object
+                        lblIngreso.Text = miembro.fechaIngreso.ToString("dd/MM/yyyy");
                         lblCarrera.Text = miembro.especialidad;
                         lblEvaluacion.Text = miembro.desempenio.ToString();
                         // This is the line that calls your skill loading method

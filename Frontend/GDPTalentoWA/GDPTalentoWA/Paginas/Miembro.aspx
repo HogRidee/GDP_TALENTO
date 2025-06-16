@@ -81,29 +81,35 @@
             <div class="table-responsive">
                 <asp:GridView ID="dgvMiembros" runat="server" AutoGenerateColumns="false"
                     OnPageIndexChanging="dgvMiembros_PageIndexChanging"
-                    PageSize="5" CssClass="table table-hover table-striped">
+                    PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle">
                     <Columns>
                         <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                         <asp:BoundField DataField="codigoPUCP" HeaderText="Código" />
                         <asp:BoundField DataField="area" HeaderText="Área" />
                         <asp:BoundField DataField="estado" HeaderText="Estado" />
-                        <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha Ingreso" />
-                        <asp:TemplateField HeaderText="Acciones">
+
+                        <asp:TemplateField HeaderText="Fecha Ingreso">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddlAcciones" runat="server">
-                                    <asp:ListItem Text="Seleccionar acción" Value="" />
-                                    <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
-                                    <asp:ListItem Text="Editar Información" Value="EditarInformacion" />
-                                    <asp:ListItem Text="Eliminar Miembro" Value="EliminarMiembro" />
-                                </asp:DropDownList>
-                                <asp:Button ID="btnEjecutar" runat="server" Text="Ir"
-                                    CommandName="Accion"
-                                    CommandArgument='<%# Eval("id") %>'
-                                    OnClick="btnEjecutar_Click" />
+                                <%# Eval("fechaIngreso", "{0:dd/MM/yyyy}") %>
                             </ItemTemplate>
                         </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="180px">
+                            <ItemTemplate>
+                                <asp:DropDownList ID="ddlAcciones" runat="server" CssClass="form-select form-select-sm w-auto"
+                                    AutoPostBack="true" OnSelectedIndexChanged="ddlAcciones_SelectedIndexChanged"
+                                    data-id='<%# Eval("id") %>'>
+                                    <asp:ListItem Text="Acción" Value="" />
+                                    <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
+                                    <asp:ListItem Text="Editar" Value="EditarInformacion" />
+                                    <asp:ListItem Text="Eliminar" Value="EliminarMiembro" />
+                                </asp:DropDownList>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                     </Columns>
                 </asp:GridView>
+
 
             </div>
 

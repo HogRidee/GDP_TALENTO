@@ -43,12 +43,10 @@ public class StaffMySQL implements StaffDAO {
         parametrosEntrada.put(6, staff.getEspecialidad());
         parametrosEntrada.put(7, String.valueOf(staff.getStatus()));
         parametrosEntrada.put(8, String.valueOf(staff.getTelefono()));
-        parametrosEntrada.put(9, String.valueOf(staff.getArea())); //
-        Date fecha_date=java.sql.Date.valueOf(staff.getFechaIngreso());
-        parametrosEntrada.put(10, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(9, String.valueOf(staff.getArea())); 
+        parametrosEntrada.put(10, new Date(staff.getFechaIngreso().getTime()));
         parametrosEntrada.put(11, String.valueOf(staff.getEstado()));
-        fecha_date=java.sql.Date.valueOf(staff.getFechaSalida());
-        parametrosEntrada.put(12, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(12, new Date(staff.getFechaSalida().getTime()));
         parametrosEntrada.put(13, staff.getDesempenio());
 
         // Llamada al procedimiento
@@ -71,17 +69,24 @@ public class StaffMySQL implements StaffDAO {
         parametrosEntrada.put(3, staff.getFacultad()); // Facultad
         parametrosEntrada.put(4, staff.getEspecialidad()); // Especialidad
         parametrosEntrada.put(5, String.valueOf(staff.getStatus())); // Status
-        parametrosEntrada.put(6, staff.getTelefono()); // Teléfono (asumí que es String o int según tu modelo)
-        parametrosEntrada.put(7, String.valueOf(staff.getArea())); // Area
+        parametrosEntrada.put(6, staff.getTelefono()); // Teléfono
+        parametrosEntrada.put(7, String.valueOf(staff.getArea())); // Área
         parametrosEntrada.put(8, String.valueOf(staff.getEstado())); // Estado
-        String fecha_fin = String.valueOf(staff.getFechaSalida());
-        Date fecha = java.sql.Date.valueOf(fecha_fin);
-        parametrosEntrada.put(9, new java.sql.Date(fecha.getTime())); // Fecha de salida
+
+        // Manejo correcto de posible null en fecha de salida
+        if (staff.getFechaSalida() != null) {
+            parametrosEntrada.put(9, new java.sql.Date(staff.getFechaSalida().getTime()));
+        } else {
+            parametrosEntrada.put(9, null); // El procedimiento debe aceptar null en este parámetro
+        }
+
         parametrosEntrada.put(10, staff.getDesempenio()); // Desempeño
+
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_STAFF", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificación del staff");
         return resultado;
     }
+
 
 
     @Override
@@ -115,6 +120,8 @@ public class StaffMySQL implements StaffDAO {
                 staff.setEspecialidad(rs.getString("especialidad"));
                 staff.setTelefono(rs.getString("telefono"));
                 staff.setDesempenio(rs.getDouble("desempenio"));
+                staff.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                staff.setFechaSalida(rs.getDate("fecha_salida"));
                 staff.setStatus(estado);
                 staff.setArea(area);
                 staff.setEstado(miembro);

@@ -4,12 +4,13 @@ import pe.edu.pucp.gdptalento.miembros.model.Postulante;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Entrevista {
 
     private int id;
-    private LocalDate fecha;
+    private Date fecha;
     private ArrayList<Usuario> entrevistadores;
     private Postulante postulante;
     private EstadoEntrevista estado;
@@ -30,11 +31,11 @@ public class Entrevista {
         this.id = id;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

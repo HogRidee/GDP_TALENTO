@@ -60,9 +60,9 @@
                             <span class="text-danger">*</span>
                             <asp:DropDownList ID="ddlFacultad" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                                 <asp:ListItem Text="Seleccionar facultad" Value="" Selected="True" Disabled="True"></asp:ListItem>
-                                <asp:ListItem Text="Ingeniería" Value="Ingeniería"></asp:ListItem>
-                                <asp:ListItem Text="Derecho" Value="Derecho"></asp:ListItem>
-                                <asp:ListItem Text="Gestión" Value="Gestión"></asp:ListItem>
+                                <asp:ListItem Text="INGENIERÍA" Value="Ingeniería"></asp:ListItem>
+                                <asp:ListItem Text="DERECHO" Value="Derecho"></asp:ListItem>
+                                <asp:ListItem Text="GESTIÓN" Value="Gestión"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -72,10 +72,10 @@
                             <span class="text-danger">*</span>
                             <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                                 <asp:ListItem Text="Seleccionar especialidad" Value="" Selected="True" Disabled="True"></asp:ListItem>
-                                <asp:ListItem Text="Derecho" Value="DerechoE"></asp:ListItem>
-                                <asp:ListItem Text="Electrónica" Value="Electrónica"></asp:ListItem>
-                                <asp:ListItem Text="Informática" Value="Informática"></asp:ListItem>
-                                <asp:ListItem Text="Marketing" Value="Marketing"></asp:ListItem>
+                                <asp:ListItem Text="DERECHO" Value="DerechoE"></asp:ListItem>
+                                <asp:ListItem Text="ELECTRÓNICA" Value="Electrónica"></asp:ListItem>
+                                <asp:ListItem Text="INFORMÁTICA" Value="Informática"></asp:ListItem>
+                                <asp:ListItem Text="MARKETING" Value="Marketing"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <asp:DropDownList ID="ddlEstadoAcademico" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                                 <asp:ListItem Text="Seleccionar estado" Value="" Selected="True" Disabled="True"></asp:ListItem>
                                 <asp:ListItem Text="MATRICULADO" Value="MATRICULADO"></asp:ListItem>
-                                <asp:ListItem Text="NO_MATRICULADO" Value="NO_MATRICULADO"></asp:ListItem>
+                                <asp:ListItem Text="NO MATRICULADO" Value="NO_MATRICULADO"></asp:ListItem>
                                 <asp:ListItem Text="EGRESADO" Value="EGRESADO"></asp:ListItem>
                                 <asp:ListItem Text="EXTERNO" Value="EXTERNO"></asp:ListItem>
                             </asp:DropDownList>

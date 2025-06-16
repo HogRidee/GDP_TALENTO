@@ -31,8 +31,7 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
         parametrosEntrada.put(3, evaluacion.getMiembroEvaluado());
         parametrosEntrada.put(4, evaluacion.getPuntaje());
         parametrosEntrada.put(5, evaluacion.getComentarios());
-        Date fecha_date = java.sql.Date.valueOf(evaluacion.getFecha());
-        parametrosEntrada.put(6, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(6, new Date(evaluacion.getFecha().getTime()));
 
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVALUACION", 
                 parametrosEntrada, parametrosSalida);
@@ -48,12 +47,11 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
 
         parametrosEntrada.put(1, evaluacion.getId());
-        parametrosEntrada.put(2, evaluacion.getEvaluador());
-        parametrosEntrada.put(3, evaluacion.getMiembroEvaluado());
+        parametrosEntrada.put(2, evaluacion.getEvaluador().getId());
+        parametrosEntrada.put(3, evaluacion.getMiembroEvaluado().getId());
         parametrosEntrada.put(4, evaluacion.getPuntaje());
         parametrosEntrada.put(5, evaluacion.getComentarios());
-        Date fecha_date = java.sql.Date.valueOf(evaluacion.getFecha());
-        parametrosEntrada.put(6, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(6, new Date(evaluacion.getFecha().getTime()));
 
         DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_EVALUACION", 
                 parametrosEntrada, null);
@@ -89,10 +87,7 @@ public class EvaluacionDesempeñoMySQL implements EvaluacionDesempeñoDAO{
                 evaluacion.setMiembroEvaluado(miembroEvaluado);
                 evaluacion.setPuntaje(rs.getInt("ed.puntaje"));
                 evaluacion.setComentarios(rs.getString("ed.comentarios"));
-                java.sql.Date sqlDate = rs.getDate("fecha_evaluacion");
-                if (sqlDate != null) {
-                    evaluacion.setFecha(sqlDate.toLocalDate());
-                }
+                evaluacion.setFecha(rs.getDate("fecha_evaluacion"));
                 listadoEvaluaciones.add(evaluacion);
             }
         } catch (SQLException ex) {

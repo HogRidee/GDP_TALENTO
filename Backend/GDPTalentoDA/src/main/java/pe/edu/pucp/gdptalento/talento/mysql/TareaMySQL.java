@@ -28,9 +28,9 @@ public class TareaMySQL implements TareaDAO{
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosSalida.put(1, Types.INTEGER);
         
-        parametrosEntrada.put(2, Timestamp.valueOf(tarea.getFechaCreacion()));
+        parametrosEntrada.put(2, tarea.getFechaCreacion());
         parametrosEntrada.put(3, tarea.getCreador().getId());
-        parametrosEntrada.put(4, Timestamp.valueOf(tarea.getFechaLimite()));
+        parametrosEntrada.put(4, tarea.getFechaLimite());
         parametrosEntrada.put(5, tarea.getEstado().name());
         // Llamada al procedimiento
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TAREA", parametrosEntrada, parametrosSalida);
@@ -56,10 +56,11 @@ public class TareaMySQL implements TareaDAO{
     public int modificarTarea(Tarea tarea) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, tarea.getId());
-        parametrosEntrada.put(2, Timestamp.valueOf(tarea.getFechaCreacion()));
-        parametrosEntrada.put(2, tarea.getCreador().getId());
-        parametrosEntrada.put(4, Timestamp.valueOf(tarea.getFechaLimite()));
+        parametrosEntrada.put(2, tarea.getFechaCreacion());
+        parametrosEntrada.put(3, tarea.getCreador().getId());
+        parametrosEntrada.put(4, tarea.getFechaLimite());
         parametrosEntrada.put(5, tarea.getEstado().name());
+
         int resultado = DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TAREA_ENCARGADO", parametrosEntrada, null);
         System.out.println("Se ha modificado la tarea correctamente - paso 1");
         
@@ -101,8 +102,8 @@ public class TareaMySQL implements TareaDAO{
                 int idTarea = rs.getInt("id_tarea");
 
                 tarea.setId(idTarea);
-                tarea.setFechaCreacion(rs.getTimestamp("fecha_creacion").toLocalDateTime());
-                tarea.setFechaLimite(rs.getTimestamp("fecha_limite").toLocalDateTime());
+                tarea.setFechaCreacion(rs.getDate("fecha_creacion"));
+                tarea.setFechaLimite(rs.getDate("fecha_limite"));
 
                 // Obtener el creador
                 int idCreador = rs.getInt("id_creador");

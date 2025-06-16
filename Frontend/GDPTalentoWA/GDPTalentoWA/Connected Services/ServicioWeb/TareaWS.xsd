@@ -8,9 +8,22 @@
   <xs:element name="listarTareasResponse" type="tns:listarTareasResponse" />
   <xs:element name="modificarTarea" type="tns:modificarTarea" />
   <xs:element name="modificarTareaResponse" type="tns:modificarTareaResponse" />
-  <xs:complexType name="insertarTarea">
+  <xs:complexType name="eliminarTarea">
     <xs:sequence>
-      <xs:element minOccurs="0" name="tarea" type="tns:tarea" />
+      <xs:element name="idTarea" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarTareaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTareas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTareasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tarea" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="tarea">
@@ -18,8 +31,8 @@
       <xs:element minOccurs="0" name="creador" type="tns:usuario" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="encargados" nillable="true" type="tns:usuario" />
       <xs:element minOccurs="0" name="estado" type="tns:estadoTarea" />
-      <xs:element minOccurs="0" name="fechaCreacion" type="tns:localDateTime" />
-      <xs:element minOccurs="0" name="fechaLimite" type="tns:localDateTime" />
+      <xs:element minOccurs="0" name="fechaCreacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaLimite" type="xs:dateTime" />
       <xs:element name="id" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -41,8 +54,8 @@
           <xs:element name="desempenio" type="xs:double" />
           <xs:element minOccurs="0" name="estado" type="tns:estadoMiembro" />
           <xs:element minOccurs="0" maxOccurs="unbounded" name="evaluaciones" nillable="true" type="tns:evaluacionDesempeño" />
-          <xs:element minOccurs="0" name="fechaIngreso" type="tns:localDate" />
-          <xs:element minOccurs="0" name="fechaSalida" type="tns:localDate" />
+          <xs:element minOccurs="0" name="fechaIngreso" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fechaSalida" type="xs:dateTime" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -71,39 +84,20 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="comentarios" type="xs:string" />
       <xs:element minOccurs="0" name="evaluador" type="tns:usuario" />
-      <xs:element minOccurs="0" name="fecha" type="tns:localDate" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
       <xs:element name="id" type="xs:int" />
       <xs:element minOccurs="0" name="miembroEvaluado" type="tns:staff" />
       <xs:element name="puntaje" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="localDate" final="extension restriction">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="localDateTime" final="extension restriction">
-    <xs:sequence />
+  <xs:complexType name="insertarTarea">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tarea" type="tns:tarea" />
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarTareaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarTarea">
-    <xs:sequence>
-      <xs:element name="idTarea" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarTareaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarTareas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarTareasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tarea" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarTarea">

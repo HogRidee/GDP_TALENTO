@@ -33,7 +33,7 @@ public class EventoMySQL implements EventoDAO{
     @Override
     public int insertar(Evento evento) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
-        parametrosEntrada.put(1, Date.valueOf(evento.getFecha()));
+        parametrosEntrada.put(1, new Date(evento.getFecha().getTime()));
         parametrosEntrada.put(2, evento.getTipoEvento());
         parametrosEntrada.put(3, evento.getEstadoEvento());
         int resultado=DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVENTO", parametrosEntrada, null);
@@ -45,7 +45,7 @@ public class EventoMySQL implements EventoDAO{
     public int modificar(Evento evento) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, evento.getId());
-        parametrosEntrada.put(2, Date.valueOf(evento.getFecha()));
+        parametrosEntrada.put(2, new Date(evento.getFecha().getTime()));
         parametrosEntrada.put(3, evento.getTipoEvento());
         parametrosEntrada.put(4, evento.getEstadoEvento());
         int resultado=DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_EVENTO", parametrosEntrada, null);
@@ -71,7 +71,7 @@ public class EventoMySQL implements EventoDAO{
             while(rs.next()){
                 Evento e = new Evento();
                 e.setId(rs.getInt("id_Evento"));
-                e.setFecha(rs.getDate("fecha").toLocalDate());
+                e.setFecha(rs.getDate("fecha"));
                 e.setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
                 e.setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
                 eventos.add(e);

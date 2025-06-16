@@ -79,15 +79,36 @@ namespace GDPTalentoWA.Paginas
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                // Asignar nombre, código, área y estado
                 e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString() ?? "";
                 e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP")?.ToString() ?? "";
                 e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "area")?.ToString() ?? "";
                 e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado")?.ToString() ?? "";
 
-                e.Row.Cells[4].Text = (string)DataBinder.Eval(e.Row.DataItem, "fechaIngreso");
+                object fechaObj = DataBinder.Eval(e.Row.DataItem, "fechaIngreso");
+
+                if (fechaObj != null && DateTime.TryParse(fechaObj.ToString(), out DateTime fecha))
+                {
+                    if (fecha > new DateTime(1900, 1, 1))
+                    {
+                        // ✅ Solo fecha sin hora
+                        e.Row.Cells[4].Text = fecha.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        e.Row.Cells[4].Text = "";
+                    }
+                }
+                else
+                {
+                    e.Row.Cells[4].Text = "";
+                }
 
             }
         }
+
+
+
 
 
 
@@ -170,7 +191,34 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
+        protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            GridViewRow row = (GridViewRow)ddl.NamingContainer;
 
+            string accion = ddl.SelectedValue;
+
+            // Obtener ID desde el DataKeys si usas DataKeyNames, o desde atributo personalizado:
+            string idStr = ddl.Attributes["data-id"];
+            int id = int.TryParse(idStr, out int idParsed) ? idParsed : -1;
+
+            if (id == -1 || string.IsNullOrEmpty(accion)) return;
+
+            switch (accion)
+            {
+                case "VerDetalles":
+                    Response.Redirect($"VerDetalles.aspx?id={id}");
+                    break;
+                case "EditarInformacion":
+                    Response.Redirect($"RegistrarNuevoMiembro.aspx?accion=modificar&id={id}");
+                    break;
+                case "EliminarMiembro":
+                    // Aquí llamas a tu servicio de eliminación si corresponde
+                    // boStaff.eliminarStaff(id);
+                    Response.Redirect("Miembro.aspx");
+                    break;
+            }
+        }
 
     }
 }

@@ -15,7 +15,9 @@ BEGIN
         m.status,
         s.area,
         s.estado,
-        s.desempenio
+        s.desempenio,
+        s.fecha_ingreso,
+        s.fecha_salida
     FROM 
         MiembroPUCP m
     INNER JOIN 
