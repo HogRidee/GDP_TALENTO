@@ -28,9 +28,8 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         Map<Integer, Object> parametrosSalida = new HashMap<>();
         
         parametrosSalida.put(1, Types.INTEGER);
-        parametrosEntrada.put(2, entrevista.getPostulante());
-        Date fecha_date = java.sql.Date.valueOf(entrevista.getFecha());
-        parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(2, entrevista.getPostulante().getId());
+        parametrosEntrada.put(3, new Date(entrevista.getFecha().getTime()));
         parametrosEntrada.put(4, entrevista.getFeedback());
         parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
         parametrosEntrada.put(6, entrevista.getPuntuacionFinal());
@@ -50,8 +49,7 @@ public class EntrevistaMySQL implements EntrevistaDAO{
 
         parametrosEntrada.put(1, entrevista.getId());
         parametrosEntrada.put(2, entrevista.getPostulante());
-        Date fecha_date = java.sql.Date.valueOf(entrevista.getFecha());
-        parametrosEntrada.put(3, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(3, new Date(entrevista.getFecha().getTime()));
         parametrosEntrada.put(4, entrevista.getFeedback());
         parametrosEntrada.put(5, String.valueOf(entrevista.getEstado()));
         parametrosEntrada.put(6, entrevista.getPuntuacionFinal());
@@ -68,7 +66,7 @@ public class EntrevistaMySQL implements EntrevistaDAO{
         parametrosEntrada.put(1, id_entrevista);
         DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ENTREVISTA", 
                 parametrosEntrada, null);
-        System.out.println("Se eliminó el rol con ID: " + id_entrevista);
+        System.out.println("Se eliminó la entrevista con ID: " + id_entrevista);
         return 1;
     }
 
@@ -84,10 +82,7 @@ public class EntrevistaMySQL implements EntrevistaDAO{
             while (rs.next()) {
                 Entrevista entrevista = new Entrevista();
                 entrevista.setId(rs.getInt("id_entrevista"));
-                java.sql.Date sqlDate = rs.getDate("fecha_entrevista");
-                if (sqlDate != null) {
-                    entrevista.setFecha(sqlDate.toLocalDate());
-                }
+                entrevista.setFecha(rs.getDate("fecha_entrevista"));
                 EstadoEntrevista estado = EstadoEntrevista.valueOf(rs.getString("estado"));
                 entrevista.setEstado(estado);
                 Postulante postulante = new Postulante();

@@ -3,19 +3,21 @@ package pe.edu.pucp.gdptalento.eventos.model;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Evento {
 
     private int id;
-    private LocalDate fecha;
+    private Date fecha;
     private EstadoEvento estadoEvento;
     private TipoEvento tipoEvento;
     private ArrayList<Usuario> encargados;
     private ArrayList<Staff> participantes;
 
     // Constructor
-    public Evento(LocalDate fecha, TipoEvento tipoEvento, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
+    public Evento(Date fecha, TipoEvento tipoEvento, ArrayList<Usuario> encargados, ArrayList<Staff> participantes) {
         this.fecha = fecha;
         this.tipoEvento = tipoEvento;
         this.estadoEvento = EstadoEvento.APROBADO;
@@ -38,11 +40,11 @@ public class Evento {
         this.id = id;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

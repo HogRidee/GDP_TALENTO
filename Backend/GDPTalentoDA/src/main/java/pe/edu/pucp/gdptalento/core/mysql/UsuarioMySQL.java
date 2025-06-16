@@ -101,7 +101,7 @@ public class UsuarioMySQL implements UsuarioDAO{
                 usuario = new Usuario();
                 leerInformacionMiembroPUCP(usuario);
                 leerInformacionGeneral(usuario);
-                usuario.setFechaIngreso(rs.getDate("fecha_ingreso").toLocalDate());
+                usuario.setFechaIngreso(rs.getDate("fecha_ingreso"));
                 leerRolPorId(usuario); // Método modificado para usar el ID del rol
             }
         } catch (SQLException ex) {
@@ -131,11 +131,9 @@ public class UsuarioMySQL implements UsuarioDAO{
         parametrosEntrada.put(7, String.valueOf(usuario.getStatus()));
         parametrosEntrada.put(8, String.valueOf(usuario.getTelefono()));
         parametrosEntrada.put(9, String.valueOf(usuario.getArea()));
-        Date fecha_date = java.sql.Date.valueOf(usuario.getFechaIngreso());
-        parametrosEntrada.put(10, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(10, new Date(usuario.getFechaIngreso().getTime()));
         parametrosEntrada.put(11, String.valueOf(usuario.getEstado()));
-        fecha_date = java.sql.Date.valueOf(usuario.getFechaSalida());
-        parametrosEntrada.put(12, new java.sql.Date(fecha_date.getTime()));
+        parametrosEntrada.put(12, new Date(usuario.getFechaSalida().getTime()));
         parametrosEntrada.put(13, usuario.getDesempenio());
         parametrosEntrada.put(14, usuario.getHashContrasena());
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_USUARIO", 

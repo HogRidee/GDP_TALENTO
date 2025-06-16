@@ -2,7 +2,7 @@ package pe.edu.pucp.gdptalento.talento.model;
 
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class EvaluacionDesempeño {
 
@@ -11,12 +11,12 @@ public class EvaluacionDesempeño {
     private Staff miembroEvaluado;
     private int puntaje;
     private String comentarios;
-    private LocalDate fecha;
+    private Date fecha;
 
     public EvaluacionDesempeño() {
     }
 
-    public EvaluacionDesempeño(int id, Staff miembroEvaluado, Usuario evaluador, int puntaje, String comentarios, LocalDate fecha) {
+    public EvaluacionDesempeño(int id, Staff miembroEvaluado, Usuario evaluador, int puntaje, String comentarios, Date fecha) {
         this.id = id;
         this.miembroEvaluado = miembroEvaluado;
         this.evaluador = evaluador;
@@ -65,11 +65,11 @@ public class EvaluacionDesempeño {
         this.comentarios = comentarios;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

@@ -2,15 +2,15 @@ package pe.edu.pucp.gdptalento.talento.model;
 
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Tarea {
 
     private int id;
-    private LocalDateTime fechaCreacion;
+    private Date fechaCreacion;
     private Usuario creador;
     private ArrayList<Usuario> encargados;
-    private LocalDateTime fechaLimite;
+    private Date fechaLimite;
     private EstadoTarea estado;
 
     public Tarea() {
@@ -25,11 +25,11 @@ public class Tarea {
         this.id = id;
     }
 
-    public LocalDateTime getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -49,11 +49,11 @@ public class Tarea {
         this.encargados = encargados;
     }
 
-    public LocalDateTime getFechaLimite() {
+    public Date getFechaLimite() {
         return fechaLimite;
     }
 
-    public void setFechaLimite(LocalDateTime fechaLimite) {
+    public void setFechaLimite(Date fechaLimite) {
         this.fechaLimite = fechaLimite;
     }
 

@@ -1,16 +1,16 @@
 package pe.edu.pucp.gdptalento.miembros.model;
 
 import pe.edu.pucp.gdptalento.talento.model.EvaluacionDesempeño;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Staff extends MiembroPUCP {
 
     // Atributos
     private Area area;
-    private LocalDate fechaIngreso;
+    private Date fechaIngreso;
     private EstadoMiembro estado;
-    private LocalDate fechaSalida;
+    private Date fechaSalida;
     private double desempenio;
     private ArrayList<EvaluacionDesempeño> evaluaciones;
 
@@ -20,7 +20,7 @@ public class Staff extends MiembroPUCP {
     }
 
     // Constructor con parámetros
-    public Staff(Area area, LocalDate fechaIngreso, EstadoMiembro estado, LocalDate fechaSalida, double desempenio) {
+    public Staff(Area area, Date fechaIngreso, EstadoMiembro estado, Date fechaSalida, double desempenio) {
         this.area = area;
         this.fechaIngreso = fechaIngreso;
         this.estado = estado;
@@ -37,11 +37,11 @@ public class Staff extends MiembroPUCP {
         return area;
     }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {
+    public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public LocalDate getFechaIngreso() {
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
@@ -53,11 +53,11 @@ public class Staff extends MiembroPUCP {
         return estado;
     }
 
-    public void setFechaSalida(LocalDate fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public LocalDate getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
 
