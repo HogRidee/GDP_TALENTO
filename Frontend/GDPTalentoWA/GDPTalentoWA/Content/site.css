@@ -194,15 +194,15 @@ html, body {
     min-height: 56px;
 }
 
-.navbar .btn-light {
-    border: 1px solid #dee2e6;
-    background-color: #f8f9fa;
-}
+    .navbar .btn-light {
+        border: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+    }
 
-.navbar .badge {
-    font-size: 0.65rem;
-    padding: 4px 6px;
-}
+    .navbar .badge {
+        font-size: 0.65rem;
+        padding: 4px 6px;
+    }
 
 .mynav li a.active {
     background-color: #dbeafe !important;
@@ -261,10 +261,10 @@ html, body {
 }
 
 
-.badge-skill:hover {
-    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
-}
+    .badge-skill:hover {
+        transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
+    }
 
 .info-label {
     font-weight: 600;
@@ -279,4 +279,104 @@ html, body {
 .detail-item {
     margin-bottom: 10px;
 }
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+    .login-page .login-card {
+        background-color: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        padding: 2rem;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .login-page h2 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+
+    .login-page .subtitle {
+        font-size: 0.875rem;
+        color: #6B7280;
+        margin-bottom: 1.5rem;
+    }
+
+    .login-page .form-control {
+        background-color: #fff;
+        border: 1px solid #E5E7EB;
+        border-radius: 8px;
+        height: 48px;
+        padding: 0.75rem 1rem;
+    }
+
+        .login-page .form-control:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 0 1px #2563EB;
+        }
+
+        /* Anular autofill amarillo de Chrome */
+        .login-page .form-control:-webkit-autofill,
+        .login-page .form-control:-webkit-autofill:hover,
+        .login-page .form-control:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+            box-shadow: 0 0 0px 1000px #fff inset !important;
+        }
+
+    .login-page .d-grid .btn-primary {
+        background-color: #2563EB;
+        border: none;
+        border-radius: 8px;
+        height: 48px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .login-page .forgot-link {
+        font-size: 0.875rem;
+        color: #2563EB;
+    }
+
+    .login-page .login-note {
+        font-size: 0.75rem;
+        color: #6B7280;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+.login-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: url('../Imagenes/LOGO_GDP.png') center center / cover no-repeat;
+}
+
+.login-page .login-card {
+    max-width: 450px;
+}
+
+.login-page .form-label {
+    font-weight: 600;
+}
+
+.login-page {
+    background: linear-gradient( 180deg, #F8FDFF 0%, /* casi blanco con un toque de azul */
+    #EAF6FF 60%, /* un punto medio más celeste */
+    #DEF0FE 100% /* suave pero perceptible al fondo */
+    );
+}
+
+
+
+
+
 
