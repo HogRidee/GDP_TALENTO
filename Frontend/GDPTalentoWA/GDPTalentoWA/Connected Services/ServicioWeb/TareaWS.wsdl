@@ -17,17 +17,17 @@
   <message name="eliminarTareaResponse">
     <part name="parameters" element="tns:eliminarTareaResponse" />
   </message>
-  <message name="modificarTarea">
-    <part name="parameters" element="tns:modificarTarea" />
-  </message>
-  <message name="modificarTareaResponse">
-    <part name="parameters" element="tns:modificarTareaResponse" />
-  </message>
   <message name="insertarTarea">
     <part name="parameters" element="tns:insertarTarea" />
   </message>
   <message name="insertarTareaResponse">
     <part name="parameters" element="tns:insertarTareaResponse" />
+  </message>
+  <message name="modificarTarea">
+    <part name="parameters" element="tns:modificarTarea" />
+  </message>
+  <message name="modificarTareaResponse">
+    <part name="parameters" element="tns:modificarTareaResponse" />
   </message>
   <portType name="TareaWS">
     <operation name="listarTareas">
@@ -38,13 +38,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaRequest" message="tns:eliminarTarea" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaResponse" message="tns:eliminarTareaResponse" />
     </operation>
-    <operation name="modificarTarea">
-      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
-      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
-    </operation>
     <operation name="insertarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest" message="tns:insertarTarea" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse" message="tns:insertarTareaResponse" />
+    </operation>
+    <operation name="modificarTarea">
+      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
+      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
     </operation>
   </portType>
   <binding name="TareaWSPortBinding" type="tns:TareaWS">
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarTarea">
+    <operation name="insertarTarea">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarTarea">
+    <operation name="modificarTarea">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

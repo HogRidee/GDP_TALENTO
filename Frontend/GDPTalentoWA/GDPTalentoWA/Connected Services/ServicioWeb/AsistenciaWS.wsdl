@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.pucp.edu.pe" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AsistenciaWS" targetNamespace="http://services.pucp.edu.pe" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/AsistenciaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
+    </xsd:schema>
+  </types>
+  <message name="insertarAsistencia">
+    <part name="parameters" element="tns:insertarAsistencia" />
+  </message>
+  <message name="insertarAsistenciaResponse">
+    <part name="parameters" element="tns:insertarAsistenciaResponse" />
+  </message>
+  <message name="listarAsistencias">
+    <part name="parameters" element="tns:listarAsistencias" />
+  </message>
+  <message name="listarAsistenciasResponse">
+    <part name="parameters" element="tns:listarAsistenciasResponse" />
+  </message>
+  <message name="modificarAsistencia">
+    <part name="parameters" element="tns:modificarAsistencia" />
+  </message>
+  <message name="modificarAsistenciaResponse">
+    <part name="parameters" element="tns:modificarAsistenciaResponse" />
+  </message>
+  <portType name="AsistenciaWS">
+    <operation name="insertarAsistencia">
+      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/insertarAsistenciaRequest" message="tns:insertarAsistencia" />
+      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/insertarAsistenciaResponse" message="tns:insertarAsistenciaResponse" />
+    </operation>
+    <operation name="listarAsistencias">
+      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasRequest" message="tns:listarAsistencias" />
+      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasResponse" message="tns:listarAsistenciasResponse" />
+    </operation>
+    <operation name="modificarAsistencia">
+      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaRequest" message="tns:modificarAsistencia" />
+      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaResponse" message="tns:modificarAsistenciaResponse" />
+    </operation>
+  </portType>
+  <binding name="AsistenciaWSPortBinding" type="tns:AsistenciaWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="insertarAsistencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAsistencias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarAsistencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AsistenciaWS">
+    <port name="AsistenciaWSPort" binding="tns:AsistenciaWSPortBinding">
+      <soap:address location="http://localhost:8080/GDPTalentoWA/AsistenciaWS" />
+    </port>
+  </service>
+</definitions>

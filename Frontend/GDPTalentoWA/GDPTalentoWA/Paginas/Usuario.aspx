@@ -10,22 +10,25 @@
             font-size: 0.95rem;
             padding: 0.3rem 0.8rem;
             border-radius: 0.8rem;
-            font-weight: 500;
+            font-weight: bold;
             text-align: center;
             margin-top: 0.5rem;
+            color: white !important;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
         }
 
         .estado-activo {
             background-color: #8cda4b;
-            color: white;
+            color: white !important;
             box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
         }
 
         .estado-inactivo {
-            background-color: #fc5856;
-            color: white;
+            background-color: #d93025; 
+            color: white !important;
             box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
         }
+
     </style>
 
     <style>

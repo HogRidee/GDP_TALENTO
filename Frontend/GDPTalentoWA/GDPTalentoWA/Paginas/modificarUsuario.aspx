@@ -20,6 +20,11 @@
                             <asp:Label ID="lblNombre" CssClass="col-sm-4 col-form-label" runat="server" Text="Nombre completo:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtNombreCompleto" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" 
+                                    ControlToValidate="txtNombreCompleto"
+                                    ErrorMessage="El campo Nombre no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
                             </div>
                         </div>
 
@@ -27,6 +32,18 @@
                             <asp:Label ID="lblCodigo" CssClass="col-sm-4 col-form-label" runat="server" Text="Código:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvCodigo" runat="server" 
+                                    ControlToValidate="txtCodigo"
+                                    ErrorMessage="El campo Código no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
+                                <asp:CompareValidator ID="cvCodigo" runat="server"
+                                    ControlToValidate="txtCodigo"
+                                    Operator="DataTypeCheck"
+                                    Type="Integer"
+                                    ErrorMessage="Debe ser un número válido"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
                             </div>
                         </div>
 
@@ -34,6 +51,11 @@
                             <asp:Label ID="lblCorreo" CssClass="col-sm-4 col-form-label" runat="server" Text="Correo electrónico:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvCorreo" runat="server" 
+                                    ControlToValidate="txtCorreo"
+                                    ErrorMessage="El campo Correo no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
                             </div>
                         </div>
 
@@ -41,6 +63,18 @@
                             <asp:Label ID="lblTelefono" CssClass="col-sm-4 col-form-label" runat="server" Text="Teléfono:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" 
+                                    ControlToValidate="txtTelefono"
+                                    ErrorMessage="El campo Teléfono no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
+                                <asp:CompareValidator ID="cvTelefono" runat="server"
+                                    ControlToValidate="txtTelefono"
+                                    Operator="DataTypeCheck"
+                                    Type="Integer"
+                                    ErrorMessage="Debe ser un número válido"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
                             </div>
                         </div>
 
@@ -75,6 +109,12 @@
                             <asp:Label ID="lblFacultad" CssClass="col-sm-4 col-form-label" runat="server" Text="Facultad:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtFacultad" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvFacultad" runat="server" 
+                                    ControlToValidate="txtFacultad"
+                                    ErrorMessage="El campo Facultad no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
+
                             </div>
                         </div>
 
@@ -82,6 +122,11 @@
                             <asp:Label ID="lblCarrera" CssClass="col-sm-4 col-form-label" runat="server" Text="Carrera:" />
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtCarrera" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                    ControlToValidate="txtCarrera"
+                                    ErrorMessage="El campo Carrera no debe estar vacío"
+                                    Display="Dynamic"
+                                    CssClass="text-danger small" />
                             </div>
                         </div>
 
@@ -98,8 +143,18 @@
                 </div>
             </div>
             <div class="card-footer clearfix">
-                <asp:LinkButton ID="btnRegresar" runat="server" Text="<i class='fa-solid fa-rotate-left'></i> Regresar" CssClass="float-start btn btn-secondary" OnClick="btnRegresar_Click" />
-                <asp:LinkButton ID="btnGuardar" CssClass="float-end btn btn-primary" runat="server" Text="<i class='fa-solid fa-floppy-disk pe-2'></i> Guardar" OnClick="btnGuardar_Click" />
+                <asp:LinkButton ID="btnRegresar"
+                    runat="server"
+                    Text="<i class='fa-solid fa-rotate-left'></i> Regresar"
+                    CssClass="float-start btn btn-secondary"
+                    OnClick="btnRegresar_Click"
+                    CausesValidation="false" />
+                <asp:LinkButton ID="btnGuardar"
+                    CssClass="float-end btn btn-primary"
+                    runat="server"
+                    Text="<i class='fa-solid fa-floppy-disk pe-2'></i> Guardar"
+                    OnClick="btnGuardar_Click"
+                    CausesValidation="true" />
             </div>
         </div>
     </div>

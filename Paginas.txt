@@ -2,10 +2,10 @@
 
 
 //
-http://localhost:8080/GDPTalentoWA/AsistenciaWS?Tester		| Listar(mal)
-http://localhost:8080/GDPTalentoWA/EntrevistaWS?Tester 		| Listar(mal)
-http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?Tester| Listar(mal)
-http://localhost:8080/GDPTalentoWA/EventoWS?Tester		| Listar(mal)
+http://localhost:8080/GDPTalentoWA/AsistenciaWS?Tester		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/EntrevistaWS?Tester 		| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?Tester| Listar(Bien)
+http://localhost:8080/GDPTalentoWA/EventoWS?Tester		| Listar(Bien)
 http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?Tester		| Listar(Bien)
 http://localhost:8080/GDPTalentoWA/PostulanteWS?Tester		| Listar(Bien)
 http://localhost:8080/GDPTalentoWA/RolWS?Tester			| Listar(Bien)
@@ -13,5 +13,7 @@ http://localhost:8080/GDPTalentoWA/StaffWS?Tester		| Listar(Bien)
 http://localhost:8080/GDPTalentoWA/TareaWS?Tester		| Listar(Bien)
 http://localhost:8080/GDPTalentoWA/UsuarioWS?Tester		| Listar(Bien)
 //
+
+http://localhost:4848/common/index.jsf
 
 http://localhost:8080/GDPTalentoWA/servicios.disco

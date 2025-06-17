@@ -61,13 +61,10 @@ namespace GDPTalentoWA.Paginas
             lblCorreo.Text = usuario.correo;
             lblTelefono.Text = usuario.telefono; 
             lblCodigo.Text = usuario.codigoPUCP.ToString();
+            
             if (usuario.fechaIngreso != null)
             {
-                dynamic fechaLocalDate = usuario.fechaIngreso;
-                int year = 2025;
-                int month = 6;
-                int day = 3;
-                DateTime fecha = new DateTime(year, month, day);
+                DateTime fecha = (DateTime)usuario.fechaIngreso;
                 lblFechaIngreso.Text = fecha.ToString("yyyy-MM-dd");
             }
             else
