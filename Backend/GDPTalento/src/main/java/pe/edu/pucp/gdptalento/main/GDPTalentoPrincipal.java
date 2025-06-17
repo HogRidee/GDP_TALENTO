@@ -55,6 +55,7 @@ public class GDPTalentoPrincipal {
         System.out.println(u.verificarUsuario(1, "hash12345"));
         */
         StaffBO staffBO = new StaffBO();
+        AsistenciaBO asistenciaBO = new AsistenciaBO();
 //        Staff nuevoStaff = new Staff();
 //
 //        // ⚠️ Asegúrate de que estos datos sean válidos
@@ -118,8 +119,13 @@ public class GDPTalentoPrincipal {
         } else {
             System.out.println("⚠️ No se encontró un staff con ID = " + idBuscado);
         }
-
-
+        
+        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodas();
+        for (Asistencia a : listaAsistencia) {
+                System.out.println("Asistente: " + a.getParticipante().getNombre());
+                System.out.println("Evento: " + a.getEvento().getTipoEvento());
+                System.out.println("Estado: " + a.getAsistencia());
+        }
           
     }
 }
