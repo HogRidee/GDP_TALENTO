@@ -15,8 +15,6 @@ import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
  *
  * @author USER
  */
-import jakarta.ejb.Stateless;
-@Stateless
 @WebService(serviceName = "AsistenciaWS", targetNamespace = "http://services.pucp.edu.pe")
 public class AsistenciaWS {
 
@@ -34,7 +32,7 @@ public class AsistenciaWS {
         return boAsistencia.modificar(asistencia);
     }
     
-    @WebMethod(operationName = "modificarAsistencia")
+    @WebMethod(operationName = "listarAsistencias")
     public ArrayList<Asistencia> listarAsistencias() {      
         boAsistencia = new AsistenciaBO();
         return boAsistencia.listarTodas();

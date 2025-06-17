@@ -60,26 +60,38 @@ public class AsistenciaMySQL implements AsistenciaDAO{
         ArrayList<Asistencia> asistencias = new ArrayList<>();
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ASISTENCIA", null);
         System.out.println("Lectura de asistencias...");
-        try{
-            while(rs.next()){
+        try {
+            while(rs.next()) {
                 Asistencia a = new Asistencia();
-                a.getParticipante().setId(rs.getInt("id_staff"));
-                a.getParticipante().setNombre("nombre");
-                a.getParticipante().setTelefono("telefono");
-                a.getParticipante().setArea(Area.valueOf(rs.getString("area")));
+
+                Staff participante = new Staff();
+                Evento evento = new Evento();
+
+                participante.setId(rs.getInt("id_staff"));
+                participante.setNombre(rs.getString("nombre")); 
+                participante.setTelefono(rs.getString("telefono"));
+                participante.setArea(Area.valueOf(rs.getString("area")));
+
+                evento.setId(rs.getInt("id_evento"));
+                evento.setFecha(rs.getDate("fecha"));
+                //evento.setTipoEvento(TipoEvento.valueOf(rs.getString("tipo")));
+                evento.setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
+
+                a.setParticipante(participante);
+                a.setEvento(evento);
                 a.setAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
-                a.getEvento().setId(rs.getInt("id_evento"));
-                a.getEvento().setFecha(rs.getDate("fecha"));
-                a.getEvento().setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
-                a.getEvento().setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
+
                 asistencias.add(a);
             }
-        }catch(SQLException ex){
-            System.out.println("ERROR: " + ex.getMessage());
-        }finally{
+        } catch(SQLException ex) {
+            System.out.println("ERROR SQL: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch(Exception ex) {
+            System.out.println("ERROR General: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
             DBManager.getInstance().cerrarConexion();
         }
         return asistencias;
     }
-    
 }
