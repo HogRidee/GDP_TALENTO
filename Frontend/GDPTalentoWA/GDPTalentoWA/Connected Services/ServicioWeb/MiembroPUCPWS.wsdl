@@ -11,12 +11,6 @@
   <message name="listarMiembroPUCPResponse">
     <part name="parameters" element="tns:listarMiembroPUCPResponse" />
   </message>
-  <message name="eliminarMiembroPUCP">
-    <part name="parameters" element="tns:eliminarMiembroPUCP" />
-  </message>
-  <message name="eliminarMiembroPUCPResponse">
-    <part name="parameters" element="tns:eliminarMiembroPUCPResponse" />
-  </message>
   <message name="insertarMiembroPUCP">
     <part name="parameters" element="tns:insertarMiembroPUCP" />
   </message>
@@ -29,14 +23,16 @@
   <message name="modificarMiembroPUCPResponse">
     <part name="parameters" element="tns:modificarMiembroPUCPResponse" />
   </message>
+  <message name="eliminarMiembroPUCP">
+    <part name="parameters" element="tns:eliminarMiembroPUCP" />
+  </message>
+  <message name="eliminarMiembroPUCPResponse">
+    <part name="parameters" element="tns:eliminarMiembroPUCPResponse" />
+  </message>
   <portType name="MiembroPUCPWS">
     <operation name="listarMiembroPUCP">
       <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPRequest" message="tns:listarMiembroPUCP" />
       <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPResponse" message="tns:listarMiembroPUCPResponse" />
-    </operation>
-    <operation name="eliminarMiembroPUCP">
-      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPRequest" message="tns:eliminarMiembroPUCP" />
-      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPResponse" message="tns:eliminarMiembroPUCPResponse" />
     </operation>
     <operation name="insertarMiembroPUCP">
       <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPRequest" message="tns:insertarMiembroPUCP" />
@@ -45,6 +41,10 @@
     <operation name="modificarMiembroPUCP">
       <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPRequest" message="tns:modificarMiembroPUCP" />
       <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPResponse" message="tns:modificarMiembroPUCPResponse" />
+    </operation>
+    <operation name="eliminarMiembroPUCP">
+      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPRequest" message="tns:eliminarMiembroPUCP" />
+      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPResponse" message="tns:eliminarMiembroPUCPResponse" />
     </operation>
   </portType>
   <binding name="MiembroPUCPWSPortBinding" type="tns:MiembroPUCPWS">
@@ -58,15 +58,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarMiembroPUCP">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarMiembroPUCP">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="modificarMiembroPUCP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarMiembroPUCP">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

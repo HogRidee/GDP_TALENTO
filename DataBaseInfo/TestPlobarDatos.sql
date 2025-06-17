@@ -47,7 +47,6 @@ INSERT INTO Postulante (id_postulante, estado_proceso) VALUES
 -- Evaluación de Desempeño
 -- ========================
 INSERT INTO EvaluacionDesempeno (id_evaluador, id_miembro_staff, puntaje, comentarios, fecha) VALUES 
-(1, 2, 18, 'Muy buen trabajo en la coordinación de recursos humanos', '2025-03-15'),
 (1, 3, 15, 'Buen desempeño general, pero puede mejorar en puntualidad', '2025-03-20');
 
 -- ========================

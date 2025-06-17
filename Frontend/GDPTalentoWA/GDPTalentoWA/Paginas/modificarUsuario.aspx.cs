@@ -17,7 +17,8 @@ namespace GDPTalentoWA.Paginas
         private usuario usuario;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
                 boUsuario = new UsuarioWSClient();
@@ -84,7 +85,13 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            boUsuario = new UsuarioWSClient();  
+            
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
+            boUsuario = new UsuarioWSClient();
             usuario = new usuario();
             usuario.id = (int)Session["id"];
             usuario.nombre = txtNombreCompleto.Text;
@@ -95,39 +102,23 @@ namespace GDPTalentoWA.Paginas
             usuario.statusSpecified = true;
             usuario.area = (area)Enum.Parse(typeof(area), ddlArea.SelectedValue);
             usuario.areaSpecified = true;
-            /*
-            try
-            {
-                DateTime fecha = DateTime.Parse(dtpFechaIngreso.Value);
-
-                usuario.fechaIngreso = new ServicioWeb.localDate
-                {
-                    year = fecha.Year,
-                    month = fecha.Month,
-                    day = fecha.Day
-                };
-
-            }
-            catch (Exception ex)
-            { //lanzarMensajedeError("Debe seleccionar una fecha de ingreso");
-              return; 
-            }
-            */
             usuario.estado = chkActivo.Checked ? estadoMiembro.ACTIVO : estadoMiembro.INACTIVO;
             usuario.estadoSpecified = true;
             usuario.facultad = txtFacultad.Text;
             usuario.especialidad = txtCarrera.Text;
-            
+
             try
             {
                 boUsuario.modificarUsuarioBasico(usuario);
                 Response.Redirect("Usuario.aspx");
             }
             catch (Exception ex)
-            { //lanzarMensajedeError(ex.Message);
-              return; 
-            }     
+            {
+                lanzarMensajedeError(ex.Message);
+                return;
+            }
         }
+
         public void lanzarMensajedeError(String mensaje)
         {
             lblMensajeError.Text = mensaje;
