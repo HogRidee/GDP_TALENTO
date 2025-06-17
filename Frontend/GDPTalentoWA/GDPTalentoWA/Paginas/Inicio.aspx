@@ -59,17 +59,39 @@
             </div>
         </div>
 
-        <ul class="nav nav-tabs mb-3" id="activityTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="recientes-tab" data-bs-toggle="tab" data-bs-target="#recientes" type="button" role="tab">Actividades Recientes</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes" type="button" role="tab">Pendientes</button>
-            </li>
+        <ul class="nav tab-menu mb-4" id="activityTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="recientes-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#recientes"
+              type="button"
+              role="tab"
+              aria-controls="recientes"
+              aria-selected="true"
+            >
+              Actividades Recientes
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="pendientes-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#pendientes"
+              type="button"
+              role="tab"
+              aria-controls="pendientes"
+              aria-selected="false"
+            >
+              Pendientes
+            </button>
+          </li>
         </ul>
 
         <div class="tab-content" id="activityTabsContent">
-            <div class="tab-pane fade show active" id="recientes" role="tabpanel">
+            <div class="tab-pane fade show active" id="recientes" role="tabpanel" aria-labelledby="recientes-tab">
                 <div class="list-group">
                     <div class="list-group-item d-flex align-items-start">
                         <i class="bi bi-person-fill text-primary fs-4 me-3"></i>
@@ -106,7 +128,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="pendientes" role="tabpanel">
+            <div class="tab-pane fade" id="pendientes" role="tabpanel" aria-labelledby="pendientes-tab">
                 <p class="text-muted">No hay tareas pendientes nuevas.</p>
             </div>
         </div>

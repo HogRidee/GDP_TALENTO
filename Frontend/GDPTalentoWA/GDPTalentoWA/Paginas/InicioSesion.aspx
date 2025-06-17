@@ -54,7 +54,8 @@
           <asp:Button 
             ID="btnLogin" runat="server" 
             CssClass="btn btn-primary" 
-            Text="Iniciar sesión" />
+            Text="Iniciar sesión" 
+            OnClick="btnLogin_Click"/>
         </div>
       </form>
       
