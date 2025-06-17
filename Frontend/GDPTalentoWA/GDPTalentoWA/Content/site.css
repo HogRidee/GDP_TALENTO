@@ -405,7 +405,70 @@ html, body {
             background-color: #FFFFFF;
         }
 
+.tab-menu {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+}
 
+    .tab-menu .nav-link {
+        flex: 1;
+        text-align: center;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-weight: 500;
+        color: #374151;
+        background: transparent;
+    }
 
+        .tab-menu .nav-link.active {
+            background: #FFFFFF;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            color: #111827;
+        }
 
+.activity-item {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
 
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.activity-link {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+.icon-circle-celeste {
+    width: 40px;
+    height: 40px;
+    background-color: #EAF6FF;
+    border-radius: 50%;
+    display: grid; /* reemplaza flex por grid */
+    place-items: center; /* centra horizontal y vertical */
+}
+
+    .icon-circle-celeste i {
+        margin: 0 !important; /* elimina márgenes residuales */
+        padding: 0 !important; /* elimina paddings */
+        font-size: 1.25rem; /* ajusta tamaño a tu gusto */
+        line-height: 1; /* evita desplazamientos por line-height extra */
+    }
