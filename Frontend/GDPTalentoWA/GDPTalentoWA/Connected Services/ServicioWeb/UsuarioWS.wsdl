@@ -5,23 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/UsuarioWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="modificarUsuarioBasico">
-    <part name="parameters" element="tns:modificarUsuarioBasico" />
+  <message name="obtenerPorId">
+    <part name="parameters" element="tns:obtenerPorId" />
   </message>
-  <message name="modificarUsuarioBasicoResponse">
-    <part name="parameters" element="tns:modificarUsuarioBasicoResponse" />
+  <message name="obtenerPorIdResponse">
+    <part name="parameters" element="tns:obtenerPorIdResponse" />
   </message>
   <message name="modificarUsuario">
     <part name="parameters" element="tns:modificarUsuario" />
   </message>
   <message name="modificarUsuarioResponse">
     <part name="parameters" element="tns:modificarUsuarioResponse" />
-  </message>
-  <message name="eliminarUsuario">
-    <part name="parameters" element="tns:eliminarUsuario" />
-  </message>
-  <message name="eliminarUsuarioResponse">
-    <part name="parameters" element="tns:eliminarUsuarioResponse" />
   </message>
   <message name="listarUsuarios">
     <part name="parameters" element="tns:listarUsuarios" />
@@ -35,30 +29,32 @@
   <message name="insertarUsuarioResponse">
     <part name="parameters" element="tns:insertarUsuarioResponse" />
   </message>
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
+  </message>
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </message>
   <message name="verificar">
     <part name="parameters" element="tns:verificar" />
   </message>
   <message name="verificarResponse">
     <part name="parameters" element="tns:verificarResponse" />
   </message>
-  <message name="obtenerPorId">
-    <part name="parameters" element="tns:obtenerPorId" />
+  <message name="modificarUsuarioBasico">
+    <part name="parameters" element="tns:modificarUsuarioBasico" />
   </message>
-  <message name="obtenerPorIdResponse">
-    <part name="parameters" element="tns:obtenerPorIdResponse" />
+  <message name="modificarUsuarioBasicoResponse">
+    <part name="parameters" element="tns:modificarUsuarioBasicoResponse" />
   </message>
   <portType name="UsuarioWS">
-    <operation name="modificarUsuarioBasico">
-      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioBasicoRequest" message="tns:modificarUsuarioBasico" />
-      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioBasicoResponse" message="tns:modificarUsuarioBasicoResponse" />
+    <operation name="obtenerPorId">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
     </operation>
     <operation name="modificarUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
-    </operation>
-    <operation name="eliminarUsuario">
-      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
-      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
     </operation>
     <operation name="listarUsuarios">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
@@ -68,18 +64,22 @@
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
     </operation>
+    <operation name="eliminarUsuario">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+    </operation>
     <operation name="verificar">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificarRequest" message="tns:verificar" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/verificarResponse" message="tns:verificarResponse" />
     </operation>
-    <operation name="obtenerPorId">
-      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerPorIdRequest" message="tns:obtenerPorId" />
-      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/obtenerPorIdResponse" message="tns:obtenerPorIdResponse" />
+    <operation name="modificarUsuarioBasico">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioBasicoRequest" message="tns:modificarUsuarioBasico" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioBasicoResponse" message="tns:modificarUsuarioBasicoResponse" />
     </operation>
   </portType>
   <binding name="UsuarioWSPortBinding" type="tns:UsuarioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarUsuarioBasico">
+    <operation name="obtenerPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -89,15 +89,6 @@
       </output>
     </operation>
     <operation name="modificarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -124,6 +115,15 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="eliminarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="verificar">
       <soap:operation soapAction="" />
       <input>
@@ -133,7 +133,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerPorId">
+    <operation name="modificarUsuarioBasico">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

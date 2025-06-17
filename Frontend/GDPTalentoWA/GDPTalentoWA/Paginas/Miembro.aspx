@@ -30,22 +30,23 @@
             <p class="text-muted mb-3">Lista de miembros registrados en el sistema.</p>
 
             <!-- Filtros y buscador -->
-            <div class="row g-2 mb-3 align-items-center">
-                <div class="col-md-8">
-                    <div class="input-group">
+            <div class="row gx-2 gy-2 mb-3 align-items-center flex-nowrap overflow-auto">
+                <div class="col-auto">
+                    <div class="input-group flex-nowrap">
                         <asp:LinkButton
                             ID="lbBuscarMiembro"
                             runat="server"
                             CssClass="input-group-text bg-white border-end-0"
                             OnClick="lbBuscarMiembro_Click"
                             ToolTip="Buscar">
-                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                <i class="fa-solid fa-magnifying-glass text-muted"></i>
                         </asp:LinkButton>
                         <asp:TextBox
                             ID="txtBuscarMiembro"
                             runat="server"
                             CssClass="form-control border-start-0"
-                            placeholder="Buscar por nombre, código o área..." />
+                            placeholder="Buscar por nombre o código..."
+                            Style="min-width: 735px;" />
                     </div>
                 </div>
 
@@ -60,22 +61,25 @@
                 <div class="col-auto">
                     <asp:DropDownList ID="ddlAreas" runat="server" CssClass="form-select">
                         <asp:ListItem Selected="True" Text="Todas las áreas" Value=""></asp:ListItem>
-                        <asp:ListItem Text="Desarrollo" Value="Desarrollo"></asp:ListItem>
-                        <asp:ListItem Text="Diseño" Value="Diseño"></asp:ListItem>
-                        <asp:ListItem Text="Marketing" Value="Marketing"></asp:ListItem>
+                        <asp:ListItem Text="RECURSOS HUMANOS" Value="RECURSOS_HUMANOS"></asp:ListItem>
+                        <asp:ListItem Text="PRESIDENCIA" Value="PRESIDENCIA"></asp:ListItem>
+                        <asp:ListItem Text="MARKETING" Value="MARKETING"></asp:ListItem>
+                        <asp:ListItem Text="GDP ACADEMY" Value="GDP_ACADEMY"></asp:ListItem>
+                        <asp:ListItem Text="EVENTOS" Value="EVENTOS"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
 
-                <div class="col-auto ms-2">
+                <div class="col-auto">
                     <asp:LinkButton
                         ID="btnFiltrarMiembro"
                         runat="server"
                         CssClass="btn btn-outline-secondary"
                         OnClick="btnFiltrarMiembro_Click">
-                        <i class="fa-solid fa-filter"></i>
+            <i class="fa-solid fa-filter"></i>
                     </asp:LinkButton>
                 </div>
             </div>
+
 
             <!-- Tabla -->
             <div class="table-responsive">

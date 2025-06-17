@@ -26,20 +26,31 @@ public class MiembroPUCPMySQL implements MiembroPUCPDAO{
     
     @Override
     public int insertar(MiembroPUCP miembro) {
-        Map<Integer,Object> parametrosSalida = new HashMap<>();
-        Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosEntrada = new HashMap<>();
+
+        // Salida: ID generado
         parametrosSalida.put(1, Types.INTEGER);
+
+        // Entradas
         parametrosEntrada.put(2, miembro.getNombre());
         parametrosEntrada.put(3, miembro.getCorreo());
         parametrosEntrada.put(4, miembro.getCodigoPUCP());
         parametrosEntrada.put(5, miembro.getFacultad());
         parametrosEntrada.put(6, miembro.getEspecialidad());
-        parametrosEntrada.put(7, miembro.getStatus());
+        parametrosEntrada.put(7, miembro.getStatus() != null ? miembro.getStatus().name() : null);
         parametrosEntrada.put(8, miembro.getTelefono());
+
+        // Ejecutar SP
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_MIEMBROPUCP", parametrosEntrada, parametrosSalida);
-        System.out.println("Se ha realizado el registro del miembro PUCP");
+
+        // Asignar ID generado
+        miembro.setId((int) parametrosSalida.get(1));
+
+        System.out.println("✅ Se ha realizado el registro del miembro PUCP");
         return miembro.getId();
     }
+
 
     @Override
     public int modificar(MiembroPUCP miembro) {
@@ -50,7 +61,7 @@ public class MiembroPUCPMySQL implements MiembroPUCPDAO{
         parametrosEntrada.put(4, miembro.getCodigoPUCP());
         parametrosEntrada.put(5, miembro.getFacultad());
         parametrosEntrada.put(6, miembro.getEspecialidad());
-        parametrosEntrada.put(7, miembro.getStatus());
+        parametrosEntrada.put(7, String.valueOf(miembro.getStatus()));
         parametrosEntrada.put(8, miembro.getTelefono());
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_MIEMBROPUCP", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del miembro PUCP");

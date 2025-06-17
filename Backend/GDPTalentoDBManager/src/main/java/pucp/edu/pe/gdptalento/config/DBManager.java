@@ -116,10 +116,6 @@ public class DBManager {
         int resultado = 0;
         try{
             CallableStatement cst = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, parametrosSalida);
-            if (cst == null) {
-                System.out.println("Error: no se pudo formar la llamada al procedimiento.");
-                return 0;  // O el valor que indique fallo
-            }
             if(parametrosEntrada != null)
                 registrarParametrosEntrada(cst, parametrosEntrada);
             if(parametrosSalida != null)
@@ -140,79 +136,73 @@ public class DBManager {
     public ResultSet ejecutarProcedimientoLectura(String nombreProcedimiento, Map<Integer,Object> parametrosEntrada){
         try{
             CallableStatement cs = formarLlamadaProcedimiento(nombreProcedimiento, parametrosEntrada, null);
-            if (cs == null) {
-                System.out.println("Error: CallableStatement es null, no se puede ejecutar la consulta.");
-                return null;
-            }
             if(parametrosEntrada!=null)
                 registrarParametrosEntrada(cs,parametrosEntrada);
             rs = cs.executeQuery();
-            if(rs==null) System.out.println("No se pudo obtener resultados, ResultSet es null.");
-            
-            
         }catch(SQLException ex){
             System.out.println("ERROR: " + ex.getMessage());
         }
         return rs;
     }
     
-    public CallableStatement formarLlamadaProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
-        try{
-            con = getConnection();
-            StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
-            int cantParametrosEntrada = 0;
-            int cantParametrosSalida = 0;
-            if(con==null){
-                System.out.println("Error: conexión es null, no se puede preparar la llamada.");
-                return null;
+    public CallableStatement formarLlamadaProcedimiento(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException {
+        con = getConnection();
+        StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
+        int cantParametrosEntrada = parametrosEntrada != null ? parametrosEntrada.size() : 0;
+        int cantParametrosSalida = parametrosSalida != null ? parametrosSalida.size() : 0;
+        int numParams = cantParametrosEntrada + cantParametrosSalida;
+
+        for (int i = 0; i < numParams; i++) {
+            call.append("?");
+            if (i < numParams - 1) {
+                call.append(",");
             }
-            if (parametrosEntrada != null) {
-                cantParametrosEntrada = parametrosEntrada.size();
-            }
-            if (parametrosSalida != null) {
-                cantParametrosSalida = parametrosSalida.size();
-            }
-            int numParams = cantParametrosEntrada + cantParametrosSalida;
-            for (int i = 0; i < numParams; i++) {
-                call.append("?");
-                if (i < numParams - 1) {
-                    call.append(",");
-                }
-            }
-            call.append(")}");
-            return con.prepareCall(call.toString());
         }
-        catch(Exception ex){
-            ex.printStackTrace();
-            return null;
-        }
+        call.append(")}");
+
+        System.out.println("⚙️ Llamando al procedimiento: " + call); // 👈 Agrega esta línea
+        return con.prepareCall(call.toString());
     }
     
     private void registrarParametrosEntrada(CallableStatement cs, Map<Integer, Object> parametros) throws SQLException {
         for (Map.Entry<Integer, Object> entry : parametros.entrySet()) {
             Integer key = entry.getKey();
             Object value = entry.getValue();
+
+            if (value == null) {
+                cs.setObject(key, null); // ✅ Permite enviar null a la BD
+                continue;
+            }
+
             switch (value) {
-                case Integer entero -> cs.setInt(key, entero);
-                case String cadena -> cs.setString(key, cadena);
-                case Double decimal -> cs.setDouble(key, decimal);
-                case Boolean booleano -> cs.setBoolean(key, booleano);
-                case java.util.Date fecha -> cs.setDate(key, new java.sql.Date(fecha.getTime()));
-                case byte[] archivo -> cs.setBytes(key, archivo);
-                default -> {
-                }
-                // Agregar más tipos según sea necesario
+                case Integer entero ->
+                    cs.setInt(key, entero);
+                case String cadena ->
+                    cs.setString(key, cadena);
+                case Double decimal ->
+                    cs.setDouble(key, decimal);
+                case Boolean booleano ->
+                    cs.setBoolean(key, booleano);
+                case java.util.Date fecha ->
+                    cs.setDate(key, new java.sql.Date(fecha.getTime()));
+                case byte[] archivo ->
+                    cs.setBytes(key, archivo);
+                default ->
+                    cs.setObject(key, value); // catch-all
             }
         }
     }
+
     
     private void registrarParametrosSalida(CallableStatement cst, Map<Integer, Object> params) throws SQLException {
         for (Map.Entry<Integer, Object> entry : params.entrySet()) {
             Integer posicion = entry.getKey();
             int sqlType = (int) entry.getValue();
+            System.out.println("🟡 Registrando OUT: posición " + posicion + ", tipo " + sqlType); // 👈
             cst.registerOutParameter(posicion, sqlType);
         }
     }
+
 
     private void obtenerValoresSalida(CallableStatement cst, Map<Integer, Object> parametrosSalida) throws SQLException {
         for (Map.Entry<Integer, Object> entry : parametrosSalida.entrySet()) {
@@ -230,6 +220,63 @@ public class DBManager {
             }
             parametrosSalida.put(posicion, value);
         }
+    }
+    
+    //Para transacciones
+    
+    public void iniciarTransaccion() throws SQLException{
+        con = getConnection();
+        con.setAutoCommit(false);
+    }
+    
+    public void confirmarTransaccion() throws SQLException{
+        con.commit();
+    }
+    
+    public void cancelarTransaccion(){
+        try{
+            con.rollback();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            cerrarConexion();
+        }
+    }
+    
+    public CallableStatement formarLlamadaProcedimientoTransaccion(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
+        StringBuilder call = new StringBuilder("{call " + nombreProcedimiento + "(");
+        int cantParametrosEntrada = 0;
+        int cantParametrosSalida = 0;
+        if(parametrosEntrada!=null) cantParametrosEntrada = parametrosEntrada.size();
+        if(parametrosSalida!=null) cantParametrosSalida = parametrosSalida.size();
+        int numParams =  cantParametrosEntrada + cantParametrosSalida;
+        for (int i = 0; i < numParams; i++) {
+            call.append("?");
+            if (i < numParams - 1) {
+                call.append(",");
+            }
+        }
+        call.append(")}");
+        return con.prepareCall(call.toString());
+    }
+    
+    public int ejecutarProcedimientoTransaccion(String nombreProcedimiento, Map<Integer, Object> parametrosEntrada, Map<Integer, Object> parametrosSalida) throws SQLException{
+        int resultado;
+        
+        CallableStatement cst = formarLlamadaProcedimientoTransaccion(nombreProcedimiento, parametrosEntrada, parametrosSalida);
+        if (parametrosEntrada != null) {
+            registrarParametrosEntrada(cst, parametrosEntrada);
+        }
+        if (parametrosSalida != null) {
+            registrarParametrosSalida(cst, parametrosSalida);
+        }
+
+        resultado = cst.executeUpdate();
+
+        if (parametrosSalida != null)
+            obtenerValoresSalida(cst, parametrosSalida);
+
+        return resultado;
     }
     
     

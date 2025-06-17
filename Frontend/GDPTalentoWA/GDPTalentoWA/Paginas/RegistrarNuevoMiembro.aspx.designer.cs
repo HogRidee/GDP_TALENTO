@@ -114,6 +114,24 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.DropDownList ddlEstadoAcademico;
 
         /// <summary>
+        /// Control lblAreas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAreas;
+
+        /// <summary>
+        /// Control ddlAreas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAreas;
+
+        /// <summary>
         /// Control dtpFechaIngreso.
         /// </summary>
         /// <remarks>

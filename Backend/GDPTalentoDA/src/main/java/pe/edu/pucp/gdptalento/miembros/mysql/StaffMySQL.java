@@ -32,60 +32,73 @@ public class StaffMySQL implements StaffDAO {
         Map<Integer, Object> parametrosSalida = new HashMap<>();
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
 
-        // Salida: id generado
-        parametrosSalida.put(1, Types.INTEGER);
 
-        // Entradas
-        parametrosEntrada.put(2, staff.getNombre());
-        parametrosEntrada.put(3, staff.getCorreo());
-        parametrosEntrada.put(4, staff.getCodigoPUCP());
-        parametrosEntrada.put(5, staff.getFacultad());
-        parametrosEntrada.put(6, staff.getEspecialidad());
-        parametrosEntrada.put(7, String.valueOf(staff.getStatus()));
-        parametrosEntrada.put(8, String.valueOf(staff.getTelefono()));
-        parametrosEntrada.put(9, String.valueOf(staff.getArea())); 
-        parametrosEntrada.put(10, new Date(staff.getFechaIngreso().getTime()));
-        parametrosEntrada.put(11, String.valueOf(staff.getEstado()));
-        parametrosEntrada.put(12, new Date(staff.getFechaSalida().getTime()));
-        parametrosEntrada.put(13, staff.getDesempenio());
+        // 🔸 Parámetros IN (posición 2 en adelante)
+        parametrosEntrada.put(1, staff.getNombre());
+        parametrosEntrada.put(2, staff.getCorreo());
+        parametrosEntrada.put(3, staff.getCodigoPUCP());
+        parametrosEntrada.put(4, staff.getFacultad());
+        parametrosEntrada.put(5, staff.getEspecialidad());
 
-        // Llamada al procedimiento
-        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_STAFF", parametrosEntrada, parametrosSalida);
+        // Enums convertidos a texto con .name(), con verificación null
+        parametrosEntrada.put(6, staff.getStatus() != null ? staff.getStatus().name() : null);
+        parametrosEntrada.put(7, staff.getTelefono());
+        parametrosEntrada.put(8, staff.getArea() != null ? staff.getArea().name() : null);
 
-        // Asignar el ID generado
-        staff.setId((int) parametrosSalida.get(1));
+        // Fechas convertidas a java.sql.Date, verificando null
+        parametrosEntrada.put(9, staff.getFechaIngreso() != null ? new java.sql.Date(staff.getFechaIngreso().getTime()) : null);
+        parametrosEntrada.put(10, staff.getEstado() != null ? staff.getEstado().name() : null);
+        parametrosEntrada.put(11, staff.getFechaSalida() != null ? new java.sql.Date(staff.getFechaSalida().getTime()) : null);
 
-        System.out.println("Se ha registrado el staff correctamente");
-        return staff.getId();
+        // Double: desempeño
+        parametrosEntrada.put(12, staff.getDesempenio());
+        // 🔸 Parámetro OUT en posición 1
+        parametrosSalida.put(13, Types.INTEGER);
+
+        // Ejecutar el procedimiento
+        DBManager.getInstance().ejecutarProcedimiento("INSERTAR_STAFF_", parametrosEntrada, parametrosSalida);
+
+        // Recuperar el ID generado
+        int idGenerado = (int) parametrosSalida.get(13);
+        staff.setId(idGenerado);
+
+        System.out.println("✅ Se ha registrado el staff correctamente");
+        System.out.println("🆔 Staff insertado correctamente. ID generado: " + idGenerado);
+
+        return idGenerado;
     }
+
 
     @Override
     public int modificar(Staff staff) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
 
-        // Configuración de los parámetros de entrada para el procedimiento almacenado
+        // Parámetros según orden del procedimiento almacenado (sin fecha_ingreso)
         parametrosEntrada.put(1, staff.getId()); // ID del Staff
         parametrosEntrada.put(2, staff.getCorreo()); // Correo
         parametrosEntrada.put(3, staff.getFacultad()); // Facultad
         parametrosEntrada.put(4, staff.getEspecialidad()); // Especialidad
-        parametrosEntrada.put(5, String.valueOf(staff.getStatus())); // Status
+
+        // Enums a String
+        parametrosEntrada.put(5, staff.getStatus() != null ? staff.getStatus().name() : null); // Status
         parametrosEntrada.put(6, staff.getTelefono()); // Teléfono
-        parametrosEntrada.put(7, String.valueOf(staff.getArea())); // Área
-        parametrosEntrada.put(8, String.valueOf(staff.getEstado())); // Estado
+        parametrosEntrada.put(7, staff.getArea() != null ? staff.getArea().name() : null);     // Área
+        parametrosEntrada.put(8, staff.getEstado() != null ? staff.getEstado().name() : null); // Estado
 
-        // Manejo correcto de posible null en fecha de salida
-        if (staff.getFechaSalida() != null) {
-            parametrosEntrada.put(9, new java.sql.Date(staff.getFechaSalida().getTime()));
-        } else {
-            parametrosEntrada.put(9, null); // El procedimiento debe aceptar null en este parámetro
-        }
+        // Fecha de salida (puede ser null)
+        parametrosEntrada.put(9, staff.getFechaSalida() != null ? new Date(staff.getFechaSalida().getTime()) : null);
 
-        parametrosEntrada.put(10, staff.getDesempenio()); // Desempeño
+        // Desempeño
+        parametrosEntrada.put(10, staff.getDesempenio());
+        parametrosEntrada.put(11, staff.getNombre());
+        parametrosEntrada.put(12, staff.getCodigoPUCP());
 
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_STAFF", parametrosEntrada, null);
-        System.out.println("Se ha realizado la modificación del staff");
+
+        System.out.println("✅ Se ha realizado la modificación del staff");
         return resultado;
     }
+
 
 
 

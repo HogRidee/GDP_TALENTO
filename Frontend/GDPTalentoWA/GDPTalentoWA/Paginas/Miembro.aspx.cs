@@ -13,9 +13,7 @@ namespace GDPTalentoWA.Paginas
 {
     public partial class Miembro : System.Web.UI.Page
     {
-        private MiembroPUCPWSClient boMiembro;
         private StaffWSClient boStaff;
-        private BindingList<miembroPUCP> miembros;
         private BindingList<staff> staffs;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +35,7 @@ namespace GDPTalentoWA.Paginas
             dgvMiembros.DataSource = staffs;
             dgvMiembros.DataBind();
 
-            ViewState["Staffs"] = staffs;
+            Session["staffs"] = staffs;
         }
 
 
@@ -91,7 +89,6 @@ namespace GDPTalentoWA.Paginas
                 {
                     if (fecha > new DateTime(1900, 1, 1))
                     {
-                        // ✅ Solo fecha sin hora
                         e.Row.Cells[4].Text = fecha.ToString("dd/MM/yyyy");
                     }
                     else
@@ -197,6 +194,14 @@ namespace GDPTalentoWA.Paginas
             GridViewRow row = (GridViewRow)ddl.NamingContainer;
 
             string accion = ddl.SelectedValue;
+            staff miembro;
+            staffs = (BindingList<staff>)Session["staffs"];
+            if (staffs == null)
+            {
+                boStaff = new StaffWSClient();
+                staffs = new BindingList<staff>(boStaff.listarStaff());
+                Session["staffs"] = staffs;
+            }
 
             // Obtener ID desde el DataKeys si usas DataKeyNames, o desde atributo personalizado:
             string idStr = ddl.Attributes["data-id"];
@@ -207,14 +212,22 @@ namespace GDPTalentoWA.Paginas
             switch (accion)
             {
                 case "VerDetalles":
-                    Response.Redirect($"VerDetalles.aspx?id={id}");
+                    miembro = staffs.SingleOrDefault(x => x.id == id);
+                    Session["miembroSeleccionado"] = miembro;
+                    Response.Redirect("VerDetalles.aspx");
                     break;
                 case "EditarInformacion":
-                    Response.Redirect($"RegistrarNuevoMiembro.aspx?accion=modificar&id={id}");
+                    miembro = staffs.SingleOrDefault(x => x.id == id);
+                    Session["miembroSeleccionado"] = miembro;
+                    Response.Redirect("RegistrarNuevoMiembro.aspx?accion=modificar");
                     break;
                 case "EliminarMiembro":
                     // Aquí llamas a tu servicio de eliminación si corresponde
                     // boStaff.eliminarStaff(id);
+                    boStaff.eliminarStaff(id);
+                    staffs = new BindingList<staff>(boStaff.listarStaff());
+                    dgvMiembros.DataSource = staffs;
+                    dgvMiembros.DataBind();
                     Response.Redirect("Miembro.aspx");
                     break;
             }

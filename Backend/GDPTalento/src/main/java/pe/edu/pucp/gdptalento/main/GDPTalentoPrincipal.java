@@ -1,6 +1,7 @@
 package pe.edu.pucp.gdptalento.main;
 
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.gdptalento.core.business.RolBO;
 import pe.edu.pucp.gdptalento.core.business.UsuarioBO;
 import pe.edu.pucp.gdptalento.core.model.Permiso;
@@ -11,10 +12,13 @@ import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
 import pe.edu.pucp.gdptalento.miembros.business.StaffBO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
+import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
+import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
 
 public class GDPTalentoPrincipal {
     public static void main(String[] args){
+        /*
         UsuarioBO boUsuario = new UsuarioBO();
         ArrayList<Usuario> usuarios = boUsuario.listarTodas();
         Usuario user = new Usuario();
@@ -49,6 +53,73 @@ public class GDPTalentoPrincipal {
         }
         UsuarioBO u = new UsuarioBO();
         System.out.println(u.verificarUsuario(1, "hash12345"));
-        
+        */
+        StaffBO staffBO = new StaffBO();
+//        Staff nuevoStaff = new Staff();
+//
+//        // ⚠️ Asegúrate de que estos datos sean válidos
+//        nuevoStaff.setNombre("María López");
+//        nuevoStaff.setCorreo("maria.lopez@pucp.edu.pe");
+//        nuevoStaff.setCodigoPUCP(20201234);
+//        nuevoStaff.setFacultad("Ingeniería");
+//        nuevoStaff.setEspecialidad("Informática");
+//        nuevoStaff.setStatus(EstadoPUCP.MATRICULADO);
+//        nuevoStaff.setTelefono("987654321");
+//        nuevoStaff.setArea(Area.RECURSOS_HUMANOS);
+//        nuevoStaff.setFechaIngreso(new Date()); // Fecha actual
+//        nuevoStaff.setEstado(EstadoMiembro.ACTIVO);
+//        nuevoStaff.setFechaSalida(new Date()); // Aún no tiene fecha de salida
+//        nuevoStaff.setDesempenio(4.5); // Ejemplo de desempeño
+//
+//        // Ejecutar inserción
+//        try {
+//            int idGenerado = staffBO.insertar(nuevoStaff);
+//            System.out.println("✅ Staff insertado correctamente. ID generado: " + idGenerado);
+//        } catch (Exception ex) {
+//            System.out.println("❌ Error al insertar staff: " + ex.getMessage());
+//            ex.printStackTrace();
+//        }
+
+         // 1. Obtener staff existente
+        ArrayList<Staff> listaStaff = staffBO.listarTodas(); // O staffBO.listarTodos()
+
+        Staff staffExistente = null;
+        int idBuscado = 5;
+
+        for (Staff s : listaStaff) {
+            if (s.getId() == idBuscado) {
+                staffExistente = s;
+                break;
+            }
+        }
+
+        if (staffExistente != null) {
+            // Modificas solo los campos necesarios
+            staffExistente.setCorreo("body.lopez@pucp.edu.pe");
+            staffExistente.setTelefono("987654321");
+            staffExistente.setArea(Area.RECURSOS_HUMANOS);
+            staffExistente.setEstado(EstadoMiembro.ACTIVO);
+            staffExistente.setFechaSalida(null);
+            staffExistente.setDesempenio(4.5);
+
+            // Ejecutar modificación
+            try {
+                int resultado = staffBO.modificar(staffExistente);
+                if (resultado > 0) {
+                    System.out.println("✅ Staff modificado correctamente.");
+                } else {
+                    System.out.println("⚠️ No se realizó ninguna modificación.");
+                }
+            } catch (Exception ex) {
+                System.out.println("❌ Error al modificar staff: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+
+        } else {
+            System.out.println("⚠️ No se encontró un staff con ID = " + idBuscado);
+        }
+
+
+          
     }
 }

@@ -16,44 +16,37 @@ namespace GDPTalentoWA.Paginas
                 StaffWSClient boStaff = new StaffWSClient();
 
                 // El ID viene como string en la URL
-                string idStr = Request.QueryString["id"];
+                var miembro = (staff)Session["miembroSeleccionado"];
 
-                if (!string.IsNullOrEmpty(idStr) && int.TryParse(idStr, out int idMiembro))
+                if (miembro != null)
                 {
-                    var miembros = boStaff.listarStaff(); // o el método que tengas
+                    lblNombre.Text = miembro.nombre;
+                    lblCargo.Text = miembro.area.ToString();
+                    lblEstado.Text = miembro.estado.ToString();
+                    string estado = miembro.estado.ToString().Trim().ToUpper();
 
-                    var miembro = miembros.FirstOrDefault(m => m.id == idMiembro);
+                    lblEstado.Text = estado;
 
-                    if (miembro != null)
+                    if (estado == "ACTIVO")
                     {
-                        lblNombre.Text = miembro.nombre;
-                        lblCargo.Text = miembro.area.ToString();
-                        lblEstado.Text = miembro.estado.ToString();
-                        string estado = miembro.estado.ToString().Trim().ToUpper();
-
-                        lblEstado.Text = estado;
-
-                        if (estado == "ACTIVO")
-                        {
-                            lblEstado.CssClass = "estado-activo";
-                        }
-                        else if (estado == "INACTIVO")
-                        {
-                            lblEstado.CssClass = "estado-inactivo";
-                        }
-
-                        lblCorreo.Text = miembro.correo;
-                        lblTelefono.Text = miembro.telefono;
-                        lblCodigo.Text = miembro.codigoPUCP.ToString();
-                        lblIngreso.Text = miembro.fechaIngreso.ToString("dd/MM/yyyy");
-                        lblCarrera.Text = miembro.especialidad;
-                        lblEvaluacion.Text = miembro.desempenio.ToString();
-                        // This is the line that calls your skill loading method
-                        LoadSkillsFromListOfStrings(); // Or LoadSkillsFromMiembroObject() if applicable
-                        lblAsistencia.Text = "90%"; // Hardcoded
-                        lblCompletadas.Text = "15"; // Hardcoded
-                        lblPendientes.Text = "2"; // Hardcoded
+                        lblEstado.CssClass = "estado-activo";
                     }
+                    else if (estado == "INACTIVO")
+                    {
+                        lblEstado.CssClass = "estado-inactivo";
+                    }
+
+                    lblCorreo.Text = miembro.correo;
+                    lblTelefono.Text = miembro.telefono;
+                    lblCodigo.Text = miembro.codigoPUCP.ToString();
+                    lblIngreso.Text = miembro.fechaIngreso.ToString("dd/MM/yyyy");
+                    lblCarrera.Text = miembro.especialidad;
+                    lblEvaluacion.Text = miembro.desempenio.ToString();
+                    // This is the line that calls your skill loading method
+                    LoadSkillsFromListOfStrings(); // Or LoadSkillsFromMiembroObject() if applicable
+                    lblAsistencia.Text = "90%"; // Hardcoded
+                    lblCompletadas.Text = "15"; // Hardcoded
+                    lblPendientes.Text = "2"; // Hardcoded
                 }
             }
         }
