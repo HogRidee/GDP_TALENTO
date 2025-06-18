@@ -231,18 +231,25 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarUsuarioBasicoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.asistencia.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.asistencia1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarAsistenciaResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.insertarAsistenciaResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarAsistenciasResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarAsistenciasResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarAsistenciaResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarAsistenciaResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverResumenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ServicioWeb\InicioWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\InicioWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\MiembroPUCPWS.xsd">
       <SubType>Designer</SubType>

@@ -10,6 +10,7 @@
 
     <!-- === CARDS DE RESUMEN === -->
     <div class="row row-cols-1 row-cols-md-4 g-3 mb-4">
+      <!-- Total Miembros -->
       <div class="col">
         <div class="card shadow-sm h-100 position-relative">
           <div style="position:absolute; top:14px; right:16px; color:#6c757d;">
@@ -17,11 +18,15 @@
           </div>
           <div class="card-body">
             <h6 class="text-muted">Total Miembros</h6>
-            <h3 class="fw-bold">45</h3>
+            <h3 class="fw-bold">
+              <asp:Literal ID="litTotalMiembros" runat="server" Text="–" />
+            </h3>
             <small class="text-success">+3 desde el mes pasado</small>
           </div>
         </div>
       </div>
+
+      <!-- Postulantes Activos -->
       <div class="col">
         <div class="card shadow-sm h-100 position-relative">
           <div style="position:absolute; top:14px; right:16px; color:#6c757d;">
@@ -29,11 +34,15 @@
           </div>
           <div class="card-body">
             <h6 class="text-muted">Postulantes Activos</h6>
-            <h3 class="fw-bold">12</h3>
+            <h3 class="fw-bold">
+              <asp:Literal ID="litPostulantesActivos" runat="server" Text="–" />
+            </h3>
             <small class="text-success">+5 desde el mes pasado</small>
           </div>
         </div>
       </div>
+
+      <!-- Eventos Próximos -->
       <div class="col">
         <div class="card shadow-sm h-100 position-relative">
           <div style="position:absolute; top:14px; right:16px; color:#6c757d;">
@@ -41,11 +50,15 @@
           </div>
           <div class="card-body">
             <h6 class="text-muted">Eventos Próximos</h6>
-            <h3 class="fw-bold">3</h3>
+            <h3 class="fw-bold">
+              <asp:Literal ID="litEventosProximos" runat="server" Text="–" />
+            </h3>
             <small class="text-success">Próximo: Workshop de Unity (15/05)</small>
           </div>
         </div>
       </div>
+
+      <!-- Tareas Pendientes -->
       <div class="col">
         <div class="card shadow-sm h-100 position-relative">
           <div style="position:absolute; top:14px; right:16px; color:#6c757d;">
@@ -53,12 +66,15 @@
           </div>
           <div class="card-body">
             <h6 class="text-muted">Tareas Pendientes</h6>
-            <h3 class="fw-bold">8</h3>
+            <h3 class="fw-bold">
+              <asp:Literal ID="litTareasPendientes" runat="server" Text="–" />
+            </h3>
             <small class="text-danger">3 con vencimiento esta semana</small>
           </div>
         </div>
       </div>
     </div>
+
       <ul class="nav nav-pills tab-menu mb-2" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active"
