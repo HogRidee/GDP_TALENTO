@@ -14,6 +14,7 @@ BEGIN
         m.status,
         s.area,
         s.estado,
+        s.fecha_ingreso,
         s.desempenio,
         u.hash_contrasena,
         u.id_rol -- <--- aquí devolvemos el id del rol en lugar del nombre

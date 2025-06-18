@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="eliminarUsuario" type="tns:eliminarUsuario" />
-  <xs:element name="eliminarUsuarioResponse" type="tns:eliminarUsuarioResponse" />
-  <xs:element name="insertarUsuario" type="tns:insertarUsuario" />
-  <xs:element name="insertarUsuarioResponse" type="tns:insertarUsuarioResponse" />
-  <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
-  <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
-  <xs:element name="modificarUsuario" type="tns:modificarUsuario" />
-  <xs:element name="modificarUsuarioBasico" type="tns:modificarUsuarioBasico" />
-  <xs:element name="modificarUsuarioBasicoResponse" type="tns:modificarUsuarioBasicoResponse" />
-  <xs:element name="modificarUsuarioResponse" type="tns:modificarUsuarioResponse" />
-  <xs:element name="obtenerPorId" type="tns:obtenerPorId" />
-  <xs:element name="obtenerPorIdResponse" type="tns:obtenerPorIdResponse" />
-  <xs:element name="verificar" type="tns:verificar" />
-  <xs:element name="verificarResponse" type="tns:verificarResponse" />
-  <xs:complexType name="insertarUsuario">
+  <xs:element name="insertarAsistencia" type="tns:insertarAsistencia" />
+  <xs:element name="insertarAsistenciaResponse" type="tns:insertarAsistenciaResponse" />
+  <xs:element name="listarAsistencias" type="tns:listarAsistencias" />
+  <xs:element name="listarAsistenciasResponse" type="tns:listarAsistenciasResponse" />
+  <xs:element name="modificarAsistencia" type="tns:modificarAsistencia" />
+  <xs:element name="modificarAsistenciaResponse" type="tns:modificarAsistenciaResponse" />
+  <xs:complexType name="insertarAsistencia">
     <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
+      <xs:element minOccurs="0" name="Asistencia" type="tns:asistencia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="asistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asistencia" type="tns:estadoAsistencia" />
+      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+      <xs:element minOccurs="0" name="participante" type="tns:staff" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="evento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="encargados" nillable="true" type="tns:usuario" />
+      <xs:element minOccurs="0" name="estadoEvento" type="tns:estadoEvento" />
+      <xs:element minOccurs="0" name="fecha" type="tns:localDate" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="participantes" nillable="true" type="tns:staff" />
+      <xs:element minOccurs="0" name="tipoEvento" type="tns:tipoEvento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="usuario">
@@ -76,70 +85,36 @@
   <xs:complexType name="localDate" final="extension restriction">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="insertarUsuarioResponse">
+  <xs:complexType name="insertarAsistenciaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificarUsuario">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarUsuarioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificar">
-    <xs:sequence>
-      <xs:element name="codigo" type="xs:int" />
-      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificarResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarUsuarios">
+  <xs:complexType name="listarAsistencias">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarUsuariosResponse">
+  <xs:complexType name="listarAsistenciasResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:asistencia" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarUsuario">
+  <xs:complexType name="modificarAsistencia">
     <xs:sequence>
-      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Asistencia" type="tns:asistencia" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarUsuarioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarUsuarioBasico">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarUsuarioBasicoResponse">
+  <xs:complexType name="modificarAsistenciaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerPorId">
-    <xs:sequence>
-      <xs:element name="id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
+  <xs:simpleType name="estadoAsistencia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASISTIO" />
+      <xs:enumeration value="FALTO" />
+      <xs:enumeration value="JUSTIFICADO" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="nombreRol">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ADMIN" />
@@ -182,6 +157,18 @@
       <xs:enumeration value="NO_MATRICULADO" />
       <xs:enumeration value="EGRESADO" />
       <xs:enumeration value="EXTERNO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="APROBADO" />
+      <xs:enumeration value="CANCELADO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REUNION" />
+      <xs:enumeration value="INTEGRACION" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

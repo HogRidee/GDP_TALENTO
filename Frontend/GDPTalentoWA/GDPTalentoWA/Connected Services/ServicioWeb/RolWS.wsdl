@@ -11,12 +11,6 @@
   <message name="eliminarRolResponse">
     <part name="parameters" element="tns:eliminarRolResponse" />
   </message>
-  <message name="listarRoles">
-    <part name="parameters" element="tns:listarRoles" />
-  </message>
-  <message name="listarRolesResponse">
-    <part name="parameters" element="tns:listarRolesResponse" />
-  </message>
   <message name="insertarRol">
     <part name="parameters" element="tns:insertarRol" />
   </message>
@@ -29,14 +23,16 @@
   <message name="modificarRolResponse">
     <part name="parameters" element="tns:modificarRolResponse" />
   </message>
+  <message name="listarRoles">
+    <part name="parameters" element="tns:listarRoles" />
+  </message>
+  <message name="listarRolesResponse">
+    <part name="parameters" element="tns:listarRolesResponse" />
+  </message>
   <portType name="RolWS">
     <operation name="eliminarRol">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolRequest" message="tns:eliminarRol" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/eliminarRolResponse" message="tns:eliminarRolResponse" />
-    </operation>
-    <operation name="listarRoles">
-      <input wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest" message="tns:listarRoles" />
-      <output wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesResponse" message="tns:listarRolesResponse" />
     </operation>
     <operation name="insertarRol">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/insertarRolRequest" message="tns:insertarRol" />
@@ -45,6 +41,10 @@
     <operation name="modificarRol">
       <input wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolRequest" message="tns:modificarRol" />
       <output wsam:Action="http://services.pucp.edu.pe/RolWS/modificarRolResponse" message="tns:modificarRolResponse" />
+    </operation>
+    <operation name="listarRoles">
+      <input wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesRequest" message="tns:listarRoles" />
+      <output wsam:Action="http://services.pucp.edu.pe/RolWS/listarRolesResponse" message="tns:listarRolesResponse" />
     </operation>
   </portType>
   <binding name="RolWSPortBinding" type="tns:RolWS">
@@ -58,15 +58,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarRoles">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarRol">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="modificarRol">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarRoles">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
