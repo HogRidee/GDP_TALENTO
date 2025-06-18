@@ -119,6 +119,7 @@ CREATE TABLE Tarea (
     id_creador INT,
     fecha_limite DATE,
     estado ENUM('EN_PROCESO', 'PENDIENTE', 'REALIZADA'),
+    descripcion VARCHAR(100),
     FOREIGN KEY(id_creador) REFERENCES Usuario(id_usuario)
 )ENGINE=InnoDB;
 
