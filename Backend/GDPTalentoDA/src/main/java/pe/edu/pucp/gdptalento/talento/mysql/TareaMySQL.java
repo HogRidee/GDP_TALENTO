@@ -32,6 +32,7 @@ public class TareaMySQL implements TareaDAO{
         parametrosEntrada.put(3, tarea.getCreador().getId());
         parametrosEntrada.put(4, tarea.getFechaLimite());
         parametrosEntrada.put(5, tarea.getEstado().name());
+        parametrosEntrada.put(6, tarea.getDescripcion());
         // Llamada al procedimiento
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TAREA", parametrosEntrada, parametrosSalida);
 
@@ -60,10 +61,10 @@ public class TareaMySQL implements TareaDAO{
         parametrosEntrada.put(3, tarea.getCreador().getId());
         parametrosEntrada.put(4, tarea.getFechaLimite());
         parametrosEntrada.put(5, tarea.getEstado().name());
-
-        int resultado = DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TAREA_ENCARGADO", parametrosEntrada, null);
+        parametrosEntrada.put(6, tarea.getDescripcion());
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_TAREA", parametrosEntrada, null);
         System.out.println("Se ha modificado la tarea correctamente - paso 1");
-        
+        /*
         Map<Integer, Object> parametrosEntrada_tarea_encargado_eliminar = new HashMap<>();
         parametrosEntrada_tarea_encargado_eliminar.put(1,tarea.getId());
         resultado*=DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_TAREA_ENCARGADO_FOR_UPDATE", parametrosEntrada_tarea_encargado_eliminar, null);
@@ -77,6 +78,7 @@ public class TareaMySQL implements TareaDAO{
                 System.out.println("Se ha registrado el los encargados de tarea correctamente en modificar");
             }
         }
+        */
         System.out.println("Se ha registrado la tarea correctamente TOTAL");
         return resultado;
     }
@@ -104,13 +106,13 @@ public class TareaMySQL implements TareaDAO{
                 tarea.setId(idTarea);
                 tarea.setFechaCreacion(rs.getDate("fecha_creacion"));
                 tarea.setFechaLimite(rs.getDate("fecha_limite"));
-
+                tarea.setDescripcion(rs.getString("descripcion"));
                 // Obtener el creador
                 int idCreador = rs.getInt("id_creador");
                 Usuario creador = new Usuario(); //deberia ser Obtener por ID
                 creador.setId(rs.getInt("id_creador"));
                 tarea.setCreador(creador);
-
+                
                 // Estado
                 EstadoTarea estado = EstadoTarea.valueOf(rs.getString("estado"));
                 tarea.setEstado(estado);

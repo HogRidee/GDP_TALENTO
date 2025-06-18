@@ -331,6 +331,7 @@
     <Content Include="Paginas\ProgramarEntrevista.aspx" />
     <Content Include="Paginas\RegistrarNuevoMiembro.aspx" />
     <Content Include="Paginas\RegistrarNuevoPostulante.aspx" />
+    <Content Include="Paginas\Tareas.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Paginas\VerDetalles.aspx" />
     <Content Include="Paginas\VerDetallesPostulante.aspx" />
@@ -343,6 +344,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\GDPTalento\miembroGDP.js" />
+    <Content Include="Scripts\GDPTalento\tareas.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
@@ -425,6 +427,13 @@
     </Compile>
     <Compile Include="Paginas\RegistrarNuevoPostulante.aspx.designer.cs">
       <DependentUpon>RegistrarNuevoPostulante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Tareas.aspx.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Tareas.aspx.designer.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>

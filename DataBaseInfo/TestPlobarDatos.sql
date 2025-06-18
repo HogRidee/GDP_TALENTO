@@ -62,8 +62,8 @@ INSERT INTO Entrevista_Entrevistador (id_entrevista, id_entrevistador, puntaje_e
 -- ========================
 -- Tareas
 -- ========================
-INSERT INTO Tarea (fecha_creacion, id_creador, fecha_limite, estado) VALUES 
-('2025-05-10', 3, '2025-06-01', 'PENDIENTE');
+INSERT INTO Tarea (fecha_creacion, id_creador, fecha_limite, estado, descripcion) VALUES 
+('2025-05-10', 3, '2025-06-01', 'PENDIENTE','Crear Formulario inscripcion 2025');
 
 -- Encargados de tarea
 INSERT INTO Tarea_Encargado (id_tarea, id_usuario) VALUES 

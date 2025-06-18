@@ -9,6 +9,9 @@ public class Tarea {
     private int id;
     private Date fechaCreacion;
     private Usuario creador;
+
+    
+    private String descripcion;
     private ArrayList<Usuario> encargados;
     private Date fechaLimite;
     private EstadoTarea estado;
@@ -65,4 +68,11 @@ public class Tarea {
         this.estado = estado;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
