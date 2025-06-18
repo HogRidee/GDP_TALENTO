@@ -20,6 +20,12 @@ public class InicioWS {
     
     @WebMethod(operationName = "devolverResumen")
     public int[] devolverResumen() {
+        boStaff = new StaffBO();
+        boPostulante = new PostulanteBO();
+        boEvento = new EventoBO();
+        boTarea = new TareaBO();
+        
+        
         int totalMiembros   = boStaff.listarTodas().size();
         int totalPostulantes= boPostulante.listarTodas().size();
         int totalEventos    = boEvento.listarTodas().size();

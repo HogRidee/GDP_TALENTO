@@ -62,9 +62,9 @@ public class TareaMySQL implements TareaDAO{
         parametrosEntrada.put(4, tarea.getFechaLimite());
         parametrosEntrada.put(5, tarea.getEstado().name());
         parametrosEntrada.put(6, tarea.getDescripcion());
-        int resultado = DBManager.getInstance().ejecutarProcedimiento("INSERTAR_TAREA_ENCARGADO", parametrosEntrada, null);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_TAREA", parametrosEntrada, null);
         System.out.println("Se ha modificado la tarea correctamente - paso 1");
-        
+        /*
         Map<Integer, Object> parametrosEntrada_tarea_encargado_eliminar = new HashMap<>();
         parametrosEntrada_tarea_encargado_eliminar.put(1,tarea.getId());
         resultado*=DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_TAREA_ENCARGADO_FOR_UPDATE", parametrosEntrada_tarea_encargado_eliminar, null);
@@ -78,6 +78,7 @@ public class TareaMySQL implements TareaDAO{
                 System.out.println("Se ha registrado el los encargados de tarea correctamente en modificar");
             }
         }
+        */
         System.out.println("Se ha registrado la tarea correctamente TOTAL");
         return resultado;
     }

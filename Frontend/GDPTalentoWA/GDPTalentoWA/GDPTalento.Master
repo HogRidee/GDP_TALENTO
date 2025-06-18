@@ -11,8 +11,10 @@
     <link href="Content/Fonts/css/all.css" rel="stylesheet" />
     <link href="Content/site.css" rel="stylesheet"/>
     <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/bootstrap.bundle.js"></script>
-    <script src="Scripts/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <title>
         <asp:ContentPlaceHolder ID="cph_titulo" runat="server">
@@ -46,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="~/Paginas/Entrevista.aspx" class="nav-link text-dark d-flex align-items-center">
+                    <a href="Entrevista.aspx" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-user-check pe-2"></i>Entrevistas
                     </a>
                 </li>

@@ -6,6 +6,42 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
     <script src="../Scripts/GDPTalento/tareas.js"></script>
+    <script>
+        function showModalEditarTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEditarTarea'));
+                    modal.show();
+                }
+            }, 300);
+        }
+
+        function hideModalEditarTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEditarTarea'));
+                    modal.hide();
+                }
+            }, 300);
+        }
+        function showModalNuevaTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
+                    modal.show();
+                }
+            }, 300);
+        }
+
+        function hideModalNuevaTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
+                    modal.hide();
+                }
+            }, 300);
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
@@ -30,16 +66,19 @@
                 <div class="bg-white p-4 rounded-3 shadow-sm border">
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item">
-                            <asp:LinkButton ID="btnTodas" runat="server" CssClass="nav-link active">Todas</asp:LinkButton></li>
+                            <asp:LinkButton ID="btnTodas" runat="server" CssClass="nav-link active" OnClick="FiltrarTareas_Click" CommandArgument="">Todas</asp:LinkButton>
+                        </li>
                         <li class="nav-item">
-                            <asp:LinkButton ID="btnPendientes" runat="server" CssClass="nav-link">Pendientes</asp:LinkButton></li>
+                            <asp:LinkButton ID="btnPendientes" runat="server" CssClass="nav-link" OnClick="FiltrarTareas_Click" CommandArgument="PENDIENTE">Pendientes</asp:LinkButton>
+                        </li>
                         <li class="nav-item">
-                            <asp:LinkButton ID="btnEnProgreso" runat="server" CssClass="nav-link">En progreso</asp:LinkButton></li>
+                            <asp:LinkButton ID="btnEnProgreso" runat="server" CssClass="nav-link" OnClick="FiltrarTareas_Click" CommandArgument="EN_PROCESO">En progreso</asp:LinkButton>
+                        </li>
                         <li class="nav-item">
-                            <asp:LinkButton ID="btnAtrasadas" runat="server" CssClass="nav-link text-danger">Atrasadas</asp:LinkButton></li>
-                        <li class="nav-item">
-                            <asp:LinkButton ID="btnCompletadas" runat="server" CssClass="nav-link">Completadas</asp:LinkButton></li>
+                            <asp:LinkButton ID="btnCompletadas" runat="server" CssClass="nav-link" OnClick="FiltrarTareas_Click" CommandArgument="REALIZADA">Completadas</asp:LinkButton>
+                        </li>
                     </ul>
+
 
                     <h5 class="fw-bold mb-1">Todas las tareas</h5>
                     <p class="text-muted mb-3">Lista completa de tareas en el sistema.</p>
@@ -87,10 +126,16 @@
                 <div class="modal-body">
                     <asp:UpdatePanel ID="upDetallesTarea" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <p><strong>Descripción:</strong> <asp:Label ID="lblDescripcionDetalle" runat="server" /></p>
-                            <p><strong>Fecha límite:</strong> <asp:Label ID="lblFechaLimiteDetalle" runat="server" /></p>
-                            <p><strong>Estado:</strong> <asp:Label ID="lblEstadoDetalle" runat="server" /></p>
-                            <p><strong>Encargado:</strong> <asp:Label ID="lblEncargadosDetalle" runat="server" /></p>
+                            <p><strong>Creado por:</strong>
+                                <asp:Label ID="lblCreadorDetalle" runat="server" /></p>
+                            <p><strong>Descripción:</strong>
+                                <asp:Label ID="lblDescripcionDetalle" runat="server" /></p>
+                            <p><strong>Fecha límite:</strong>
+                                <asp:Label ID="lblFechaLimiteDetalle" runat="server" /></p>
+                            <p><strong>Estado:</strong>
+                                <asp:Label ID="lblEstadoDetalle" runat="server" /></p>
+                            <p><strong>Encargado:</strong>
+                                <asp:Label ID="lblEncargadosDetalle" runat="server" /></p>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
@@ -109,13 +154,84 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Formulario edición -->
+                    <asp:UpdatePanel ID="upEditarTarea" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <p><strong>Creado por:</strong>
+                                <asp:Label ID="lblCreadorEditar" runat="server" /></p>
+
+                            <div class="mb-3">
+                                <label for="txtDescripcionEditar" class="form-label">Descripción</label>
+                                <asp:TextBox ID="txtDescripcionEditar" runat="server" CssClass="form-control" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtFechaLimiteEditar" class="form-label">Fecha límite</label>
+                                <asp:TextBox ID="txtFechaLimiteEditar" runat="server" CssClass="form-control" TextMode="Date" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ddlEstadoEditar" class="form-label">Estado</label>
+                                <asp:DropDownList ID="ddlEstadoEditar" runat="server" CssClass="form-select">
+                                    <asp:ListItem Text="Pendiente" Value="PENDIENTE" />
+                                    <asp:ListItem Text="En Proceso" Value="EN_PROCESO" />
+                                    <asp:ListItem Text="Realizada" Value="REALIZADA" />
+                                </asp:DropDownList>
+                            </div>
+
+                            <!-- <asp:Button ID="btnEliminarEncargado" runat="server" CssClass="btn btn-danger" Text="Eliminar encargado de esta tarea" OnClick="btnEliminarEncargado_Click" /> -->
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-dark">Guardar cambios</button>
+                    <asp:LinkButton ID="btnGuardarCambios" runat="server" CssClass="btn btn-dark" OnClick="btnGuardarCambios_Click">Guardar cambios</asp:LinkButton>
                 </div>
             </div>
         </div>
     </div>
+    <!------ Modal para nueva Tarea --------->
+    <div class="modal fade" id="modalNuevaTarea" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar nueva tarea</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="upNuevaTarea" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <p><strong>Encargado principal:</strong>
+                                <asp:Label ID="lblEncargadoSesion" runat="server" /></p>
+                            <p><strong>Fecha de creación:</strong>
+                                <asp:Label ID="lblFechaCreacion" runat="server" /></p>
+
+                            <div class="mb-3">
+                                <label for="txtDescripcionNueva" class="form-label">Descripción</label>
+                                <asp:TextBox ID="txtDescripcionNueva" runat="server" CssClass="form-control" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtFechaLimiteNueva" class="form-label">Fecha límite</label>
+                                <asp:TextBox ID="txtFechaLimiteNueva" runat="server" CssClass="form-control" TextMode="Date" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="lstEncargados" class="form-label">Seleccionar encargados</label>
+                                <asp:CheckBoxList ID="lstEncargados" runat="server" CssClass="form-check">
+                                </asp:CheckBoxList>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:LinkButton ID="btnGuardarNuevaTarea" runat="server" CssClass="btn btn-success" OnClick="btnGuardarNuevaTarea_Click">
+                    Guardar tarea
+                    </asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </asp:Content>
