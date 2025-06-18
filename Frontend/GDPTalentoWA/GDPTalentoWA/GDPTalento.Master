@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="#" class="nav-link text-dark d-flex align-items-center">
+                    <a href="~/Paginas/Entrevista.aspx" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-user-check pe-2"></i>Entrevistas
                     </a>
                 </li>
