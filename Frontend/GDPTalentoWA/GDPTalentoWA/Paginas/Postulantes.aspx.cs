@@ -56,7 +56,7 @@ namespace GDPTalentoWA.Paginas
                     s.especialidad.ToString().Contains(textoBusqueda)
                 ).ToList();
 
-                postulantes = new BindingList<postulante>(postulantes);
+                postulantes = new BindingList<postulante>(filtrados);
             }
 
             dgvPostulantes.DataSource = postulantes;
@@ -154,5 +154,52 @@ namespace GDPTalentoWA.Paginas
 
             }
         }
+
+        protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            GridViewRow row = (GridViewRow)ddl.NamingContainer;
+
+            string accion = ddl.SelectedValue;
+            postulante postulante;
+            postulantes = (BindingList<postulante>)Session["postulantes"];
+            if (postulantes == null)
+            {
+                boPostulante = new PostulanteWSClient();
+                postulantes = new BindingList<postulante>(boPostulante.listarPostulantes());
+                Session["postulantes"] = postulantes;
+            }
+
+            // Obtener ID desde el DataKeys si usas DataKeyNames, o desde atributo personalizado:
+            string idStr = ddl.Attributes["data-id"];
+            int id = int.TryParse(idStr, out int idParsed) ? idParsed : -1;
+
+            if (id == -1 || string.IsNullOrEmpty(accion)) return;
+
+            switch (accion)
+            {
+                case "VerDetalles":
+                    postulante = postulantes.SingleOrDefault(x => x.id == id);
+                    Session["postulanteSeleccionado"] = postulante;
+                    Response.Redirect("VerDetallesPostulante.aspx");
+                    break;
+                case "EditarInformacion":
+                    postulante = postulantes.SingleOrDefault(x => x.id == id);
+                    Session["postulanteSeleccionado"] = postulante;
+                    Response.Redirect("RegistrarNuevoPostulante.aspx?accion=modificar");
+                    break;
+                case "EliminarPostulante":
+                    // Aquí llamas a tu servicio de eliminación si corresponde
+                    // boStaff.eliminarStaff(id);
+                    boPostulante.eliminarPostulante(id);
+                    postulantes = new BindingList<postulante>(boPostulante.listarPostulantes());
+                    dgvPostulantes.DataSource = postulantes;
+                    dgvPostulantes.DataBind();
+                    Response.Redirect("Postulantes.aspx");
+                    break;
+            }
+        }
     }
-}
+
+    
+ }

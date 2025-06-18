@@ -322,15 +322,18 @@
     <Content Include="Content\site.css" />
     <Content Include="Imagenes\LOGO_GDP.png" />
     <Content Include="index.html" />
+    <Content Include="Paginas\Entrevista.aspx" />
     <Content Include="Paginas\Inicio.aspx" />
     <Content Include="Paginas\InicioSesion.aspx" />
     <Content Include="Paginas\Miembro.aspx" />
     <Content Include="Paginas\modificarUsuario.aspx" />
     <Content Include="Paginas\Postulantes.aspx" />
+    <Content Include="Paginas\ProgramarEntrevista.aspx" />
     <Content Include="Paginas\RegistrarNuevoMiembro.aspx" />
     <Content Include="Paginas\RegistrarNuevoPostulante.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Paginas\VerDetalles.aspx" />
+    <Content Include="Paginas\VerDetallesPostulante.aspx" />
     <Content Include="Prueba.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -358,6 +361,13 @@
     </Compile>
     <Compile Include="GDPTalento.Master.designer.cs">
       <DependentUpon>GDPTalento.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Entrevista.aspx.cs">
+      <DependentUpon>Entrevista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Entrevista.aspx.designer.cs">
+      <DependentUpon>Entrevista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Estado.cs" />
     <Compile Include="Paginas\Inicio.aspx.cs">
@@ -395,6 +405,13 @@
     <Compile Include="Paginas\Postulantes.aspx.designer.cs">
       <DependentUpon>Postulantes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\ProgramarEntrevista.aspx.cs">
+      <DependentUpon>ProgramarEntrevista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ProgramarEntrevista.aspx.designer.cs">
+      <DependentUpon>ProgramarEntrevista.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\RegistrarNuevoMiembro.aspx.cs">
       <DependentUpon>RegistrarNuevoMiembro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -422,6 +439,13 @@
     </Compile>
     <Compile Include="Paginas\VerDetalles.aspx.designer.cs">
       <DependentUpon>VerDetalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\VerDetallesPostulante.aspx.cs">
+      <DependentUpon>VerDetallesPostulante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\VerDetallesPostulante.aspx.designer.cs">
+      <DependentUpon>VerDetallesPostulante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prueba.aspx.cs">

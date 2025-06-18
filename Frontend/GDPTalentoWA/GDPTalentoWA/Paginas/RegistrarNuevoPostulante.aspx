@@ -6,7 +6,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
     <div class="container py-5">
         <!-- Botón Volver -->
-        <a href="Miembro.aspx" class="btn btn-outline-dark btn-sm btn-back-outside">
+        <a href="Postulantes.aspx" class="btn btn-outline-dark btn-sm btn-back-outside">
             <i class="fa-solid fa-arrow-left me-1"></i>Volver
         </a>
         <hr style="border: none; margin: 10px 0;">

@@ -1,6 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GDPTalento.Master" AutoEventWireup="true" CodeBehind="Postulantes.aspx.cs" Inherits="GDPTalentoWA.Paginas.Postulantes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GDPTalento.Master" AutoEventWireup="true" CodeBehind="Entrevista.aspx.cs" Inherits="GDPTalentoWA.Paginas.Entrevista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_titulo" runat="server">
-    Postulantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
 </asp:Content>
@@ -9,22 +8,22 @@
         <!--Cabecera-->
         <div class="row align-items-center">
             <div class="col">
-                <h2 class="fw-bold mb-0">Gestión de Postulantes</h2>
-                <p class="text-muted">Gestiona todos los aspectos de GDP Talento desde un solo lugar.</p>
+                <h2 class="fw-bold mb-0">Gestión de Entrevistas</h2>
+                <p class="text-muted">Administra las entrevistas a postulantes de Game Devs PUCP</p>
             </div>
             <div class="col-auto ms-auto">
-                <asp:LinkButton ID="btnRegistrarPostulante" CssClass="btn btn-primary text-white" runat="server"
-                    OnClick="btnRegistrarPostulante_Click">
-                    <i class="fa-solid fa-plus pe-2"></i> Registrar nuevo postulante
+                <asp:LinkButton ID="btnProgramarEntrevista" CssClass="btn btn-primary text-white" runat="server"
+                    OnClick="btnProgramarEntrevista_Click">
+                    <i class="fa-solid fa-plus pe-2"></i> Programar Entrevista
                 </asp:LinkButton>
             </div>
         </div>
         <!--Contenido-->
-        <div class="p-4 rounded bg-body border shadow-sm" id="postulantContent">
+        <div class="p-4 rounded bg-body border shadow-sm" id="entrevistContent">
             <!--Titulito y descripción-->
             <div>
-                <h4 class="fw-bold mb-0">Postulantes</h4>
-                <p class="text-muted">Lista de postulante a la convocatoria actual.</p>
+                <h4 class="fw-bold mb-0">Entrevistas</h4>
+                <p class="text-muted">Lista de entrevistas programas y completadas.</p>
             </div>
             <!--Contenedor de datos-->
             <div>
@@ -33,27 +32,27 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <asp:LinkButton
-                                ID="lbBuscarPostulante"
+                                ID="lbBuscarEntrevista"
                                 runat="server"
                                 CssClass="input-group-text bg-white border-end-0"
-                                OnClick="lbBuscarPostulante_Click"
+                                OnClick="lbBuscarEntrevista_Click"
                                 ToolTip="Buscar">
                                 <i class="fa-solid fa-magnifying-glass text-muted"></i>
                             </asp:LinkButton>
                             <asp:TextBox
-                                ID="txtBuscarPostulante"
+                                ID="txtBuscarEntrevista"
                                 runat="server"
                                 CssClass="form-control border-start-0"
-                                placeholder="Buscar por nombre..." />
+                                placeholder="Buscar por postulante..." />
                         </div>
                     </div>
 
                     <div class="col-auto">
                         <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-select">
                             <asp:ListItem Selected="True" Text="Todos los estados" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Pendiente" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Aprobado" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Rechazado" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Programada" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Realizada" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Cancelada" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -68,10 +67,10 @@
 
                     <div class="col-auto ms-2">
                         <asp:LinkButton
-                            ID="btnFiltrarPostulante"
+                            ID="btnFiltrarEntrevista"
                             runat="server"
                             CssClass="btn btn-outline-secondary"
-                            OnClick="btnFiltrarPostulante_Click">
+                            OnClick="btnFiltrarEntrevista_Click">
                             <i class="fa-solid fa-filter"></i>
                         </asp:LinkButton>
                     </div>
@@ -81,23 +80,24 @@
                 <!--                        
                 -->
                 <div class="table-responsive">
-                    <asp:GridView ID="dgvPostulantes" runat="server" AutoGenerateColumns="false"
-                        OnPageIndexChanging="dgvPostulantes_PageIndexChanging"
+                    <asp:GridView ID="dgvEntrevistas" runat="server" AutoGenerateColumns="false"
+                        OnPageIndexChanging="dgvEntrevistas_PageIndexChanging"
                         PageSize="5" CssClass="table table-hover table-striped">
                         <Columns>
-                            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                            <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
-                            <asp:BoundField DataField="estadoProceso" HeaderText="Estado" />
-                            
+                            <asp:BoundField DataField="postulante.nombre" HeaderText="Postulante" />
+                            <asp:BoundField DataField="fecha" HeaderText="Fecha" />
+                            <asp:BoundField DataField="estado" HeaderText="Estado" />
+                            <asp:BoundField DataField="entrevistadores[0].nombre" HeaderText="Entrevistador" />
+                    
                             <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="180px">
                                 <ItemTemplate>
                                     <asp:DropDownList ID="ddlAcciones" runat="server" CssClass="form-select form-select-sm w-auto"
                                         AutoPostBack="true" OnSelectedIndexChanged="ddlAcciones_SelectedIndexChanged"
                                         data-id='<%# Eval("id") %>'>
                                         <asp:ListItem Text="Acción" Value="" />
-                                        <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
-                                        <asp:ListItem Text="Editar" Value="EditarInformacion" />
-                                        <asp:ListItem Text="Eliminar" Value="EliminarPostulante" />
+                                        <asp:ListItem Text="Reprogramar" Value="Reprogramar" />
+                                        <asp:ListItem Text="Marcar como completada" Value="Completar" />
+                                        <asp:ListItem Text="Cancelar Entrevista" Value="Cancelar" />
                                     </asp:DropDownList>
                                 </ItemTemplate>
                             </asp:TemplateField>
