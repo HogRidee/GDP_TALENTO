@@ -9,7 +9,6 @@ BEGIN
     DELETE FROM Entrevista
     WHERE id_entrevista = id_entrevista_eliminar;
 
-    --Falta la tabla Eentrevista-evaluador??
 END$$
 
 DELIMITER ;
