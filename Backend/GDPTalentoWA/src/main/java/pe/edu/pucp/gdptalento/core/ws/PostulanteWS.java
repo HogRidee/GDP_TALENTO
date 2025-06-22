@@ -15,9 +15,7 @@ import pe.edu.pucp.gdptalento.miembros.model.Postulante;
 @WebService(serviceName = "PostulanteWS", targetNamespace = "http://services.pucp.edu.pe")
 public class PostulanteWS {
     private PostulanteBO boPostulante;
-    /**
-     * This is a sample web service operation
-     */
+    
     @WebMethod(operationName = "insertarPostulante")
     public int insertarPostulante(@WebParam(name = "postulante") Postulante postulante) {
         boPostulante = new PostulanteBO();

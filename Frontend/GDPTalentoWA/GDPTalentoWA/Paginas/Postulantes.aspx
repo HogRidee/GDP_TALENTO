@@ -20,7 +20,7 @@
             </div>
         </div>
         <!--Contenido-->
-        <div class="p-4 rounded bg-body border shadow-sm" id="postulantContent">
+        <div class="bg-white p-4 rounded-3 shadow-sm border" id="postulantContent">
             <!--Titulito y descripción-->
             <div>
                 <h4 class="fw-bold mb-0">Postulantes</h4>
@@ -29,9 +29,9 @@
             <!--Contenedor de datos-->
             <div>
                 <!--Selector de parámetros de búsqueda-->
-                <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-md-8">
-                        <div class="input-group">
+                <div class="row gx-2 gy-2 mb-3 align-items-center flex-nowrap overflow-auto">
+                    <div class="col-auto">
+                        <div class="input-group flex-nowrap">
                             <asp:LinkButton
                                 ID="lbBuscarPostulante"
                                 runat="server"
@@ -44,7 +44,8 @@
                                 ID="txtBuscarPostulante"
                                 runat="server"
                                 CssClass="form-control border-start-0"
-                                placeholder="Buscar por nombre..." />
+                                placeholder="Buscar por nombre..." 
+                                Style="min-width: 735px;"/>
                         </div>
                     </div>
 
@@ -60,13 +61,13 @@
                     <div class="col-auto">
                         <asp:DropDownList ID="ddlAreas" runat="server" CssClass="form-select">
                             <asp:ListItem Selected="True" Text="Todas las áreas" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Desarrollo" Value="Desarrollo"></asp:ListItem>
-                            <asp:ListItem Text="Diseño" Value="Diseño"></asp:ListItem>
-                            <asp:ListItem Text="Marketing" Value="Marketing"></asp:ListItem>
+                            <asp:ListItem Text="DESARROLLO" Value="Desarrollo"></asp:ListItem>
+                            <asp:ListItem Text="DISEÑO" Value="Diseño"></asp:ListItem>
+                            <asp:ListItem Text="MARKETING" Value="Marketing"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
-                    <div class="col-auto ms-2">
+                    <div class="col-auto">
                         <asp:LinkButton
                             ID="btnFiltrarPostulante"
                             runat="server"
@@ -83,7 +84,7 @@
                 <div class="table-responsive">
                     <asp:GridView ID="dgvPostulantes" runat="server" AutoGenerateColumns="false"
                         OnPageIndexChanging="dgvPostulantes_PageIndexChanging"
-                        PageSize="5" CssClass="table table-hover table-striped">
+                        PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle">
                         <Columns>
                             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                             <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />

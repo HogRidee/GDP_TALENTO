@@ -100,6 +100,12 @@ namespace GDPTalentoWA.Paginas
                 postulante.statusSpecified = true;
             }
 
+            if (EstadoActual == Estado.Nuevo)
+            {
+                postulante.estadoProceso = estadoProceso.PENDIENTE;
+                postulante.estadoProcesoSpecified = true;
+            }
+
             try
             {
                 if (EstadoActual == Estado.Nuevo)
@@ -114,7 +120,7 @@ namespace GDPTalentoWA.Paginas
             }
 
             // Redirigir
-            Response.Redirect("Miembro.aspx");
+            Response.Redirect("Postulantes.aspx");
         }
     }
 }
