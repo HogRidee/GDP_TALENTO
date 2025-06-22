@@ -34,7 +34,7 @@ namespace GDPTalentoWA.Paginas
             dgvPostulantes.DataSource = postulantes;
             dgvPostulantes.DataBind();
 
-            ViewState["Postulantes"] = postulantes;
+            ViewState["postulantes"] = postulantes;
         }
 
         protected void lbBuscarPostulante_Click(object sender, EventArgs e)
