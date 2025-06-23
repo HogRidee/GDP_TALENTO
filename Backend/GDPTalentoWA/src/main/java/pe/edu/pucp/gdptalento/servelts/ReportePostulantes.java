@@ -29,24 +29,28 @@ import pucp.edu.pe.gdptalento.config.DBManager;
  *
  * @author USER
  */
-public class ReporteEventos extends HttpServlet {
+public class ReportePostulantes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
             //Referenciamos el archivo Jasper
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResourceAsStream("/pe/edu/pucp/gdptalento/reportes/ReporteEventos.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResourceAsStream("/pe/edu/pucp/gdptalento/reportes/ReportePostulantes.jasper"));
             //Establecemos los parametros que necesita el reporte
             HashMap parametros = new HashMap();
             //Referenciamos la imagen del logo y los subreportes
             URL rutaLogo = getClass().getResource("/pe/edu/pucp/gdptalento/reportes/LOGO_GDP.png");
+            URL subReporteEntrevistador = getClass().getResource("/pe/edu/pucp/gdptalento/reportes/EntrevistaXPostulante.jasper");
             //Generamos los objetos necesarios en el reporte
+            String rutaSubreporteEntrevistador = URLDecoder.decode(subReporteEntrevistador.getPath(), "UTF-8");
             Image logo = (new ImageIcon(rutaLogo)).getImage();
             //Colocamos los parámetros
             parametros.put("Logo", logo);
+            parametros.put("rutaSubReporteEntrevistaXPostulante",rutaSubreporteEntrevistador);
             //Establecemos la conexión
             Connection con = DBManager.getInstance().getConnection();
             //Poblamos el reporte
             JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con);
             //Mostramos por pantalla
+            response.setContentType("application/pdf");
             JasperExportManager.exportReportToPdfStream(jp, response.getOutputStream());
         }catch(Exception ex){
             System.out.println(ex.getMessage());

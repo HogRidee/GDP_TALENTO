@@ -41,7 +41,7 @@ public class ReporteRecursosHumanos extends HttpServlet {
             //Generamos los objetos necesarios en el reporte
             Image logo = (new ImageIcon(rutaLogo)).getImage();
             //Colocamos los parámetros
-            parametros.put("logo", logo);
+            parametros.put("Logo", logo);
             //Establecemos la conexión
             Connection con = DBManager.getInstance().getConnection();
             //Poblamos el reporte

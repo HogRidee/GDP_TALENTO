@@ -106,3 +106,18 @@ WHERE s.estado = 'ACTIVO';
 UPDATE Postulante SET estado_proceso = 'PENDIENTE' WHERE id_postulante = 10;
 UPDATE Postulante SET estado_proceso = 'APROBADO' WHERE id_postulante = 11;
 UPDATE Postulante SET estado_proceso = 'RECHAZADO' WHERE id_postulante = 12;
+
+
+SELECT 
+    e.fecha AS fecha_entrevista,
+    e.feedback,
+    e.puntuacion_final,
+    mp_ent.nombre AS nombre_entrevistador,
+    ee.puntaje_entrevistador
+FROM Entrevista e
+JOIN Postulante p ON e.id_postulante = p.id_postulante
+JOIN MiembroPUCP mp ON p.id_postulante = mp.id_miembro_pucp
+JOIN Entrevista_Entrevistador ee ON e.id_entrevista = ee.id_entrevista
+JOIN Usuario u ON ee.id_entrevistador = u.id_usuario
+JOIN MiembroPUCP mp_ent ON u.id_usuario = mp_ent.id_miembro_pucp
+WHERE mp.nombre = 'Carlos Ruiz'; 
