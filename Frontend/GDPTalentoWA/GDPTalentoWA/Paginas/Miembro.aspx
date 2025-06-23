@@ -30,27 +30,27 @@
             <p class="text-muted mb-3">Lista de miembros registrados en el sistema.</p>
 
             <!-- Filtros y buscador -->
-            <div class="row gx-2 gy-2 mb-3 align-items-center flex-nowrap overflow-auto">
-                <div class="col-auto">
-                    <div class="input-group flex-nowrap">
+            <div class="row gx-2 gy-2 mb-3 align-items-center flex-wrap">
+                <!-- Campo de búsqueda -->
+                <div class="col-md">
+                    <div class="input-group">
+                        <asp:TextBox
+                            ID="txtBuscarMiembro"
+                            runat="server"
+                            CssClass="form-control"
+                            placeholder="Buscar por nombre o código..." />
                         <asp:LinkButton
                             ID="lbBuscarMiembro"
                             runat="server"
-                            CssClass="input-group-text bg-white border-end-0"
+                            CssClass="input-group-text bg-white"
                             OnClick="lbBuscarMiembro_Click"
                             ToolTip="Buscar">
                 <i class="fa-solid fa-magnifying-glass text-muted"></i>
                         </asp:LinkButton>
-                        <asp:TextBox
-                            ID="txtBuscarMiembro"
-                            runat="server"
-                            CssClass="form-control border-start-0"
-                            placeholder="Buscar por nombre o código..."
-                            Style="min-width: 735px;" />
                     </div>
                 </div>
 
-                <div class="col-auto">
+            <div class="col-auto">
                     <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-select">
                         <asp:ListItem Selected="True" Text="Todos los estados" Value=""></asp:ListItem>
                         <asp:ListItem Text="Activo" Value="1"></asp:ListItem>
@@ -84,13 +84,13 @@
             <!-- Tabla -->
             <div class="table-responsive">
                 <asp:GridView ID="dgvMiembros" runat="server" AutoGenerateColumns="false"
-                    OnPageIndexChanging="dgvMiembros_PageIndexChanging"
+                    OnPageIndexChanging="dgvMiembros_PageIndexChanging" OnRowDataBound="dgvMiembros_RowDataBound"
                     PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle">
                     <Columns>
-                        <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                        <asp:BoundField DataField="codigoPUCP" HeaderText="Código" />
-                        <asp:BoundField DataField="area" HeaderText="Área" />
-                        <asp:BoundField DataField="estado" HeaderText="Estado" />
+                        <asp:BoundField  HeaderText="Nombre" />
+                        <asp:BoundField  HeaderText="Código" />
+                        <asp:BoundField  HeaderText="Área" />
+                        <asp:BoundField  HeaderText="Estado" />
 
                         <asp:TemplateField HeaderText="Fecha Ingreso">
                             <ItemTemplate>
@@ -113,11 +113,10 @@
 
                     </Columns>
                 </asp:GridView>
-
-
             </div>
 
         </div>
     </div>
 </asp:Content>
+
 

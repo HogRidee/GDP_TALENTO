@@ -73,7 +73,7 @@
                         <span class="text-danger">*</span>
                         <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                             <asp:ListItem Text="Seleccionar especialidad" Value="" Selected="True" Disabled="True"></asp:ListItem>
-                            <asp:ListItem Text="DERECHO" Value="DerechoE"></asp:ListItem>
+                            <asp:ListItem Text="DERECHO" Value="Derecho"></asp:ListItem>
                             <asp:ListItem Text="ELECTRÓNICA" Value="Electrónica"></asp:ListItem>
                             <asp:ListItem Text="INFORMÁTICA" Value="Informática"></asp:ListItem>
                             <asp:ListItem Text="MARKETING" Value="Marketing"></asp:ListItem>
@@ -152,4 +152,6 @@
         </div>
     </div>
 </asp:Content>
+
+
 

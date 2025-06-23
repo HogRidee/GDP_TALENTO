@@ -22,7 +22,7 @@ BEGIN
         MiembroPUCP m
     INNER JOIN 
         Staff s ON m.id_miembro_pucp = s.id_staff
-    ORDER BY m.id_miembro_pucp;
+    ORDER BY s.fecha_ingreso DESC;
 END$$
 
 DELIMITER ;
