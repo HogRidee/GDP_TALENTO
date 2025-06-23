@@ -24,6 +24,10 @@
         <servlet-name>ReporteOIE</servlet-name>
         <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteOIE</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportePostulantes</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReportePostulantes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ReporteMarketing</servlet-name>
         <url-pattern>/ReporteMarketing</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ReporteOIE</servlet-name>
         <url-pattern>/ReporteOIE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportePostulantes</servlet-name>
+        <url-pattern>/ReportePostulantes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
