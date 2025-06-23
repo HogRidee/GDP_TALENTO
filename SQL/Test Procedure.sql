@@ -121,3 +121,7 @@ JOIN Entrevista_Entrevistador ee ON e.id_entrevista = ee.id_entrevista
 JOIN Usuario u ON ee.id_entrevistador = u.id_usuario
 JOIN MiembroPUCP mp_ent ON u.id_usuario = mp_ent.id_miembro_pucp
 WHERE mp.nombre = 'Carlos Ruiz'; 
+
+call LISTAR_ASISTENCIA();
+
+call LISTAR_ASISTENCIA_STAFF(2);
