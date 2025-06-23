@@ -1,10 +1,54 @@
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>ReporteMarketing</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteMarketing</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteEventos</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteEventos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteGDPAcademy</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteGDPAcademy</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteRecursosHumanos</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteRecursosHumanos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportePresidencia</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReportePresidencia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReporteOIE</servlet-name>
+        <servlet-class>pe.edu.pucp.gdptalento.servelts.ReporteOIE</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReporteMarketing</servlet-name>
+        <url-pattern>/ReporteMarketing</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteEventos</servlet-name>
+        <url-pattern>/ReporteEventos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteGDPAcademy</servlet-name>
+        <url-pattern>/ReporteGDPAcademy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteRecursosHumanos</servlet-name>
+        <url-pattern>/ReporteRecursosHumanos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportePresidencia</servlet-name>
+        <url-pattern>/ReportePresidencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteOIE</servlet-name>
+        <url-pattern>/ReporteOIE</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
 </web-app>
