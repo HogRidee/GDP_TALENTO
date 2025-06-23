@@ -13,6 +13,7 @@ namespace GDPTalentoWA.Paginas
     {
         private EntrevistaWSClient boEntrevista;
         private BindingList<entrevista> entrevistas;
+        private UsuarioWSClient boUsuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -86,7 +87,85 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnProgramarEntrevista_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProgramarEntrevista.aspx");
+            //Response.Redirect("ProgramarEntrevista.aspx");
+
+            try
+            {
+                lstEntrevistadores.Items.Clear();
+
+                boUsuario = new UsuarioWSClient();
+
+                var usuarios = boUsuario.listarUsuarios();
+                
+
+                foreach (var u in usuarios)
+                {
+                    lstEntrevistadores.Items.Add(new ListItem(u.nombre, u.id.ToString()));
+                }
+
+                upNuevaEntrevista.Update();
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarNuevaEntrevista", "showModalNuevaEntrevista();", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al preparar el formulario: {ex.Message}');", true);
+            }
+        }
+
+        protected void btnGuardarNuevaEntrevista_Click(object sender, EventArgs e)
+        {
+            boEntrevista = new EntrevistaWSClient();
+
+            try
+            {
+                // Crear nueva entrevista
+                entrevista nuevaEntrevista= new entrevista();
+
+                //Hacer que esto este bonito
+                //nuevaEntrevista.postulante = txtPostulante;
+
+                nuevaEntrevista.fecha = DateTime.Parse(txtFecha.Text);
+                nuevaEntrevista.fechaSpecified = true;
+
+                //NO HAY HORA NMMS
+
+                nuevaEntrevista.estado = estadoEntrevista.PROGRAMADA;
+                nuevaEntrevista.estadoSpecified = true;
+
+
+
+                List<usuario> entrevistadores = new List<usuario>
+                {
+
+                };
+
+                foreach (ListItem item in lstEntrevistadores.Items)
+                {
+                    if (item.Selected)
+                    {
+                        int idEncargado = int.Parse(item.Value);
+                        var encargado = boUsuario.obtenerPorId(idEncargado);
+                        entrevistadores.Add(encargado);
+                    }
+                }
+
+                nuevaEntrevista.entrevistadores = entrevistadores.ToArray();
+
+                boEntrevista.insertarEntrevista(nuevaEntrevista);
+
+                CargarEntrevistas();
+                ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModal", @"
+                    setTimeout(function () {
+                        if (typeof bootstrap !== 'undefined') {
+                            var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaEntrevista'));
+                            modal.hide();
+                        }
+                    }, 300);", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al guardar entrevista: {ex.Message}');", true);
+            }
         }
 
         protected void btnFiltrarEntrevista_Click(object sender, EventArgs e)
