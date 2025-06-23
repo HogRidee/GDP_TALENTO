@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/PostulanteWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="eliminarPostulante">
-    <part name="parameters" element="tns:eliminarPostulante" />
+  <message name="listarPostulantes">
+    <part name="parameters" element="tns:listarPostulantes" />
   </message>
-  <message name="eliminarPostulanteResponse">
-    <part name="parameters" element="tns:eliminarPostulanteResponse" />
+  <message name="listarPostulantesResponse">
+    <part name="parameters" element="tns:listarPostulantesResponse" />
   </message>
   <message name="insertarPostulante">
     <part name="parameters" element="tns:insertarPostulante" />
@@ -17,11 +17,11 @@
   <message name="insertarPostulanteResponse">
     <part name="parameters" element="tns:insertarPostulanteResponse" />
   </message>
-  <message name="listarPostulantes">
-    <part name="parameters" element="tns:listarPostulantes" />
+  <message name="eliminarPostulante">
+    <part name="parameters" element="tns:eliminarPostulante" />
   </message>
-  <message name="listarPostulantesResponse">
-    <part name="parameters" element="tns:listarPostulantesResponse" />
+  <message name="eliminarPostulanteResponse">
+    <part name="parameters" element="tns:eliminarPostulanteResponse" />
   </message>
   <message name="modificarPostulante">
     <part name="parameters" element="tns:modificarPostulante" />
@@ -30,17 +30,17 @@
     <part name="parameters" element="tns:modificarPostulanteResponse" />
   </message>
   <portType name="PostulanteWS">
-    <operation name="eliminarPostulante">
-      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest" message="tns:eliminarPostulante" />
-      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse" message="tns:eliminarPostulanteResponse" />
+    <operation name="listarPostulantes">
+      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest" message="tns:listarPostulantes" />
+      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse" message="tns:listarPostulantesResponse" />
     </operation>
     <operation name="insertarPostulante">
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest" message="tns:insertarPostulante" />
       <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse" message="tns:insertarPostulanteResponse" />
     </operation>
-    <operation name="listarPostulantes">
-      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest" message="tns:listarPostulantes" />
-      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse" message="tns:listarPostulantesResponse" />
+    <operation name="eliminarPostulante">
+      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest" message="tns:eliminarPostulante" />
+      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse" message="tns:eliminarPostulanteResponse" />
     </operation>
     <operation name="modificarPostulante">
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteRequest" message="tns:modificarPostulante" />
@@ -49,7 +49,7 @@
   </portType>
   <binding name="PostulanteWSPortBinding" type="tns:PostulanteWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="eliminarPostulante">
+    <operation name="listarPostulantes">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarPostulantes">
+    <operation name="eliminarPostulante">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

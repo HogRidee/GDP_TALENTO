@@ -331,6 +331,7 @@
     <Content Include="Paginas\ProgramarEntrevista.aspx" />
     <Content Include="Paginas\RegistrarNuevoMiembro.aspx" />
     <Content Include="Paginas\RegistrarNuevoPostulante.aspx" />
+    <Content Include="Paginas\Reportes.aspx" />
     <Content Include="Paginas\Tareas.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Paginas\VerDetalles.aspx" />
@@ -427,6 +428,13 @@
     </Compile>
     <Compile Include="Paginas\RegistrarNuevoPostulante.aspx.designer.cs">
       <DependentUpon>RegistrarNuevoPostulante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Tareas.aspx.cs">
       <DependentUpon>Tareas.aspx</DependentUpon>

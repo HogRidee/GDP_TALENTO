@@ -90,3 +90,36 @@ INSERT INTO Evento_Participante (id_evento, id_staff) VALUES
 INSERT INTO Asistencia (id_evento, id_participante, asistencia) VALUES 
 (1, 1, 'ASISTIO'),
 (1, 2, 'FALTO');
+
+-- ========================
+-- Nuevos Miembros PUCP
+-- ========================
+INSERT INTO MiembroPUCP (id_miembro_pucp, nombre, correo, codigoPUCP, facultad, especialidad, status, telefono) VALUES 
+(10, 'Lucía Vargas', 'lucia.vargas@pucp.edu.pe', 20205555, 'Ingeniería', 'Informática', 'MATRICULADO', '987100200'),
+(11, 'Diego Alarcón', 'diego.alarcon@pucp.edu.pe', 20206666, 'Gestión', 'Marketing', 'MATRICULADO', '987300400'),
+(12, 'Isabel Rojas', 'isabel.rojas@pucp.edu.pe', 20207777, 'Arte y Diseño', 'Diseño Gráfico', 'MATRICULADO', '987500600');
+
+-- ========================
+-- Nuevos Postulantes
+-- ========================
+INSERT INTO Postulante (id_postulante, estado_proceso) VALUES 
+(10, 'PENDIENTE'),
+(11, 'APROBADO'),
+(12, 'RECHAZADO');
+
+-- ========================
+-- Entrevistas
+-- ========================
+INSERT INTO Entrevista (id_entrevista, fecha, id_postulante, feedback, estado, puntuacion_final) VALUES 
+(2, '2025-06-20', 10, 'Mostró interés y compromiso.', 'REALIZADA', 16.0),
+(3, '2025-06-21', 11, 'Perfil con buena actitud.', 'REALIZADA', 18.5),
+(4, '2025-06-22', 12, 'Creativa y entusiasta.', 'REALIZADA', 17.0);
+
+-- ========================
+-- Entrevistadores (asumiendo que ya existen usuarios con ID 1, 2 y 3)
+-- ========================
+INSERT INTO Entrevista_Entrevistador (id_entrevista, id_entrevistador, puntaje_entrevistador) VALUES 
+(2, 1, 16.0),
+(3, 2, 18.5),
+(4, 3, 17.0);
+

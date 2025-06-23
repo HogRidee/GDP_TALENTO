@@ -41,6 +41,14 @@
                 }
             }, 300);
         }
+        function showModalDetallesTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetallesTarea'));
+                    modal.show();
+                }
+            }, 300);
+        }
     </script>
 </asp:Content>
 
