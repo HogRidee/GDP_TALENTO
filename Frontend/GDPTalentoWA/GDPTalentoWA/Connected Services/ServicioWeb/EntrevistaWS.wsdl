@@ -11,11 +11,11 @@
   <message name="modificarEntrevistaResponse">
     <part name="parameters" element="tns:modificarEntrevistaResponse" />
   </message>
-  <message name="listarEntrevistas">
-    <part name="parameters" element="tns:listarEntrevistas" />
+  <message name="eliminarEntrevista">
+    <part name="parameters" element="tns:eliminarEntrevista" />
   </message>
-  <message name="listarEntrevistasResponse">
-    <part name="parameters" element="tns:listarEntrevistasResponse" />
+  <message name="eliminarEntrevistaResponse">
+    <part name="parameters" element="tns:eliminarEntrevistaResponse" />
   </message>
   <message name="insertarEntrevista">
     <part name="parameters" element="tns:insertarEntrevista" />
@@ -23,28 +23,28 @@
   <message name="insertarEntrevistaResponse">
     <part name="parameters" element="tns:insertarEntrevistaResponse" />
   </message>
-  <message name="eliminarEntrevista">
-    <part name="parameters" element="tns:eliminarEntrevista" />
+  <message name="listarEntrevistas">
+    <part name="parameters" element="tns:listarEntrevistas" />
   </message>
-  <message name="eliminarEntrevistaResponse">
-    <part name="parameters" element="tns:eliminarEntrevistaResponse" />
+  <message name="listarEntrevistasResponse">
+    <part name="parameters" element="tns:listarEntrevistasResponse" />
   </message>
   <portType name="EntrevistaWS">
     <operation name="modificarEntrevista">
       <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaRequest" message="tns:modificarEntrevista" />
       <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaResponse" message="tns:modificarEntrevistaResponse" />
     </operation>
-    <operation name="listarEntrevistas">
-      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasRequest" message="tns:listarEntrevistas" />
-      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasResponse" message="tns:listarEntrevistasResponse" />
+    <operation name="eliminarEntrevista">
+      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaRequest" message="tns:eliminarEntrevista" />
+      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaResponse" message="tns:eliminarEntrevistaResponse" />
     </operation>
     <operation name="insertarEntrevista">
       <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaRequest" message="tns:insertarEntrevista" />
       <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaResponse" message="tns:insertarEntrevistaResponse" />
     </operation>
-    <operation name="eliminarEntrevista">
-      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaRequest" message="tns:eliminarEntrevista" />
-      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaResponse" message="tns:eliminarEntrevistaResponse" />
+    <operation name="listarEntrevistas">
+      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasRequest" message="tns:listarEntrevistas" />
+      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasResponse" message="tns:listarEntrevistasResponse" />
     </operation>
   </portType>
   <binding name="EntrevistaWSPortBinding" type="tns:EntrevistaWS">
@@ -58,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEntrevistas">
+    <operation name="eliminarEntrevista">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarEntrevista">
+    <operation name="listarEntrevistas">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

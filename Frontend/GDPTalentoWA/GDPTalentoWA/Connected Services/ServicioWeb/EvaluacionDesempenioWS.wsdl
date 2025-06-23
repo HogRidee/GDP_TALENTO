@@ -11,12 +11,6 @@
   <message name="listarEvaluacionDesempenioResponse">
     <part name="parameters" element="tns:listarEvaluacionDesempenioResponse" />
   </message>
-  <message name="insertarEvaluacionDesempenio">
-    <part name="parameters" element="tns:insertarEvaluacionDesempenio" />
-  </message>
-  <message name="insertarEvaluacionDesempenioResponse">
-    <part name="parameters" element="tns:insertarEvaluacionDesempenioResponse" />
-  </message>
   <message name="modificarEvaluacionDesempenio">
     <part name="parameters" element="tns:modificarEvaluacionDesempenio" />
   </message>
@@ -29,14 +23,16 @@
   <message name="eliminarEvaluacionDesempenioResponse">
     <part name="parameters" element="tns:eliminarEvaluacionDesempenioResponse" />
   </message>
+  <message name="insertarEvaluacionDesempenio">
+    <part name="parameters" element="tns:insertarEvaluacionDesempenio" />
+  </message>
+  <message name="insertarEvaluacionDesempenioResponse">
+    <part name="parameters" element="tns:insertarEvaluacionDesempenioResponse" />
+  </message>
   <portType name="EvaluacionDesempenioWS">
     <operation name="listarEvaluacionDesempenio">
       <input wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioRequest" message="tns:listarEvaluacionDesempenio" />
       <output wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/listarEvaluacionDesempenioResponse" message="tns:listarEvaluacionDesempenioResponse" />
-    </operation>
-    <operation name="insertarEvaluacionDesempenio">
-      <input wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRequest" message="tns:insertarEvaluacionDesempenio" />
-      <output wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioResponse" message="tns:insertarEvaluacionDesempenioResponse" />
     </operation>
     <operation name="modificarEvaluacionDesempenio">
       <input wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/modificarEvaluacionDesempenioRequest" message="tns:modificarEvaluacionDesempenio" />
@@ -45,6 +41,10 @@
     <operation name="eliminarEvaluacionDesempenio">
       <input wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioRequest" message="tns:eliminarEvaluacionDesempenio" />
       <output wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/eliminarEvaluacionDesempenioResponse" message="tns:eliminarEvaluacionDesempenioResponse" />
+    </operation>
+    <operation name="insertarEvaluacionDesempenio">
+      <input wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioRequest" message="tns:insertarEvaluacionDesempenio" />
+      <output wsam:Action="http://services.pucp.edu.pe/EvaluacionDesempenioWS/insertarEvaluacionDesempenioResponse" message="tns:insertarEvaluacionDesempenioResponse" />
     </operation>
   </portType>
   <binding name="EvaluacionDesempenioWSPortBinding" type="tns:EvaluacionDesempenioWS">
@@ -58,15 +58,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarEvaluacionDesempenio">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="modificarEvaluacionDesempenio">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="eliminarEvaluacionDesempenio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarEvaluacionDesempenio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

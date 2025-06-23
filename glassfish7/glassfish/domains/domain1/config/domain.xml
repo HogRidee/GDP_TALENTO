@@ -65,6 +65,7 @@
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
       <application-ref ref="EventMasterSoftWSBL" virtual-servers="server"></application-ref>
+      <application-ref ref="GDPTalentoWA-1.0" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="jdbc/sample"></resource-ref>
@@ -495,6 +496,17 @@
         <engine sniffer="webservices"></engine>
         <engine sniffer="security"></engine>
         <engine sniffer="web"></engine>
+      </module>
+    </application>
+    <application context-root="/GDPTalentoWA" object-type="user" name="GDPTalentoWA-1.0" directory-deployed="true" location="file:/C:/Users/Dayana/Desktop/GH/GDP_TALENTO/Backend/GDPTalentoWA/target/GDPTalentoWA-1.0/">
+      <property name="archiveType" value="war"></property>
+      <property name="defaultAppName" value="GDPTalentoWA-1.0"></property>
+      <property name="appLocation" value="file:/C:/Users/Dayana/Desktop/GH/GDP_TALENTO/Backend/GDPTalentoWA/target/GDPTalentoWA-1.0/"></property>
+      <module name="GDPTalentoWA-1.0">
+        <engine sniffer="webservices"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="web"></engine>
+        <engine sniffer="weld"></engine>
       </module>
     </application>
   </applications>
