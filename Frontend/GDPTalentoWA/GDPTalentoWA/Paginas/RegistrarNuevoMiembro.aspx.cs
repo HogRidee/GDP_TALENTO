@@ -48,7 +48,7 @@ namespace GDPTalentoWA.Paginas
                         ddlFacultad.SelectedValue = miembro.facultad;
                         ddlEspecialidad.SelectedValue = miembro.especialidad;
                         ddlEstadoAcademico.SelectedValue = miembro.status.ToString();
-                        ddlAreas.SelectedValue = miembro.area.ToString(); 
+                        ddlAreas.SelectedValue = miembro.area.ToString();
 
                         dtpFechaIngreso.Value = miembro.fechaIngreso.ToString("yyyy-MM-dd");
 
@@ -65,7 +65,7 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-        
+
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)

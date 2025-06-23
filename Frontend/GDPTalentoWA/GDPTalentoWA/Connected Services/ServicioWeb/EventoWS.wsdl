@@ -11,6 +11,12 @@
   <message name="eliminarEventoResponse">
     <part name="parameters" element="tns:eliminarEventoResponse" />
   </message>
+  <message name="insertarEvento">
+    <part name="parameters" element="tns:insertarEvento" />
+  </message>
+  <message name="insertarEventoResponse">
+    <part name="parameters" element="tns:insertarEventoResponse" />
+  </message>
   <message name="modificarEvento">
     <part name="parameters" element="tns:modificarEvento" />
   </message>
@@ -23,16 +29,14 @@
   <message name="listarEventosResponse">
     <part name="parameters" element="tns:listarEventosResponse" />
   </message>
-  <message name="insertarEvento">
-    <part name="parameters" element="tns:insertarEvento" />
-  </message>
-  <message name="insertarEventoResponse">
-    <part name="parameters" element="tns:insertarEventoResponse" />
-  </message>
   <portType name="EventoWS">
     <operation name="eliminarEvento">
       <input wsam:Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoRequest" message="tns:eliminarEvento" />
       <output wsam:Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoResponse" message="tns:eliminarEventoResponse" />
+    </operation>
+    <operation name="insertarEvento">
+      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
+      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
     </operation>
     <operation name="modificarEvento">
       <input wsam:Action="http://services.pucp.edu.pe/EventoWS/modificarEventoRequest" message="tns:modificarEvento" />
@@ -41,10 +45,6 @@
     <operation name="listarEventos">
       <input wsam:Action="http://services.pucp.edu.pe/EventoWS/listarEventosRequest" message="tns:listarEventos" />
       <output wsam:Action="http://services.pucp.edu.pe/EventoWS/listarEventosResponse" message="tns:listarEventosResponse" />
-    </operation>
-    <operation name="insertarEvento">
-      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
-      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
     </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
@@ -58,6 +58,15 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="insertarEvento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="modificarEvento">
       <soap:operation soapAction="" />
       <input>
@@ -68,15 +77,6 @@
       </output>
     </operation>
     <operation name="listarEventos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -1,5 +1,6 @@
 package pe.edu.pucp.gdptalento.eventos.model;
 
+import java.util.Date;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 
 public class Asistencia {
@@ -31,4 +32,7 @@ public class Asistencia {
         this.asistencia = asistencia;
     }
     
+    public Date getEventoFecha() {
+        return evento.getFecha();
+    }
 }
