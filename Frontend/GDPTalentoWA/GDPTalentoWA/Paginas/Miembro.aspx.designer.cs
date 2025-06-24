@@ -24,15 +24,6 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.LinkButton btnRegistrarMiembro;
 
         /// <summary>
-        /// Control txtBuscarMiembro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarMiembro;
-
-        /// <summary>
         /// Control lbBuscarMiembro.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbBuscarMiembro;
+
+        /// <summary>
+        /// Control txtBuscarMiembro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarMiembro;
 
         /// <summary>
         /// Control ddlEstados.

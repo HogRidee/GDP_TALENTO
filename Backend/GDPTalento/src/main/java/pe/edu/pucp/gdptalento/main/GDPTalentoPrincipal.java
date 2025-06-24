@@ -120,19 +120,12 @@ public class GDPTalentoPrincipal {
             System.out.println("⚠️ No se encontró un staff con ID = " + idBuscado);
         }
         
-//        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodas();
-//        for (Asistencia a : listaAsistencia) {
-//                System.out.println("Asistente: " + a.getParticipante().getNombre());
-//                System.out.println("Evento: " + a.getEvento().getTipoEvento());
-//                System.out.println("Estado: " + a.getAsistencia());
-//        }
-        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodasPorID(1);
-           for (Asistencia a : listaAsistencia) {
+        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodas();
+        for (Asistencia a : listaAsistencia) {
                 System.out.println("Asistente: " + a.getParticipante().getNombre());
                 System.out.println("Evento: " + a.getEvento().getTipoEvento());
                 System.out.println("Estado: " + a.getAsistencia());
-                System.out.println("Fecha: " + a.getEvento().getFecha());
-                
         }
+          
     }
 }

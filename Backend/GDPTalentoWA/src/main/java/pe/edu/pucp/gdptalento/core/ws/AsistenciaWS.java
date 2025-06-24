@@ -38,10 +38,4 @@ public class AsistenciaWS {
         return boAsistencia.listarTodas();
     }
     
-    @WebMethod(operationName = "listarAsistenciasPorStaff")
-    public ArrayList<Asistencia> listarAsistenciasPorStaff(@WebParam(name = "id") int id) {      
-        boAsistencia = new AsistenciaBO();
-        return boAsistencia.listarTodasPorID(id);
-    }
-    
 }

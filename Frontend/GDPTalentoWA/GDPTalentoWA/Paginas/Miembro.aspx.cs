@@ -78,14 +78,9 @@ namespace GDPTalentoWA.Paginas
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 // Asignar nombre, código, área y estado
-                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString().ToUpper() ?? "";
+                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString() ?? "";
                 e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP")?.ToString() ?? "";
-                string conGuionArea = DataBinder.Eval(e.Row.DataItem, "area")?.ToString() ?? "";
-                string sinGuionArea;
-                if (conGuionArea == "RECURSOS_HUMANOS") { sinGuionArea = "RECURSOS HUMANOS"; }
-                else if (conGuionArea == "GDP_ACADEMY") { sinGuionArea = "GDP ACADEMY"; }
-                else sinGuionArea = conGuionArea;
-                e.Row.Cells[2].Text = sinGuionArea;
+                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "area")?.ToString() ?? "";
                 e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estado")?.ToString() ?? "";
 
                 object fechaObj = DataBinder.Eval(e.Row.DataItem, "fechaIngreso");

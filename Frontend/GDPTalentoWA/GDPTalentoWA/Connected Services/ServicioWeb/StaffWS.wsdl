@@ -5,23 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/StaffWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="insertarStaff">
-    <part name="parameters" element="tns:insertarStaff" />
-  </message>
-  <message name="insertarStaffResponse">
-    <part name="parameters" element="tns:insertarStaffResponse" />
-  </message>
   <message name="listarStaff">
     <part name="parameters" element="tns:listarStaff" />
   </message>
   <message name="listarStaffResponse">
     <part name="parameters" element="tns:listarStaffResponse" />
-  </message>
-  <message name="modificarStaff">
-    <part name="parameters" element="tns:modificarStaff" />
-  </message>
-  <message name="modificarStaffResponse">
-    <part name="parameters" element="tns:modificarStaffResponse" />
   </message>
   <message name="eliminarStaff">
     <part name="parameters" element="tns:eliminarStaff" />
@@ -29,35 +17,38 @@
   <message name="eliminarStaffResponse">
     <part name="parameters" element="tns:eliminarStaffResponse" />
   </message>
+  <message name="insertarStaff">
+    <part name="parameters" element="tns:insertarStaff" />
+  </message>
+  <message name="insertarStaffResponse">
+    <part name="parameters" element="tns:insertarStaffResponse" />
+  </message>
+  <message name="modificarStaff">
+    <part name="parameters" element="tns:modificarStaff" />
+  </message>
+  <message name="modificarStaffResponse">
+    <part name="parameters" element="tns:modificarStaffResponse" />
+  </message>
   <portType name="StaffWS">
-    <operation name="insertarStaff">
-      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffRequest" message="tns:insertarStaff" />
-      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffResponse" message="tns:insertarStaffResponse" />
-    </operation>
     <operation name="listarStaff">
       <input wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest" message="tns:listarStaff" />
       <output wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffResponse" message="tns:listarStaffResponse" />
-    </operation>
-    <operation name="modificarStaff">
-      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest" message="tns:modificarStaff" />
-      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse" message="tns:modificarStaffResponse" />
     </operation>
     <operation name="eliminarStaff">
       <input wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffRequest" message="tns:eliminarStaff" />
       <output wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffResponse" message="tns:eliminarStaffResponse" />
     </operation>
+    <operation name="insertarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffRequest" message="tns:insertarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/insertarStaffResponse" message="tns:insertarStaffResponse" />
+    </operation>
+    <operation name="modificarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest" message="tns:modificarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse" message="tns:modificarStaffResponse" />
+    </operation>
   </portType>
   <binding name="StaffWSPortBinding" type="tns:StaffWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarStaff">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="listarStaff">
       <soap:operation soapAction="" />
       <input>
@@ -67,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarStaff">
+    <operation name="eliminarStaff">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +67,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarStaff">
+    <operation name="insertarStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarStaff">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

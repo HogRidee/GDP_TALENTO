@@ -23,9 +23,5 @@ public class AsistenciaBO {
     public ArrayList<Asistencia> listarTodas(){
         return daoAsistencia.listarTodas();
     }
-    
-    public ArrayList<Asistencia> listarTodasPorID(int id){
-        return daoAsistencia.listarTodasPorID(id);
-    }
 }
 
