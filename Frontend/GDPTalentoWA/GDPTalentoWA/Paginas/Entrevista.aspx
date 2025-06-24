@@ -20,6 +20,22 @@
                 }
             }, 300);
         }
+
+        function addOptions(target,name,id) {
+            if (!target) {
+                return false;
+            }
+            else {
+
+                select = document.getElementById(target);
+
+                var opt = document.createElement('option');
+                opt.value = id;
+                opt.innerHTML = name;
+                select.appendChild(opt);
+            }
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
@@ -144,8 +160,9 @@
                         <asp:UpdatePanel ID="upNuevaEntrevista" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <div class="mb-4">
-                                    <label for="txtPostulante" class="form-label">Postulante</label>
-                                    <asp:TextBox ID="txtPostulante" runat="server" CssClass="form-select" />
+                                    <label for="lstPostulantes" class="form-label">Postulante</label>
+                                    <asp:CheckBoxList ID="lstPostulantes" runat="server" CssClass="form-check" >
+                                    </asp:CheckBoxList>
                                 </div>
 
                                 <div class="row">
