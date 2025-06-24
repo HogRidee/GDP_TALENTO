@@ -105,13 +105,13 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.UpdatePanel upNuevaEntrevista;
 
         /// <summary>
-        /// Control txtPostulante.
+        /// Control lstPostulantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPostulante;
+        protected global::System.Web.UI.WebControls.CheckBoxList lstPostulantes;
 
         /// <summary>
         /// Control txtFecha.

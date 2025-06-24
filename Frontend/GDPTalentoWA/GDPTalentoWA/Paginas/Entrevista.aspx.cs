@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,6 +15,7 @@ namespace GDPTalentoWA.Paginas
         private EntrevistaWSClient boEntrevista;
         private BindingList<entrevista> entrevistas;
         private UsuarioWSClient boUsuario;
+        private PostulanteWSClient boPostulante;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -94,9 +96,24 @@ namespace GDPTalentoWA.Paginas
                 lstEntrevistadores.Items.Clear();
 
                 boUsuario = new UsuarioWSClient();
+                boPostulante = new PostulanteWSClient(); ;
 
                 var usuarios = boUsuario.listarUsuarios();
-                
+                var postulantes = boPostulante.listarPostulantes();
+
+                /*
+                foreach (var p in postulantes)
+                {
+                    var nombre = p.nombre;
+                    var id = p.id.ToString();
+                    ScriptManager.RegisterStartupScript(this, GetType(),"slcPostulante", "addOptions(slcPostulante,nombre,id);",true);
+                }
+                */
+
+                foreach (var p in postulantes)
+                {
+                    lstPostulantes.Items.Add(new ListItem(p.nombre, p.id.ToString()));
+                }
 
                 foreach (var u in usuarios)
                 {
@@ -120,9 +137,39 @@ namespace GDPTalentoWA.Paginas
             {
                 // Crear nueva entrevista
                 entrevista nuevaEntrevista= new entrevista();
+                boPostulante = new PostulanteWSClient();
+                var postulantes = boPostulante.listarPostulantes();
+                boUsuario = new UsuarioWSClient();
+                var usuarios = boUsuario.listarUsuarios();
+
+                /*
+                foreach (var p in postulantes)
+                {
+                    if (p.id.ToString().Equals(slcPostulante.Text))
+                    {
+                        nuevaEntrevista.postulante = p;
+                    }
+                }
+                */
 
                 //Hacer que esto este bonito
                 //nuevaEntrevista.postulante = txtPostulante;
+
+                foreach (ListItem item in lstEntrevistadores.Items)
+                {
+                    if (item.Selected)
+                    {
+                        int idEntrevistado = int.Parse(item.Value);
+                        foreach (var p in postulantes)
+                        {
+                            if (p.id.Equals(idEntrevistado))
+                            {
+                                nuevaEntrevista.postulante = p;
+                                break;
+                            }
+                        }
+                    }
+                }
 
                 nuevaEntrevista.fecha = DateTime.Parse(txtFecha.Text);
                 nuevaEntrevista.fechaSpecified = true;
@@ -144,8 +191,16 @@ namespace GDPTalentoWA.Paginas
                     if (item.Selected)
                     {
                         int idEncargado = int.Parse(item.Value);
-                        var encargado = boUsuario.obtenerPorId(idEncargado);
-                        entrevistadores.Add(encargado);
+                        //var encargado = boUsuario.obtenerPorId(idEncargado);
+                        foreach (var u in usuarios)
+                        {
+                            if (u.id.Equals(idEncargado))
+                            {
+                                entrevistadores.Add(u);
+                                break;
+                            }
+                        }
+                        //entrevistadores.Add(encargado);
                     }
                 }
 
