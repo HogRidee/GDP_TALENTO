@@ -24,6 +24,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.Literal litTotalMiembros;
 
         /// <summary>
+        /// Control litVarMiembros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litVarMiembros;
+
+        /// <summary>
         /// Control litPostulantesActivos.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPostulantesActivos;
+
+        /// <summary>
+        /// Control litProximaEntrevista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litProximaEntrevista;
 
         /// <summary>
         /// Control litEventosProximos.

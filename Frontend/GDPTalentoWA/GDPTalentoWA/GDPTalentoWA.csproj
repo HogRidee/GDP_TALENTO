@@ -243,10 +243,16 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.modificarAsistenciaResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverResumenResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarAsistenciasPorStaffResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.listarAsistenciasPorStaffResponse.datasource">
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverTotalesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverVariacionMiembrosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverProximaEntrevistaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicioWeb\InicioWS.wsdl" />

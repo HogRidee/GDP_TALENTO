@@ -21,11 +21,10 @@ import pucp.edu.pe.gdptalento.config.DBManager;
  */
 public class StaffMySQL implements StaffDAO {
     
-    private Statement st;//no estoy usandolo pq estoy haciendo con preparedStatement
+    private Statement st;
     private Connection con;
     private ResultSet rs;
     private PreparedStatement pst;
-    
     
     @Override
     public int insertarStaff(Staff staff) {
@@ -68,7 +67,6 @@ public class StaffMySQL implements StaffDAO {
         return idGenerado;
     }
 
-
     @Override
     public int modificar(Staff staff) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
@@ -98,9 +96,6 @@ public class StaffMySQL implements StaffDAO {
         System.out.println("✅ Se ha realizado la modificación del staff");
         return resultado;
     }
-
-
-
 
     @Override
     public int eliminar(int id) {
@@ -152,6 +147,15 @@ public class StaffMySQL implements StaffDAO {
     @Override
     public Staff obtenerPorId(int idStaff) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public int calcularVariacionMes(){
+        Map<Integer,Object> parametrosSalida = new HashMap<>();
+        parametrosSalida.put(1, java.sql.Types.INTEGER);
+        DBManager.getInstance()
+                 .ejecutarProcedimiento("SP_VARIACION_MIEMBROS", null, parametrosSalida);
+        return (int) parametrosSalida.get(1);
     }
     
 }
