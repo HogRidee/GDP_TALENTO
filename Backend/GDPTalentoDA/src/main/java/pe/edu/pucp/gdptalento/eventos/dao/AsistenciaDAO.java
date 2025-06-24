@@ -16,6 +16,7 @@ public interface AsistenciaDAO{
     
     int insertar(Asistencia asistencia);
     int modificar(Asistencia asistencia);
-    ArrayList<Asistencia> listarTodas ();      
+    ArrayList<Asistencia> listarTodas ();   
+    ArrayList<Asistencia> listarTodasPorID(int id);   
 }
 
