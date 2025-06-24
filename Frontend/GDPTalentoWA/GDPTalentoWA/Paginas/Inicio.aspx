@@ -58,7 +58,9 @@
             <h3 class="fw-bold">
               <asp:Literal ID="litEventosProximos" runat="server" Text="–" />
             </h3>
-            <small class="text-success">Próximo: Workshop de Unity (15/05)</small>
+            <small id="smEventosProxDesc" runat="server" class="text-success">
+                <asp:Literal ID="litEventosProxDesc" runat="server" />
+            </small>
           </div>
         </div>
       </div>
@@ -74,7 +76,9 @@
             <h3 class="fw-bold">
               <asp:Literal ID="litTareasPendientes" runat="server" Text="–" />
             </h3>
-            <small class="text-danger">3 con vencimiento esta semana</small>
+            <small class="text-danger">
+                <asp:Literal ID="litTareasDesc" runat="server" Text="–" />
+            </small>
           </div>
         </div>
       </div>

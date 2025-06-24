@@ -30,6 +30,25 @@ namespace GDPTalentoWA.Paginas
                     // PROXIMA ENTREVISTA
                     string prox = client.devolverProximaEntrevista();
                     litProximaEntrevista.Text = string.IsNullOrEmpty(prox) ? "Sin citas programadas": prox;
+
+                    // EVENTOS PRÓXIMOS
+                    var evRes = client.devolverEventosResumen();
+                    litEventosProximos.Text = evRes.Length > 0 ? evRes[0] : "0";
+                    if (evRes.Length > 1 && !string.IsNullOrWhiteSpace(evRes[1]))
+                    {
+                        litEventosProxDesc.Text = evRes[1];
+                        smEventosProxDesc.Attributes["class"] = "text-success";
+                    }
+                    else
+                    {
+                        litEventosProxDesc.Text = "Sin eventos próximos";
+                        smEventosProxDesc.Attributes["class"] = "text-muted";
+                    }
+
+                    // TAREAS PENDIENTES
+                    var taRes = client.devolverTareasResumen();
+                    litTareasPendientes.Text = taRes.Length > 0 ? taRes[0] : "0";
+                    litTareasDesc.Text = taRes.Length > 1 ? taRes[1] : "";
                 }
 
             }

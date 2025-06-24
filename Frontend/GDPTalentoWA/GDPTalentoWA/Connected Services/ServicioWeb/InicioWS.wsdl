@@ -17,6 +17,18 @@
   <message name="devolverVariacionMiembrosResponse">
     <part name="parameters" element="tns:devolverVariacionMiembrosResponse" />
   </message>
+  <message name="devolverTareasResumen">
+    <part name="parameters" element="tns:devolverTareasResumen" />
+  </message>
+  <message name="devolverTareasResumenResponse">
+    <part name="parameters" element="tns:devolverTareasResumenResponse" />
+  </message>
+  <message name="devolverEventosResumen">
+    <part name="parameters" element="tns:devolverEventosResumen" />
+  </message>
+  <message name="devolverEventosResumenResponse">
+    <part name="parameters" element="tns:devolverEventosResumenResponse" />
+  </message>
   <message name="devolverProximaEntrevista">
     <part name="parameters" element="tns:devolverProximaEntrevista" />
   </message>
@@ -31,6 +43,14 @@
     <operation name="devolverVariacionMiembros">
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverVariacionMiembrosRequest" message="tns:devolverVariacionMiembros" />
       <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverVariacionMiembrosResponse" message="tns:devolverVariacionMiembrosResponse" />
+    </operation>
+    <operation name="devolverTareasResumen">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenRequest" message="tns:devolverTareasResumen" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenResponse" message="tns:devolverTareasResumenResponse" />
+    </operation>
+    <operation name="devolverEventosResumen">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenRequest" message="tns:devolverEventosResumen" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenResponse" message="tns:devolverEventosResumenResponse" />
     </operation>
     <operation name="devolverProximaEntrevista">
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverProximaEntrevistaRequest" message="tns:devolverProximaEntrevista" />
@@ -49,6 +69,24 @@
       </output>
     </operation>
     <operation name="devolverVariacionMiembros">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="devolverTareasResumen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="devolverEventosResumen">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

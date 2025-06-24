@@ -27,4 +27,12 @@ public class TareaBO {
     public ArrayList<Tarea> listarTodas() {
         return daoTarea.listarTareas();
     }
+    
+    public ArrayList<Tarea> listarPendientes(){
+        return daoTarea.listarPendientes();
+    }
+    
+    public ArrayList<Tarea> listarPendientesSemana(){
+        return daoTarea.listarPendientesSemana();
+    }
 }

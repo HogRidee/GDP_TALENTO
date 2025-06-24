@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.gdptalento.eventos.mysql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.sql.Date;
-import java.time.LocalDate;
 import pe.edu.pucp.gdptalento.core.model.Usuario;
 import pe.edu.pucp.gdptalento.eventos.dao.EventoDAO;
 import pe.edu.pucp.gdptalento.eventos.model.EstadoEvento;
@@ -23,16 +17,11 @@ import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
-/**
- *
- * @author Dayana
- */
 public class EventoMySQL implements EventoDAO{
     private Connection con;
     private Statement st;
     private ResultSet rs;
     
-
     @Override
     public int insertar(Evento evento) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
@@ -169,5 +158,33 @@ public class EventoMySQL implements EventoDAO{
 
         return resultado;
     }
+
+    @Override
+    public ArrayList<Evento> listarFuturos() {
+        ArrayList<Evento> eventos = new ArrayList<>();
+        rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EVENTOS_FUTUROS", null);
+        try {
+            while(rs.next()){
+                Evento e = new Evento();
+                e.setId(rs.getInt("id"));
+                e.setFecha(rs.getDate("fecha"));
+                e.setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
+                e.setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
+                eventos.add(e);
+            }
+        } catch(SQLException ex){
+            System.out.println("ERROR al listarFuturos: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return eventos;
+    }
+
+    @Override
+    public Evento obtenerProximo() {
+        ArrayList<Evento> futuros = listarFuturos();
+        return futuros.isEmpty() ? null : futuros.get(0);
+    }
+
 
 }

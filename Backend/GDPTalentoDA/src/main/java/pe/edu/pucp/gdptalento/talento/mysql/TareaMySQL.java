@@ -3,11 +3,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-import java.sql.Timestamp;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import pe.edu.pucp.gdptalento.talento.dao.TareaDAO;
@@ -52,7 +50,6 @@ public class TareaMySQL implements TareaDAO{
         return tarea.getId();
     }
 
-
     @Override
     public int modificarTarea(Tarea tarea) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
@@ -82,7 +79,6 @@ public class TareaMySQL implements TareaDAO{
         System.out.println("Se ha registrado la tarea correctamente TOTAL");
         return resultado;
     }
-
 
     @Override
     public int eliminarTarea(int id) {
@@ -142,10 +138,53 @@ public class TareaMySQL implements TareaDAO{
         return tareasCompletas;
     }
 
-
     @Override
     public Tarea obtenerPorId(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ArrayList<Tarea> listarPendientes() {
+        ArrayList<Tarea> tareas = new ArrayList<>();
+        rs = DBManager.getInstance()
+                      .ejecutarProcedimientoLectura("LISTAR_TAREAS_PENDIENTES", null);
+        try {
+            while(rs.next()){
+                Tarea t = new Tarea();
+                t.setId(rs.getInt("id"));
+                t.setDescripcion(rs.getString("descripcion"));
+                t.setFechaLimite(rs.getDate("fechaLimite"));
+                t.setEstado(EstadoTarea.valueOf(rs.getString("estado")));
+                tareas.add(t);
+            }
+        } catch(SQLException ex){
+            System.out.println("ERROR listarPendientes: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return tareas;
+    }
+
+    @Override
+    public ArrayList<Tarea> listarPendientesSemana() {
+        ArrayList<Tarea> tareas = new ArrayList<>();
+        rs = DBManager.getInstance()
+                      .ejecutarProcedimientoLectura("LISTAR_TAREAS_PENDIENTES_SEMANA", null);
+        try {
+            while(rs.next()){
+                Tarea t = new Tarea();
+                t.setId(rs.getInt("id"));
+                t.setDescripcion(rs.getString("descripcion"));
+                t.setFechaLimite(rs.getDate("fechaLimite"));
+                t.setEstado(EstadoTarea.valueOf(rs.getString("estado")));
+                tareas.add(t);
+            }
+        } catch(SQLException ex){
+            System.out.println("ERROR listarPendientesSemana: " + ex.getMessage());
+        } finally {
+            DBManager.getInstance().cerrarConexion();
+        }
+        return tareas;
     }
 
 }
