@@ -29,7 +29,7 @@ public class StaffMySQL implements StaffDAO {
     
     @Override
     public int insertarStaff(Staff staff) {
-       Map<Integer, Object> parametrosSalida = new HashMap<>();
+        Map<Integer, Object> parametrosSalida = new HashMap<>();
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
 
 
