@@ -9,5 +9,5 @@ public interface StaffDAO {
     int eliminar(int id);  
     ArrayList<Staff> listarStaff();
     Staff obtenerPorId(int idStaff);
-    
+    int calcularVariacionMes();
 }

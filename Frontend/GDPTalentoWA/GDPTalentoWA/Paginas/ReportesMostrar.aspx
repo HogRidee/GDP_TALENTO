@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GDPTalento.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="GDPTalentoWA.Paginas.Reportes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GDPTalento.Master" AutoEventWireup="true" CodeBehind="ReportesMostrar.aspx.cs" Inherits="GDPTalentoWA.Paginas.ReportesMostrar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_titulo" runat="server">
     <h1 class="text-2xl font-bold">Reportes</h1>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="d-flex justify-content-end mt-4">
-                <asp:Button ID="btnExportarOIE" runat="server" Text="Exportar CSV" CssClass="btn btn-dark" />
+                <asp:Button ID="btnExportarOIE" runat="server" Text="Exportar CSV" CssClass="btn btn-dark" OnClick="btnExportarOIE_Click" />
             </div>
         </asp:Panel>
 
@@ -95,7 +95,7 @@
             </div>
 
             <div class="d-flex justify-content-end mt-4">
-                <asp:Button ID="btnExportarArea" runat="server" Text="Exportar PDF" CssClass="btn btn-dark" />
+                <asp:Button ID="btnExportarArea" runat="server" Text="Exportar PDF" CssClass="btn btn-dark" OnClick="btnExportarArea_Click" />
             </div>
         </asp:Panel>
 
@@ -139,9 +139,8 @@
             </div>
 
             <div class="d-flex justify-content-end mt-4">
-                <asp:Button ID="btnExportarCandidatos" runat="server" Text="Exportar PDF" CssClass="btn btn-dark" />
+                <asp:Button ID="btnExportarCandidatos" runat="server" Text="Exportar PDF" CssClass="btn btn-dark" OnClick="btnExportarCandidatos_Click" />
             </div>
         </asp:Panel>
     </div>
 </asp:Content>
-

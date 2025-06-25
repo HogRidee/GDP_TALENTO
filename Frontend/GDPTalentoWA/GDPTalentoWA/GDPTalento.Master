@@ -33,7 +33,7 @@
             </div>
             <ul class="mynav nav nav-pills flex-column mb-auto">
                 <li class="nav-item mb-1">
-                    <a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center active">
+                    <a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-house pe-2"></i>Inicio
                     </a>
                 </li>
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="Reportes.aspx" class="nav-link text-dark d-flex align-items-center">
+                    <a href="ReportesMostrar.aspx" class="nav-link text-dark d-flex align-items-center">
                         <i class="fa-regular fa-chart-simple pe-2"></i>Reportes
                     </a>
                 </li>
@@ -125,5 +125,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function(){
+          var path = window.location.pathname.toLowerCase();
+          $(".mynav a").each(function(){
+            var href = $(this).attr("href")
+                          .replace(/^~\//, "/")
+                          .toLowerCase();
+            if(path.indexOf(href) > -1){
+              $(this).addClass("active");
+            } else {
+              $(this).removeClass("active");
+            }
+          });
+        });
+    </script>
 </body>
 </html>

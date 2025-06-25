@@ -8,4 +8,5 @@ public interface EntrevistaDAO {
     int eliminarEntrevista(int id);
     ArrayList<Entrevista> listarEntrevistas();
     Entrevista obtenerPorId(int id);
+    java.sql.Date obtenerFechaProximaEntrevista();
 }

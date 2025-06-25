@@ -27,5 +27,9 @@ public class StaffBO {
     public ArrayList<Staff> listarTodas() {
         return daoStaff.listarStaff();
     }
+    
+    public int calcularVariacionMes(){
+        return daoStaff.calcularVariacionMes();
+    }
 }
 

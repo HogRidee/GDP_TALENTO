@@ -22,5 +22,8 @@ public interface EventoDAO {
     
     ArrayList<Staff> listarParticipantesPorEvento(int idEvento);
     int modificarEncargados(int idEvento, ArrayList<Usuario> encargados);
+    
+    ArrayList<Evento> listarFuturos();
+    Evento obtenerProximo();
 }
 

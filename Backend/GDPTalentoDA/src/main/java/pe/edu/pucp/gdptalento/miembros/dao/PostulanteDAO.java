@@ -16,4 +16,5 @@ public interface PostulanteDAO {
     int modificar(Postulante postulante);
     int eliminar(int idPostulante);
     ArrayList<Postulante> listarTodos();
+    int calcularVariacionMes();
 }
