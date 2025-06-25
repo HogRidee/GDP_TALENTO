@@ -8,9 +8,12 @@
   <xs:element name="listarPostulantesResponse" type="tns:listarPostulantesResponse" />
   <xs:element name="modificarPostulante" type="tns:modificarPostulante" />
   <xs:element name="modificarPostulanteResponse" type="tns:modificarPostulanteResponse" />
-  <xs:complexType name="insertarPostulante">
+  <xs:complexType name="listarPostulantes">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarPostulantesResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="postulante" type="tns:postulante" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:postulante" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="postulante">
@@ -34,17 +37,14 @@
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="insertarPostulante">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="postulante" type="tns:postulante" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarPostulanteResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarPostulantes">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarPostulantesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:postulante" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarPostulante">
