@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="generarReporteEventos" type="tns:generarReporteEventos" />
+  <xs:element name="generarReporteEventosResponse" type="tns:generarReporteEventosResponse" />
+  <xs:element name="generarReporteGDPAcademy" type="tns:generarReporteGDPAcademy" />
+  <xs:element name="generarReporteGDPAcademyResponse" type="tns:generarReporteGDPAcademyResponse" />
+  <xs:element name="generarReporteMarketing" type="tns:generarReporteMarketing" />
+  <xs:element name="generarReporteMarketingResponse" type="tns:generarReporteMarketingResponse" />
+  <xs:element name="generarReporteOIECSV" type="tns:generarReporteOIECSV" />
+  <xs:element name="generarReporteOIECSVResponse" type="tns:generarReporteOIECSVResponse" />
+  <xs:element name="generarReportePostulantes" type="tns:generarReportePostulantes" />
+  <xs:element name="generarReportePostulantesResponse" type="tns:generarReportePostulantesResponse" />
+  <xs:element name="generarReportePresidencia" type="tns:generarReportePresidencia" />
+  <xs:element name="generarReportePresidenciaResponse" type="tns:generarReportePresidenciaResponse" />
+  <xs:element name="generarReporteRecursosHumanos" type="tns:generarReporteRecursosHumanos" />
+  <xs:element name="generarReporteRecursosHumanosResponse" type="tns:generarReporteRecursosHumanosResponse" />
+  <xs:element name="generarReporteTotal" type="tns:generarReporteTotal" />
+  <xs:element name="generarReporteTotalResponse" type="tns:generarReporteTotalResponse" />
+  <xs:complexType name="generarReporteRecursosHumanos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteRecursosHumanosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteEventos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteEventosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteOIECSV">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteOIECSVResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReportePresidencia">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReportePresidenciaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReportePostulantes">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReportePostulantesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteMarketing">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteMarketingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteTotal">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteTotalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteGDPAcademy">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteGDPAcademyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -261,6 +261,30 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.devolverTareasResumenResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteEventosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteGDPAcademyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteMarketingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteOIECSVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReportePostulantesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReportePresidenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteRecursosHumanosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteTotalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioWeb\InicioWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\InicioWS.xsd">
       <SubType>Designer</SubType>
@@ -276,6 +300,10 @@
     <None Include="Connected Services\ServicioWeb\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ServicioWeb\ReporteWS.wsdl" />
+    <None Include="Connected Services\ServicioWeb\ReporteWS.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServicioWeb\RolWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\RolWS.xsd">
@@ -345,7 +373,15 @@
     <Content Include="Paginas\Postulantes.aspx" />
     <Content Include="Paginas\RegistrarNuevoMiembro.aspx" />
     <Content Include="Paginas\RegistrarNuevoPostulante.aspx" />
-    <Content Include="Paginas\Reportes.aspx" />
+    <Content Include="Paginas\ReportesMostrar.aspx" />
+    <Content Include="Paginas\ReporteEventos.aspx" />
+    <Content Include="Paginas\ReporteGDPAcademy.aspx" />
+    <Content Include="Paginas\ReporteMarketing.aspx" />
+    <Content Include="Paginas\ReporteOIE.aspx" />
+    <Content Include="Paginas\ReportePostulantes.aspx" />
+    <Content Include="Paginas\ReportePresidencia.aspx" />
+    <Content Include="Paginas\ReporteRecursosHumanos.aspx" />
+    <Content Include="Paginas\ReporteTotal.aspx" />
     <Content Include="Paginas\Tareas.aspx" />
     <Content Include="Paginas\Usuario.aspx" />
     <Content Include="Paginas\VerDetalles.aspx" />
@@ -436,12 +472,68 @@
     <Compile Include="Paginas\RegistrarNuevoPostulante.aspx.designer.cs">
       <DependentUpon>RegistrarNuevoPostulante.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Paginas\ReportesMostrar.aspx.cs">
+      <DependentUpon>ReportesMostrar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Paginas\ReportesMostrar.aspx.designer.cs">
+      <DependentUpon>ReportesMostrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteEventos.aspx.cs">
+      <DependentUpon>ReporteEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteEventos.aspx.designer.cs">
+      <DependentUpon>ReporteEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteGDPAcademy.aspx.cs">
+      <DependentUpon>ReporteGDPAcademy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteGDPAcademy.aspx.designer.cs">
+      <DependentUpon>ReporteGDPAcademy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteMarketing.aspx.cs">
+      <DependentUpon>ReporteMarketing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteMarketing.aspx.designer.cs">
+      <DependentUpon>ReporteMarketing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteOIE.aspx.cs">
+      <DependentUpon>ReporteOIE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteOIE.aspx.designer.cs">
+      <DependentUpon>ReporteOIE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReportePostulantes.aspx.cs">
+      <DependentUpon>ReportePostulantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReportePostulantes.aspx.designer.cs">
+      <DependentUpon>ReportePostulantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReportePresidencia.aspx.cs">
+      <DependentUpon>ReportePresidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReportePresidencia.aspx.designer.cs">
+      <DependentUpon>ReportePresidencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteRecursosHumanos.aspx.cs">
+      <DependentUpon>ReporteRecursosHumanos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteRecursosHumanos.aspx.designer.cs">
+      <DependentUpon>ReporteRecursosHumanos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ReporteTotal.aspx.cs">
+      <DependentUpon>ReporteTotal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ReporteTotal.aspx.designer.cs">
+      <DependentUpon>ReporteTotal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\Tareas.aspx.cs">
       <DependentUpon>Tareas.aspx</DependentUpon>

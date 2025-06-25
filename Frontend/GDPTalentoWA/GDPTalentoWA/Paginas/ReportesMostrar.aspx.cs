@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace GDPTalentoWA.Paginas
 {
-    public partial class Reportes : System.Web.UI.Page
+    public partial class ReportesMostrar : System.Web.UI.Page
     {
         private StaffWSClient boStaff;
         private BindingList<staff> miembros;
@@ -73,12 +72,52 @@ namespace GDPTalentoWA.Paginas
             // Actualizar labels
             lblMiembros.Text = miembrosFiltrados.Count.ToString();
             //lblAsistencia.Text = miembrosFiltrados.Count > 0
-                //? $"{miembrosFiltrados.Average(m => m.porcentajeAsistencia):0.##}%"
-                //: "0%";
+            //? $"{miembrosFiltrados.Average(m => m.porcentajeAsistencia):0.##}%"
+            //: "0%";
             lblEvaluacion.Text = miembrosFiltrados.Count > 0
                 ? $"{miembrosFiltrados.Average(m => m.desempenio):0.0}/5"
                 : "0.0/5";
         }
+
+        protected void btnExportarOIE_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/ReporteOIE.aspx");
+        }
+
+        protected void btnExportarCandidatos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Paginas/ReportePostulantes.aspx");
+        }
+
+        protected void btnExportarArea_Click(object sender, EventArgs e)
+        {
+            string areaSeleccionada = ddlAreas.SelectedValue;
+
+            switch (areaSeleccionada)
+            {
+                case "0":
+                    Response.Redirect("~/Paginas/ReporteTotal.aspx");
+                    break;
+                case "PRESIDENCIA":
+                    Response.Redirect("~/Paginas/ReportePresidencia.aspx");
+                    break;
+                case "MARKETING":
+                    Response.Redirect("~/Paginas/ReporteMarketing.aspx");
+                    break;
+                case "EVENTOS":
+                    Response.Redirect("~/Paginas/ReporteEventos.aspx");
+                    break;
+                case "GDP_ACADEMY":
+                    Response.Redirect("~/Paginas/ReporteGDPAcademy.aspx");
+                    break;
+                case "RECURSOS_HUMANOS":
+                    Response.Redirect("~/Paginas/ReporteRecursosHumanos.aspx");
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
 
         protected void btnReporteOIE_Click(object sender, EventArgs e)
@@ -123,5 +162,6 @@ namespace GDPTalentoWA.Paginas
             pnlReporteArea.Visible = reporte == "Area";
             pnlReporteCandidatos.Visible = reporte == "Candidatos";
         }
+    
     }
 }
