@@ -27,5 +27,13 @@ public class EventoBO {
     public ArrayList<Evento> listarTodas() {
         return daoEvento.listarTodos();
     }
+    
+    public ArrayList<Evento> listarFuturos(){
+        return daoEvento.listarFuturos();
+    }
+    
+    public Evento obtenerProximo(){
+        return daoEvento.obtenerProximo();
+    }
 }
 

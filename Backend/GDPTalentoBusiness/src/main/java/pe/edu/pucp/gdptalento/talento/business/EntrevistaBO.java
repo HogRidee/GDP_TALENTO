@@ -1,5 +1,6 @@
 package pe.edu.pucp.gdptalento.talento.business;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.gdptalento.talento.dao.EntrevistaDAO;
 import pe.edu.pucp.gdptalento.talento.model.Entrevista;
@@ -26,6 +27,10 @@ public class EntrevistaBO {
 
     public ArrayList<Entrevista> listarTodas() {
         return daoEntrevista.listarEntrevistas();
+    }
+    
+    public Date obtenerFechaProximaEntrevista(){
+        return daoEntrevista.obtenerFechaProximaEntrevista();
     }
 }
 

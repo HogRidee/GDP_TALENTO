@@ -27,5 +27,9 @@ public class PostulanteBO {
     public ArrayList<Postulante> listarTodas() {
         return daoPostulante.listarTodos();
     }
+    
+    public int calcularVariacionMes(){
+        return daoPostulante.calcularVariacionMes();
+    }
 }
 

@@ -23,6 +23,14 @@
   <message name="listarUsuariosResponse">
     <part name="parameters" element="tns:listarUsuariosResponse" />
   </message>
+
+  <message name="modificarUsuario">
+    <part name="parameters" element="tns:modificarUsuario" />
+  </message>
+  <message name="modificarUsuarioResponse">
+    <part name="parameters" element="tns:modificarUsuarioResponse" />
+  </message>
+n
   <message name="insertarUsuario">
     <part name="parameters" element="tns:insertarUsuario" />
   </message>
@@ -31,15 +39,17 @@
   </message>
   <message name="eliminarUsuario">
     <part name="parameters" element="tns:eliminarUsuario" />
+
   </message>
   <message name="eliminarUsuarioResponse">
     <part name="parameters" element="tns:eliminarUsuarioResponse" />
   </message>
   <message name="modificarUsuario">
     <part name="parameters" element="tns:modificarUsuario" />
+
   </message>
-  <message name="modificarUsuarioResponse">
-    <part name="parameters" element="tns:modificarUsuarioResponse" />
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
   </message>
   <message name="modificarUsuarioBasico">
     <part name="parameters" element="tns:modificarUsuarioBasico" />
@@ -60,6 +70,12 @@
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosRequest" message="tns:listarUsuarios" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
     </operation>
+
+    <operation name="modificarUsuario">
+      <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
+      <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
+    </operation>
+
     <operation name="insertarUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioRequest" message="tns:insertarUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
@@ -67,10 +83,12 @@
     <operation name="eliminarUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+
     </operation>
     <operation name="modificarUsuario">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioRequest" message="tns:modificarUsuario" />
       <output wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
+
     </operation>
     <operation name="modificarUsuarioBasico">
       <input wsam:Action="http://services.pucp.edu.pe/UsuarioWS/modificarUsuarioBasicoRequest" message="tns:modificarUsuarioBasico" />
@@ -97,7 +115,11 @@
         <soap:body use="literal" />
       </output>
     </operation>
+
     <operation name="listarUsuarios">
+
+    <operation name="modificarUsuario">
+
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

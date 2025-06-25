@@ -5,17 +5,19 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/TareaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="insertarTarea">
-    <part name="parameters" element="tns:insertarTarea" />
-  </message>
-  <message name="insertarTareaResponse">
-    <part name="parameters" element="tns:insertarTareaResponse" />
-  </message>
+
   <message name="modificarTarea">
     <part name="parameters" element="tns:modificarTarea" />
   </message>
   <message name="modificarTareaResponse">
     <part name="parameters" element="tns:modificarTareaResponse" />
+  </message>
+
+  <message name="insertarTarea">
+    <part name="parameters" element="tns:insertarTarea" />
+  </message>
+  <message name="insertarTareaResponse">
+    <part name="parameters" element="tns:insertarTareaResponse" />
   </message>
   <message name="listarTareas">
     <part name="parameters" element="tns:listarTareas" />
@@ -30,13 +32,15 @@
     <part name="parameters" element="tns:eliminarTareaResponse" />
   </message>
   <portType name="TareaWS">
-    <operation name="insertarTarea">
-      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest" message="tns:insertarTarea" />
-      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse" message="tns:insertarTareaResponse" />
-    </operation>
+
     <operation name="modificarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
+    </operation>
+
+    <operation name="insertarTarea">
+      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest" message="tns:insertarTarea" />
+      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse" message="tns:insertarTareaResponse" />
     </operation>
     <operation name="listarTareas">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest" message="tns:listarTareas" />
@@ -49,7 +53,11 @@
   </portType>
   <binding name="TareaWSPortBinding" type="tns:TareaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+
     <operation name="insertarTarea">
+
+    <operation name="modificarTarea">
+
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

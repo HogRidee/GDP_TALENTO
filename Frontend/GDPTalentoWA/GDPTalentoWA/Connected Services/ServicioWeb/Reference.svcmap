@@ -31,14 +31,16 @@
     <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="2c9a1b46-9773-444d-ae62-7fe4392856a8" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/servicios.disco" />
     <MetadataFile FileName="UsuarioWS.xsd" MetadataType="Schema" ID="2c777c8d-0b88-483d-8491-6ccc106600fd" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/UsuarioWS?xsd=1" />
     <MetadataFile FileName="TareaWS.wsdl" MetadataType="Wsdl" ID="ca847c3e-14d6-4835-9c64-e3a54118f1d6" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/TareaWS?WSDL" />
-    <MetadataFile FileName="InicioWS.xsd" MetadataType="Schema" ID="adba897a-006b-4af5-9233-75833a7075a5" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/InicioWS?xsd=1" />
     <MetadataFile FileName="AsistenciaWS.wsdl" MetadataType="Wsdl" ID="afd82135-261f-4596-bea9-db2f006f9553" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/AsistenciaWS?WSDL" />
+    <MetadataFile FileName="ReporteWS.xsd" MetadataType="Schema" ID="2a0c572d-ddf4-474c-a61b-8a9c311a156b" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/ReporteWS?xsd=1" />
     <MetadataFile FileName="EntrevistaWS.xsd" MetadataType="Schema" ID="162861e8-7bc3-4b1b-bf1f-53fb486b77b6" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EntrevistaWS?xsd=1" />
-    <MetadataFile FileName="AsistenciaWS.xsd" MetadataType="Schema" ID="efe200b7-3937-4e02-8a04-6cbc410f9220" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/AsistenciaWS?xsd=1" />
+    <MetadataFile FileName="InicioWS.xsd" MetadataType="Schema" ID="adba897a-006b-4af5-9233-75833a7075a5" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/InicioWS?xsd=1" />
     <MetadataFile FileName="PostulanteWS.wsdl" MetadataType="Wsdl" ID="4666888e-360b-48a1-8ad3-2203d3ca0e50" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/PostulanteWS?WSDL" />
     <MetadataFile FileName="PostulanteWS.xsd" MetadataType="Schema" ID="958c6e17-31da-40ab-858a-6d38b3f6a586" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/PostulanteWS?xsd=1" />
     <MetadataFile FileName="StaffWS.wsdl" MetadataType="Wsdl" ID="92b06994-645a-4c84-bde2-22985bca249c" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/StaffWS?WSDL" />
+    <MetadataFile FileName="ReporteWS.wsdl" MetadataType="Wsdl" ID="0f5f06ec-b4c0-4801-9110-3ebe55dbf1bc" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/ReporteWS?WSDL" />
     <MetadataFile FileName="EventoWS.wsdl" MetadataType="Wsdl" ID="173bd28d-dc74-4654-bf81-6e90410f72d1" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EventoWS?WSDL" />
+    <MetadataFile FileName="AsistenciaWS.xsd" MetadataType="Schema" ID="efe200b7-3937-4e02-8a04-6cbc410f9220" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/AsistenciaWS?xsd=1" />
     <MetadataFile FileName="MiembroPUCPWS.xsd" MetadataType="Schema" ID="f1f7c78f-8141-477a-b9bd-af55143a4329" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?xsd=1" />
     <MetadataFile FileName="EvaluacionDesempenioWS.wsdl" MetadataType="Wsdl" ID="819c737f-ffc5-421f-a013-5b0aaff645b9" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/EvaluacionDesempenioWS?WSDL" />
     <MetadataFile FileName="StaffWS.xsd" MetadataType="Schema" ID="64e8f5ba-8551-4848-a463-beaf05559516" SourceId="1" SourceUrl="http://localhost:8080/GDPTalentoWA/StaffWS?xsd=1" />

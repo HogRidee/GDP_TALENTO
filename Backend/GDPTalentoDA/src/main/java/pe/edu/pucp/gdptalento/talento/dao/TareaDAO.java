@@ -8,4 +8,6 @@ public interface TareaDAO {
     int eliminarTarea(int id);
     ArrayList<Tarea> listarTareas();
     Tarea obtenerPorId(int id);
+    ArrayList<Tarea> listarPendientesSemana();
+    ArrayList<Tarea> listarPendientes();
 }

@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="devolverResumen" type="tns:devolverResumen" />
-  <xs:element name="devolverResumenResponse" type="tns:devolverResumenResponse" />
-  <xs:complexType name="devolverResumen">
+  <xs:element name="devolverEventosResumen" type="tns:devolverEventosResumen" />
+  <xs:element name="devolverEventosResumenResponse" type="tns:devolverEventosResumenResponse" />
+  <xs:element name="devolverProximaEntrevista" type="tns:devolverProximaEntrevista" />
+  <xs:element name="devolverProximaEntrevistaResponse" type="tns:devolverProximaEntrevistaResponse" />
+  <xs:element name="devolverTareasResumen" type="tns:devolverTareasResumen" />
+  <xs:element name="devolverTareasResumenResponse" type="tns:devolverTareasResumenResponse" />
+  <xs:element name="devolverTotales" type="tns:devolverTotales" />
+  <xs:element name="devolverTotalesResponse" type="tns:devolverTotalesResponse" />
+  <xs:element name="devolverVariacionMiembros" type="tns:devolverVariacionMiembros" />
+  <xs:element name="devolverVariacionMiembrosResponse" type="tns:devolverVariacionMiembrosResponse" />
+  <xs:complexType name="devolverVariacionMiembros">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="devolverResumenResponse">
+  <xs:complexType name="devolverVariacionMiembrosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolverTotales">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="devolverTotalesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolverProximaEntrevista">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="devolverProximaEntrevistaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolverEventosResumen">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="devolverEventosResumenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolverTareasResumen">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="devolverTareasResumenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

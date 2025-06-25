@@ -107,5 +107,10 @@ public class PostulanteMySQL implements PostulanteDAO{
         }
         return postulantes;
     }
+
+    @Override
+    public int calcularVariacionMes() {
+        return 0; // no hay fecha ingreso en la BD
+    }
     
 }

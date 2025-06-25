@@ -30,6 +30,8 @@
                  ref="http://localhost:8080/GDPTalentoWA/UsuarioWS?WSDL"/>
 
     <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
-                 ref="http://localhost:8080/GDPTalentoWA/InicioWS?WSDL"/>          
-
+                 ref="http://localhost:8080/GDPTalentoWA/InicioWS?WSDL"/>   
+       
+    <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/" 
+                 ref="http://localhost:8080/GDPTalentoWA/ReporteWS?WSDL"/>  
 </discovery>
