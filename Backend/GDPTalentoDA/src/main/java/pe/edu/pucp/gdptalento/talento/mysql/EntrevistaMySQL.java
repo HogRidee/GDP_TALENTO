@@ -6,10 +6,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
+
+import pe.edu.pucp.gdptalento.core.model.Usuario;
+import pe.edu.pucp.gdptalento.miembros.dao.PostulanteDAO;
+
 import pe.edu.pucp.gdptalento.talento.dao.EntrevistaDAO;
 import pe.edu.pucp.gdptalento.talento.model.Entrevista;
 import pe.edu.pucp.gdptalento.talento.model.EstadoEntrevista;
 import pe.edu.pucp.gdptalento.miembros.model.Postulante;
+import pe.edu.pucp.gdptalento.miembros.mysql.PostulanteMySQL;
 import pucp.edu.pe.gdptalento.config.DBManager;
 
 public class EntrevistaMySQL implements EntrevistaDAO{
@@ -85,7 +90,20 @@ public class EntrevistaMySQL implements EntrevistaDAO{
                 entrevista.setPostulante(postulante);
                 entrevista.setPuntuacionFinal(rs.getDouble("puntuacion_final"));
                 entrevista.setFeedback(rs.getString("feedback"));
-
+                
+                //Se tiene que incluir a los entrevistadores
+                ArrayList<Usuario> entrevistadores = new ArrayList<>();
+                Map<Integer, Object> parametrosEntrada = new HashMap<>();
+                parametrosEntrada.put(1, entrevista.getId());
+                ResultSet rs2 = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ENTREVISTA_ENTREVISTADOR", parametrosEntrada);
+                while (rs2.next()) {
+                    int idEncargado = rs2.getInt("id_entrevistador");
+                    Usuario entrevistador = new Usuario(); //deberia ser Obtener por ID
+                    entrevistador.setId(rs2.getInt("id_entrevistador"));
+                    entrevistadores.add(entrevistador);
+                }
+                rs2.close();
+                entrevista.setEntrevistadores(entrevistadores);
                 listadoEntrevistas.add(entrevista);
             }
         } catch (SQLException ex) {
