@@ -11,7 +11,7 @@ namespace GDPTalentoWA.Paginas
 {
 
 
-    public partial class Reportes
+    public partial class ReportesMostrar
     {
 
         /// <summary>
