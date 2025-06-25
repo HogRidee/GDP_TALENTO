@@ -5,25 +5,23 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/TareaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-
-  <message name="modificarTarea">
-    <part name="parameters" element="tns:modificarTarea" />
+  <message name="listarTareas">
+    <part name="parameters" element="tns:listarTareas" />
   </message>
-  <message name="modificarTareaResponse">
-    <part name="parameters" element="tns:modificarTareaResponse" />
+  <message name="listarTareasResponse">
+    <part name="parameters" element="tns:listarTareasResponse" />
   </message>
-
   <message name="insertarTarea">
     <part name="parameters" element="tns:insertarTarea" />
   </message>
   <message name="insertarTareaResponse">
     <part name="parameters" element="tns:insertarTareaResponse" />
   </message>
-  <message name="listarTareas">
-    <part name="parameters" element="tns:listarTareas" />
+  <message name="modificarTarea">
+    <part name="parameters" element="tns:modificarTarea" />
   </message>
-  <message name="listarTareasResponse">
-    <part name="parameters" element="tns:listarTareasResponse" />
+  <message name="modificarTareaResponse">
+    <part name="parameters" element="tns:modificarTareaResponse" />
   </message>
   <message name="eliminarTarea">
     <part name="parameters" element="tns:eliminarTarea" />
@@ -32,19 +30,17 @@
     <part name="parameters" element="tns:eliminarTareaResponse" />
   </message>
   <portType name="TareaWS">
-
-    <operation name="modificarTarea">
-      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
-      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
+    <operation name="listarTareas">
+      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest" message="tns:listarTareas" />
+      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasResponse" message="tns:listarTareasResponse" />
     </operation>
-
     <operation name="insertarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest" message="tns:insertarTarea" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse" message="tns:insertarTareaResponse" />
     </operation>
-    <operation name="listarTareas">
-      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest" message="tns:listarTareas" />
-      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasResponse" message="tns:listarTareasResponse" />
+    <operation name="modificarTarea">
+      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
+      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
     </operation>
     <operation name="eliminarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaRequest" message="tns:eliminarTarea" />
@@ -53,29 +49,25 @@
   </portType>
   <binding name="TareaWSPortBinding" type="tns:TareaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-
-    <operation name="insertarTarea">
-
-    <operation name="modificarTarea">
-
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarTarea">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="listarTareas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarTarea">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarTarea">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
