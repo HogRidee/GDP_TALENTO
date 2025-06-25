@@ -87,6 +87,7 @@
                         PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle">
                         <Columns>
                             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                            <asp:BoundField DataField="codigoPUCP" HeaderText="Código"/>
                             <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
                             <asp:BoundField DataField="estadoProceso" HeaderText="Estado" />
                             
