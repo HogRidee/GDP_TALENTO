@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
+
+import pe.edu.pucp.gdptalento.core.model.Usuario;
+import pe.edu.pucp.gdptalento.miembros.dao.PostulanteDAO;
+
 import pe.edu.pucp.gdptalento.talento.dao.EntrevistaDAO;
 import pe.edu.pucp.gdptalento.talento.model.Entrevista;
 import pe.edu.pucp.gdptalento.talento.model.EstadoEntrevista;
