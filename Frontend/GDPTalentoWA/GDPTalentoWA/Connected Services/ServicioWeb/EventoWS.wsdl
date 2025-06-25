@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/EventoWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="modificarEvento">
-    <part name="parameters" element="tns:modificarEvento" />
+  <message name="insertarEvento">
+    <part name="parameters" element="tns:insertarEvento" />
   </message>
-  <message name="modificarEventoResponse">
-    <part name="parameters" element="tns:modificarEventoResponse" />
+  <message name="insertarEventoResponse">
+    <part name="parameters" element="tns:insertarEventoResponse" />
   </message>
   <message name="listarEventos">
     <part name="parameters" element="tns:listarEventos" />
@@ -17,39 +17,39 @@
   <message name="listarEventosResponse">
     <part name="parameters" element="tns:listarEventosResponse" />
   </message>
-  <message name="insertarEvento">
-    <part name="parameters" element="tns:insertarEvento" />
-  </message>
-  <message name="insertarEventoResponse">
-    <part name="parameters" element="tns:insertarEventoResponse" />
-  </message>
   <message name="eliminarEvento">
     <part name="parameters" element="tns:eliminarEvento" />
   </message>
   <message name="eliminarEventoResponse">
     <part name="parameters" element="tns:eliminarEventoResponse" />
   </message>
+  <message name="modificarEvento">
+    <part name="parameters" element="tns:modificarEvento" />
+  </message>
+  <message name="modificarEventoResponse">
+    <part name="parameters" element="tns:modificarEventoResponse" />
+  </message>
   <portType name="EventoWS">
-    <operation name="modificarEvento">
-      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/modificarEventoRequest" message="tns:modificarEvento" />
-      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/modificarEventoResponse" message="tns:modificarEventoResponse" />
+    <operation name="insertarEvento">
+      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
+      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
     </operation>
     <operation name="listarEventos">
       <input wsam:Action="http://services.pucp.edu.pe/EventoWS/listarEventosRequest" message="tns:listarEventos" />
       <output wsam:Action="http://services.pucp.edu.pe/EventoWS/listarEventosResponse" message="tns:listarEventosResponse" />
     </operation>
-    <operation name="insertarEvento">
-      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
-      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
-    </operation>
     <operation name="eliminarEvento">
       <input wsam:Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoRequest" message="tns:eliminarEvento" />
       <output wsam:Action="http://services.pucp.edu.pe/EventoWS/eliminarEventoResponse" message="tns:eliminarEventoResponse" />
     </operation>
+    <operation name="modificarEvento">
+      <input wsam:Action="http://services.pucp.edu.pe/EventoWS/modificarEventoRequest" message="tns:modificarEvento" />
+      <output wsam:Action="http://services.pucp.edu.pe/EventoWS/modificarEventoResponse" message="tns:modificarEventoResponse" />
+    </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarEvento">
+    <operation name="insertarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarEvento">
+    <operation name="eliminarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarEvento">
+    <operation name="modificarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

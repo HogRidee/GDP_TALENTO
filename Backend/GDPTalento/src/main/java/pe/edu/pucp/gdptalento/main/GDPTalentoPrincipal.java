@@ -20,6 +20,8 @@ import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
 import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
+import pe.edu.pucp.gdptalento.talento.business.EntrevistaBO;
+import pe.edu.pucp.gdptalento.talento.model.Entrevista;
 
 public class GDPTalentoPrincipal {
     public static void main(String[] args){
@@ -131,13 +133,26 @@ public class GDPTalentoPrincipal {
 //                System.out.println("Evento: " + a.getEvento().getTipoEvento());
 //                System.out.println("Estado: " + a.getAsistencia());
 //        }
-        Evento e1 = new Evento();
-        e1.setId(1);
-        e1.setFecha(new Date());
-        e1.setEstadoEvento(EstadoEvento.APROBADO);
-        e1.setTipoEvento(TipoEvento.REUNION);
-        
-        EventoBO boev = new EventoBO();
-        boev.modificar(e1);
+//        Evento e1 = new Evento();
+//        e1.setId(1);
+//        e1.setFecha(new Date());
+//        e1.setEstadoEvento(EstadoEvento.APROBADO);
+//        e1.setTipoEvento(TipoEvento.REUNION);
+//        
+//        EventoBO boev = new EventoBO();
+//        boev.modificar(e1);
+
+        EntrevistaBO boEntrevista = new EntrevistaBO();
+        ArrayList<Entrevista> listaEntrevista = boEntrevista.listarTodas();
+        for(Entrevista e : listaEntrevista){
+            System.out.println("Postulante: " + e.getPostulante().getId());
+            System.out.println("Fecha: " + e.getFecha().toString());
+            System.out.println("Puntuacion: " + e.getPuntuacionFinal());
+            System.out.println("Feed: " + e.getFeedback());
+            for(Usuario u : e.getEntrevistadores()){
+                System.out.println("Entrevistador: " + u.getId());
+            }
+        }
+//      
     }
 }

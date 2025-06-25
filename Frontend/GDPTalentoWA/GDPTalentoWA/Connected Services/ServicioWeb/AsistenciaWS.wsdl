@@ -5,18 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/AsistenciaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="listarAsistenciasPorStaff">
-    <part name="parameters" element="tns:listarAsistenciasPorStaff" />
-  </message>
-  <message name="listarAsistenciasPorStaffResponse">
-    <part name="parameters" element="tns:listarAsistenciasPorStaffResponse" />
-  </message>
-  <message name="modificarAsistencia">
-    <part name="parameters" element="tns:modificarAsistencia" />
-  </message>
-  <message name="modificarAsistenciaResponse">
-    <part name="parameters" element="tns:modificarAsistenciaResponse" />
-  </message>
   <message name="insertarAsistencia">
     <part name="parameters" element="tns:insertarAsistencia" />
   </message>
@@ -29,15 +17,19 @@
   <message name="listarAsistenciasResponse">
     <part name="parameters" element="tns:listarAsistenciasResponse" />
   </message>
+  <message name="listarAsistenciasPorStaff">
+    <part name="parameters" element="tns:listarAsistenciasPorStaff" />
+  </message>
+  <message name="listarAsistenciasPorStaffResponse">
+    <part name="parameters" element="tns:listarAsistenciasPorStaffResponse" />
+  </message>
+  <message name="modificarAsistencia">
+    <part name="parameters" element="tns:modificarAsistencia" />
+  </message>
+  <message name="modificarAsistenciaResponse">
+    <part name="parameters" element="tns:modificarAsistenciaResponse" />
+  </message>
   <portType name="AsistenciaWS">
-    <operation name="listarAsistenciasPorStaff">
-      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasPorStaffRequest" message="tns:listarAsistenciasPorStaff" />
-      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasPorStaffResponse" message="tns:listarAsistenciasPorStaffResponse" />
-    </operation>
-    <operation name="modificarAsistencia">
-      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaRequest" message="tns:modificarAsistencia" />
-      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaResponse" message="tns:modificarAsistenciaResponse" />
-    </operation>
     <operation name="insertarAsistencia">
       <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/insertarAsistenciaRequest" message="tns:insertarAsistencia" />
       <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/insertarAsistenciaResponse" message="tns:insertarAsistenciaResponse" />
@@ -46,27 +38,17 @@
       <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasRequest" message="tns:listarAsistencias" />
       <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasResponse" message="tns:listarAsistenciasResponse" />
     </operation>
+    <operation name="listarAsistenciasPorStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasPorStaffRequest" message="tns:listarAsistenciasPorStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/listarAsistenciasPorStaffResponse" message="tns:listarAsistenciasPorStaffResponse" />
+    </operation>
+    <operation name="modificarAsistencia">
+      <input wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaRequest" message="tns:modificarAsistencia" />
+      <output wsam:Action="http://services.pucp.edu.pe/AsistenciaWS/modificarAsistenciaResponse" message="tns:modificarAsistenciaResponse" />
+    </operation>
   </portType>
   <binding name="AsistenciaWSPortBinding" type="tns:AsistenciaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarAsistenciasPorStaff">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarAsistencia">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarAsistencia">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +59,24 @@
       </output>
     </operation>
     <operation name="listarAsistencias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAsistenciasPorStaff">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarAsistencia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
