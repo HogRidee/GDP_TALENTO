@@ -83,95 +83,77 @@
         </div>
       </div>
     </div>
-
-      <ul class="nav nav-pills tab-menu mb-2" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active"
-            id="recientes-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#recientes"
-            type="button"
-            role="tab"
-            aria-controls="recientes"
-            aria-selected="true">
-      Actividades Recientes
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link"
-            id="pendientes-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pendientes"
-            type="button"
-            role="tab"
-            aria-controls="pendientes"
-            aria-selected="false">
-      Pendientes
-    </button>
-  </li>
-</ul>
-    <!-- === CARD DE ACTIVIDADES === -->
+    
+    <!-- === ACCIONES RÁPIDAS === -->
     <div class="card shadow-sm mb-4">
       <div class="card-body">
-
-        <!-- PESTAÑAS -->
-        
-
-        <!-- ENCABEZADO -->
-        <h5 class="fw-bold mb-1">Actividades Recientes</h5>
-        <p class="text-muted mb-4">Últimas acciones realizadas en el sistema</p>
-
-        <!-- LISTA DE ACTIVIDADES -->
-        <div class="activity-item d-flex align-items-start mb-3 position-relative">
-          <div class="icon-circle-celeste me-3">
-             <i class="fa-regular fa-user"></i>
+        <h5 class="fw-bold mb-1 text-center">Acciones Rápidas</h5>
+        <p class="text-muted mb-4 text-center">Accede rápidamente a las funciones más utilizadas</p>
+        <div class="row g-3 justify-content-center w-75 mx-auto">
+          <!-- Nuevo Miembro -->
+          <div class="col-12 col-md-4">
+            <div class="card custom-card h-100 text-center bg-primary bg-opacity-10 custom-rounded">
+              <a href="RegistrarNuevoMiembro.aspx" class="stretched-link"></a>
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mb-3"
+                     style="width:72px; height:72px;">
+                  <i class="fa-regular fa-user-plus fa-2x"></i>
+                </div>
+                <h6 class="card-title mb-1 fw-bold">Nuevo Miembro</h6>
+                <p class="text-muted small mb-0">Registrar un nuevo miembro en el sistema</p>
+              </div>
+            </div>
           </div>
-          <div class="flex-grow-1">
-            <h6 class="mb-1 fw-bold">Nuevo miembro registrado</h6>
-            <small class="d-block">Juan Pérez fue registrado como miembro del área de Desarrollo</small>
-            <small class="text-muted"><i class="bi bi-clock me-1"></i>Hace 2 horas</small>
+          <!-- Nueva Entrevista -->
+          <div class="col-12 col-md-4">
+            <div class="card custom-card h-100 text-center bg-success bg-opacity-10 custom-rounded">
+              <a href="Entrevista.aspx" class="stretched-link"></a>
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mb-3"
+                     style="width:72px; height:72px;">
+                  <i class="fa-regular fa-calendar-check fa-2x"></i>
+                </div>
+                <h6 class="card-title mb-1 fw-bold">Nueva Entrevista</h6>
+                <p class="text-muted small mb-0">Programar una nueva entrevista</p>
+              </div>
+            </div>
           </div>
-          <i class="bi bi-arrow-up-right activity-link"></i>
+          <!-- Nueva Tarea -->
+          <div class="col-12 col-md-4">
+            <div class="card custom-card h-100 text-center custom-rounded"
+                 style="background: linear-gradient(to bottom right, rgba(220,182,255,0.3), rgba(184,92,255,0.3));">
+              <a href="Tareas.aspx" class="stretched-link"></a>
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <div class="rounded-circle"
+                     style="width:72px; height:72px; background: linear-gradient(135deg,#dcb6ff,#b85cff); display:flex; align-items:center; justify-content:center; color:white; margin-bottom:1rem;">
+                  <i class="fa-regular fa-list-check fa-2x"></i>
+                </div>
+                <h6 class="card-title mb-1 fw-bold">Nueva Tarea</h6>
+                <p class="text-muted small mb-0">Crear y asignar una nueva tarea</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="activity-item d-flex align-items-start mb-3 position-relative">
-          <div class="icon-circle-celeste me-3">
-            <i class="fa-regular fa-user-check"></i>
-          </div>
-          <div class="flex-grow-1">
-            <h6 class="mb-1 fw-bold">Entrevista programada</h6>
-            <small class="d-block">Entrevista con María García para el puesto de Diseñador UI/UX</small>
-            <small class="text-muted"><i class="bi bi-clock me-1"></i>Hace 5 horas</small>
-          </div>
-          <i class="bi bi-arrow-up-right activity-link"></i>
-        </div>
-
-        <div class="activity-item d-flex align-items-start mb-3 position-relative">
-          <div class="icon-circle-celeste me-3">
-            <i class="fa-regular fa-medal"></i>
-          </div>
-          <div class="flex-grow-1">
-            <h6 class="mb-1 fw-bold">Evaluación completada</h6>
-            <small class="d-block">Se completó la evaluación trimestral del área de Marketing</small>
-            <small class="text-muted"><i class="bi bi-clock me-1"></i>Hace 1 día</small>
-          </div>
-          <i class="bi bi-arrow-up-right activity-link"></i>
-        </div>
-
-        <div class="activity-item d-flex align-items-start mb-0 position-relative">
-          <div class="icon-circle-celeste me-3">
-            <i class="fa-regular fa-chart-simple"></i>
-          </div>
-          <div class="flex-grow-1">
-            <h6 class="mb-1 fw-bold">Reporte generado</h6>
-            <small class="d-block">Se generó el reporte OIE del staff actual</small>
-            <small class="text-muted"><i class="bi bi-clock me-1"></i>Hace 2 días</small>
-          </div>
-          <i class="bi bi-arrow-up-right activity-link"></i>
-        </div>
-
       </div>
     </div>
+
+
+    <!-- === BIENVENIDA === -->
+    <div class="rounded-3 p-4 mb-4" style="background-color:#eef5ff;">
+      <h4 class="fw-bold mb-2 text-center">¡Bienvenido a GDP Talento!</h4>
+      <p class="text-secondary mb-4 text-center w-75 mx-auto lead">
+        Desde aquí puedes gestionar todos los aspectos relacionados con el talento humano. 
+        Utiliza las acciones rápidas para crear nuevos registros o navega por el menú lateral para 
+        acceder a funcionalidades específicas.
+      </p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <span class="badge bg-white text-secondary border px-3 py-2 fs-6">Gestión de Miembros</span>
+        <span class="badge bg-white text-secondary border px-3 py-2 fs-6">Proceso de Entrevistas</span>
+        <span class="badge bg-white text-secondary border px-3 py-2 fs-6">Seguimiento de Tareas</span>
+        <span class="badge bg-white text-secondary border px-3 py-2 fs-6">Reportes y Análisis</span>
+      </div>
+    </div>
+
   </div>
 </asp:Content>
 

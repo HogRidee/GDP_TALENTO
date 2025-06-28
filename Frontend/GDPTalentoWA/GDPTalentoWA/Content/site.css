@@ -472,3 +472,17 @@ html, body {
         font-size: 1.25rem; /* ajusta tamaño a tu gusto */
         line-height: 1; /* evita desplazamientos por line-height extra */
     }
+
+.card.custom-rounded {
+    border-radius: 1rem;
+}
+
+.custom-card {
+    transition: box-shadow .2s ease, transform .1s ease;
+    cursor: pointer;
+}
+
+    .custom-card:hover {
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,0.15);
+        transform: translateY(-2px);
+    }
