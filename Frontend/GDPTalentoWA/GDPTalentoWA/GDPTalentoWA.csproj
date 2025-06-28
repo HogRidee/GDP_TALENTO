@@ -285,6 +285,9 @@
     <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.generarReporteTotalResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicioWeb\GDPTalentoWA.ServicioWeb.eliminarAsistenciasPorEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServicioWeb\InicioWS.wsdl" />
     <None Include="Connected Services\ServicioWeb\InicioWS.xsd">
       <SubType>Designer</SubType>

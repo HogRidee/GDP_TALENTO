@@ -21,6 +21,8 @@ public class EventoWS {
     private EventoBO boEvento;
     /**
      * This is a sample web service operation
+     * @param evento
+     * @return 
      */
     @WebMethod(operationName = "insertarEvento")
     public int insertarEvento(@WebParam(name = "evento") Evento evento) {

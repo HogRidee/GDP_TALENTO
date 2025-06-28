@@ -4,6 +4,21 @@
     <groupId>pe.edu.pucp</groupId>
     <artifactId>GDPTalentoDomain</artifactId>
     <version>1.0</version>
+    <dependencies>
+        <!-- API de JAXB para anotaciones como @XmlElement y @XmlRootElement -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <!-- Implementación de JAXB en tiempo de ejecución -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+    </dependencies>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -14,6 +14,7 @@ import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
 import pe.edu.pucp.gdptalento.eventos.model.EstadoEvento;
 import pe.edu.pucp.gdptalento.eventos.model.Evento;
 import pe.edu.pucp.gdptalento.eventos.model.TipoEvento;
+import pe.edu.pucp.gdptalento.eventos.mysql.EventoMySQL;
 import pe.edu.pucp.gdptalento.miembros.business.StaffBO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
@@ -133,26 +134,64 @@ public class GDPTalentoPrincipal {
 //                System.out.println("Evento: " + a.getEvento().getTipoEvento());
 //                System.out.println("Estado: " + a.getAsistencia());
 //        }
-//        Evento e1 = new Evento();
-//        e1.setId(1);
-//        e1.setFecha(new Date());
-//        e1.setEstadoEvento(EstadoEvento.APROBADO);
-//        e1.setTipoEvento(TipoEvento.REUNION);
-//        
-//        EventoBO boev = new EventoBO();
-//        boev.modificar(e1);
-
-        EntrevistaBO boEntrevista = new EntrevistaBO();
-        ArrayList<Entrevista> listaEntrevista = boEntrevista.listarTodas();
-        for(Entrevista e : listaEntrevista){
-            System.out.println("Postulante: " + e.getPostulante().getId());
-            System.out.println("Fecha: " + e.getFecha().toString());
-            System.out.println("Puntuacion: " + e.getPuntuacionFinal());
-            System.out.println("Feed: " + e.getFeedback());
-            for(Usuario u : e.getEntrevistadores()){
-                System.out.println("Entrevistador: " + u.getId());
-            }
+        
+        Staff s = new Staff();
+        Usuario u = new Usuario();
+        ArrayList<Staff> part = new ArrayList<Staff>();
+        ArrayList<Usuario> enc = new ArrayList<Usuario>();
+        
+        StaffBO boStaff = new StaffBO();
+        UsuarioBO boUsuario = new UsuarioBO();
+        
+        s=boStaff.obtenerPorID(6);
+        part.add(s);
+        s=boStaff.obtenerPorID(7);
+        part.add(s);
+        s=boStaff.obtenerPorID(13);
+        part.add(s);
+        u=boUsuario.obtenerPorID(1);
+        enc.add(u);
+        u=boUsuario.obtenerPorID(2);
+        enc.add(u);
+        
+        
+        Evento e1 = new Evento();
+        e1.setId(1);
+        e1.setFecha(new Date());
+        e1.setEstadoEvento(EstadoEvento.APROBADO);
+        e1.setTipoEvento(TipoEvento.REUNION);
+        
+        e1.setEncargados(enc);
+        e1.setParticipantes(part);
+        
+        
+        EventoBO boev = new EventoBO();
+        
+        System.out.println("MODIFICAR - Participantes recibidos: " + (e1.getParticipantes() == null ? "null" : e1.getParticipantes().size()));
+        System.out.println("MODIFICAR - Encargados recibidos: " + (e1.getEncargados() == null ? "null" : e1.getEncargados().size()));
+        
+        boev.modificar(e1);
+        
+        
+        EventoMySQL event = new EventoMySQL();
+        ArrayList<Usuario> encargados = new ArrayList<Usuario>(event.listarEncargadosPorEvento(1));
+        for(Usuario x : encargados){
+            System.out.println(x.getId());
         }
+
+
+
+//        EntrevistaBO boEntrevista = new EntrevistaBO();
+//        ArrayList<Entrevista> listaEntrevista = boEntrevista.listarTodas();
+//        for(Entrevista e : listaEntrevista){
+//            System.out.println("Postulante: " + e.getPostulante().getId());
+//            System.out.println("Fecha: " + e.getFecha().toString());
+//            System.out.println("Puntuacion: " + e.getPuntuacionFinal());
+//            System.out.println("Feed: " + e.getFeedback());
+//            for(Usuario u : e.getEntrevistadores()){
+//                System.out.println("Entrevistador: " + u.getId());
+//            }
+//        }
 //      
     }
 }

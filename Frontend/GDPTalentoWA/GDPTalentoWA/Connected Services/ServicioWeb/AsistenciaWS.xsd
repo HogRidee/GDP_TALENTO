@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eliminarAsistenciasPorEvento" type="tns:eliminarAsistenciasPorEvento" />
+  <xs:element name="eliminarAsistenciasPorEventoResponse" type="tns:eliminarAsistenciasPorEventoResponse" />
+  <xs:element name="evento" type="tns:evento" />
   <xs:element name="insertarAsistencia" type="tns:insertarAsistencia" />
   <xs:element name="insertarAsistenciaResponse" type="tns:insertarAsistenciaResponse" />
   <xs:element name="listarAsistencias" type="tns:listarAsistencias" />
@@ -8,14 +11,19 @@
   <xs:element name="listarAsistenciasResponse" type="tns:listarAsistenciasResponse" />
   <xs:element name="modificarAsistencia" type="tns:modificarAsistencia" />
   <xs:element name="modificarAsistenciaResponse" type="tns:modificarAsistenciaResponse" />
-  <xs:complexType name="listarAsistenciasPorStaff">
+  <xs:complexType name="eliminarAsistenciasPorEvento">
     <xs:sequence>
-      <xs:element name="id" type="xs:int" />
+      <xs:element name="idEvento" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarAsistenciasPorStaffResponse">
+  <xs:complexType name="eliminarAsistenciasPorEventoResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:asistencia" />
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarAsistencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asistencia" type="tns:asistencia" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="asistencia">
@@ -27,12 +35,24 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="encargados" nillable="true" type="tns:usuario" />
-      <xs:element minOccurs="0" name="estadoEvento" type="tns:estadoEvento" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
       <xs:element name="id" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="participantes" nillable="true" type="tns:staff" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="estadoEvento" type="tns:estadoEvento" />
       <xs:element minOccurs="0" name="tipoEvento" type="tns:tipoEvento" />
+      <xs:element minOccurs="0" name="encargados">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="usuario" type="tns:usuario" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="participantes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="staff" type="tns:staff" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="usuario">
@@ -89,14 +109,19 @@
       <xs:element name="puntaje" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarAsistencia">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Asistencia" type="tns:asistencia" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarAsistenciaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarAsistenciasPorStaff">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarAsistenciasPorStaffResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:asistencia" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarAsistencias">
@@ -122,6 +147,18 @@
       <xs:enumeration value="ASISTIO" />
       <xs:enumeration value="FALTO" />
       <xs:enumeration value="JUSTIFICADO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="estadoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="APROBADO" />
+      <xs:enumeration value="CANCELADO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REUNION" />
+      <xs:enumeration value="INTEGRACION" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="nombreRol">
@@ -166,18 +203,6 @@
       <xs:enumeration value="NO_MATRICULADO" />
       <xs:enumeration value="EGRESADO" />
       <xs:enumeration value="EXTERNO" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="estadoEvento">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="APROBADO" />
-      <xs:enumeration value="CANCELADO" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="tipoEvento">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="REUNION" />
-      <xs:enumeration value="INTEGRACION" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

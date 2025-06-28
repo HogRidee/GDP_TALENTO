@@ -49,9 +49,9 @@
                     </div>
                 </div>
                 <div class="row g-3 mb-4 table-responsive">
-                    <asp:GridView ID="dgvMiembros" runat="server" AutoGenerateColumns="false"
-                        OnPageIndexChanging="dgvMiembros_PageIndexChanging" DataKeyNames="id"
-                        PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle" OnRowDataBound="dgvMiembros_RowDataBound">
+                    <asp:GridView ID="dgvEventos" runat="server" AutoGenerateColumns="false"
+                         DataKeyNames="id" CssClass="table table-hover table-striped table-bordered text-center align-middle"
+                         OnRowDataBound="dgvEventos_RowDataBound">
                         <Columns>
                             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                             <asp:BoundField DataField="codigoPUCP" HeaderText="Código" />

@@ -21,11 +21,17 @@ public class AsistenciaBO {
     }
     
     public ArrayList<Asistencia> listarTodas(){
-        return daoAsistencia.listarTodas();
+        ArrayList<Asistencia> lista = daoAsistencia.listarTodas();
+        return (lista != null) ? lista : new ArrayList<>();
     }
     
     public ArrayList<Asistencia> listarTodasPorID(int id){
         return daoAsistencia.listarTodasPorID(id);
     }
+    
+    public int eliminarAsistenciasPorEvento(int id){
+        return daoAsistencia.eliminarAsistenciasPorEvento(id);
+    }
+    
 }
 

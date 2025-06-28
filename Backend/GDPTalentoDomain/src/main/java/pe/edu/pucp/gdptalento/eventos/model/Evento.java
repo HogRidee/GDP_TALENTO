@@ -7,13 +7,25 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "evento")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Evento {
 
     private int id;
     private Date fecha;
     private EstadoEvento estadoEvento;
     private TipoEvento tipoEvento;
+    @XmlElementWrapper(name = "encargados")
+    @XmlElement(name = "usuario")
     private ArrayList<Usuario> encargados;
+    @XmlElementWrapper(name = "participantes")
+    @XmlElement(name = "staff")
     private ArrayList<Staff> participantes;
 
     // Constructor

@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://services.pucp.edu.pe" targetNamespace="http://services.pucp.edu.pe" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="eliminarEvento" type="tns:eliminarEvento" />
   <xs:element name="eliminarEventoResponse" type="tns:eliminarEventoResponse" />
+  <xs:element name="evento" type="tns:evento" />
   <xs:element name="insertarEvento" type="tns:insertarEvento" />
   <xs:element name="insertarEventoResponse" type="tns:insertarEventoResponse" />
   <xs:element name="listarEventos" type="tns:listarEventos" />
@@ -15,12 +16,24 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="encargados" nillable="true" type="tns:usuario" />
-      <xs:element minOccurs="0" name="estadoEvento" type="tns:estadoEvento" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
       <xs:element name="id" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="participantes" nillable="true" type="tns:staff" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="estadoEvento" type="tns:estadoEvento" />
       <xs:element minOccurs="0" name="tipoEvento" type="tns:tipoEvento" />
+      <xs:element minOccurs="0" name="encargados">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="usuario" type="tns:usuario" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="participantes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="staff" type="tns:staff" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="usuario">
@@ -110,6 +123,18 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="estadoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="APROBADO" />
+      <xs:enumeration value="CANCELADO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoEvento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REUNION" />
+      <xs:enumeration value="INTEGRACION" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="nombreRol">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ADMIN" />
@@ -152,18 +177,6 @@
       <xs:enumeration value="NO_MATRICULADO" />
       <xs:enumeration value="EGRESADO" />
       <xs:enumeration value="EXTERNO" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="estadoEvento">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="APROBADO" />
-      <xs:enumeration value="CANCELADO" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="tipoEvento">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="REUNION" />
-      <xs:enumeration value="INTEGRACION" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

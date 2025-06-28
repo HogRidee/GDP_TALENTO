@@ -35,13 +35,20 @@ public class AsistenciaWS {
     @WebMethod(operationName = "listarAsistencias")
     public ArrayList<Asistencia> listarAsistencias() {      
         boAsistencia = new AsistenciaBO();
-        return boAsistencia.listarTodas();
+        ArrayList<Asistencia> lista = boAsistencia.listarTodas();
+        return (lista != null) ? lista : new ArrayList<>();
     }
     
     @WebMethod(operationName = "listarAsistenciasPorStaff")
     public ArrayList<Asistencia> listarAsistenciasPorStaff(@WebParam(name = "id") int id) {      
         boAsistencia = new AsistenciaBO();
         return boAsistencia.listarTodasPorID(id);
+    }
+    
+    @WebMethod(operationName = "eliminarAsistenciasPorEvento")
+    public int eliminarAsistenciasPorEvento(@WebParam(name = "idEvento") int id) {      
+        boAsistencia = new AsistenciaBO();
+        return boAsistencia.eliminarAsistenciasPorEvento(id);
     }
     
 }

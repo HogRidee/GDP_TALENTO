@@ -31,5 +31,9 @@ public class StaffBO {
     public int calcularVariacionMes(){
         return daoStaff.calcularVariacionMes();
     }
+    
+    public Staff obtenerPorID(int idStaff){
+        return daoStaff.obtenerPorId(idStaff);
+    }
 }
 

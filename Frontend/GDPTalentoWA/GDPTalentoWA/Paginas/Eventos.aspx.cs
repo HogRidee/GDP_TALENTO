@@ -130,5 +130,121 @@ namespace GDPTalentoWA.Paginas
             dgvEventos.DataBind();
 
         }
+
+        protected void btnGuardarAsistencia_Click(object sender, EventArgs e)
+        {
+            var eventoSeleccionado = (evento)Session["eventoSeleccionado"];
+            AsistenciaWSClient boAsistencia = new AsistenciaWSClient();
+            boAsistencia.eliminarAsistenciasPorEvento(eventoSeleccionado.id);
+            foreach (GridViewRow row in gvAsistencia.Rows)
+            {
+                int idParticipante = Convert.ToInt32(gvAsistencia.DataKeys[row.RowIndex].Value);
+                CheckBox chkAsistio = (CheckBox)row.FindControl("chkAsistio");
+
+                if (chkAsistio != null)
+                {
+                    var asistenciasExistentes = boAsistencia.listarAsistenciasPorStaff(idParticipante) ?? new asistencia[0];
+
+                    var yaRegistrado = asistenciasExistentes.FirstOrDefault(
+                    a => a.evento != null && a.evento.id == eventoSeleccionado.id);
+
+                    var asistenciaObj = new ServicioWeb.asistencia();
+                    asistenciaObj.participante = new ServicioWeb.staff() { id = idParticipante };
+                    asistenciaObj.evento = new ServicioWeb.evento() { id = eventoSeleccionado.id };
+                    asistenciaObj.asistencia1 = chkAsistio.Checked ? estadoAsistencia.ASISTIO : estadoAsistencia.FALTO;
+
+                    if (yaRegistrado != null)
+                    {
+                        boAsistencia.modificarAsistencia(asistenciaObj);
+                    }
+                    else
+                    {
+                        boAsistencia.insertarAsistencia(asistenciaObj);
+                    }
+                }
+            }
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "alerta", "alert('Asistencia registrada correctamente.');", true);
+        }
+
+        protected void dgvEventos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Recuperas el objeto evento que corresponde a esta fila
+                var evento = (evento)e.Row.DataItem;
+
+                // Recuperas el botón
+                Button btnAsistencia = (Button)e.Row.FindControl("btnAsistencia");
+
+                // Habilitas solo si es la fecha actual
+                if (btnAsistencia != null)
+                {
+                    btnAsistencia.Enabled = (evento.fecha.Date == DateTime.Today);
+                }
+            }
+            
+
+        }
+
+        protected void dgvEventos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Asistencia")
+            {
+                int idEvento = Convert.ToInt32(e.CommandArgument);
+                EventoWSClient boEvento = new EventoWSClient();
+                AsistenciaWSClient boAsistencia = new AsistenciaWSClient();
+                StaffWSClient bostaff = new StaffWSClient();
+
+                var eventoSeleccionado = boEvento.listarEventos().FirstOrDefault(s => s.id == idEvento);
+
+                if (eventoSeleccionado != null)
+                {
+                    Session["eventoSeleccionado"] = eventoSeleccionado;
+
+                    // Obtener todos los staff
+                    var listaConDatos = new List<staff>(bostaff.listarStaff() ?? new staff[0]);
+
+                    // Obtener asistencias desde la BD (y evitar null)
+                    var todasAsistencias = boAsistencia.listarAsistencias() ?? new asistencia[0];
+
+                    // Participantes del evento
+                    List<staff> listaAsistentes = new List<staff>();
+                    var idsAgregados = new HashSet<int>();
+
+                    foreach (staff x in eventoSeleccionado.participantes ?? new staff[0])
+                    {
+                        var staffMatch = listaConDatos.FirstOrDefault(y => y.id == x.id);
+                        if (staffMatch != null && idsAgregados.Add(staffMatch.id))
+                        {
+                            listaAsistentes.Add(staffMatch);
+                        }
+                    }
+
+                    // Crear lista a mostrar con estado de asistencia
+                    var listaParaMostrar = listaAsistentes.Select(p =>
+                    {
+                        var asistenciaBD = todasAsistencias
+                            .FirstOrDefault(a => a.evento?.id == eventoSeleccionado.id && a.participante?.id == p.id);
+
+                        bool asistio = (asistenciaBD != null && asistenciaBD.asistencia1 == estadoAsistencia.ASISTIO);
+
+                        return new
+                        {
+                            id = p.id,
+                            codigoPUCP = p.codigoPUCP,
+                            nombre = p.nombre,
+                            asistio = asistio
+                        };
+                    }).ToList();
+
+                    Session["Asistentes"] = listaParaMostrar;
+                    gvAsistencia.DataSource = listaParaMostrar;
+                    gvAsistencia.DataBind();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "abrirModal", "abrirModalAsistencia();", true);
+                }
+            }
+        }
     }
 }

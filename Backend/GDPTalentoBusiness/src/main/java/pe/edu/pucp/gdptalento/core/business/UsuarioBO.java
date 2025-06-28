@@ -46,4 +46,9 @@ public class UsuarioBO {
         }
         return 0;
     }
+    
+    public Usuario obtenerPorID(int id){
+        return daoUsuario.obtenerPorId(id);
+    }
+    
 }

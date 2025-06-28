@@ -38,7 +38,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, asistencia.getEvento().getId());
         parametrosEntrada.put(2, asistencia.getParticipante().getId());
-        parametrosEntrada.put(3, asistencia.getAsistencia());
+        parametrosEntrada.put(3, asistencia.getEstadoAsistencia());
         int resultado=DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ASISTENCIA", parametrosEntrada, null);
         System.out.println("Se ha insertado una asistencia");
         return resultado;
@@ -49,7 +49,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, asistencia.getEvento().getId());
         parametrosEntrada.put(2, asistencia.getParticipante().getId());
-        parametrosEntrada.put(3, asistencia.getAsistencia());
+        parametrosEntrada.put(3, asistencia.getEstadoAsistencia());
         int resultado=DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_ASISTENCIA", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion de la asistencia");
         return resultado;
@@ -79,7 +79,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
 
                 a.setParticipante(participante);
                 a.setEvento(evento);
-                a.setAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
+                a.setEstadoAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
 
                 asistencias.add(a);
             }
@@ -121,7 +121,7 @@ public class AsistenciaMySQL implements AsistenciaDAO{
 
                 a.setParticipante(participante);
                 a.setEvento(evento);
-                a.setAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
+                a.setEstadoAsistencia(EstadoAsistencia.valueOf(rs.getString("asistencia")));
 
                 asistencias.add(a);
             }
@@ -136,4 +136,12 @@ public class AsistenciaMySQL implements AsistenciaDAO{
         }
         return asistencias;
     }
+    
+    @Override
+    public int eliminarAsistenciasPorEvento(int idEvento) {
+        Map<Integer, Object> parametros = new HashMap<>();
+        parametros.put(1, idEvento);
+        return DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_ASISTENCIAS_POR_EVENTO", parametros, null);
+    }
+
 }

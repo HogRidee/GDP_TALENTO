@@ -27,6 +27,10 @@ namespace GDPTalentoWA.Paginas
                     {
                         boEvento = new EventoWSClient();
                     }
+                    
+                    //var lista_eventos = boEvento.listarEventos();
+
+
                     evento eventoActual = boEvento.listarEventos()
                                                 ?.FirstOrDefault(x => x.id == idEvento);
                     if (eventoActual != null)
@@ -39,7 +43,7 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-        protected void dgvMiembros_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void dgvEventos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType != DataControlRowType.DataRow) return;
 
@@ -49,6 +53,18 @@ namespace GDPTalentoWA.Paginas
 
             chk.Enabled = ModoEdicion;
             chk2.Enabled = ModoEdicion;
+
+            chk2.Visible = false;
+
+            UsuarioWSClient bouser;
+            bouser = new UsuarioWSClient();
+
+            var lista_usuarios = bouser.listarUsuarios();
+
+            foreach (usuario us in lista_usuarios) 
+            {
+                if(us.id == staffActual.id) chk2.Visible = true;
+            }
 
             var eventoTraido = Session["eventoActual"] as evento;
             if (eventoTraido == null) return;
@@ -73,8 +89,8 @@ namespace GDPTalentoWA.Paginas
             }
 
             Session["staffs"] = staffs;
-            dgvMiembros.DataSource = staffs;
-            dgvMiembros.DataBind();
+            dgvEventos.DataSource = staffs;
+            dgvEventos.DataBind();
         }
 
         private void CargarDatosEvento()
@@ -93,7 +109,7 @@ namespace GDPTalentoWA.Paginas
             set { ViewState["ModoEdicion"] = value; }
         }
 
-        protected void dgvMiembros_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void dgvEventos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }
@@ -111,24 +127,62 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            // 1) Obtengo participantes y encargados seleccionados
-            var lista = ((BindingList<staff>)Session["staffs"]).ToList();
-            var escogidos = new List<staff>();
-            var encargados = new List<usuario>();
-
-            foreach (GridViewRow row in dgvMiembros.Rows)
+            int totalChk = 0, totalChk2 = 0;
+            foreach (GridViewRow row in dgvEventos.Rows)
             {
                 var chk = (CheckBox)row.FindControl("chkParticipando");
                 var chk2 = (CheckBox)row.FindControl("chkEncargado");
-                int id = Convert.ToInt32(dgvMiembros.DataKeys[row.RowIndex].Value);
 
-                if (chk != null && chk.Checked) escogidos.Add(lista.Find(s => s.id == id));
-                if (chk2 != null && chk2.Checked && lista.Find(s => s.id == id) is usuario u)
-                    encargados.Add(u);
+                if (chk != null && chk.Checked) totalChk++;
+                if (chk2 != null && chk2.Checked) totalChk2++;
+            }
+            System.Diagnostics.Debug.WriteLine("Checks participantes marcados: " + totalChk);
+            System.Diagnostics.Debug.WriteLine("Checks encargados marcados: " + totalChk2);
+            // 1) Obtengo participantes y encargados seleccionados
+            var lista = ((BindingList<staff>)Session["staffs"]).ToList();
+
+            UsuarioWSClient bouser= new UsuarioWSClient();
+            var lista_usuarios = bouser.listarUsuarios();
+
+            StaffWSClient bostaff = new StaffWSClient();
+            var lista_staff = bostaff.listarStaff();
+
+            var escogidos = new List<staff>();
+            var encargados = new List<usuario>();
+
+            foreach (GridViewRow row in dgvEventos.Rows)
+            {
+                var chk = (CheckBox)row.FindControl("chkParticipando");
+                var chk2 = (CheckBox)row.FindControl("chkEncargado");
+                int id = Convert.ToInt32(dgvEventos.DataKeys[row.RowIndex].Value);
+
+                if (chk != null && chk.Checked)
+                {
+                    //escogidos.Add(lista.Find(s => s.id == id));
+                    foreach (staff stf in lista_staff)
+                    {
+                        if(stf.id == id)
+                        {
+                            staff s = bostaff.listarStaff().FirstOrDefault(st => st.id == id);
+                            if (s != null) escogidos.Add(s);
+                        }
+                    }
+                }
+                if (lista_usuarios!=null && chk2 != null && chk2.Checked)
+                {
+                    foreach (usuario us in lista_usuarios)
+                    {
+                        if(us.id == lista.Find(s => s.id == id).id)
+                        {
+                            if(id!= 0)encargados.Add(bouser.obtenerPorId(id));
+                        }
+                    }
+                }
+                    
             }
 
             // 2) Recupero de sesión el evento que cargué en Page_Load
-            var eventoTraido = Session["eventoActual"] as evento;
+            var eventoTraido = (evento)Session["eventoActual"];
             if (eventoTraido == null) return;
 
             // 3) Validación de campos obligatorios
@@ -150,12 +204,16 @@ namespace GDPTalentoWA.Paginas
             eventoTraido.fecha = fechaIngreso;
             eventoTraido.fechaSpecified = true;
 
-            eventoTraido.participantes = escogidos.ToArray();
-            eventoTraido.encargados = encargados.ToArray();
+            eventoTraido.participantes = escogidos.Where(s => s != null && s.id != 0).ToArray();
+
+            eventoTraido.encargados = encargados.Where(u => u != null && u.id != 0).ToArray();
 
             // 5) Llamo AL BACKEND: éste ya hará modificarEvento + participantes + encargados
-            if(boEvento==null)
+            if (boEvento==null)
                 boEvento = new EventoWSClient();
+            
+
+            
             boEvento.modificarEvento(eventoTraido);
 
             // 6) Actualizo mi sesión única

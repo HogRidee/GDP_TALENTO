@@ -146,7 +146,11 @@ public class StaffMySQL implements StaffDAO {
 
     @Override
     public Staff obtenerPorId(int idStaff) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<Staff>lista_Staff = new ArrayList<Staff>(listarStaff());
+        for(Staff x : lista_Staff){
+            if(x.getId()==idStaff) return x;
+        }
+        return null;
     }
     
     @Override

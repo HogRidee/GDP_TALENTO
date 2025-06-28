@@ -92,7 +92,8 @@
             <div class="table-responsive">
                 <asp:GridView ID="dgvEventos" runat="server" AutoGenerateColumns="false"
                     OnPageIndexChanging="dgvEventos_PageIndexChanging"
-                    PageSize="10" CssClass="table table-hover table-striped table-bordered text-center align-middle">
+                    PageSize="20" CssClass="table table-hover table-striped table-bordered text-center align-middle"
+                    OnRowDataBound="dgvEventos_RowDataBound" OnRowCommand="dgvEventos_RowCommand">
                     <Columns>
                         <asp:TemplateField HeaderText="ID">
                             <ItemTemplate>
@@ -113,9 +114,51 @@
                                 <%# Eval("fecha", "{0:dd/MM/yyyy}") %>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Asistencia">
+                            <ItemTemplate>
+                                <asp:Button ID="btnAsistencia" runat="server" Text="Asistencia"
+                                    CssClass="btn btn-primary"
+                                    CommandName="Asistencia"
+                                    CommandArgument='<%# Eval("id") %>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalAsistencia" tabindex="-1" role="dialog" aria-labelledby="modalAsistenciaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Asistencia</h5>
+                </div>
+                <div class="modal-body">
+                    <asp:GridView ID="gvAsistencia" runat="server" AutoGenerateColumns="False" DataKeyNames="id"
+                        CssClass="table table-hover table-striped table-bordered text-center align-middle">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="ID" />
+                            <asp:BoundField DataField="codigoPUCP" HeaderText="Código PUCP" />
+                            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                            <asp:TemplateField HeaderText="Asistió">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkAsistio" runat="server" Checked='<%# Eval("asistio") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnGuardarAsistencia" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="btnGuardarAsistencia_Click" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function abrirModalAsistencia() {
+            var modal = new bootstrap.Modal(document.getElementById('modalAsistencia'));
+            modal.show();
+        }
+    </script>
 </asp:Content>

@@ -35,6 +35,10 @@ public class EventoMySQL implements EventoDAO{
 
     @Override
     public int modificar(Evento evento) {
+        System.out.println("Participantes recibidos: " + 
+        (evento.getParticipantes() == null ? "null" : evento.getParticipantes().size()));
+        System.out.println("Encargados recibidos: " + 
+        (evento.getEncargados() == null ? "null" : evento.getEncargados().size()));
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, evento.getId());
         parametrosEntrada.put(2, new Date(evento.getFecha().getTime()));
@@ -43,8 +47,13 @@ public class EventoMySQL implements EventoDAO{
         int resultado=DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_EVENTO", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del evento");
         
-        modificarParticipantes(evento.getId(), evento.getParticipantes());
-        modificarEncargados(evento.getId(), evento.getEncargados());
+        if(evento.getParticipantes()!=null){
+            modificarParticipantes(evento.getId(), evento.getParticipantes());
+        }
+        
+        if(evento.getEncargados()!=null){
+            modificarEncargados(evento.getId(), evento.getEncargados());
+        }
         
         return resultado;
     }
@@ -64,12 +73,31 @@ public class EventoMySQL implements EventoDAO{
         rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_EVENTO", null);
         System.out.println("Lectura de eventos...");
         try{
+            if(rs == null){
+                System.out.println("ERROR: ResultSet nulo al listar eventos");
+                return new ArrayList<Evento>(); // o lo que corresponda
+            }
             while(rs.next()){
                 Evento e = new Evento();
                 e.setId(rs.getInt("id_Evento"));
                 e.setFecha(rs.getDate("fecha"));
                 e.setTipoEvento(TipoEvento.valueOf(rs.getString("tipoEvento")));
                 e.setEstadoEvento(EstadoEvento.valueOf(rs.getString("estadoEvento")));
+
+                try {
+                    e.setParticipantes(listarParticipantesPorEvento(e.getId()));
+                } catch (Exception ex) {
+                    System.out.println("Error al listar participantes para evento " + e.getId() + ": " + ex.getMessage());
+                    e.setParticipantes(new ArrayList<>());
+                }
+
+                try {
+                    e.setEncargados(listarEncargadosPorEvento(e.getId()));
+                } catch (Exception ex) {
+                    System.out.println("Error al listar encargados para evento " + e.getId() + ": " + ex.getMessage());
+                    e.setEncargados(new ArrayList<>());
+                }
+
                 eventos.add(e);
             }
         }catch(SQLException ex){
@@ -91,13 +119,15 @@ public class EventoMySQL implements EventoDAO{
 
         // 2. Luego insertamos los nuevos participantes
         try {
-            for (Staff s : participantes) {
-                Map<Integer, Object> parametrosInsertar = new HashMap<>();
-                parametrosInsertar.put(1, idEvento);
-                parametrosInsertar.put(2, s.getId());
-                DBManager.getInstance().ejecutarProcedimiento("INSERTAR_PARTICIPANTE_EVENTO", parametrosInsertar, null);
+            if (participantes != null) {
+                for (Staff s : participantes) {
+                    Map<Integer, Object> parametrosInsertar = new HashMap<>();
+                    parametrosInsertar.put(1, idEvento);
+                    parametrosInsertar.put(2, s.getId());
+                    DBManager.getInstance().ejecutarProcedimiento("INSERTAR_PARTICIPANTE_EVENTO", parametrosInsertar, null);
+                }
+                resultado = 1;
             }
-            resultado = 1;
         } catch (Exception ex) {
             System.out.println("Error al modificar participantes: " + ex.getMessage());
         } finally {
@@ -114,23 +144,54 @@ public class EventoMySQL implements EventoDAO{
         try {
             Map<Integer, Object> parametros = new HashMap<>();
             parametros.put(1, idEvento);
-            rs = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_PARTICIPANTES_EVENTO", parametros);
-
-            while (rs.next()) {
+            ResultSet rs_ = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_PARTICIPANTES_EVENTO", parametros);
+            
+            if(rs_ == null){
+                System.out.println("ERROR: ResultSet nulo al listar participantes");
+                return new ArrayList<Staff>(); // o lo que corresponda
+            }
+            while (rs_.next()) {
                 Staff s = new Staff();
-                s.setId(rs.getInt("id_staff"));
-                s.setNombre(rs.getString("nombre"));
-                s.setCodigoPUCP(Integer.parseInt(rs.getString("codigo_pucp")));
-                s.setArea(Area.valueOf(rs.getString("area")));
+                s.setId(rs_.getInt("id_staff"));
+//                s.setNombre(rs_.getString("nombre"));
+//                s.setCodigoPUCP(Integer.parseInt(rs_.getString("codigo_pucp")));
+//                s.setArea(Area.valueOf(rs_.getString("area")));
+//                s.setCorreo(rs_.getString("correo"));
                 participantes.add(s);
             }
         } catch (SQLException ex) {
             System.out.println("Error al listar participantes: " + ex.getMessage());
-        } finally {
-            DBManager.getInstance().cerrarConexion();
         }
         return participantes;
     }
+    
+    public ArrayList<Usuario> listarEncargadosPorEvento(int idEvento) {
+    ArrayList<Usuario> encargados = new ArrayList<>();
+
+    try {
+        Map<Integer, Object> parametros = new HashMap<>();
+        parametros.put(1, idEvento);
+        ResultSet rs_ = DBManager.getInstance().ejecutarProcedimientoLectura("LISTAR_ENCARGADOS_EVENTO", parametros);
+        
+        if(rs_ == null){
+            System.out.println("ERROR: ResultSet nulo al listar encargados");
+            return new ArrayList<Usuario>(); // o lo que corresponda
+        }
+        while (rs_.next()) {
+            Usuario u = new Usuario();
+            u.setId(rs_.getInt("id_usuario"));
+//            u.setNombre(rs_.getString("nombre"));
+//            u.setCodigoPUCP(Integer.parseInt(rs_.getString("codigo_pucp")));
+//            u.setArea(Area.valueOf(rs_.getString("area")));
+//            u.setCorreo(rs_.getString("correo"));
+            encargados.add(u);
+        }
+    } catch (SQLException ex) {
+        System.out.println("Error al listar encargados: " + ex.getMessage());
+    }
+
+    return encargados;
+}
     
     @Override
     public int modificarEncargados(int idEvento, ArrayList<Usuario> encargados) {
@@ -143,13 +204,15 @@ public class EventoMySQL implements EventoDAO{
 
         // 2. Insertar nuevos encargados
         try {
-            for (Usuario u : encargados) {
-                Map<Integer, Object> parametrosInsertar = new HashMap<>();
-                parametrosInsertar.put(1, idEvento);
-                parametrosInsertar.put(2, u.getId());
-                DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENCARGADO_EVENTO", parametrosInsertar, null);
+            if (encargados != null) {
+                for (Usuario u : encargados) {
+                    Map<Integer, Object> parametrosInsertar = new HashMap<>();
+                    parametrosInsertar.put(1, idEvento);
+                    parametrosInsertar.put(2, u.getId());
+                    DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENCARGADO_EVENTO", parametrosInsertar, null);
+                }
+                resultado = 1;
             }
-            resultado = 1;
         } catch (Exception ex) {
             System.out.println("Error al modificar encargados: " + ex.getMessage());
         } finally {
