@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/MiembroPUCPWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="insertarMiembroPUCP">
-    <part name="parameters" element="tns:insertarMiembroPUCP" />
+  <message name="listarMiembroPUCP">
+    <part name="parameters" element="tns:listarMiembroPUCP" />
   </message>
-  <message name="insertarMiembroPUCPResponse">
-    <part name="parameters" element="tns:insertarMiembroPUCPResponse" />
+  <message name="listarMiembroPUCPResponse">
+    <part name="parameters" element="tns:listarMiembroPUCPResponse" />
   </message>
   <message name="modificarMiembroPUCP">
     <part name="parameters" element="tns:modificarMiembroPUCP" />
@@ -23,16 +23,16 @@
   <message name="eliminarMiembroPUCPResponse">
     <part name="parameters" element="tns:eliminarMiembroPUCPResponse" />
   </message>
-  <message name="listarMiembroPUCP">
-    <part name="parameters" element="tns:listarMiembroPUCP" />
+  <message name="insertarMiembroPUCP">
+    <part name="parameters" element="tns:insertarMiembroPUCP" />
   </message>
-  <message name="listarMiembroPUCPResponse">
-    <part name="parameters" element="tns:listarMiembroPUCPResponse" />
+  <message name="insertarMiembroPUCPResponse">
+    <part name="parameters" element="tns:insertarMiembroPUCPResponse" />
   </message>
   <portType name="MiembroPUCPWS">
-    <operation name="insertarMiembroPUCP">
-      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPRequest" message="tns:insertarMiembroPUCP" />
-      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPResponse" message="tns:insertarMiembroPUCPResponse" />
+    <operation name="listarMiembroPUCP">
+      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPRequest" message="tns:listarMiembroPUCP" />
+      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPResponse" message="tns:listarMiembroPUCPResponse" />
     </operation>
     <operation name="modificarMiembroPUCP">
       <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/modificarMiembroPUCPRequest" message="tns:modificarMiembroPUCP" />
@@ -42,14 +42,14 @@
       <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPRequest" message="tns:eliminarMiembroPUCP" />
       <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/eliminarMiembroPUCPResponse" message="tns:eliminarMiembroPUCPResponse" />
     </operation>
-    <operation name="listarMiembroPUCP">
-      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPRequest" message="tns:listarMiembroPUCP" />
-      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/listarMiembroPUCPResponse" message="tns:listarMiembroPUCPResponse" />
+    <operation name="insertarMiembroPUCP">
+      <input wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPRequest" message="tns:insertarMiembroPUCP" />
+      <output wsam:Action="http://services.pucp.edu.pe/MiembroPUCPWS/insertarMiembroPUCPResponse" message="tns:insertarMiembroPUCPResponse" />
     </operation>
   </portType>
   <binding name="MiembroPUCPWSPortBinding" type="tns:MiembroPUCPWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarMiembroPUCP">
+    <operation name="listarMiembroPUCP">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarMiembroPUCP">
+    <operation name="insertarMiembroPUCP">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

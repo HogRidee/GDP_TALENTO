@@ -1,5 +1,6 @@
 ﻿using GDPTalentoWA.ServicioWeb;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace GDPTalentoWA.Paginas
                             estado = entrevista.estado,
                             entrevistador = nombreEncargado ?? "Sin nombre",
                             fecha = entrevista.fecha,
-                            feedback = entrevista.feedback
+                            feedback = entrevista.feedback ?? "Sin feedback"
                         });
                     }
                 }
@@ -85,13 +86,63 @@ namespace GDPTalentoWA.Paginas
 
         protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            DropDownList ddl = (DropDownList)sender;
+            int idEntrevista= int.Parse(ddl.Attributes["data-id"]);
+            string accion = ddl.SelectedValue;
+
+            boEntrevista = new EntrevistaWSClient();
+            var entrevistaSeleccionada = boEntrevista.listarEntrevistas().FirstOrDefault(en => en.id == idEntrevista);
+            usuariosCache = (Dictionary<int, string>)Session["usuariosCache"] ?? new Dictionary<int, string>();
+
+
+            if (entrevistaSeleccionada != null)
+            {
+                switch (accion)
+                {
+                    case "VerDetalles":
+                        /*
+                        lblDescripcionDetalle.Text = tareaSeleccionada.descripcion;
+                        lblFechaLimiteDetalle.Text = tareaSeleccionada.fechaLimite.ToString("dd/MM/yyyy");
+                        lblEstadoDetalle.Text = tareaSeleccionada.estado.ToString();
+                        lblCreadorDetalle.Text = tareaSeleccionada.creador?.nombre ?? "Sin nombre";
+
+                        var nombres = tareaSeleccionada.encargados?
+                            .Select(enc => usuariosCache.TryGetValue(enc.id, out var nombre) ? nombre : "Sin nombre")
+                            .ToList();
+
+                        lblEncargadosDetalle.Text = (nombres != null && nombres.Any()) ? string.Join(", ", nombres) : "Sin encargados";
+                        upDetallesTarea.Update();
+                        ScriptManager.RegisterStartupScript(upDetallesTarea, upDetallesTarea.GetType(), "abrirDetalles", "showModalDetallesTarea();", true);*/
+                        break;
+
+                    case "Completar":
+
+                        Session["completarEntrevistaId"] = entrevistaSeleccionada.id;
+
+                        upCompletarEntrevista.Update();
+
+                        ScriptManager.RegisterStartupScript(upCompletarEntrevista, upCompletarEntrevista.GetType(), "mostrarCompletar", "showModalCompletarEntrevista();", true);
+                        break;
+                    case "Cancelar":
+                        
+                        var entrevista = boEntrevista.listarEntrevistas().FirstOrDefault(en => en.id == idEntrevista);
+                        if (entrevista != null)
+                        {
+                            entrevista.estado = estadoEntrevista.CANCELADA;
+                            boEntrevista.modificarEntrevista(entrevista);
+                            upEntrevistas.Update();
+                            CargarEntrevistas();
+                        }
+                        break;
+                }
+            }
+            ddl.SelectedIndex = 0;
         }
 
         protected void btnEliminarEncargado_Click(object sender, EventArgs e)
         {
             boTarea = new TareaWSClient();
-            int idTarea = (int)Session["tareaEditarId"];
+            int idTarea = (int)Session["completarEntrevistaId"];
             int idEncargado = (int)Session["encargadoEditarId"];
 
             var tarea = boTarea.listarTareas().FirstOrDefault(t => t.id == idTarea);
@@ -103,9 +154,25 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-        protected void btnGuardarCambios_Click(object sender, EventArgs e)
+        protected void btnCompletar_Click(object sender, EventArgs e)
         {
+            boEntrevista = new EntrevistaWSClient();
+            int idEntrevista = (int)Session["completarEntrevistaId"];
             
+
+            var entrevista = boEntrevista.listarEntrevistas().FirstOrDefault(en => en.id == idEntrevista);
+            if (entrevista != null)
+            {
+                entrevista.feedback = txtFeedback.Text;
+                
+                entrevista.puntuacionFinal = Double.Parse(txtPuntuacion.Text);
+                
+                entrevista.estado = estadoEntrevista.REALIZADA;
+
+                boEntrevista.modificarEntrevista(entrevista);
+                CargarEntrevistas();
+                ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalCompletar", "hideModalCompletarEntrevista();", true);
+            }
         }
 
         protected void FiltrarTareas_Click(object sender, EventArgs e)
@@ -142,43 +209,9 @@ namespace GDPTalentoWA.Paginas
             dgvEntrevistas.DataSource = entrevistasFiltradas;
             dgvEntrevistas.DataBind();
         }
-        /*
-        protected void btnRegistrarTarea_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                boUsuario = new UsuarioWSClient();
-                int idUsuarioSesion = (int)Session["id"];
-                var usuarioSesion = boUsuario.obtenerPorId(idUsuarioSesion);
-
-                lblEncargadoSesion.Text = usuarioSesion.nombre;
-                lblFechaCreacion.Text = DateTime.Now.ToString("dd/MM/yyyy");
-
-                lstEncargados.Items.Clear();
-                var usuarios = boUsuario.listarUsuarios();
-                usuariosCache = usuarios.ToDictionary(u => u.id, u => u.nombre);
-                Session["usuariosCache"] = usuariosCache;
-
-                foreach (var u in usuarios)
-                {
-                    if (u.id != idUsuarioSesion)
-                    {
-                        lstEncargados.Items.Add(new ListItem(u.nombre, u.id.ToString()));
-                    }
-                }
-
-                upNuevaTarea.Update();
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarNuevaTarea", "showModalNuevaTarea();", true);
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al preparar el formulario: {ex.Message}');", true);
-            }
-        }
-        */
+        
         protected void btnProgramarEntrevista_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("ProgramarEntrevista.aspx");
 
             try
             {
@@ -189,15 +222,6 @@ namespace GDPTalentoWA.Paginas
 
                 var usuarios = boUsuario.listarUsuarios();
                 var postulantes = boPostulante.listarPostulantes();
-
-                /*
-                foreach (var p in postulantes)
-                {
-                    var nombre = p.nombre;
-                    var id = p.id.ToString();
-                    ScriptManager.RegisterStartupScript(this, GetType(),"slcPostulante", "addOptions(slcPostulante,nombre,id);",true);
-                }
-                */
 
                 foreach (var p in postulantes)
                 {
@@ -300,51 +324,5 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-        /*
-        protected void btnGuardarNuevaTarea_Click(object sender, EventArgs e)
-        {
-            boTarea = new TareaWSClient();
-            boUsuario = new UsuarioWSClient();
-
-            try
-            {
-                int idUsuarioSesion = (int)Session["id"];
-                var usuarioSesion = boUsuario.obtenerPorId(idUsuarioSesion);
-
-                var nuevaTarea = new tarea
-                {
-                    descripcion = txtDescripcionNueva.Text,
-                    fechaCreacion = DateTime.Now,
-                    fechaCreacionSpecified = true,
-                    fechaLimite = DateTime.Parse(txtFechaLimiteNueva.Text),
-                    fechaLimiteSpecified = true,
-                    estado = estadoTarea.EN_PROCESO,
-                    estadoSpecified = true,
-                    creador = usuarioSesion
-                };
-
-                List<usuario> encargados = new List<usuario> { usuarioSesion };
-
-                foreach (ListItem item in lstEncargados.Items)
-                {
-                    if (item.Selected)
-                    {
-                        int idEncargado = int.Parse(item.Value);
-                        encargados.Add(boUsuario.obtenerPorId(idEncargado));
-                    }
-                }
-
-                nuevaTarea.encargados = encargados.ToArray();
-
-                boTarea.insertarTarea(nuevaTarea);
-                CargarTareas();
-                ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModal", "hideModalNuevaTarea();", true);
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al guardar tarea: {ex.Message}');", true);
-            }
-        }
-        */
     }
 }

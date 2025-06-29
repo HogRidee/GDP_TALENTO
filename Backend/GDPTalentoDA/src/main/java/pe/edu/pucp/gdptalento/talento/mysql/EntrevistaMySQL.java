@@ -36,8 +36,18 @@ public class EntrevistaMySQL implements EntrevistaDAO{
 
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENTREVISTA", 
                 parametrosEntrada, parametrosSalida);
+        
         int idEntrevista = (int) parametrosSalida.get(1);
         entrevista.setId(idEntrevista);
+        if(entrevista.getEntrevistadores()!=null){
+            for (Usuario encargado : entrevista.getEntrevistadores()){
+                Map<Integer, Object> parametrosEntrada_encargados = new HashMap<>();
+                parametrosEntrada_encargados.put(1, entrevista.getId());
+                parametrosEntrada_encargados.put(2, encargado.getId());
+                DBManager.getInstance().ejecutarProcedimiento("INSERTAR_ENTREVISTA_ENTREVISTADOR", parametrosEntrada_encargados, null);
+                System.out.println("Se ha registrado el los entrevistadores de la entrevista correctamente");
+            }
+        }
         System.out.println("Entrevista insertada con ID: " + idEntrevista);
         return idEntrevista;
     }
