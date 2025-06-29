@@ -24,18 +24,18 @@
       <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="generarReporteEventos">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="generarReporteEventosResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="generarReporteOIECSV">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="generarReporteOIECSVResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteEventos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteEventosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
     </xs:sequence>

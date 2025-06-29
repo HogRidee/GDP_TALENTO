@@ -63,7 +63,7 @@ namespace GDPTalentoWA.Paginas
                         int presente = 0, falta = 0;
                         for (int i = 0; i < listarAsistencia.Length; i++)
                         {
-                            if (listarAsistencia[i].estadoAsistencia == estadoAsistencia.ASISTIO)
+                            if (listarAsistencia[i].asistencia1 == estadoAsistencia.ASISTIO)
                             {
                                 presente++;
                             }
@@ -168,5 +168,4 @@ namespace GDPTalentoWA.Paginas
         }
     }
 }
-
 

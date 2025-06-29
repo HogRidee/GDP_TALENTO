@@ -17,17 +17,17 @@
   <message name="insertarPostulanteResponse">
     <part name="parameters" element="tns:insertarPostulanteResponse" />
   </message>
-  <message name="eliminarPostulante">
-    <part name="parameters" element="tns:eliminarPostulante" />
-  </message>
-  <message name="eliminarPostulanteResponse">
-    <part name="parameters" element="tns:eliminarPostulanteResponse" />
-  </message>
   <message name="listarPostulantes">
     <part name="parameters" element="tns:listarPostulantes" />
   </message>
   <message name="listarPostulantesResponse">
     <part name="parameters" element="tns:listarPostulantesResponse" />
+  </message>
+  <message name="eliminarPostulante">
+    <part name="parameters" element="tns:eliminarPostulante" />
+  </message>
+  <message name="eliminarPostulanteResponse">
+    <part name="parameters" element="tns:eliminarPostulanteResponse" />
   </message>
   <portType name="PostulanteWS">
     <operation name="modificarPostulante">
@@ -38,13 +38,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest" message="tns:insertarPostulante" />
       <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse" message="tns:insertarPostulanteResponse" />
     </operation>
-    <operation name="eliminarPostulante">
-      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest" message="tns:eliminarPostulante" />
-      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse" message="tns:eliminarPostulanteResponse" />
-    </operation>
     <operation name="listarPostulantes">
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest" message="tns:listarPostulantes" />
       <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse" message="tns:listarPostulantesResponse" />
+    </operation>
+    <operation name="eliminarPostulante">
+      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest" message="tns:eliminarPostulante" />
+      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse" message="tns:eliminarPostulanteResponse" />
     </operation>
   </portType>
   <binding name="PostulanteWSPortBinding" type="tns:PostulanteWS">
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarPostulante">
+    <operation name="listarPostulantes">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarPostulantes">
+    <operation name="eliminarPostulante">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

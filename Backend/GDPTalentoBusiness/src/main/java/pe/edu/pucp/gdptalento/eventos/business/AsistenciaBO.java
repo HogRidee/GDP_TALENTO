@@ -6,7 +6,7 @@ import pe.edu.pucp.gdptalento.eventos.model.Asistencia;
 import pe.edu.pucp.gdptalento.eventos.mysql.AsistenciaMySQL;
 
 public class AsistenciaBO {
-    private final AsistenciaDAO daoAsistencia;
+     private final AsistenciaDAO daoAsistencia;
     
     public AsistenciaBO(){
         daoAsistencia = new AsistenciaMySQL();
@@ -21,8 +21,7 @@ public class AsistenciaBO {
     }
     
     public ArrayList<Asistencia> listarTodas(){
-        ArrayList<Asistencia> lista = daoAsistencia.listarTodas();
-        return (lista != null) ? lista : new ArrayList<>();
+        return daoAsistencia.listarTodas();
     }
     
     public ArrayList<Asistencia> listarTodasPorID(int id){

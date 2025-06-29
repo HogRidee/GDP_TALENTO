@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_titulo" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
+    <script src="../Scripts/GDPTalento/RegistrarMiembro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
     <div class="container py-5">
@@ -151,5 +154,19 @@
             <asp:LinkButton ID="btnGuardar" CssClass="float-end btn btn-primary" runat="server" Text="<i class='fa-solid fa-floppy-disk pe-2'></i> Guardar" OnClick="btnGuardar_Click" />
         </div>
     </div>
+    <div class="modal fade" id="errorModalRegistro" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje de error</h5>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="lblMensajeError" runat="server" Text="Label"></asp:Label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
-
