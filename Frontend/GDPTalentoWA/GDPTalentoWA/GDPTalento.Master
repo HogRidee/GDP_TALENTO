@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li class="nav-item mb-1">
-                        <a href="~/Paginas/Configuracion.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
+                        <a href="~/Paginas/Usuario.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
                             <i class="fa-regular fa-gear pe-2"></i>Configuración
                         </a>
                     </li>
