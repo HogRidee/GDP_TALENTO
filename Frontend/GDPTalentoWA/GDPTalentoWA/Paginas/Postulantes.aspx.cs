@@ -53,7 +53,8 @@ namespace GDPTalentoWA.Paginas
                 // Filtro por nombre, código PUCP o área
                 var filtrados = listaPostulantes.Where(s =>
                     (s.nombre != null && s.nombre.ToLower().Contains(textoBusqueda)) ||
-                    s.especialidad.ToString().Contains(textoBusqueda)
+                    s.codigoPUCP.ToString().Contains(textoBusqueda) ||
+                    s.especialidad.ToString().ToLower().Contains(textoBusqueda)
                 ).ToList();
 
                 postulantes = new BindingList<postulante>(filtrados);
@@ -69,9 +70,9 @@ namespace GDPTalentoWA.Paginas
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString() ?? "";
+                e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "nombre")?.ToString().ToUpper() ?? "";
                 e.Row.Cells[1].Text = DataBinder.Eval(e.Row.DataItem, "codigoPUCP")?.ToString() ?? "";
-                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "especialidad")?.ToString() ?? "";
+                e.Row.Cells[2].Text = DataBinder.Eval(e.Row.DataItem, "especialidad")?.ToString().ToUpper() ?? "";
                 e.Row.Cells[3].Text = DataBinder.Eval(e.Row.DataItem, "estadoProceso")?.ToString() ?? "";
 
             }
@@ -92,20 +93,26 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnFiltrarPostulante_Click(object sender, EventArgs e)
         {
-            /*AQUI FALTA IO*/
             boPostulante = new PostulanteWSClient();
             var listaOriginal = boPostulante.listarPostulantes();
 
             if (listaOriginal == null) return;
 
             string textoBusqueda = txtBuscarPostulante.Text.Trim().ToLower();
-            //string estadoSeleccionado = ddlEstados.SelectedValue; // "1" = ACTIVO, "2" = INACTIVO
-            //string areaSeleccionada = ddlAreas.SelectedValue;      // Ej: "Marketing"
+            string estadoSeleccionado = ddlEstados.SelectedValue;
+            string especialidadSeleccionada = ddlEspecialidades.SelectedValue;      // Ej: "Marketing"
 
             var listaFiltrada = listaOriginal.Where(s =>
-                (string.IsNullOrEmpty(textoBusqueda) ||
-                 s.nombre.ToLower().Contains(textoBusqueda) ||
-                 s.codigoPUCP.ToString().Contains(textoBusqueda))
+                (s.nombre != null && s.nombre.ToLower().Contains(textoBusqueda) ||
+                    s.codigoPUCP.ToString().Contains(textoBusqueda) ||
+                    s.especialidad.ToString().ToLower().Contains(textoBusqueda)) &&
+                (string.IsNullOrEmpty(estadoSeleccionado) ||
+                 (estadoSeleccionado == "1" && s.estadoProceso == estadoProceso.PENDIENTE) ||
+                 (estadoSeleccionado == "2" && s.estadoProceso == estadoProceso.APROBADO) ||
+                 (estadoSeleccionado == "3" && s.estadoProceso == estadoProceso.RECHAZADO)) &&
+
+                (string.IsNullOrEmpty(especialidadSeleccionada) ||
+                 s.especialidad.ToString().Equals(especialidadSeleccionada, StringComparison.OrdinalIgnoreCase))
             ).ToList();
 
             dgvPostulantes.DataSource = listaFiltrada;
@@ -158,6 +165,8 @@ namespace GDPTalentoWA.Paginas
 
         protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
         {
+            boPostulante = new PostulanteWSClient();
+
             DropDownList ddl = (DropDownList)sender;
             GridViewRow row = (GridViewRow)ddl.NamingContainer;
 
@@ -191,7 +200,6 @@ namespace GDPTalentoWA.Paginas
                     break;
                 case "EliminarPostulante":
                     // Aquí llamas a tu servicio de eliminación si corresponde
-                    // boStaff.eliminarStaff(id);
                     boPostulante.eliminarPostulante(id);
                     postulantes = new BindingList<postulante>(boPostulante.listarPostulantes());
                     dgvPostulantes.DataSource = postulantes;
