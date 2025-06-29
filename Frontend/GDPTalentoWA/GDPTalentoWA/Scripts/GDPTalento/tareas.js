@@ -1,5 +1,11 @@
 ﻿let modalDetallesTarea;
 let modalEditarTarea;
+let modalEliminarTarea;
+
+function showModalEliminarTarea() {
+    modalEliminarTarea = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
+    modalEliminarTarea.show();
+}
 function showModalDetallesTarea(idTarea) {
     modalDetallesTarea = new bootstrap.Modal(document.getElementById('modalDetallesTarea'));
 
