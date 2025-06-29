@@ -46,7 +46,8 @@ namespace GDPTalentoWA.Paginas
             lblTotalMiembros.Text = miembros.Count.ToString();
             lblMiembrosActivos.Text = miembros.Count(s => s.estado.ToString() == "ACTIVO").ToString();
             lblMiembrosInactivos.Text = (miembros.Count - miembros.Count(s => s.estado.ToString() == "ACTIVO")).ToString();
-
+            //Cargar los datos de miembros
+            lblMiembros.Text = miembros.Count(m => m.estado.ToString() == "ACTIVO").ToString();
             //Cargar los datos de postulantes
             lblTotalPostulantes.Text = postulantes.Count.ToString();
             lblAceptados.Text = postulantes.Count(s => s.estadoProceso.ToString() == "APROBADO").ToString();
@@ -66,8 +67,8 @@ namespace GDPTalentoWA.Paginas
             string areaSeleccionada = ddlAreas.SelectedValue;
 
             var miembrosFiltrados = (areaSeleccionada == "0")
-                ? miembros
-                : new BindingList<staff>(miembros.Where(m => m.area.ToString() == areaSeleccionada).ToList());
+                ? new BindingList<staff>(miembros.Where(m => m.estado.ToString() == "ACTIVO").ToList())
+                : new BindingList<staff>(miembros.Where(m => m.area.ToString() == areaSeleccionada && m.estado.ToString() == "ACTIVO").ToList());
 
             // Actualizar labels
             lblMiembros.Text = miembrosFiltrados.Count.ToString();

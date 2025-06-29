@@ -11,6 +11,7 @@ namespace GDPTalentoWA.Paginas
     public partial class Usuario : System.Web.UI.Page
     {
         private UsuarioWSClient boUsuario;
+        private TareaWSClient boTarea;
         //private UsuarioWSClient boUsuario;
         //private EmpleadoWSClient boEmpleado;
         private usuario usuario;
@@ -21,7 +22,7 @@ namespace GDPTalentoWA.Paginas
             {
                 
                 boUsuario = new UsuarioWSClient();
-
+                boTarea = new TareaWSClient();
                 try
                 {
                     //Reemplazar luego
@@ -48,6 +49,22 @@ namespace GDPTalentoWA.Paginas
 
         private void AsignarValores()
         {
+            boTarea = new TareaWSClient();
+            var todasLasTareas = boTarea.listarTareas();
+            if (todasLasTareas == null)
+            {
+                lblPendientes.Text = "0";
+                lblCompletadas.Text = "0";
+                return;
+            }
+
+            var tareasUsuario = todasLasTareas
+                .Where(t => t.encargados != null && t.encargados.Any(e => e.id == usuario.id))
+                .ToList();
+
+            // Separar por estado
+            int pendientes = tareasUsuario.Count(t =>  t.estado.ToString() == "PENDIENTE");
+            int completadas = tareasUsuario.Count(t => t.estado.ToString() == "REALIZADA");
             lblNombre.Text = usuario.nombre;
             lblCargo.Text = $"Rol: {usuario.rol?.nombre} - Area: {usuario.area}";
             lblEstado.Text = usuario.estado.ToString().ToUpper() == "ACTIVO"
@@ -77,8 +94,8 @@ namespace GDPTalentoWA.Paginas
             ltlEstrellas.Text = GenerarEstrellasHTML(usuario.desempenio);
             // Datos ficticios mientras no se implemente
             lblAsistencia.Text = 75 + "%";
-            lblPendientes.Text = "2";
-            lblCompletadas.Text = "15";
+            lblPendientes.Text = pendientes.ToString();
+            lblCompletadas.Text = completadas.ToString();
         }
         private string GenerarEstrellasHTML(double puntuacion)
         {

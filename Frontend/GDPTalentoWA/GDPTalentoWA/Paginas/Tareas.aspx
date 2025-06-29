@@ -49,6 +49,25 @@
                 }
             }, 300);
         }
+        function showModalEliminarTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarTarea'));
+                    modal.show();
+                }
+            }, 300);
+        }
+
+        function hideModalEliminarTarea() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarTarea'));
+                    modal.hide();
+                }
+            }, 300);
+        }
+
+
     </script>
 </asp:Content>
 
@@ -69,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="container mt-4">
                 <div class="bg-white p-4 rounded-3 shadow-sm border">
                     <ul class="nav nav-pills mb-3">
@@ -112,6 +131,7 @@
                                             <asp:ListItem Text="Acción" Value="" />
                                             <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
                                             <asp:ListItem Text="Editar" Value="EditarTarea" />
+                                            <asp:ListItem Text="Eliminar" Value="EliminarTarea" />
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -124,6 +144,7 @@
     </asp:UpdatePanel>
 
     <!-- Modales fuera del UpdatePanel -->
+    <!-- Modal Detalles Tarea -->
     <div class="modal fade" id="modalDetallesTarea" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -134,25 +155,57 @@
                 <div class="modal-body">
                     <asp:UpdatePanel ID="upDetallesTarea" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <p><strong>Creado por:</strong>
-                                <asp:Label ID="lblCreadorDetalle" runat="server" /></p>
-                            <p><strong>Descripción:</strong>
-                                <asp:Label ID="lblDescripcionDetalle" runat="server" /></p>
-                            <p><strong>Fecha límite:</strong>
-                                <asp:Label ID="lblFechaLimiteDetalle" runat="server" /></p>
-                            <p><strong>Estado:</strong>
-                                <asp:Label ID="lblEstadoDetalle" runat="server" /></p>
-                            <p><strong>Encargado:</strong>
-                                <asp:Label ID="lblEncargadosDetalle" runat="server" /></p>
+                            <p>
+                                <strong>Creado por:</strong>
+                                <asp:Label ID="lblCreadorDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Descripción:</strong>
+                                <asp:Label ID="lblDescripcionDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Fecha límite:</strong>
+                                <asp:Label ID="lblFechaLimiteDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Estado:</strong>
+                                <asp:Label ID="lblEstadoDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Encargado:</strong>
+                                <asp:Label ID="lblEncargadosDetalle" runat="server" />
+                            </p>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+                            </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal Confirmar Eliminación -->
+    <div class="modal fade" id="modalEliminarTarea" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">¿Estás seguro de eliminar esta tarea?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    Esta acción no se puede deshacer. ¿Deseas continuar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-danger text-white"
+                        OnClick="btnEliminarTareaFinal_Click">Eliminar</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="modalEditarTarea" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -164,17 +217,35 @@
                 <div class="modal-body">
                     <asp:UpdatePanel ID="upEditarTarea" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <p><strong>Creado por:</strong>
-                                <asp:Label ID="lblCreadorEditar" runat="server" /></p>
+                            <p>
+                                <strong>Creado por:</strong>
+                                <asp:Label ID="lblCreadorEditar" runat="server" />
+                            </p>
 
                             <div class="mb-3">
                                 <label for="txtDescripcionEditar" class="form-label">Descripción</label>
                                 <asp:TextBox ID="txtDescripcionEditar" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator 
+                                    ID="rfvDescripcionEditar" 
+                                    runat="server" 
+                                    ControlToValidate="txtDescripcionEditar"
+                                    ErrorMessage="La descripción es obligatoria"
+                                    CssClass="text-danger"
+                                    Display="Dynamic"
+                                    ValidationGroup="EditarTarea" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="txtFechaLimiteEditar" class="form-label">Fecha límite</label>
                                 <asp:TextBox ID="txtFechaLimiteEditar" runat="server" CssClass="form-control" TextMode="Date" />
+                                <asp:RequiredFieldValidator 
+                                    ID="rfvFechaLimiteEditar" 
+                                    runat="server" 
+                                    ControlToValidate="txtFechaLimiteEditar"
+                                    ErrorMessage="La fecha límite es obligatoria"
+                                    CssClass="text-danger"
+                                    Display="Dynamic"
+                                    ValidationGroup="EditarTarea" />
                             </div>
 
                             <div class="mb-3">
@@ -192,7 +263,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:LinkButton ID="btnGuardarCambios" runat="server" CssClass="btn btn-dark" OnClick="btnGuardarCambios_Click">Guardar cambios</asp:LinkButton>
+                    <asp:LinkButton ID="btnGuardarCambios" runat="server" CssClass="btn btn-dark" 
+                        OnClick="btnGuardarCambios_Click" 
+                        ValidationGroup="EditarTarea">
+                        Guardar cambios
+                    </asp:LinkButton>
                 </div>
             </div>
         </div>
@@ -208,19 +283,39 @@
                 <div class="modal-body">
                     <asp:UpdatePanel ID="upNuevaTarea" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <p><strong>Encargado principal:</strong>
-                                <asp:Label ID="lblEncargadoSesion" runat="server" /></p>
-                            <p><strong>Fecha de creación:</strong>
-                                <asp:Label ID="lblFechaCreacion" runat="server" /></p>
+                            <p>
+                                <strong>Encargado principal:</strong>
+                                <asp:Label ID="lblEncargadoSesion" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Fecha de creación:</strong>
+                                <asp:Label ID="lblFechaCreacion" runat="server" />
+                            </p>
 
                             <div class="mb-3">
                                 <label for="txtDescripcionNueva" class="form-label">Descripción</label>
                                 <asp:TextBox ID="txtDescripcionNueva" runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator 
+                                    ID="rfvDescripcionNueva" 
+                                    runat="server" 
+                                    ControlToValidate="txtDescripcionNueva"
+                                    ErrorMessage="La descripción es obligatoria"
+                                    CssClass="text-danger"
+                                    Display="Dynamic"
+                                    ValidationGroup="NuevaTarea" />
                             </div>
 
                             <div class="mb-3">
                                 <label for="txtFechaLimiteNueva" class="form-label">Fecha límite</label>
                                 <asp:TextBox ID="txtFechaLimiteNueva" runat="server" CssClass="form-control" TextMode="Date" />
+                                <asp:RequiredFieldValidator 
+                                    ID="rfvFechaLimiteNueva" 
+                                    runat="server" 
+                                    ControlToValidate="txtFechaLimiteNueva"
+                                    ErrorMessage="La fecha límite es obligatoria"
+                                    CssClass="text-danger"
+                                    Display="Dynamic"
+                                    ValidationGroup="NuevaTarea" />
                             </div>
 
                             <div class="mb-3">
@@ -233,8 +328,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:LinkButton ID="btnGuardarNuevaTarea" runat="server" CssClass="btn btn-success" OnClick="btnGuardarNuevaTarea_Click">
-                    Guardar tarea
+                    <asp:LinkButton ID="btnGuardarNuevaTarea" runat="server" CssClass="btn btn-success" 
+                        OnClick="btnGuardarNuevaTarea_Click" 
+                        ValidationGroup="NuevaTarea">
+                        Guardar tarea
                     </asp:LinkButton>
                 </div>
             </div>

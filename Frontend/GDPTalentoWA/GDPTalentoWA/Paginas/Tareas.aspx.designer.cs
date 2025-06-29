@@ -141,6 +141,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.Label lblEncargadosDetalle;
 
         /// <summary>
+        /// Control LinkButton1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+
+        /// <summary>
         /// Control upEditarTarea.
         /// </summary>
         /// <remarks>
@@ -168,6 +177,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.TextBox txtDescripcionEditar;
 
         /// <summary>
+        /// Control rfvDescripcionEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcionEditar;
+
+        /// <summary>
         /// Control txtFechaLimiteEditar.
         /// </summary>
         /// <remarks>
@@ -175,6 +193,15 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaLimiteEditar;
+
+        /// <summary>
+        /// Control rfvFechaLimiteEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaLimiteEditar;
 
         /// <summary>
         /// Control ddlEstadoEditar.
@@ -240,6 +267,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.TextBox txtDescripcionNueva;
 
         /// <summary>
+        /// Control rfvDescripcionNueva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcionNueva;
+
+        /// <summary>
         /// Control txtFechaLimiteNueva.
         /// </summary>
         /// <remarks>
@@ -247,6 +283,15 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaLimiteNueva;
+
+        /// <summary>
+        /// Control rfvFechaLimiteNueva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaLimiteNueva;
 
         /// <summary>
         /// Control lstEncargados.

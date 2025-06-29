@@ -11,12 +11,6 @@
   <message name="insertarTareaResponse">
     <part name="parameters" element="tns:insertarTareaResponse" />
   </message>
-  <message name="modificarTarea">
-    <part name="parameters" element="tns:modificarTarea" />
-  </message>
-  <message name="modificarTareaResponse">
-    <part name="parameters" element="tns:modificarTareaResponse" />
-  </message>
   <message name="eliminarTarea">
     <part name="parameters" element="tns:eliminarTarea" />
   </message>
@@ -29,14 +23,16 @@
   <message name="listarTareasResponse">
     <part name="parameters" element="tns:listarTareasResponse" />
   </message>
+  <message name="modificarTarea">
+    <part name="parameters" element="tns:modificarTarea" />
+  </message>
+  <message name="modificarTareaResponse">
+    <part name="parameters" element="tns:modificarTareaResponse" />
+  </message>
   <portType name="TareaWS">
     <operation name="insertarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaRequest" message="tns:insertarTarea" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/insertarTareaResponse" message="tns:insertarTareaResponse" />
-    </operation>
-    <operation name="modificarTarea">
-      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
-      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
     </operation>
     <operation name="eliminarTarea">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/eliminarTareaRequest" message="tns:eliminarTarea" />
@@ -45,6 +41,10 @@
     <operation name="listarTareas">
       <input wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasRequest" message="tns:listarTareas" />
       <output wsam:Action="http://services.pucp.edu.pe/TareaWS/listarTareasResponse" message="tns:listarTareasResponse" />
+    </operation>
+    <operation name="modificarTarea">
+      <input wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaRequest" message="tns:modificarTarea" />
+      <output wsam:Action="http://services.pucp.edu.pe/TareaWS/modificarTareaResponse" message="tns:modificarTareaResponse" />
     </operation>
   </portType>
   <binding name="TareaWSPortBinding" type="tns:TareaWS">
@@ -58,15 +58,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarTarea">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="eliminarTarea">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="listarTareas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarTarea">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
