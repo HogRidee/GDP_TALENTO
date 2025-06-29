@@ -35,10 +35,14 @@ public class PostulanteMySQL implements PostulanteDAO{
         parametrosEntrada.put(4, postulante.getCodigoPUCP());
         parametrosEntrada.put(5, postulante.getFacultad());
         parametrosEntrada.put(6, postulante.getEspecialidad());
-        parametrosEntrada.put(7, postulante.getStatus());
+        parametrosEntrada.put(7, postulante.getStatus()!= null ? postulante.getStatus().name() : null);
         parametrosEntrada.put(8, postulante.getTelefono());
-        parametrosEntrada.put(9, postulante.getEstadoProceso());
+        parametrosEntrada.put(9, postulante.getEstadoProceso()!= null ? postulante.getEstadoProceso().name() : null);
+        
         DBManager.getInstance().ejecutarProcedimiento("INSERTAR_POSTULANTE", parametrosEntrada, parametrosSalida);
+        
+        postulante.setId((int)parametrosSalida.get(1));
+        
         System.out.println("Se ha realizado el registro del postulante");
         return postulante.getId();
     }
@@ -47,7 +51,14 @@ public class PostulanteMySQL implements PostulanteDAO{
     public int modificar(Postulante postulante) {
         Map<Integer, Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, postulante.getId());
-        parametrosEntrada.put(2, postulante.getEstadoProceso());
+        parametrosEntrada.put(2, postulante.getNombre());
+        parametrosEntrada.put(3, postulante.getCorreo());
+        parametrosEntrada.put(4, postulante.getCodigoPUCP());
+        parametrosEntrada.put(5, postulante.getFacultad());
+        parametrosEntrada.put(6, postulante.getEspecialidad());
+        parametrosEntrada.put(7, postulante.getStatus()!= null ? postulante.getStatus().name() : null);
+        parametrosEntrada.put(8, postulante.getTelefono());
+        parametrosEntrada.put(9, postulante.getEstadoProceso()!= null ? postulante.getEstadoProceso().name() : null);
         int resultado = DBManager.getInstance().ejecutarProcedimiento("MODIFICAR_POSTULANTE", parametrosEntrada, null);
         System.out.println("Se ha realizado la modificacion del postulante");
         return resultado;

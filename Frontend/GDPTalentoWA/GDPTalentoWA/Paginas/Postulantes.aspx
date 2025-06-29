@@ -83,13 +83,13 @@
                 -->
                 <div class="table-responsive">
                     <asp:GridView ID="dgvPostulantes" runat="server" AutoGenerateColumns="false"
-                        OnPageIndexChanging="dgvPostulantes_PageIndexChanging"
+                        OnPageIndexChanging="dgvPostulantes_PageIndexChanging" OnRowDataBound="dgvPostulantes_RowDataBound"
                         PageSize="5" CssClass="table table-hover table-striped table-bordered text-center align-middle">
                         <Columns>
-                            <asp:BoundField DataField="nombre" HeaderText="Nombre" />
-                            <asp:BoundField DataField="codigoPUCP" HeaderText="Código"/>
-                            <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
-                            <asp:BoundField DataField="estadoProceso" HeaderText="Estado" />
+                            <asp:BoundField  HeaderText="Nombre" />
+                            <asp:BoundField  HeaderText="Código"/>
+                            <asp:BoundField  HeaderText="Especialidad" />
+                            <asp:BoundField  HeaderText="Estado" />
                             
                             <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="180px">
                                 <ItemTemplate>
