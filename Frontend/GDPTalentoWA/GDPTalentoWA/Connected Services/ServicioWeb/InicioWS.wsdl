@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/InicioWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
+  <message name="devolverTotales">
+    <part name="parameters" element="tns:devolverTotales" />
+  </message>
+  <message name="devolverTotalesResponse">
+    <part name="parameters" element="tns:devolverTotalesResponse" />
+  </message>
   <message name="devolverProximaEntrevista">
     <part name="parameters" element="tns:devolverProximaEntrevista" />
   </message>
@@ -29,13 +35,11 @@
   <message name="devolverVariacionMiembrosResponse">
     <part name="parameters" element="tns:devolverVariacionMiembrosResponse" />
   </message>
-  <message name="devolverTotales">
-    <part name="parameters" element="tns:devolverTotales" />
-  </message>
-  <message name="devolverTotalesResponse">
-    <part name="parameters" element="tns:devolverTotalesResponse" />
-  </message>
   <portType name="InicioWS">
+    <operation name="devolverTotales">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesRequest" message="tns:devolverTotales" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesResponse" message="tns:devolverTotalesResponse" />
+    </operation>
     <operation name="devolverProximaEntrevista">
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverProximaEntrevistaRequest" message="tns:devolverProximaEntrevista" />
       <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverProximaEntrevistaResponse" message="tns:devolverProximaEntrevistaResponse" />
@@ -52,13 +56,18 @@
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverVariacionMiembrosRequest" message="tns:devolverVariacionMiembros" />
       <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverVariacionMiembrosResponse" message="tns:devolverVariacionMiembrosResponse" />
     </operation>
-    <operation name="devolverTotales">
-      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesRequest" message="tns:devolverTotales" />
-      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesResponse" message="tns:devolverTotalesResponse" />
-    </operation>
   </portType>
   <binding name="InicioWSPortBinding" type="tns:InicioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="devolverTotales">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="devolverProximaEntrevista">
       <soap:operation soapAction="" />
       <input>
@@ -87,15 +96,6 @@
       </output>
     </operation>
     <operation name="devolverVariacionMiembros">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="devolverTotales">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -19,10 +19,10 @@ namespace GDPTalentoWA.Paginas
             {
                 ScriptResourceDefinition jQueryDef = new ScriptResourceDefinition
                 {
-                    Path = "~/Scripts/jquery-3.6.0.min.js",
-                    DebugPath = "~/Scripts/jquery-3.6.0.js",
-                    CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js",
-                    CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js",
+                    Path = "~/Scripts/jquery-3.7.1.min.js",
+                    DebugPath = "~/Scripts/jquery-3.7.1.js",
+                    CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js",
+                    CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.js",
                     CdnSupportsSecureConnection = true,
                     LoadSuccessExpression = "window.jQuery"
                 };
