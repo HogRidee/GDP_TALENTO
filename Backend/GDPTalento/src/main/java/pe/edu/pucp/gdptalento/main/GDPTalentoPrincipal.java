@@ -19,7 +19,10 @@ import pe.edu.pucp.gdptalento.miembros.business.StaffBO;
 import pe.edu.pucp.gdptalento.miembros.model.Area;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoMiembro;
 import pe.edu.pucp.gdptalento.miembros.model.EstadoPUCP;
+import pe.edu.pucp.gdptalento.miembros.model.EstadoProceso;
+import pe.edu.pucp.gdptalento.miembros.model.Postulante;
 import pe.edu.pucp.gdptalento.miembros.model.Staff;
+import pe.edu.pucp.gdptalento.miembros.mysql.PostulanteMySQL;
 import pe.edu.pucp.gdptalento.miembros.mysql.StaffMySQL;
 import pe.edu.pucp.gdptalento.talento.business.EntrevistaBO;
 import pe.edu.pucp.gdptalento.talento.model.Entrevista;
@@ -135,49 +138,49 @@ public class GDPTalentoPrincipal {
 //                System.out.println("Estado: " + a.getAsistencia());
 //        }
         
-        Staff s = new Staff();
-        Usuario u = new Usuario();
-        ArrayList<Staff> part = new ArrayList<Staff>();
-        ArrayList<Usuario> enc = new ArrayList<Usuario>();
-        
-        StaffBO boStaff = new StaffBO();
-        UsuarioBO boUsuario = new UsuarioBO();
-        
-        s=boStaff.obtenerPorID(6);
-        part.add(s);
-        s=boStaff.obtenerPorID(7);
-        part.add(s);
-        s=boStaff.obtenerPorID(13);
-        part.add(s);
-        u=boUsuario.obtenerPorID(1);
-        enc.add(u);
-        u=boUsuario.obtenerPorID(2);
-        enc.add(u);
-        
-        
-        Evento e1 = new Evento();
-        e1.setId(1);
-        e1.setFecha(new Date());
-        e1.setEstadoEvento(EstadoEvento.APROBADO);
-        e1.setTipoEvento(TipoEvento.REUNION);
-        
-        e1.setEncargados(enc);
-        e1.setParticipantes(part);
-        
-        
-        EventoBO boev = new EventoBO();
-        
-        System.out.println("MODIFICAR - Participantes recibidos: " + (e1.getParticipantes() == null ? "null" : e1.getParticipantes().size()));
-        System.out.println("MODIFICAR - Encargados recibidos: " + (e1.getEncargados() == null ? "null" : e1.getEncargados().size()));
-        
-        boev.modificar(e1);
-        
-        
-        EventoMySQL event = new EventoMySQL();
-        ArrayList<Usuario> encargados = new ArrayList<Usuario>(event.listarEncargadosPorEvento(1));
-        for(Usuario x : encargados){
-            System.out.println(x.getId());
-        }
+//        Staff s = new Staff();
+//        Usuario u = new Usuario();
+//        ArrayList<Staff> part = new ArrayList<Staff>();
+//        ArrayList<Usuario> enc = new ArrayList<Usuario>();
+//        
+//        StaffBO boStaff = new StaffBO();
+//        UsuarioBO boUsuario = new UsuarioBO();
+//        
+//        s=boStaff.obtenerPorID(6);
+//        part.add(s);
+//        s=boStaff.obtenerPorID(7);
+//        part.add(s);
+//        s=boStaff.obtenerPorID(13);
+//        part.add(s);
+//        u=boUsuario.obtenerPorID(1);
+//        enc.add(u);
+//        u=boUsuario.obtenerPorID(2);
+//        enc.add(u);
+//        
+//        
+//        Evento e1 = new Evento();
+//        e1.setId(1);
+//        e1.setFecha(new Date());
+//        e1.setEstadoEvento(EstadoEvento.APROBADO);
+//        e1.setTipoEvento(TipoEvento.REUNION);
+//        
+//        e1.setEncargados(enc);
+//        e1.setParticipantes(part);
+//        
+//        
+//        EventoBO boev = new EventoBO();
+//        
+//        System.out.println("MODIFICAR - Participantes recibidos: " + (e1.getParticipantes() == null ? "null" : e1.getParticipantes().size()));
+//        System.out.println("MODIFICAR - Encargados recibidos: " + (e1.getEncargados() == null ? "null" : e1.getEncargados().size()));
+//        
+//        boev.modificar(e1);
+//        
+//        
+//        EventoMySQL event = new EventoMySQL();
+//        ArrayList<Usuario> encargados = new ArrayList<Usuario>(event.listarEncargadosPorEvento(1));
+//        for(Usuario x : encargados){
+//            System.out.println(x.getId());
+//        }
 
 
 
@@ -193,5 +196,18 @@ public class GDPTalentoPrincipal {
 //            }
 //        }
 //      
+
+        PostulanteMySQL postulanteBo = new PostulanteMySQL();
+        Postulante postulante = new Postulante();
+        postulante.setNombre("Maria Robotnik");
+        postulante.setCorreo("maria.robotnik@pucp.edu.pe");
+        postulante.setCodigoPUCP(19800232);
+        postulante.setFacultad("Ingenieria");
+        postulante.setEspecialidad("Electrónica");
+        postulante.setStatus(EstadoPUCP.MATRICULADO);
+        postulante.setTelefono("900210362");
+        postulante.setEstadoProceso(EstadoProceso.PENDIENTE);
+        postulanteBo.insertar(postulante);
+
     }
 }

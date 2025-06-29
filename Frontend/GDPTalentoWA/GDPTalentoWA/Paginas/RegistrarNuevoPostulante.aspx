@@ -29,10 +29,10 @@
                         <asp:TextBox ID="txtNombreCompleto" runat="server" CssClass="form-control" required="required"></asp:TextBox>
                     </div>
 
-                        <div class="col-md-6">
-                            <label for="txtCorreoElectronico" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
-                            <asp:TextBox ID="txtCorreoElectronico" runat="server" CssClass="form-control" required="required"></asp:TextBox>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="txtCorreoElectronico" class="form-label">Correo electrónico <span class="text-danger">*</span></label>
+                        <asp:TextBox ID="txtCorreoElectronico" runat="server" CssClass="form-control" required="required"></asp:TextBox>
+                    </div>
 
                 </div>
 
@@ -71,7 +71,7 @@
                         <span class="text-danger">*</span>
                         <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                             <asp:ListItem Text="Seleccionar especialidad" Value="" Selected="True" Disabled="True"></asp:ListItem>
-                            <asp:ListItem Text="DERECHO" Value="DerechoE"></asp:ListItem>
+                            <asp:ListItem Text="DERECHO" Value="Derecho"></asp:ListItem>
                             <asp:ListItem Text="ELECTRÓNICA" Value="Electrónica"></asp:ListItem>
                             <asp:ListItem Text="INFORMÁTICA" Value="Informática"></asp:ListItem>
                             <asp:ListItem Text="MARKETING" Value="Marketing"></asp:ListItem>
@@ -87,7 +87,7 @@
                         <asp:DropDownList ID="ddlEstadoAcademico" runat="server" CssClass="form-select" Required="true" AutoPostBack="false">
                             <asp:ListItem Text="Seleccionar estado" Value="" Selected="True" Disabled="True"></asp:ListItem>
                             <asp:ListItem Text="MATRICULADO" Value="MATRICULADO"></asp:ListItem>
-                            <asp:ListItem Text="NO_MATRICULADO" Value="NO_MATRICULADO"></asp:ListItem>
+                            <asp:ListItem Text="NO MATRICULADO" Value="NO_MATRICULADO"></asp:ListItem>
                             <asp:ListItem Text="EGRESADO" Value="EGRESADO"></asp:ListItem>
                             <asp:ListItem Text="EXTERNO" Value="EXTERNO"></asp:ListItem>
                         </asp:DropDownList>
