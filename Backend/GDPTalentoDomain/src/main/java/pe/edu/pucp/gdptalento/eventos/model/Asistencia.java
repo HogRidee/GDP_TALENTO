@@ -12,6 +12,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class Asistencia {
     private Staff participante;
     private Evento evento;
+    private EstadoAsistencia asistencia;
     
     @XmlElement(required = true)
     private EstadoAsistencia estadoAsistencia;
@@ -32,6 +33,13 @@ public class Asistencia {
         this.evento = evento;
     }
     
+    public EstadoAsistencia getAsistencia() {
+        return asistencia;
+    }
+
+    public void setAsistencia(EstadoAsistencia asistencia) {
+        this.asistencia = asistencia;
+    }
     
     public EstadoAsistencia getEstadoAsistencia() {
         return estadoAsistencia;

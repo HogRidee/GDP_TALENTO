@@ -92,7 +92,41 @@ namespace GDPTalentoWA.Paginas
 
             // Asignar valores
             miembro.nombre = txtNombreCompleto.Text;
+            if (txtNombreCompleto.Text=="") {
+                lblMensajeError.Text = "Debe ingresar nombre completo";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
             miembro.correo = txtCorreoElectronico.Text;
+            if (txtCorreoElectronico.Text == "")
+            {
+                lblMensajeError.Text = "Debe ingresar correo electrónico";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
+
+            miembro.telefono = txtNumeroContacto.Text;
+            if (txtNumeroContacto.Text == "")
+            {
+                lblMensajeError.Text = "Debe ingresar número de contacto";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
+
+            if (txtCodigoPUCP.Text == "")
+            {
+                lblMensajeError.Text = "Debe ingresar código PUCP";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
 
             if (int.TryParse(txtCodigoPUCP.Text, out int codigo))
                 miembro.codigoPUCP = codigo;
@@ -102,9 +136,59 @@ namespace GDPTalentoWA.Paginas
                 return;
             }
 
-            miembro.telefono = txtNumeroContacto.Text;
+            miembro.facultad = ddlFacultad.SelectedValue;
+            if (string.IsNullOrWhiteSpace(ddlFacultad.SelectedValue))
+            {
+                lblMensajeError.Text = "Debe seleccionar facultad";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
 
+                return;
+            }
+            miembro.especialidad = ddlEspecialidad.SelectedValue;
+            if (string.IsNullOrWhiteSpace(ddlEspecialidad.SelectedValue))
+            {
+                lblMensajeError.Text = "Debe seleccionar especialidad";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlEstadoAcademico.SelectedValue))
+            {
+                lblMensajeError.Text = "Debe seleccionar estado académico";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
+
+            if (Enum.TryParse(ddlEstadoAcademico.SelectedValue, out estadoPUCP estadoAcademico))
+            {
+                miembro.status = estadoAcademico;
+                miembro.statusSpecified = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlAreas.SelectedValue))
+            {
+                lblMensajeError.Text = "Debe seleccionar un área.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+                return;
+            }
+
+            miembro.area = (area)Enum.Parse(typeof(area), ddlAreas.SelectedValue);
+            miembro.areaSpecified = true;
             // Fechas
+
+            if (string.IsNullOrWhiteSpace(dtpFechaIngreso.Value))
+            {
+                lblMensajeError.Text = "Debe seleccionar fecha de ingreso";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
             if (DateTime.TryParse(dtpFechaIngreso.Value, out DateTime fechaIngreso))
             {
                 miembro.fechaIngreso = fechaIngreso;
@@ -119,23 +203,26 @@ namespace GDPTalentoWA.Paginas
             }
 
             // Otros campos
-            miembro.facultad = ddlFacultad.SelectedValue;
-            miembro.especialidad = ddlEspecialidad.SelectedValue;
-            miembro.area = (area)Enum.Parse(typeof(area), ddlAreas.SelectedValue);
-            miembro.areaSpecified = true;
+            
+           
+
             miembro.desempenio = 4;
 
+            if (!(rbActivo.Checked))
+            {
+                lblMensajeError.Text = "Debe seleccionar estado (ACTIVO O INACTIVO)";
+                string script = "mostrarModalErrorRegistro();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "modalError", "mostrarModalErrorRegistro();", true);
+
+                return;
+            }
             if (rbActivo.Checked)
                 miembro.estado = estadoMiembro.ACTIVO;
             else
                 miembro.estado = estadoMiembro.INACTIVO;
             miembro.estadoSpecified = true;
 
-            if (Enum.TryParse(ddlEstadoAcademico.SelectedValue, out estadoPUCP estadoAcademico))
-            {
-                miembro.status = estadoAcademico;
-                miembro.statusSpecified = true;
-            }
+           
 
             try
             {

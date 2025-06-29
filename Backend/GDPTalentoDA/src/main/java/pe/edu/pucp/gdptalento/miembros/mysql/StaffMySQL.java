@@ -101,7 +101,7 @@ public class StaffMySQL implements StaffDAO {
     public int eliminar(int id) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
         parametrosEntrada.put(1, id);
-        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_STAFF", parametrosEntrada, null);
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("ELIMINAR_STAFF_ACTIVO", parametrosEntrada, null);
         System.out.println("Se ha realizado la eliminacion del staff con id: "+id);
         return resultado;
     }

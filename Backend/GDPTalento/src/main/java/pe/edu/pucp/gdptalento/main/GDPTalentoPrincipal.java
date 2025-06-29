@@ -65,8 +65,8 @@ public class GDPTalentoPrincipal {
 //        UsuarioBO u = new UsuarioBO();
 //        System.out.println(u.verificarUsuario(1, "hash12345"));
 //        */
-//        StaffBO staffBO = new StaffBO();
-//        AsistenciaBO asistenciaBO = new AsistenciaBO();
+        StaffBO staffBO = new StaffBO();
+        AsistenciaBO asistenciaBO = new AsistenciaBO();
 ////        Staff nuevoStaff = new Staff();
 ////
 ////        // ⚠️ Asegúrate de que estos datos sean válidos
@@ -96,7 +96,7 @@ public class GDPTalentoPrincipal {
 //        ArrayList<Staff> listaStaff = staffBO.listarTodas(); // O staffBO.listarTodos()
 //
 //        Staff staffExistente = null;
-//        int idBuscado = 5;
+//        int idBuscado = 2;
 //
 //        for (Staff s : listaStaff) {
 //            if (s.getId() == idBuscado) {
@@ -106,7 +106,7 @@ public class GDPTalentoPrincipal {
 //        }
 //
 //        if (staffExistente != null) {
-//            // Modificas solo los campos necesarios
+//             Modificas solo los campos necesarios
 //            staffExistente.setCorreo("body.lopez@pucp.edu.pe");
 //            staffExistente.setTelefono("987654321");
 //            staffExistente.setArea(Area.RECURSOS_HUMANOS);
@@ -114,7 +114,7 @@ public class GDPTalentoPrincipal {
 //            staffExistente.setFechaSalida(null);
 //            staffExistente.setDesempenio(4.5);
 //
-//            // Ejecutar modificación
+//             Ejecutar modificación
 //            try {
 //                int resultado = staffBO.modificar(staffExistente);
 //                if (resultado > 0) {
@@ -131,12 +131,14 @@ public class GDPTalentoPrincipal {
 //            System.out.println("⚠️ No se encontró un staff con ID = " + idBuscado);
 //        }
 //        
-//        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodas();
+//        ArrayList<Asistencia> listaAsistencia = asistenciaBO.listarTodasPorID(2);
 //        for (Asistencia a : listaAsistencia) {
 //                System.out.println("Asistente: " + a.getParticipante().getNombre());
 //                System.out.println("Evento: " + a.getEvento().getTipoEvento());
 //                System.out.println("Estado: " + a.getAsistencia());
 //        }
+        
+        staffBO.eliminar(18);
         
 //        Staff s = new Staff();
 //        Usuario u = new Usuario();
@@ -197,17 +199,17 @@ public class GDPTalentoPrincipal {
 //        }
 //      
 
-        PostulanteMySQL postulanteBo = new PostulanteMySQL();
-        Postulante postulante = new Postulante();
-        postulante.setNombre("Maria Robotnik");
-        postulante.setCorreo("maria.robotnik@pucp.edu.pe");
-        postulante.setCodigoPUCP(19800232);
-        postulante.setFacultad("Ingenieria");
-        postulante.setEspecialidad("Electrónica");
-        postulante.setStatus(EstadoPUCP.MATRICULADO);
-        postulante.setTelefono("900210362");
-        postulante.setEstadoProceso(EstadoProceso.PENDIENTE);
-        postulanteBo.insertar(postulante);
+//        PostulanteMySQL postulanteBo = new PostulanteMySQL();
+//        Postulante postulante = new Postulante();
+//        postulante.setNombre("Maria Robotnik");
+//        postulante.setCorreo("maria.robotnik@pucp.edu.pe");
+//        postulante.setCodigoPUCP(19800232);
+//        postulante.setFacultad("Ingenieria");
+//        postulante.setEspecialidad("Electrónica");
+//        postulante.setStatus(EstadoPUCP.MATRICULADO);
+//        postulante.setTelefono("900210362");
+//        postulante.setEstadoProceso(EstadoProceso.PENDIENTE);
+//        postulanteBo.insertar(postulante);
 
     }
 }

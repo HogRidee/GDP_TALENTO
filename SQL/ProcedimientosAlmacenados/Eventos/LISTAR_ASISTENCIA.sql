@@ -10,10 +10,7 @@ BEGIN
     WHERE a.id_participante = s.id_staff
     AND s.id_Staff = m.id_miembro_pucp
     AND a.id_evento = e.id_evento
-    AND a.asistencia = 'ASISTIO'
     AND e.estadoEvento = 'APROBADO'
-    AND e.tipoEvento = 'REUNION'
-    AND s.estado = 'ACTIVO';
 END$$
 
 DELIMITER ;

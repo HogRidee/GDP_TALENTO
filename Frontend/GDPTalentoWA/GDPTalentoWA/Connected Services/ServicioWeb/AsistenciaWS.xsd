@@ -30,6 +30,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="participante" type="tns:staff" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
+      <xs:element minOccurs="0" name="asistencia" type="tns:estadoAsistencia" />
       <xs:element name="estadoAsistencia" type="tns:estadoAsistencia" />
     </xs:sequence>
   </xs:complexType>
@@ -202,6 +203,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="ASISTIO" />
       <xs:enumeration value="FALTO" />
+      <xs:enumeration value="JUSTIFICADO" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

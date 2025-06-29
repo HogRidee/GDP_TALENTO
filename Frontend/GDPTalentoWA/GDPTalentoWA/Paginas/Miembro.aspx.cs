@@ -227,14 +227,16 @@ namespace GDPTalentoWA.Paginas
                     Response.Redirect("RegistrarNuevoMiembro.aspx?accion=modificar");
                     break;
                 case "EliminarMiembro":
-                    // Aquí llamas a tu servicio de eliminación si corresponde
-                    // boStaff.eliminarStaff(id);
+                    boStaff = new StaffWSClient(); // ✅ Asegura que no sea null
                     boStaff.eliminarStaff(id);
+
                     staffs = new BindingList<staff>(boStaff.listarStaff());
                     dgvMiembros.DataSource = staffs;
                     dgvMiembros.DataBind();
+
                     Response.Redirect("Miembro.aspx");
                     break;
+
             }
         }
 
