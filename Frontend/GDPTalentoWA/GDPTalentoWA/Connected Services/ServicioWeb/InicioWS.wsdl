@@ -5,17 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/InicioWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="devolverEventosResumen">
-    <part name="parameters" element="tns:devolverEventosResumen" />
+  <message name="devolverTotales">
+    <part name="parameters" element="tns:devolverTotales" />
   </message>
-  <message name="devolverEventosResumenResponse">
-    <part name="parameters" element="tns:devolverEventosResumenResponse" />
-  </message>
-  <message name="devolverTareasResumen">
-    <part name="parameters" element="tns:devolverTareasResumen" />
-  </message>
-  <message name="devolverTareasResumenResponse">
-    <part name="parameters" element="tns:devolverTareasResumenResponse" />
+  <message name="devolverTotalesResponse">
+    <part name="parameters" element="tns:devolverTotalesResponse" />
   </message>
   <message name="devolverVariacionMiembros">
     <part name="parameters" element="tns:devolverVariacionMiembros" />
@@ -29,20 +23,22 @@
   <message name="devolverProximaEntrevistaResponse">
     <part name="parameters" element="tns:devolverProximaEntrevistaResponse" />
   </message>
-  <message name="devolverTotales">
-    <part name="parameters" element="tns:devolverTotales" />
+  <message name="devolverEventosResumen">
+    <part name="parameters" element="tns:devolverEventosResumen" />
   </message>
-  <message name="devolverTotalesResponse">
-    <part name="parameters" element="tns:devolverTotalesResponse" />
+  <message name="devolverEventosResumenResponse">
+    <part name="parameters" element="tns:devolverEventosResumenResponse" />
+  </message>
+  <message name="devolverTareasResumen">
+    <part name="parameters" element="tns:devolverTareasResumen" />
+  </message>
+  <message name="devolverTareasResumenResponse">
+    <part name="parameters" element="tns:devolverTareasResumenResponse" />
   </message>
   <portType name="InicioWS">
-    <operation name="devolverEventosResumen">
-      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenRequest" message="tns:devolverEventosResumen" />
-      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenResponse" message="tns:devolverEventosResumenResponse" />
-    </operation>
-    <operation name="devolverTareasResumen">
-      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenRequest" message="tns:devolverTareasResumen" />
-      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenResponse" message="tns:devolverTareasResumenResponse" />
+    <operation name="devolverTotales">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesRequest" message="tns:devolverTotales" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesResponse" message="tns:devolverTotalesResponse" />
     </operation>
     <operation name="devolverVariacionMiembros">
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverVariacionMiembrosRequest" message="tns:devolverVariacionMiembros" />
@@ -52,23 +48,18 @@
       <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverProximaEntrevistaRequest" message="tns:devolverProximaEntrevista" />
       <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverProximaEntrevistaResponse" message="tns:devolverProximaEntrevistaResponse" />
     </operation>
-    <operation name="devolverTotales">
-      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesRequest" message="tns:devolverTotales" />
-      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTotalesResponse" message="tns:devolverTotalesResponse" />
+    <operation name="devolverEventosResumen">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenRequest" message="tns:devolverEventosResumen" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverEventosResumenResponse" message="tns:devolverEventosResumenResponse" />
+    </operation>
+    <operation name="devolverTareasResumen">
+      <input wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenRequest" message="tns:devolverTareasResumen" />
+      <output wsam:Action="http://services.pucp.edu.pe/InicioWS/devolverTareasResumenResponse" message="tns:devolverTareasResumenResponse" />
     </operation>
   </portType>
   <binding name="InicioWSPortBinding" type="tns:InicioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="devolverEventosResumen">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="devolverTareasResumen">
+    <operation name="devolverTotales">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +86,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="devolverTotales">
+    <operation name="devolverEventosResumen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="devolverTareasResumen">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -17,17 +17,17 @@
   <message name="modificarStaffResponse">
     <part name="parameters" element="tns:modificarStaffResponse" />
   </message>
-  <message name="listarStaff">
-    <part name="parameters" element="tns:listarStaff" />
-  </message>
-  <message name="listarStaffResponse">
-    <part name="parameters" element="tns:listarStaffResponse" />
-  </message>
   <message name="eliminarStaff">
     <part name="parameters" element="tns:eliminarStaff" />
   </message>
   <message name="eliminarStaffResponse">
     <part name="parameters" element="tns:eliminarStaffResponse" />
+  </message>
+  <message name="listarStaff">
+    <part name="parameters" element="tns:listarStaff" />
+  </message>
+  <message name="listarStaffResponse">
+    <part name="parameters" element="tns:listarStaffResponse" />
   </message>
   <portType name="StaffWS">
     <operation name="insertarStaff">
@@ -38,13 +38,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffRequest" message="tns:modificarStaff" />
       <output wsam:Action="http://services.pucp.edu.pe/StaffWS/modificarStaffResponse" message="tns:modificarStaffResponse" />
     </operation>
-    <operation name="listarStaff">
-      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest" message="tns:listarStaff" />
-      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffResponse" message="tns:listarStaffResponse" />
-    </operation>
     <operation name="eliminarStaff">
       <input wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffRequest" message="tns:eliminarStaff" />
       <output wsam:Action="http://services.pucp.edu.pe/StaffWS/eliminarStaffResponse" message="tns:eliminarStaffResponse" />
+    </operation>
+    <operation name="listarStaff">
+      <input wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffRequest" message="tns:listarStaff" />
+      <output wsam:Action="http://services.pucp.edu.pe/StaffWS/listarStaffResponse" message="tns:listarStaffResponse" />
     </operation>
   </portType>
   <binding name="StaffWSPortBinding" type="tns:StaffWS">
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarStaff">
+    <operation name="eliminarStaff">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarStaff">
+    <operation name="listarStaff">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

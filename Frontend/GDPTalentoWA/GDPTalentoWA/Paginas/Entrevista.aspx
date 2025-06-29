@@ -22,6 +22,24 @@
             }, 300);
         }
 
+        function showModalCompletarEntrevista() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCompletarEntrevista'));
+                    modal.show();
+                }
+            }, 300);
+        }
+
+        function hideModalCompletarEntrevista() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCompletarEntrevista'));
+                    modal.hide();
+                }
+            }, 300);
+        }
+
         function addOptions(target,name,id) {
             if (!target) {
                 return false;
@@ -77,8 +95,9 @@
                                             AutoPostBack="true" OnSelectedIndexChanged="ddlAcciones_SelectedIndexChanged"
                                             data-id='<%# Eval("id") %>'>
                                             <asp:ListItem Text="Acción" Value="" />
-                                            <asp:ListItem Text="Ver Detalles" Value="VerDetalles" />
-                                            <asp:ListItem Text="Editar" Value="EditarTarea" />
+                                            <asp:ListItem Text="Ver detalles" Value="VerDetalles" />
+                                            <asp:ListItem Text="Completar entrevista" Value="Completar" />
+                                            <asp:ListItem Text="Cancelar entrevista" Value="Cancelar" />
                                         </asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -131,6 +150,39 @@
                     <asp:LinkButton ID="btnGuardarNuevaEntrevista" runat="server" CssClass="btn btn-success" OnClick="btnGuardarNuevaEntrevista_Click">
                     Guardar entrevista
                     </asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------ Modal para completar entrevista--------->
+    <div class="modal fade" id="modalCompletarEntrevista" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Completar tarea</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="upCompletarEntrevista" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+
+                            <div class="mb-3">
+                                <label for="txtPuntuacion" class="form-label">Puntuacion</label>
+                                <asp:TextBox ID="txtPuntuacion" runat="server" CssClass="form-control"/>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtFeedback" class="form-label">Descripción</label>
+                                <asp:TextBox ID="txtFeedback" runat="server" CssClass="form-control" />
+                            </div>
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:LinkButton ID="btnCompletar" runat="server" CssClass="btn btn-dark" OnClick="btnCompletar_Click">Completar entrevista</asp:LinkButton>
                 </div>
             </div>
         </div>
