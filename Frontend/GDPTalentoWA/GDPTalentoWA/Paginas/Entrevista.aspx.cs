@@ -22,6 +22,21 @@ namespace GDPTalentoWA.Paginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jquery"))
+            {
+                ScriptResourceDefinition jQueryDef = new ScriptResourceDefinition
+                {
+                    Path = "~/Scripts/jquery-3.7.1.min.js",
+                    DebugPath = "~/Scripts/jquery-3.7.1.js",
+                    CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js",
+                    CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.js",
+                    CdnSupportsSecureConnection = true,
+                    LoadSuccessExpression = "window.jQuery"
+                };
+
+                ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQueryDef);
+            }
+
             if (!IsPostBack)
             {
                 boEntrevista = new EntrevistaWSClient();
@@ -49,14 +64,14 @@ namespace GDPTalentoWA.Paginas
                 ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('No funca tu pinche listar');", true);
                 return;
             }
-            
+
             var entrevistasPlanas = new List<object>();
 
             foreach (var entrevista in entrevistas)
             {
                 if (entrevista.entrevistadores != null && entrevista.entrevistadores.Length > 0)
                 {
-                    postulantesCache.TryGetValue(entrevista.postulante.id,out string nombrePostulante);
+                    postulantesCache.TryGetValue(entrevista.postulante.id, out string nombrePostulante);
                     foreach (var entrevistador in entrevista.entrevistadores)
                     {
                         usuariosCache.TryGetValue(entrevistador.id, out string nombreEncargado);
@@ -87,7 +102,7 @@ namespace GDPTalentoWA.Paginas
         protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
-            int idEntrevista= int.Parse(ddl.Attributes["data-id"]);
+            int idEntrevista = int.Parse(ddl.Attributes["data-id"]);
             string accion = ddl.SelectedValue;
 
             boEntrevista = new EntrevistaWSClient();
@@ -100,19 +115,19 @@ namespace GDPTalentoWA.Paginas
                 switch (accion)
                 {
                     case "VerDetalles":
-                        /*
-                        lblDescripcionDetalle.Text = tareaSeleccionada.descripcion;
-                        lblFechaLimiteDetalle.Text = tareaSeleccionada.fechaLimite.ToString("dd/MM/yyyy");
-                        lblEstadoDetalle.Text = tareaSeleccionada.estado.ToString();
-                        lblCreadorDetalle.Text = tareaSeleccionada.creador?.nombre ?? "Sin nombre";
+                        lblPostulanteDetalle.Text = entrevistaSeleccionada.postulante.nombre;
+                        lblFechaDetalle.Text = entrevistaSeleccionada.fecha.ToString();
 
-                        var nombres = tareaSeleccionada.encargados?
+                        var nombres = entrevistaSeleccionada.entrevistadores?
                             .Select(enc => usuariosCache.TryGetValue(enc.id, out var nombre) ? nombre : "Sin nombre")
                             .ToList();
 
-                        lblEncargadosDetalle.Text = (nombres != null && nombres.Any()) ? string.Join(", ", nombres) : "Sin encargados";
-                        upDetallesTarea.Update();
-                        ScriptManager.RegisterStartupScript(upDetallesTarea, upDetallesTarea.GetType(), "abrirDetalles", "showModalDetallesTarea();", true);*/
+                        lblEntrevistadorDetalle.Text = (nombres != null && nombres.Any()) ? string.Join(", ", nombres) : "Sin encargados";
+
+                        lblFeedbackDetalle.Text = entrevistaSeleccionada.feedback;
+
+                        upDetallesEntrevista.Update();
+                        ScriptManager.RegisterStartupScript(upDetallesEntrevista, upDetallesEntrevista.GetType(), "abrirDetalles", "showModalDetallesEntrevista();", true);
                         break;
 
                     case "Completar":
@@ -124,49 +139,29 @@ namespace GDPTalentoWA.Paginas
                         ScriptManager.RegisterStartupScript(upCompletarEntrevista, upCompletarEntrevista.GetType(), "mostrarCompletar", "showModalCompletarEntrevista();", true);
                         break;
                     case "Cancelar":
-                        
-                        var entrevista = boEntrevista.listarEntrevistas().FirstOrDefault(en => en.id == idEntrevista);
-                        if (entrevista != null)
-                        {
-                            entrevista.estado = estadoEntrevista.CANCELADA;
-                            boEntrevista.modificarEntrevista(entrevista);
-                            upEntrevistas.Update();
-                            CargarEntrevistas();
-                        }
+
+                        Session["eliminarEntrevistas"] = entrevistaSeleccionada.id;
+
+                        ScriptManager.RegisterStartupScript(upCompletarEntrevista, upCompletarEntrevista.GetType(), "mostrarEliminar", "showModalEliminarEntrevista();", true);
                         break;
                 }
             }
             ddl.SelectedIndex = 0;
         }
 
-        protected void btnEliminarEncargado_Click(object sender, EventArgs e)
-        {
-            boTarea = new TareaWSClient();
-            int idTarea = (int)Session["completarEntrevistaId"];
-            int idEncargado = (int)Session["encargadoEditarId"];
-
-            var tarea = boTarea.listarTareas().FirstOrDefault(t => t.id == idTarea);
-            if (tarea != null)
-            {
-                tarea.encargados = tarea.encargados?.Where(enc => enc.id != idEncargado).ToArray();
-                boTarea.modificarTarea(tarea);
-                CargarEntrevistas();
-            }
-        }
-
         protected void btnCompletar_Click(object sender, EventArgs e)
         {
             boEntrevista = new EntrevistaWSClient();
             int idEntrevista = (int)Session["completarEntrevistaId"];
-            
+
 
             var entrevista = boEntrevista.listarEntrevistas().FirstOrDefault(en => en.id == idEntrevista);
             if (entrevista != null)
             {
                 entrevista.feedback = txtFeedback.Text;
-                
+
                 entrevista.puntuacionFinal = Double.Parse(txtPuntuacion.Text);
-                
+
                 entrevista.estado = estadoEntrevista.REALIZADA;
 
                 boEntrevista.modificarEntrevista(entrevista);
@@ -175,41 +170,6 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-        protected void FiltrarTareas_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CargarTareasFiltradas(string estadoFiltro)
-        {
-            boEntrevista = new EntrevistaWSClient();
-            var entrevistas = boEntrevista.listarEntrevistas();
-            usuariosCache = (Dictionary<int, string>)Session["usuariosCache"] ?? new Dictionary<int, string>();
-            var entrevistasFiltradas = new List<object>();
-
-            foreach (var entrevista in entrevistas)
-            {
-                if (entrevista.entrevistadores != null && entrevista.entrevistadores.Length > 0)
-                {
-                    foreach (var entrevistador in entrevista.entrevistadores)
-                    {
-                        usuariosCache.TryGetValue(entrevistador.id, out string nombreEncargado);
-                        entrevistasFiltradas.Add(new
-                        {
-                            id = entrevista.id,
-                            postulante = entrevista.postulante?.nombre ?? "Sin nombre",
-                            estado = entrevista.estado,
-                            entrevistador = nombreEncargado ?? "Sin nombre",
-                            fecha = entrevista.fecha
-                        });
-                    }
-                }
-            }
-
-            dgvEntrevistas.DataSource = entrevistasFiltradas;
-            dgvEntrevistas.DataBind();
-        }
-        
         protected void btnProgramarEntrevista_Click(object sender, EventArgs e)
         {
 
@@ -324,5 +284,26 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
+        protected void btnEliminarEntrevistaFinal_Click(object sender, EventArgs e)
+        {
+            if (Session["eliminarEntrevista"] != null)
+            {
+                int idEntrevista = (int)Session["eliminarEntrevista"];
+                boEntrevista = new EntrevistaWSClient();
+
+                try
+                {
+                    boEntrevista.eliminarEntrevista(idEntrevista);
+                    CargarEntrevistas();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalEliminar", "hideModalEliminarEntrevista();", true);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorEliminar", $"alert('Error al eliminar tarea: {ex.Message}');", true);
+                }
+            }
+        }
+
     }
 }
+        

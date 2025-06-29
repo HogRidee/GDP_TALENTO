@@ -40,19 +40,31 @@
             }, 300);
         }
 
-        function addOptions(target,name,id) {
-            if (!target) {
-                return false;
-            }
-            else {
+        function showModalEliminarEntrevista() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarEntrevista'));
+                    modal.show();
+                }
+            }, 300);
+        }
 
-                select = document.getElementById(target);
+        function hideModalEliminarEntrevista() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarEntrevista'));
+                    modal.hide();
+                }
+            }, 300);
+        }
 
-                var opt = document.createElement('option');
-                opt.value = id;
-                opt.innerHTML = name;
-                select.appendChild(opt);
-            }
+        function showModalDetallesEntrevista() {
+            setTimeout(function () {
+                if (typeof bootstrap !== 'undefined') {
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetallesEntrevista'));
+                    modal.show();
+                }
+            }, 300);
         }
 
     </script>
@@ -183,6 +195,64 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <asp:LinkButton ID="btnCompletar" runat="server" CssClass="btn btn-dark" OnClick="btnCompletar_Click">Completar entrevista</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---Modal para ver detalles de entrevista--->
+    <div class="modal fade" id="modalDetallesEntrevista" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles de la entrevista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="upDetallesEntrevista" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <p>
+                                <strong>Postulante:</strong>
+                                <asp:Label ID="lblPostulanteDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Fecha límite:</strong>
+                                <asp:Label ID="lblFechaDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Entrevistador(es):</strong>
+                                <asp:Label ID="lblEntrevistadorDetalle" runat="server" />
+                            </p>
+                            <p>
+                                <strong>Feedback:</strong>
+                                <asp:Label ID="lblFeedbackDetalle" runat="server" />
+                            </p>
+
+                            <div class="d-flex justify-content-between mt-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal para eliminar entrevista-->
+    <div class="modal fade" id="modalEliminarEntrevista" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">¿Estás seguro de cancelar esta entrevista?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    Esta acción no se puede deshacer. ¿Deseas continuar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                    <asp:LinkButton ID="btnEliminarEntrevistaFinal" runat="server" CssClass="btn btn-danger text-white"
+                        OnClick="btnEliminarEntrevistaFinal_Click">Cancelar</asp:LinkButton>
                 </div>
             </div>
         </div>
