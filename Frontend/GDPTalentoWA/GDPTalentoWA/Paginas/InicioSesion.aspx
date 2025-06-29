@@ -35,7 +35,7 @@
         
         <div class="mb-3 position-relative">
           <label for="txtPassword" class="form-label">Contraseña</label>
-          <a href="#" class="forgot-link position-absolute end-0">¿Olvidaste tu contraseña?</a>
+          <a href="javascript:void(0)" class="forgot-link position-absolute end-0 text-decoration-none text-primary">¿Olvidaste tu contraseña?</a>
           <asp:TextBox 
             ID="txtPassword" runat="server" 
             TextMode="Password" 
@@ -67,5 +67,50 @@
       </div>
     </div>
   </div>
+    <!-- Modal: Recuperar Contraseña -->
+    <div class="modal fade" id="recuperarModal" tabindex="-1" aria-labelledby="recuperarModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="recuperarModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="mb-3">
+              <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                 style="width:56px;height:56px;">
+                    <i class="fa-regular fa-envelope fs-3 text-primary"></i>
+              </div>
+            </div>
+            <h5 class="fw-bold">Recuperar Contraseña</h5>
+            <p class="mb-4 text-muted">Para recuperar tu contraseña, por favor contacta con la administración.</p>
+            <div class="d-flex align-items-start rounded-3 p-3 mb-0 bg-primary bg-opacity-10">
+              <i class="fa-regular fa-envelope fs-4 text-primary"></i>
+              <div class="ms-3 text-start">
+                <small class="d-block text-dark fw-bold">Correo de contacto:</small>
+                <a href="mailto:gamedevspucp@gmail.com"
+                   class="fw-semibold text-primary d-block">
+                  gamedevspucp@gmail.com
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer border-0 justify-content-center">
+            <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">Entendido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      document.querySelector('.forgot-link').addEventListener('click', function(e){
+        e.preventDefault();
+        var modalEl = document.getElementById('recuperarModal');
+        var modal = new bootstrap.Modal(modalEl);
+        modal.show();
+      });
+    </script>
+
 </body>
 </html>

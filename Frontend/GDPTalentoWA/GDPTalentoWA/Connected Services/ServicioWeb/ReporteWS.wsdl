@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/ReporteWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="generarReporteEventos">
-    <part name="parameters" element="tns:generarReporteEventos" />
-  </message>
-  <message name="generarReporteEventosResponse">
-    <part name="parameters" element="tns:generarReporteEventosResponse" />
-  </message>
   <message name="generarReporteMarketing">
     <part name="parameters" element="tns:generarReporteMarketing" />
   </message>
@@ -22,12 +16,6 @@
   </message>
   <message name="generarReporteOIECSVResponse">
     <part name="parameters" element="tns:generarReporteOIECSVResponse" />
-  </message>
-  <message name="generarReporteGDPAcademy">
-    <part name="parameters" element="tns:generarReporteGDPAcademy" />
-  </message>
-  <message name="generarReporteGDPAcademyResponse">
-    <part name="parameters" element="tns:generarReporteGDPAcademyResponse" />
   </message>
   <message name="generarReportePresidencia">
     <part name="parameters" element="tns:generarReportePresidencia" />
@@ -41,11 +29,23 @@
   <message name="generarReporteTotalResponse">
     <part name="parameters" element="tns:generarReporteTotalResponse" />
   </message>
+  <message name="generarReporteGDPAcademy">
+    <part name="parameters" element="tns:generarReporteGDPAcademy" />
+  </message>
+  <message name="generarReporteGDPAcademyResponse">
+    <part name="parameters" element="tns:generarReporteGDPAcademyResponse" />
+  </message>
   <message name="generarReportePostulantes">
     <part name="parameters" element="tns:generarReportePostulantes" />
   </message>
   <message name="generarReportePostulantesResponse">
     <part name="parameters" element="tns:generarReportePostulantesResponse" />
+  </message>
+  <message name="generarReporteEventos">
+    <part name="parameters" element="tns:generarReporteEventos" />
+  </message>
+  <message name="generarReporteEventosResponse">
+    <part name="parameters" element="tns:generarReporteEventosResponse" />
   </message>
   <message name="generarReporteRecursosHumanos">
     <part name="parameters" element="tns:generarReporteRecursosHumanos" />
@@ -54,10 +54,6 @@
     <part name="parameters" element="tns:generarReporteRecursosHumanosResponse" />
   </message>
   <portType name="ReporteWS">
-    <operation name="generarReporteEventos">
-      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosRequest" message="tns:generarReporteEventos" />
-      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosResponse" message="tns:generarReporteEventosResponse" />
-    </operation>
     <operation name="generarReporteMarketing">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteMarketingRequest" message="tns:generarReporteMarketing" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteMarketingResponse" message="tns:generarReporteMarketingResponse" />
@@ -65,10 +61,6 @@
     <operation name="generarReporteOIECSV">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVRequest" message="tns:generarReporteOIECSV" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVResponse" message="tns:generarReporteOIECSVResponse" />
-    </operation>
-    <operation name="generarReporteGDPAcademy">
-      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteGDPAcademyRequest" message="tns:generarReporteGDPAcademy" />
-      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteGDPAcademyResponse" message="tns:generarReporteGDPAcademyResponse" />
     </operation>
     <operation name="generarReportePresidencia">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePresidenciaRequest" message="tns:generarReportePresidencia" />
@@ -78,9 +70,17 @@
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteTotalRequest" message="tns:generarReporteTotal" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteTotalResponse" message="tns:generarReporteTotalResponse" />
     </operation>
+    <operation name="generarReporteGDPAcademy">
+      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteGDPAcademyRequest" message="tns:generarReporteGDPAcademy" />
+      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteGDPAcademyResponse" message="tns:generarReporteGDPAcademyResponse" />
+    </operation>
     <operation name="generarReportePostulantes">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePostulantesRequest" message="tns:generarReportePostulantes" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePostulantesResponse" message="tns:generarReportePostulantesResponse" />
+    </operation>
+    <operation name="generarReporteEventos">
+      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosRequest" message="tns:generarReporteEventos" />
+      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosResponse" message="tns:generarReporteEventosResponse" />
     </operation>
     <operation name="generarReporteRecursosHumanos">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteRecursosHumanosRequest" message="tns:generarReporteRecursosHumanos" />
@@ -89,15 +89,6 @@
   </portType>
   <binding name="ReporteWSPortBinding" type="tns:ReporteWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="generarReporteEventos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="generarReporteMarketing">
       <soap:operation soapAction="" />
       <input>
@@ -108,15 +99,6 @@
       </output>
     </operation>
     <operation name="generarReporteOIECSV">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="generarReporteGDPAcademy">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -143,7 +125,25 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="generarReporteGDPAcademy">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="generarReportePostulantes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="generarReporteEventos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
