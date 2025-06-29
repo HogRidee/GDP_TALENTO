@@ -11,23 +11,17 @@
   <message name="generarReporteMarketingResponse">
     <part name="parameters" element="tns:generarReporteMarketingResponse" />
   </message>
-  <message name="generarReporteOIECSV">
-    <part name="parameters" element="tns:generarReporteOIECSV" />
-  </message>
-  <message name="generarReporteOIECSVResponse">
-    <part name="parameters" element="tns:generarReporteOIECSVResponse" />
-  </message>
-  <message name="generarReportePresidencia">
-    <part name="parameters" element="tns:generarReportePresidencia" />
-  </message>
-  <message name="generarReportePresidenciaResponse">
-    <part name="parameters" element="tns:generarReportePresidenciaResponse" />
-  </message>
   <message name="generarReporteTotal">
     <part name="parameters" element="tns:generarReporteTotal" />
   </message>
   <message name="generarReporteTotalResponse">
     <part name="parameters" element="tns:generarReporteTotalResponse" />
+  </message>
+  <message name="generarReporteOIECSV">
+    <part name="parameters" element="tns:generarReporteOIECSV" />
+  </message>
+  <message name="generarReporteOIECSVResponse">
+    <part name="parameters" element="tns:generarReporteOIECSVResponse" />
   </message>
   <message name="generarReporteGDPAcademy">
     <part name="parameters" element="tns:generarReporteGDPAcademy" />
@@ -47,6 +41,12 @@
   <message name="generarReporteEventosResponse">
     <part name="parameters" element="tns:generarReporteEventosResponse" />
   </message>
+  <message name="generarReportePresidencia">
+    <part name="parameters" element="tns:generarReportePresidencia" />
+  </message>
+  <message name="generarReportePresidenciaResponse">
+    <part name="parameters" element="tns:generarReportePresidenciaResponse" />
+  </message>
   <message name="generarReporteRecursosHumanos">
     <part name="parameters" element="tns:generarReporteRecursosHumanos" />
   </message>
@@ -58,17 +58,13 @@
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteMarketingRequest" message="tns:generarReporteMarketing" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteMarketingResponse" message="tns:generarReporteMarketingResponse" />
     </operation>
-    <operation name="generarReporteOIECSV">
-      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVRequest" message="tns:generarReporteOIECSV" />
-      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVResponse" message="tns:generarReporteOIECSVResponse" />
-    </operation>
-    <operation name="generarReportePresidencia">
-      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePresidenciaRequest" message="tns:generarReportePresidencia" />
-      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePresidenciaResponse" message="tns:generarReportePresidenciaResponse" />
-    </operation>
     <operation name="generarReporteTotal">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteTotalRequest" message="tns:generarReporteTotal" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteTotalResponse" message="tns:generarReporteTotalResponse" />
+    </operation>
+    <operation name="generarReporteOIECSV">
+      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVRequest" message="tns:generarReporteOIECSV" />
+      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteOIECSVResponse" message="tns:generarReporteOIECSVResponse" />
     </operation>
     <operation name="generarReporteGDPAcademy">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteGDPAcademyRequest" message="tns:generarReporteGDPAcademy" />
@@ -81,6 +77,10 @@
     <operation name="generarReporteEventos">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosRequest" message="tns:generarReporteEventos" />
       <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteEventosResponse" message="tns:generarReporteEventosResponse" />
+    </operation>
+    <operation name="generarReportePresidencia">
+      <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePresidenciaRequest" message="tns:generarReportePresidencia" />
+      <output wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReportePresidenciaResponse" message="tns:generarReportePresidenciaResponse" />
     </operation>
     <operation name="generarReporteRecursosHumanos">
       <input wsam:Action="http://services.pucp.edu.pe/ReporteWS/generarReporteRecursosHumanosRequest" message="tns:generarReporteRecursosHumanos" />
@@ -98,25 +98,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="generarReporteOIECSV">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="generarReportePresidencia">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="generarReporteTotal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="generarReporteOIECSV">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -144,6 +135,15 @@
       </output>
     </operation>
     <operation name="generarReporteEventos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="generarReportePresidencia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

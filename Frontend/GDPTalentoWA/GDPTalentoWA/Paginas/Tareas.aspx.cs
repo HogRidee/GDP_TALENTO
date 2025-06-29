@@ -15,6 +15,21 @@ namespace GDPTalentoWA.Paginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jquery"))
+            {
+                ScriptResourceDefinition jQueryDef = new ScriptResourceDefinition
+                {
+                    Path = "~/Scripts/jquery-3.6.0.min.js",
+                    DebugPath = "~/Scripts/jquery-3.6.0.js",
+                    CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js",
+                    CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js",
+                    CdnSupportsSecureConnection = true,
+                    LoadSuccessExpression = "window.jQuery"
+                };
+
+                ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQueryDef);
+            }
+
             if (!IsPostBack)
             {
                 boTarea = new TareaWSClient();
@@ -106,7 +121,22 @@ namespace GDPTalentoWA.Paginas
                         lblDescripcionDetalle.Text = tareaSeleccionada.descripcion;
                         lblFechaLimiteDetalle.Text = tareaSeleccionada.fechaLimite.ToString("dd/MM/yyyy");
                         lblEstadoDetalle.Text = tareaSeleccionada.estado.ToString();
-                        lblCreadorDetalle.Text = tareaSeleccionada.creador?.nombre ?? "Sin nombre";
+                        if (tareaSeleccionada.creador != null)
+                        {
+                            if (string.IsNullOrEmpty(tareaSeleccionada.creador.nombre) && usuariosCache != null)
+                            {
+                                if (usuariosCache.TryGetValue(tareaSeleccionada.creador.id, out string nombreCreador))
+                                {
+                                    tareaSeleccionada.creador.nombre = nombreCreador;
+                                }
+                            }
+
+                            lblCreadorDetalle.Text = tareaSeleccionada.creador.nombre ?? "Sin nombre";
+                        }
+                        else
+                        {
+                            lblCreadorDetalle.Text = "Sin nombre";
+                        }
 
                         var nombres = tareaSeleccionada.encargados?
                             .Select(enc => usuariosCache.TryGetValue(enc.id, out var nombre) ? nombre : "Sin nombre")
@@ -129,10 +159,18 @@ namespace GDPTalentoWA.Paginas
                         upEditarTarea.Update();
                         ScriptManager.RegisterStartupScript(upEditarTarea, upEditarTarea.GetType(), "mostrarEditar", "showModalEditarTarea();", true);
                         break;
+
+                    case "EliminarTarea":
+                        Session["tareaEliminarId"] = tareaSeleccionada.id;
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarEliminar", "showModalEliminarTarea();", true);
+                        break;
+
+
                 }
             }
             ddl.SelectedIndex = 0;
         }
+
 
         protected void btnEliminarEncargado_Click(object sender, EventArgs e)
         {
@@ -151,6 +189,7 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnGuardarCambios_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) return;
             boTarea = new TareaWSClient();
             int idTarea = (int)Session["tareaEditarId"];
 
@@ -251,6 +290,7 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnGuardarNuevaTarea_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) return;
             boTarea = new TareaWSClient();
             boUsuario = new UsuarioWSClient();
 
@@ -291,6 +331,26 @@ namespace GDPTalentoWA.Paginas
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al guardar tarea: {ex.Message}');", true);
+            }
+        }
+
+        protected void btnEliminarTareaFinal_Click(object sender, EventArgs e)
+        {
+            if (Session["tareaEliminarId"] != null)
+            {
+                int idTarea = (int)Session["tareaEliminarId"];
+                boTarea = new TareaWSClient();
+
+                try
+                {
+                    boTarea.eliminarTarea(idTarea);
+                    CargarTareas();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalEliminar", "hideModalEliminarTarea();", true);
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorEliminar", $"alert('Error al eliminar tarea: {ex.Message}');", true);
+                }
             }
         }
     }

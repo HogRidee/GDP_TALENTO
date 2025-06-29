@@ -11,11 +11,11 @@
   <message name="modificarPostulanteResponse">
     <part name="parameters" element="tns:modificarPostulanteResponse" />
   </message>
-  <message name="listarPostulantes">
-    <part name="parameters" element="tns:listarPostulantes" />
+  <message name="insertarPostulante">
+    <part name="parameters" element="tns:insertarPostulante" />
   </message>
-  <message name="listarPostulantesResponse">
-    <part name="parameters" element="tns:listarPostulantesResponse" />
+  <message name="insertarPostulanteResponse">
+    <part name="parameters" element="tns:insertarPostulanteResponse" />
   </message>
   <message name="eliminarPostulante">
     <part name="parameters" element="tns:eliminarPostulante" />
@@ -23,28 +23,28 @@
   <message name="eliminarPostulanteResponse">
     <part name="parameters" element="tns:eliminarPostulanteResponse" />
   </message>
-  <message name="insertarPostulante">
-    <part name="parameters" element="tns:insertarPostulante" />
+  <message name="listarPostulantes">
+    <part name="parameters" element="tns:listarPostulantes" />
   </message>
-  <message name="insertarPostulanteResponse">
-    <part name="parameters" element="tns:insertarPostulanteResponse" />
+  <message name="listarPostulantesResponse">
+    <part name="parameters" element="tns:listarPostulantesResponse" />
   </message>
   <portType name="PostulanteWS">
     <operation name="modificarPostulante">
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteRequest" message="tns:modificarPostulante" />
       <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/modificarPostulanteResponse" message="tns:modificarPostulanteResponse" />
     </operation>
-    <operation name="listarPostulantes">
-      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest" message="tns:listarPostulantes" />
-      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse" message="tns:listarPostulantesResponse" />
+    <operation name="insertarPostulante">
+      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest" message="tns:insertarPostulante" />
+      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse" message="tns:insertarPostulanteResponse" />
     </operation>
     <operation name="eliminarPostulante">
       <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteRequest" message="tns:eliminarPostulante" />
       <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/eliminarPostulanteResponse" message="tns:eliminarPostulanteResponse" />
     </operation>
-    <operation name="insertarPostulante">
-      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteRequest" message="tns:insertarPostulante" />
-      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/insertarPostulanteResponse" message="tns:insertarPostulanteResponse" />
+    <operation name="listarPostulantes">
+      <input wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesRequest" message="tns:listarPostulantes" />
+      <output wsam:Action="http://services.pucp.edu.pe/PostulanteWS/listarPostulantesResponse" message="tns:listarPostulantesResponse" />
     </operation>
   </portType>
   <binding name="PostulanteWSPortBinding" type="tns:PostulanteWS">
@@ -58,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarPostulantes">
+    <operation name="insertarPostulante">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarPostulante">
+    <operation name="listarPostulantes">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

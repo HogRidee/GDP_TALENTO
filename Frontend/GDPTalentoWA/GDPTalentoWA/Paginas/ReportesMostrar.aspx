@@ -73,7 +73,7 @@
                     <div class="p-3 bg-light rounded text-center">
                         <p class="text-muted mb-1">Miembros</p>
                         <h3 class="fw-bold mb-0">
-                            <asp:Label ID="lblMiembros" runat="server" Text="12" /></h3>
+                            <asp:Label ID="lblMiembros" runat="server" Text="0" /></h3>
                     </div>
                 </div>
                 <!----
