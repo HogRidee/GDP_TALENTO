@@ -151,7 +151,7 @@ namespace GDPTalentoWA.Paginas
                     var asistenciaObj = new ServicioWeb.asistencia();
                     asistenciaObj.participante = new ServicioWeb.staff() { id = idParticipante };
                     asistenciaObj.evento = new ServicioWeb.evento() { id = eventoSeleccionado.id };
-                    asistenciaObj.asistencia1 = chkAsistio.Checked ? estadoAsistencia.ASISTIO : estadoAsistencia.FALTO;
+                    asistenciaObj.estadoAsistencia = chkAsistio.Checked ? estadoAsistencia.ASISTIO : estadoAsistencia.FALTO;
 
                     if (yaRegistrado != null)
                     {
@@ -227,7 +227,7 @@ namespace GDPTalentoWA.Paginas
                         var asistenciaBD = todasAsistencias
                             .FirstOrDefault(a => a.evento?.id == eventoSeleccionado.id && a.participante?.id == p.id);
 
-                        bool asistio = (asistenciaBD != null && asistenciaBD.asistencia1 == estadoAsistencia.ASISTIO);
+                        bool asistio = (asistenciaBD != null && asistenciaBD.estadoAsistencia == estadoAsistencia.ASISTIO);
 
                         return new
                         {
