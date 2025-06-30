@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="containter mt-3">
         <div class="row align-items-center">
             <!-- Título a la izquierda -->
@@ -13,7 +14,7 @@
             </div>
             <!-- Botón a la derecha -->
             <div class="col-auto ms-auto">
-                <asp:LinkButton ID="btnRegistrarEvento" CssClass="btn btn-primary text-white" runat="server">
+                <asp:LinkButton ID="btnRegistrarEvento" CssClass="btn btn-primary text-white" runat="server" OnClick="btnRegistrarEvento_Click">
                 <i class="fa-solid fa-plus pe-2"></i> Registrar Evento
                 </asp:LinkButton>
             </div>
@@ -142,7 +143,7 @@
                             <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                             <asp:TemplateField HeaderText="Asistió">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="chkAsistio" runat="server" Checked='<%# Eval("asistio") %>' />
+                                    <asp:CheckBox ID="chkAsistio" runat="server" Checked='<%# Eval("estadoAsistencia") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
