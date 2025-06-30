@@ -11,7 +11,7 @@ namespace GDPTalentoWA.Paginas
 {
 
 
-    public partial class Eventos
+    public partial class RegistrarEvento
     {
 
         /// <summary>
@@ -24,31 +24,13 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Control btnRegistrarEvento.
+        /// Control lblTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnRegistrarEvento;
-
-        /// <summary>
-        /// Control lbBuscarEvento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbBuscarEvento;
-
-        /// <summary>
-        /// Control txtBuscarEventos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarEventos;
+        protected global::System.Web.UI.WebControls.Label lblTipo;
 
         /// <summary>
         /// Control ddlTipo.
@@ -60,6 +42,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
 
         /// <summary>
+        /// Control lblEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstado;
+
+        /// <summary>
         /// Control ddlEstado.
         /// </summary>
         /// <remarks>
@@ -69,31 +60,13 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
 
         /// <summary>
-        /// Control ddlMES.
+        /// Control dtpFechaEvento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMES;
-
-        /// <summary>
-        /// Control btnFiltrarEvento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnFiltrarEvento;
-
-        /// <summary>
-        /// Control btnReset.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnReset;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpFechaEvento;
 
         /// <summary>
         /// Control dgvEventos.
@@ -105,21 +78,30 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.GridView dgvEventos;
 
         /// <summary>
-        /// Control gvAsistencia.
+        /// Control pnlGuardarCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAsistencia;
+        protected global::System.Web.UI.WebControls.Panel pnlGuardarCancelar;
 
         /// <summary>
-        /// Control btnGuardarAsistencia.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarAsistencia;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }
