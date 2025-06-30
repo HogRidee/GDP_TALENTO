@@ -12,9 +12,9 @@
             <div class="card-body">
                 <div class="header-section mb-4">
                     <h1>
-                        <asp:Label ID="lblTitulo" runat="server" Text="Registrar nuevo evento"></asp:Label>
+                        <asp:Label ID="lblTitulo" runat="server" Text="Visualizacion y Edicion de evento de GDP"></asp:Label>
                     </h1>
-                    <p>Ingresa la información del nuevo evento de Game Devs PUCP</p>
+                    <p>Verifica y edita la informacion del evento de GDP</p>
                     <asp:Panel ID="pnlEditar" runat="server" CssClass="mt-3">
                         <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-warning text-white"
                             OnClick="btnEditar_Click">
