@@ -53,7 +53,7 @@ namespace GDPTalentoWA.Paginas
 
         protected void btnRegistrarEvento_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("VisualizacionEdicionEvento.aspx");
+            Response.Redirect("RegistrarEvento.aspx");
         }
 
         protected void ddlAcciones_SelectedIndexChanged(object sender, EventArgs e)
