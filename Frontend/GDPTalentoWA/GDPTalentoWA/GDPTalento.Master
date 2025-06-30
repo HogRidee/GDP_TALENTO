@@ -2,17 +2,16 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
+
+    <!-- Estilos -->
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Fonts/css/all.css" rel="stylesheet" />
-    <link href="Content/site.css" rel="stylesheet"/>
-
-    <script src="Scripts/jquery-3.7.1.min.js"></script>
-    <script src="Scripts/bootstrap.bundle.js"></script>
+    <link href="Content/site.css" rel="stylesheet" />
 
     <title>
         <asp:ContentPlaceHolder ID="cph_titulo" runat="server" />
@@ -20,95 +19,54 @@
     <asp:ContentPlaceHolder ID="cph_scripts" runat="server" />
 </head>
 <body>
-    <!-- ÚNICO form de servidor para toda la página -->
     <form id="formMaster" runat="server">
+        <asp:ScriptManager ID="smMaster" runat="server" EnablePartialRendering="true" />
+
         <div class="container-fluid d-flex p-0 h-100">
-            <!-- DIVISIÓN IZQUIERDA: SIDEBAR -->
+            <!-- Sidebar -->
             <div id="bdSidebar" class="sidebar-wide d-flex flex-column flex-shrink-0 pt-4 bg-sidebar-gdp offcanvas-md offcanvas-start">
                 <div class="sidebar-header mb-2">
                     <h5 class="fw-bold mb-0 ps-3" style="color: #2562ea;">GDP Talento</h5>
-                    <small class="ps-3" style="color: #6a7281; font-weight: normal;">Director de RRHH</small>
-                    <hr style="margin-top: 1rem; margin-bottom: 0.5rem;" />
+                    <small class="ps-3" style="color: #6a7281;">Director de RRHH</small>
+                    <hr class="mt-3 mb-2" />
                 </div>
                 <ul class="mynav nav nav-pills flex-column mb-auto">
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-house pe-2"></i>Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Miembro.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-user pe-2"></i>Miembros
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Postulantes.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-user-plus pe-2"></i>Postulantes
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Entrevista.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-user-check pe-2"></i>Entrevistas
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Evaluaciones.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-medal pe-2"></i>Evaluaciones
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Tareas.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-square-check pe-2"></i>Tareas
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Eventos.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-calendar pe-2"></i>Eventos
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/ReportesMostrar.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-chart-simple pe-2"></i>Reportes
-                        </a>
-                    </li>
-                    <li class="nav-item mb-1">
-                        <a href="~/Paginas/Usuario.aspx" runat="server" class="nav-link text-dark d-flex align-items-center">
-                            <i class="fa-regular fa-gear pe-2"></i>Configuración
-                        </a>
-                    </li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Inicio.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-house pe-2"></i>Inicio</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Miembro.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-user pe-2"></i>Miembros</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Postulantes.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-user-plus pe-2"></i>Postulantes</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Entrevista.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-user-check pe-2"></i>Entrevistas</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Evaluaciones.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-medal pe-2"></i>Evaluaciones</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Tareas.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-square-check pe-2"></i>Tareas</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Eventos.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-calendar pe-2"></i>Eventos</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/ReportesMostrar.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-chart-simple pe-2"></i>Reportes</a></li>
+                    <li class="nav-item mb-1"><a href="~/Paginas/Usuario.aspx" runat="server" class="nav-link text-dark d-flex align-items-center"><i class="fa-regular fa-gear pe-2"></i>Configuración</a></li>
                 </ul>
                 <hr class="my-2" />
-                <!-- LinkButton para Logout -->
-                <asp:LinkButton
-                    ID="lnkLogout"
-                    runat="server"
-                    CssClass="d-flex align-items-center logout-link text-danger mt-2 mb-2 text-decoration-none"
-                    Style="padding-left:2.2rem;"
-                    OnClick="lnkLogout_Click">
-                  <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
-                  <span class="fw-semibold">Cerrar sesión</span>
+                <asp:LinkButton ID="lnkLogout" runat="server" CssClass="d-flex align-items-center logout-link text-danger mt-2 mb-2 text-decoration-none" Style="padding-left: 2.2rem;" OnClick="lnkLogout_Click">
+                    <i class="fa-regular fa-arrow-right-from-bracket pe-2"></i>
+                    <span class="fw-semibold">Cerrar sesión</span>
                 </asp:LinkButton>
             </div>
 
-            <!-- DIVISIÓN DERECHA: CONTENIDO PRINCIPAL -->
+            <!-- Contenido -->
             <div class="bg-light flex-fill overflow-auto">
-                <!-- BARRA SUPERIOR PARA MÓVILES -->
+                <!-- Header móvil -->
                 <div class="p-2 d-md-none d-flex text-white bg-primary">
-                    <a data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" class="text-white" href="#">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
+                    <a data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" class="text-white" href="#"><i class="fa-solid fa-bars"></i></a>
                 </div>
-                <!-- BARRA USUARIO / AVATAR -->
+
+                <!-- Barra de usuario -->
                 <nav class="navbar navbar-light bg-white border-bottom divider-line px-4 py-2 shadow-sm">
                     <div class="ms-auto d-flex align-items-center gap-3">
                         <a href="~/Paginas/Usuario.aspx" runat="server" class="text-decoration-none">
-                            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center shadow-sm" style="width:44px; height:44px;">
+                            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center shadow-sm" style="width: 44px; height: 44px;">
                                 <span class="text-muted fw-semibold small">D</span>
                             </div>
                         </a>
                     </div>
                 </nav>
-                <!-- PLACEHOLDER PARA LAS PÁGINAS HIJAS -->
+
+                <!-- Contenido de página hija -->
                 <div class="p-4">
                     <asp:ContentPlaceHolder ID="cph_contenido" runat="server" />
                 </div>
@@ -116,20 +74,19 @@
         </div>
     </form>
 
-    <script>
-        $(function () {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1F1Lg6W53I4CzFMCkE1Y1zOg8ifwB1RxnFQ4J4Eh+gX"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
             var path = window.location.pathname.toLowerCase();
             $(".mynav a").each(function () {
-                var href = $(this).attr("href")
-                    .replace(/^~\//, "/")
-                    .toLowerCase();
-                if (path.indexOf(href) > -1) {
-                    $(this).addClass("active");
-                } else {
-                    $(this).removeClass("active");
-                }
+                var href = $(this).attr("href").replace(/^~\//, "/").toLowerCase();
+                $(this).toggleClass("active", path.indexOf(href) > -1);
             });
         });
     </script>
+
 </body>
 </html>

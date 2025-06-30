@@ -15,21 +15,7 @@ namespace GDPTalentoWA.Paginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.ClientScript.IsClientScriptIncludeRegistered("jquery"))
-            {
-                ScriptResourceDefinition jQueryDef = new ScriptResourceDefinition
-                {
-                    Path = "~/Scripts/jquery-3.7.1.min.js",
-                    DebugPath = "~/Scripts/jquery-3.7.1.js",
-                    CdnPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js",
-                    CdnDebugPath = "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.js",
-                    CdnSupportsSecureConnection = true,
-                    LoadSuccessExpression = "window.jQuery"
-                };
-
-                ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQueryDef);
-            }
-
+            this.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
                 boTarea = new TareaWSClient();
@@ -44,7 +30,7 @@ namespace GDPTalentoWA.Paginas
         {
             boTarea = new TareaWSClient();
             var tareas = boTarea.listarTareas();
-            usuariosCache = (Dictionary<int, string>)Session["usuariosCache"] ?? new Dictionary<int, string>(); 
+            usuariosCache = (Dictionary<int, string>)Session["usuariosCache"] ?? new Dictionary<int, string>();
 
             if (tareas == null || tareas.Length == 0)
             {
@@ -95,7 +81,6 @@ namespace GDPTalentoWA.Paginas
             }
         }
 
-
         protected void dgvTareas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvTareas.PageIndex = e.NewPageIndex;
@@ -112,7 +97,6 @@ namespace GDPTalentoWA.Paginas
             var tareaSeleccionada = boTarea.listarTareas().FirstOrDefault(t => t.id == idTarea);
             usuariosCache = (Dictionary<int, string>)Session["usuariosCache"] ?? new Dictionary<int, string>();
 
-
             if (tareaSeleccionada != null)
             {
                 switch (accion)
@@ -121,30 +105,16 @@ namespace GDPTalentoWA.Paginas
                         lblDescripcionDetalle.Text = tareaSeleccionada.descripcion;
                         lblFechaLimiteDetalle.Text = tareaSeleccionada.fechaLimite.ToString("dd/MM/yyyy");
                         lblEstadoDetalle.Text = tareaSeleccionada.estado.ToString();
-                        if (tareaSeleccionada.creador != null)
-                        {
-                            if (string.IsNullOrEmpty(tareaSeleccionada.creador.nombre) && usuariosCache != null)
-                            {
-                                if (usuariosCache.TryGetValue(tareaSeleccionada.creador.id, out string nombreCreador))
-                                {
-                                    tareaSeleccionada.creador.nombre = nombreCreador;
-                                }
-                            }
-
-                            lblCreadorDetalle.Text = tareaSeleccionada.creador.nombre ?? "Sin nombre";
-                        }
-                        else
-                        {
-                            lblCreadorDetalle.Text = "Sin nombre";
-                        }
+                        lblCreadorDetalle.Text = tareaSeleccionada.creador?.nombre ?? "Sin nombre";
 
                         var nombres = tareaSeleccionada.encargados?
                             .Select(enc => usuariosCache.TryGetValue(enc.id, out var nombre) ? nombre : "Sin nombre")
                             .ToList();
 
                         lblEncargadosDetalle.Text = (nombres != null && nombres.Any()) ? string.Join(", ", nombres) : "Sin encargados";
+
                         upDetallesTarea.Update();
-                        ScriptManager.RegisterStartupScript(upDetallesTarea, upDetallesTarea.GetType(), "abrirDetalles", "showModalDetallesTarea();", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "abrirDetalles", "showModalDetallesTarea();", true);
                         break;
 
                     case "EditarTarea":
@@ -157,20 +127,18 @@ namespace GDPTalentoWA.Paginas
                         Session["encargadoEditarId"] = tareaSeleccionada.encargados?[0]?.id;
 
                         upEditarTarea.Update();
-                        ScriptManager.RegisterStartupScript(upEditarTarea, upEditarTarea.GetType(), "mostrarEditar", "showModalEditarTarea();", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarEditar", "showModalEditarTarea();", true);
                         break;
 
                     case "EliminarTarea":
                         Session["tareaEliminarId"] = tareaSeleccionada.id;
                         ScriptManager.RegisterStartupScript(this, GetType(), "mostrarEliminar", "showModalEliminarTarea();", true);
                         break;
-
-
                 }
             }
+
             ddl.SelectedIndex = 0;
         }
-
 
         protected void btnEliminarEncargado_Click(object sender, EventArgs e)
         {

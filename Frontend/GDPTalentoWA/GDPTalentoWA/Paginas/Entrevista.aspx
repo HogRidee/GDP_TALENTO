@@ -58,7 +58,6 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:UpdatePanel ID="upEntrevistas" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="container mt-3">
