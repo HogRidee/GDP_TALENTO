@@ -399,6 +399,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\GDPTalento\RegistrarMiembro.js" />
     <Content Include="Scripts\GDPTalento\miembroGDP.js" />
     <Content Include="Scripts\GDPTalento\tareas.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />

@@ -35,8 +35,7 @@ public class AsistenciaWS {
     @WebMethod(operationName = "listarAsistencias")
     public ArrayList<Asistencia> listarAsistencias() {      
         boAsistencia = new AsistenciaBO();
-        ArrayList<Asistencia> lista = boAsistencia.listarTodas();
-        return (lista != null) ? lista : new ArrayList<>();
+        return boAsistencia.listarTodas();
     }
     
     @WebMethod(operationName = "listarAsistenciasPorStaff")

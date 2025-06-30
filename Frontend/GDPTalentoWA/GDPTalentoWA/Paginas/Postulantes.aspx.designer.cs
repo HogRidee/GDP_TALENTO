@@ -13,6 +13,7 @@ namespace GDPTalentoWA.Paginas
 
     public partial class Postulantes
     {
+
         /// <summary>
         /// Control btnRegistrarPostulante.
         /// </summary>
@@ -21,15 +22,6 @@ namespace GDPTalentoWA.Paginas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnRegistrarPostulante;
-
-        /// <summary>
-        /// Control lbBuscarPostulante.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbBuscarPostulante;
 
         /// <summary>
         /// Control txtBuscarPostulante.
@@ -41,6 +33,15 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.TextBox txtBuscarPostulante;
 
         /// <summary>
+        /// Control lbBuscarPostulante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbBuscarPostulante;
+
+        /// <summary>
         /// Control ddlEstados.
         /// </summary>
         /// <remarks>
@@ -50,13 +51,13 @@ namespace GDPTalentoWA.Paginas
         protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
 
         /// <summary>
-        /// Control ddlAreas.
+        /// Control ddlEspecialidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAreas;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidades;
 
         /// <summary>
         /// Control btnFiltrarPostulante.

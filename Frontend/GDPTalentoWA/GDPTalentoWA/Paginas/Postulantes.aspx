@@ -32,6 +32,12 @@
                 <div class="row gx-2 gy-2 mb-3 align-items-center flex-nowrap overflow-auto">
                     <div class="col-auto">
                         <div class="input-group flex-nowrap">
+                            <asp:TextBox
+                                ID="txtBuscarPostulante"
+                                runat="server"
+                                CssClass="form-control border-start-0"
+                                placeholder="Buscar por nombre o código..." 
+                                Style="min-width: 730px;"/>
                             <asp:LinkButton
                                 ID="lbBuscarPostulante"
                                 runat="server"
@@ -40,29 +46,24 @@
                                 ToolTip="Buscar">
                                 <i class="fa-solid fa-magnifying-glass text-muted"></i>
                             </asp:LinkButton>
-                            <asp:TextBox
-                                ID="txtBuscarPostulante"
-                                runat="server"
-                                CssClass="form-control border-start-0"
-                                placeholder="Buscar por nombre..." 
-                                Style="min-width: 735px;"/>
                         </div>
                     </div>
 
                     <div class="col-auto">
                         <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-select">
                             <asp:ListItem Selected="True" Text="Todos los estados" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Pendiente" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Aprobado" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Rechazado" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="PENDIENTE" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="APROBADO" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="RECHAZADO" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
                     <div class="col-auto">
-                        <asp:DropDownList ID="ddlAreas" runat="server" CssClass="form-select">
-                            <asp:ListItem Selected="True" Text="Todas las áreas" Value=""></asp:ListItem>
-                            <asp:ListItem Text="DESARROLLO" Value="Desarrollo"></asp:ListItem>
-                            <asp:ListItem Text="DISEÑO" Value="Diseño"></asp:ListItem>
+                        <asp:DropDownList ID="ddlEspecialidades" runat="server" CssClass="form-select">
+                            <asp:ListItem Selected="True" Text="Todas las especialidades" Value=""></asp:ListItem>
+                            <asp:ListItem Text="DERECHO" Value="Derecho"></asp:ListItem>
+                            <asp:ListItem Text="ELECTRÓNICA" Value="Electrónica"></asp:ListItem>
+                            <asp:ListItem Text="INFORMÁTICA" Value="Informática"></asp:ListItem>
                             <asp:ListItem Text="MARKETING" Value="Marketing"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
