@@ -25,11 +25,25 @@ public class EventoMySQL implements EventoDAO{
     @Override
     public int insertar(Evento evento) {
         Map<Integer,Object> parametrosEntrada = new HashMap<>();
+        Map<Integer,Object> parametrosSalida = new HashMap<>();
         parametrosEntrada.put(1, new Date(evento.getFecha().getTime()));
         parametrosEntrada.put(2, evento.getTipoEvento().toString());
         parametrosEntrada.put(3, evento.getEstadoEvento().toString());
-        int resultado=DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVENTO", parametrosEntrada, null);
+        parametrosSalida.put(4, java.sql.Types.INTEGER);
+        
+        int resultado = DBManager.getInstance().ejecutarProcedimiento("INSERTAR_EVENTO", parametrosEntrada, parametrosSalida);
+
+        int idGenerado = (int) parametrosSalida.get(4);
+        evento.setId(idGenerado);
+        
         System.out.println("Se ha realizado el registro del evento");
+        if(evento.getParticipantes()!=null){
+            modificarParticipantes(evento.getId(), evento.getParticipantes());
+        }
+        
+        if(evento.getEncargados()!=null){
+            modificarEncargados(evento.getId(), evento.getEncargados());
+        }
         return resultado;
     }
 
