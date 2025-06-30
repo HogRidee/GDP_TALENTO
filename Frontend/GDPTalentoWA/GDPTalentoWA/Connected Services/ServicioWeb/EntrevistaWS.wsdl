@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/GDPTalentoWA/EntrevistaWS?xsd=1" namespace="http://services.pucp.edu.pe" />
     </xsd:schema>
   </types>
-  <message name="insertarEntrevista">
-    <part name="parameters" element="tns:insertarEntrevista" />
+  <message name="modificarEntrevista">
+    <part name="parameters" element="tns:modificarEntrevista" />
   </message>
-  <message name="insertarEntrevistaResponse">
-    <part name="parameters" element="tns:insertarEntrevistaResponse" />
+  <message name="modificarEntrevistaResponse">
+    <part name="parameters" element="tns:modificarEntrevistaResponse" />
   </message>
   <message name="listarEntrevistas">
     <part name="parameters" element="tns:listarEntrevistas" />
@@ -17,39 +17,39 @@
   <message name="listarEntrevistasResponse">
     <part name="parameters" element="tns:listarEntrevistasResponse" />
   </message>
+  <message name="insertarEntrevista">
+    <part name="parameters" element="tns:insertarEntrevista" />
+  </message>
+  <message name="insertarEntrevistaResponse">
+    <part name="parameters" element="tns:insertarEntrevistaResponse" />
+  </message>
   <message name="eliminarEntrevista">
     <part name="parameters" element="tns:eliminarEntrevista" />
   </message>
   <message name="eliminarEntrevistaResponse">
     <part name="parameters" element="tns:eliminarEntrevistaResponse" />
   </message>
-  <message name="modificarEntrevista">
-    <part name="parameters" element="tns:modificarEntrevista" />
-  </message>
-  <message name="modificarEntrevistaResponse">
-    <part name="parameters" element="tns:modificarEntrevistaResponse" />
-  </message>
   <portType name="EntrevistaWS">
-    <operation name="insertarEntrevista">
-      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaRequest" message="tns:insertarEntrevista" />
-      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaResponse" message="tns:insertarEntrevistaResponse" />
+    <operation name="modificarEntrevista">
+      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaRequest" message="tns:modificarEntrevista" />
+      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaResponse" message="tns:modificarEntrevistaResponse" />
     </operation>
     <operation name="listarEntrevistas">
       <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasRequest" message="tns:listarEntrevistas" />
       <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/listarEntrevistasResponse" message="tns:listarEntrevistasResponse" />
     </operation>
+    <operation name="insertarEntrevista">
+      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaRequest" message="tns:insertarEntrevista" />
+      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/insertarEntrevistaResponse" message="tns:insertarEntrevistaResponse" />
+    </operation>
     <operation name="eliminarEntrevista">
       <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaRequest" message="tns:eliminarEntrevista" />
       <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/eliminarEntrevistaResponse" message="tns:eliminarEntrevistaResponse" />
     </operation>
-    <operation name="modificarEntrevista">
-      <input wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaRequest" message="tns:modificarEntrevista" />
-      <output wsam:Action="http://services.pucp.edu.pe/EntrevistaWS/modificarEntrevistaResponse" message="tns:modificarEntrevistaResponse" />
-    </operation>
   </portType>
   <binding name="EntrevistaWSPortBinding" type="tns:EntrevistaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarEntrevista">
+    <operation name="modificarEntrevista">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -67,7 +67,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarEntrevista">
+    <operation name="insertarEntrevista">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarEntrevista">
+    <operation name="eliminarEntrevista">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

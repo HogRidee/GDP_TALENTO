@@ -5,74 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cph_scripts" runat="server">
-    <script src="../Scripts/GDPTalento/tareas.js"></script>
-    <script>
-        function showModalEditarTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEditarTarea'));
-                    modal.show();
-                }
-            }, 300);
-        }
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-        function hideModalEditarTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEditarTarea'));
-                    modal.hide();
-                }
-            }, 300);
-        }
-        function showModalNuevaTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
-                    modal.show();
-                }
-            }, 300);
-        }
-
-        function hideModalNuevaTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
-                    modal.hide();
-                }
-            }, 300);
-        }
-        function showModalDetallesTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetallesTarea'));
-                    modal.show();
-                }
-            }, 300);
-        }
-        function showModalEliminarTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarTarea'));
-                    modal.show();
-                }
-            }, 300);
-        }
-
-        function hideModalEliminarTarea() {
-            setTimeout(function () {
-                if (typeof bootstrap !== 'undefined') {
-                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalEliminarTarea'));
-                    modal.hide();
-                }
-            }, 300);
-        }
-
-
-    </script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </asp:Content>
 
+
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_contenido" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:UpdatePanel ID="upTareas" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="container mt-3">
@@ -225,9 +166,9 @@
                             <div class="mb-3">
                                 <label for="txtDescripcionEditar" class="form-label">Descripción</label>
                                 <asp:TextBox ID="txtDescripcionEditar" runat="server" CssClass="form-control" />
-                                <asp:RequiredFieldValidator 
-                                    ID="rfvDescripcionEditar" 
-                                    runat="server" 
+                                <asp:RequiredFieldValidator
+                                    ID="rfvDescripcionEditar"
+                                    runat="server"
                                     ControlToValidate="txtDescripcionEditar"
                                     ErrorMessage="La descripción es obligatoria"
                                     CssClass="text-danger"
@@ -238,9 +179,9 @@
                             <div class="mb-3">
                                 <label for="txtFechaLimiteEditar" class="form-label">Fecha límite</label>
                                 <asp:TextBox ID="txtFechaLimiteEditar" runat="server" CssClass="form-control" TextMode="Date" />
-                                <asp:RequiredFieldValidator 
-                                    ID="rfvFechaLimiteEditar" 
-                                    runat="server" 
+                                <asp:RequiredFieldValidator
+                                    ID="rfvFechaLimiteEditar"
+                                    runat="server"
                                     ControlToValidate="txtFechaLimiteEditar"
                                     ErrorMessage="La fecha límite es obligatoria"
                                     CssClass="text-danger"
@@ -263,8 +204,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:LinkButton ID="btnGuardarCambios" runat="server" CssClass="btn btn-dark" 
-                        OnClick="btnGuardarCambios_Click" 
+                    <asp:LinkButton ID="btnGuardarCambios" runat="server" CssClass="btn btn-dark"
+                        OnClick="btnGuardarCambios_Click"
                         ValidationGroup="EditarTarea">
                         Guardar cambios
                     </asp:LinkButton>
@@ -295,9 +236,9 @@
                             <div class="mb-3">
                                 <label for="txtDescripcionNueva" class="form-label">Descripción</label>
                                 <asp:TextBox ID="txtDescripcionNueva" runat="server" CssClass="form-control" />
-                                <asp:RequiredFieldValidator 
-                                    ID="rfvDescripcionNueva" 
-                                    runat="server" 
+                                <asp:RequiredFieldValidator
+                                    ID="rfvDescripcionNueva"
+                                    runat="server"
                                     ControlToValidate="txtDescripcionNueva"
                                     ErrorMessage="La descripción es obligatoria"
                                     CssClass="text-danger"
@@ -308,9 +249,9 @@
                             <div class="mb-3">
                                 <label for="txtFechaLimiteNueva" class="form-label">Fecha límite</label>
                                 <asp:TextBox ID="txtFechaLimiteNueva" runat="server" CssClass="form-control" TextMode="Date" />
-                                <asp:RequiredFieldValidator 
-                                    ID="rfvFechaLimiteNueva" 
-                                    runat="server" 
+                                <asp:RequiredFieldValidator
+                                    ID="rfvFechaLimiteNueva"
+                                    runat="server"
                                     ControlToValidate="txtFechaLimiteNueva"
                                     ErrorMessage="La fecha límite es obligatoria"
                                     CssClass="text-danger"
@@ -328,8 +269,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:LinkButton ID="btnGuardarNuevaTarea" runat="server" CssClass="btn btn-success" 
-                        OnClick="btnGuardarNuevaTarea_Click" 
+                    <asp:LinkButton ID="btnGuardarNuevaTarea" runat="server" CssClass="btn btn-success"
+                        OnClick="btnGuardarNuevaTarea_Click"
                         ValidationGroup="NuevaTarea">
                         Guardar tarea
                     </asp:LinkButton>
@@ -337,4 +278,40 @@
             </div>
         </div>
     </div>
+    <script>
+        function showModal(id) {
+            const modalElement = document.getElementById(id);
+            if (modalElement && typeof bootstrap !== "undefined") {
+                const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+                modal.show();
+            } else {
+                console.error("No se pudo mostrar el modal:", id);
+            }
+        }
+
+        function hideModal(id) {
+            const modalElement = document.getElementById(id);
+            if (modalElement && typeof bootstrap !== "undefined") {
+                const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+                modal.hide();
+            } else {
+                console.error("No se pudo ocultar el modal:", id);
+            }
+        }
+
+        // Luego recién las funciones globales:
+        window.showModalNuevaTarea = () => showModal('modalNuevaTarea');
+        window.hideModalNuevaTarea = () => hideModal('modalNuevaTarea');
+
+        window.showModalDetallesTarea = () => showModal('modalDetallesTarea');
+        window.hideModalDetallesTarea = () => hideModal('modalDetallesTarea');
+
+        window.showModalEditarTarea = () => showModal('modalEditarTarea');
+        window.hideModalEditarTarea = () => hideModal('modalEditarTarea');
+
+        window.showModalEliminarTarea = () => showModal('modalEliminarTarea');
+        window.hideModalEliminarTarea = () => hideModal('modalEliminarTarea');
+    </script>
+
+
 </asp:Content>

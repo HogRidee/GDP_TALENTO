@@ -1,36 +1,23 @@
-﻿let modalDetallesTarea;
-let modalEditarTarea;
-let modalEliminarTarea;
+﻿window.addEventListener("load", function () {
+    window.showModal = function (id) {
+        const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById(id));
+        modal.show();
+    };
 
-function showModalEliminarTarea() {
-    modalEliminarTarea = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
-    modalEliminarTarea.show();
-}
-function showModalDetallesTarea(idTarea) {
-    modalDetallesTarea = new bootstrap.Modal(document.getElementById('modalDetallesTarea'));
+    window.hideModal = function (id) {
+        const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById(id));
+        modal.hide();
+    };
 
+    window.showModalNuevaTarea = () => showModal('modalNuevaTarea');
+    window.hideModalNuevaTarea = () => hideModal('modalNuevaTarea');
 
-    modalDetallesTarea.show();
-}
+    window.showModalDetallesTarea = () => showModal('modalDetallesTarea');
+    window.hideModalDetallesTarea = () => hideModal('modalDetallesTarea');
 
-function showModalEditarTarea(idTarea) {
-    modalEditarTarea = new bootstrap.Modal(document.getElementById('modalEditarTarea'));
+    window.showModalEditarTarea = () => showModal('modalEditarTarea');
+    window.hideModalEditarTarea = () => hideModal('modalEditarTarea');
 
-    modalEditarTarea.show();
-}
-
-<script>
-    function showModalNuevaTarea() {
-        if (typeof bootstrap !== 'undefined') {
-            var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
-    modal.show();
-        }
-    }
-
-    function hideModalNuevaTarea() {
-        if (typeof bootstrap !== 'undefined') {
-            var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalNuevaTarea'));
-    modal.hide();
-        }
-    }
-</script>
+    window.showModalEliminarTarea = () => showModal('modalEliminarTarea');
+    window.hideModalEliminarTarea = () => hideModal('modalEliminarTarea');
+});
