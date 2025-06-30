@@ -1,0 +1,2 @@
+Ingresar Front: http://54.87.149.89/GDPTalentoWA/Paginas/InicioSesion.aspx
+Ingresar Front Elastica: 	http://44.205.34.72/GDPTalentoWA/Paginas/InicioSesion.aspx
